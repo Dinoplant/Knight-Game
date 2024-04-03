@@ -6,3 +6,15 @@
 const playerInv = {
     item: 0,
 }
+
+
+
+
+
+
+
+
+
+
+
+
