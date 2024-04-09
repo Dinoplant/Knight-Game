@@ -3,9 +3,11 @@ const textElement = document.getElementById('text')
 const optionButtonsElement = document.getElementById('btnOptions')
 
 let player = {}
+console.log(textElement)
+console.log(optionButtonsElement)
 
 function startGame() {
- player = {
+  player = {
     wis: 0,
     str: 0,
     con: 0,
@@ -18,14 +20,16 @@ function startGame() {
     healPot: 0,
     jade: 0,
   }
+  showTextNode(1)
 }
 
-function showTextNode(index) {
-  const textNode = textNodes.find(textNode => textNode.id === index)
+function showTextNode(textNodeIndex) {
+  const textNode = textNodes.find(textNode => textNode.id === textNodeIndex)
   textElement.innerText = textNode.text
   while (optionButtonsElement.firstChild) {
     optionButtonsElement.removeChild(optionButtonsElement.firstChild)
   }
+
 
   textNode.options.forEach(option => {
     if (showOption(option)) {
@@ -47,27 +51,44 @@ function selectOption(option) {
   if (nextTextNodeId <= 0) {
     return startGame()
   }
-  state = Object.assign(state, option.setState)
+  player = Object.assign(player, option.setPlayer)
   showTextNode(nextTextNodeId)
 }
 
 const textNodes = [
-{
-  id:1,
-  text: `hello`,
-  options: [
-    {
-      text: `heelllooo`,
-      setplayer: {str: 2,},
-      nextText: 2
-    }
-    {
-      text: `byeeee`,
-      setplayer: {wis: 2,},
-      nextText: 2
-    }
-  ]
-}
+  {
+    id: 1,
+    text: `hello`,
+    options: [
+      {
+        text: `heelllooo`,
+        setPlayer: {str: 2,},
+        nextText: 2
+      },
+      {
+        text: `byeeee`,
+        setPlayer: {wis: 2,},
+        nextText: 2
+      }
+    ],
+  },  
+  {  
+    id: 2,
+    text: `hey`,
+    options: [
+      {
+        text: `hope`,
+        setPlayer: {str: 2,},
+        nextText: 3
+      },
+      {
+        text: `neat`,
+        setPlayer: {wis: 2,},
+        nextText: 3
+      }
+    ]
+
+  }
 
 ]
 
@@ -76,4 +97,5 @@ const textNodes = [
 
 
 
-startGame ()
+startGame()
+
