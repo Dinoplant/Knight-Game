@@ -1,6 +1,27 @@
 
-const textElement = document.getElementById('text')
-const optionButtonsElement = document.getElementById('btnOptions')
+const textElement = document.getElementById('text');
+const optionButtonsElement = document.getElementById('btnOptions');
+const isOverFlown = ({ clientHeight, scrollHeight}) => scrollHeight > clientHeight;
+
+const resizeText = ({element, parent}) => {
+  let i = 40
+  let overFlow = false
+  const maxsize = 150
+
+  while (!overFlow && i < maxsize) {
+element.style.fontsize = `${i}px`
+overFlow = isOverFlown(parent)
+  }
+
+  element.style.fontsize = `${i - 1}px`
+}
+
+resizeText({
+  element: document.querySelector(`.text`),
+  parent: document.querySelector(`.textdisplay`)
+})
+
+
 
 let player = {}
 console.log(textElement)
@@ -58,16 +79,11 @@ function selectOption(option) {
 const textNodes = [
   {
     id: 1,
-    text: `hello`,
+    text: `There was a time where this land was isolated and seemed to be at peace, but after a time many other countries became more anxious to conquer the world. After the failed revolution in the west, the sea demons turned their attention to the east. The land’s government wanted to stay in solitude and tried to obtain their ancient ways, but it was only a matter of time until the demons would come.`,
     options: [
       {
-        text: `heelllooo`,
+        text: `Next`,
         setPlayer: {str: 2,},
-        nextText: 2
-      },
-      {
-        text: `byeeee`,
-        setPlayer: {wis: 2,},
         nextText: 2
       }
     ],
@@ -83,6 +99,26 @@ const textNodes = [
       },
       {
         text: `neat`,
+        setPlayer: {wis: 2,},
+        nextText: 3
+      },
+      {
+        text: `neat oh`,
+        setPlayer: {wis: 2,},
+        nextText: 3
+      },
+      {
+        text: `neat oh`,
+        setPlayer: {wis: 2,},
+        nextText: 3
+      },
+      {
+        text: `neat oh`,
+        setPlayer: {wis: 2,},
+        nextText: 3
+      },
+      {
+        text: `neat oh`,
         setPlayer: {wis: 2,},
         nextText: 3
       }

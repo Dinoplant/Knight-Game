@@ -21,13 +21,14 @@ main {
 
 .topHalf {
     height: 65%;
-    background-color: rgb(126, 85, 36);
+    background-color: #191970;
 }
 
 .bottomHalf {
     /* Bug fixing */
-height: 35%;
-    background-color: rgb(190, 124, 43);
+    height: 35%;
+    background-color: #7D0006;
+    border: 4mm ridge #FFFFFF;    
 }
 
 .screenDisplay {
@@ -37,17 +38,21 @@ height: 35%;
 }
 
 .screen {
-    background-color: cyan;
+    border: 4mm ridge #FFFFFF;    
+    border-bottom: 0mm;
+    border-right: 0mm;    
+    background-color: #191970;
     width: 80%;
     height: 100%;
 }
 
 .inventory {
-    background-color: cornflowerblue;
+    border: 4mm ridge #FFFFFF;
+    border-bottom: 0mm;    
+    background-color: #98572b;
     width: 20%;
     height: 100%;
 }
-
 
 .storyDisplay {
     display: flex;
@@ -71,21 +76,33 @@ height: 35%;
     display: flex;
     height: 30%;
     width: 100%;
-   align-items: center;
-   justify-content: center;
-   font-size: 2.5rem;
+    padding: 20px;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+#text {
+    font-size: 40px;
+    display: block;
+    color: #FFFFFF;
+    font-size: larger;
 }
 
 .buttons {
     display: flex;
     height: 30%;
-    width: 100%
+    width: 100%;
+    margin: 1%;
 }
-
 
 .btn {
     max-width: 20vw;
-    max-height: 20vh;
+    max-height: 30vh;
+    margin: 10%;
+    border-radius: 10% / 50%;
+    border: 2mm ridge #FFFFFF;   
+    text-align: center;
 }
 
 .btnAdvances {
