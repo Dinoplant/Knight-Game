@@ -53,24 +53,26 @@ function selectOption(option) {
   showTextNode(nextTextNodeId)
 }
 
+
 const textNodes = [
   {
-    id: 1,
-    text: `Welcome to our Knight text adventure, click Play to start`,
-    options: [
+    id: 1, //story element or story part or section
+    text: `Welcome to our Knight text adventure, click Play to start`, //text was is visable first
+    options: [ //creates the options
+      { //to set something: setPlayer: {},
+        //to require player: requiredPlayer: {element boolien elemenet},
+        text: `More Info`, //text was is visable first
+        nextText: 2 //brings it to the next id 
+      }, // make sure to add commas
       {
-        text: `More Info`,
-        nextText: 2
-      },
+        text: `PLAY`, //text was is visable first
+        nextText: 4 //brings it to the next id 
+      }, // make sure to add commas
       {
-        text: `PLAY`,
-        nextText: 4
-      },
-      {
-        text: `Credits`,
-        nextText: 3
+        text: `Credits`, //text was is visable first
+        nextText: 3 //brings it to the next id 
       }
-    ],
+    ], // make sure to add commas
   },
   {
     id: 2,
@@ -92,9 +94,9 @@ const textNodes = [
   },
   {
     id: 3,
-    text: `Made by: Angel Delgado Jimenez (Lead Coder)
-    Loghan Hornor (Lead Story & Art Direction)
-    Gavin Stetson (Lead Feedbacker)`,
+    text: `Made by: Angel Delgado Jimenez (Lead Programer)
+    Loghan Hornor (Lead Writer & Art Direction)
+    Lily Sanchez(Lead Artist & Editor)`,
     options: [
       {
         text: `More Info`,
