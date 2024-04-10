@@ -1,31 +1,8 @@
 
 const textElement = document.getElementById('text');
 const optionButtonsElement = document.getElementById('btnOptions');
-const isOverFlown = ({ clientHeight, scrollHeight}) => scrollHeight > clientHeight;
-
-const resizeText = ({element, parent}) => {
-  let i = 40
-  let overFlow = false
-  const maxsize = 150
-
-  while (!overFlow && i < maxsize) {
-element.style.fontsize = `${i}px`
-overFlow = isOverFlown(parent)
-  }
-
-  element.style.fontsize = `${i - 1}px`
-}
-
-resizeText({
-  element: document.querySelector(`.text`),
-  parent: document.querySelector(`.textdisplay`)
-})
-
-
 
 let player = {}
-console.log(textElement)
-console.log(optionButtonsElement)
 
 function startGame() {
   player = {
@@ -64,7 +41,7 @@ function showTextNode(textNodeIndex) {
 }
 
 function showOption(option) {
-  return option.requiredState == null || option.requiredState(state)
+  return option.requiredPlayer == null || option.requiredPlayer(player)
 }
 
 function selectOption(option) {
@@ -79,59 +56,95 @@ function selectOption(option) {
 const textNodes = [
   {
     id: 1,
-    text: `There was a time where this land was isolated and seemed to be at peace, but after a time many other countries became more anxious to conquer the world. After the failed revolution in the west, the sea demons turned their attention to the east. The land’s government wanted to stay in solitude and tried to obtain their ancient ways, but it was only a matter of time until the demons would come.`,
+    text: `Welcome to our Knight text adventure, click Play to start`,
     options: [
       {
-        text: `Next`,
-        setPlayer: {str: 2,},
+        text: `More Info`,
         nextText: 2
+      },
+      {
+        text: `PLAY`,
+        nextText: 4
+      },
+      {
+        text: `Credits`,
+        nextText: 3
       }
     ],
-  },  
-  {  
+  },
+  {
     id: 2,
-    text: `hey`,
+    text: `This is a text adventure made for our CART lab. This was made in just about 6 week from planning to coding. There are lots of paths for you to take and many endings. Along with a combat system, Have Fun!`,
     options: [
       {
-        text: `hope`,
-        setPlayer: {str: 2,},
-        nextText: 3
+        text: `Back`,
+        nextText: 1
       },
       {
-        text: `neat`,
-        setPlayer: {wis: 2,},
-        nextText: 3
+        text: `PLAY`,
+        nextText: 4
       },
       {
-        text: `neat oh`,
-        setPlayer: {wis: 2,},
+        text: `Credits`,
         nextText: 3
+      }
+    ],
+  },
+  {
+    id: 3,
+    text: `Made by: Angel Delgado Jimenez (Lead Coder)
+    Loghan Hornor (Lead Story & Art Direction)
+    Gavin Stetson (Lead Feedbacker)`,
+    options: [
+      {
+        text: `More Info`,
+        nextText: 2
       },
       {
-        text: `neat oh`,
-        setPlayer: {wis: 2,},
-        nextText: 3
+        text: `PLAY`,
+        nextText: 4
       },
       {
-        text: `neat oh`,
-        setPlayer: {wis: 2,},
-        nextText: 3
+        text: `Back`,
+        nextText: 1
+      }
+    ],
+  },
+{
+    id: 4,
+    text: `Placeholder`,
+    options: [
+      {
+        text: `More Info`,
+        nextText: 2
       },
       {
-        text: `neat oh`,
-        setPlayer: {wis: 2,},
-        nextText: 3
+        text: `More Info`,
+        nextText: 2
+      },
+      {
+        text: `More Info`,
+        nextText: 2
+      },
+      {
+        text: `More Info`,
+        nextText: 2
+      },
+      {
+        text: `More Info`,
+        nextText: 2
       }
     ]
 
-  }
 
+  }
 ]
 
+// while (textNodeIndex != 1 || 2) {
+//   let inv = player
 
-
-
-
+// document.getElementById(`invText`).innerText = inv
+// }
 
 startGame()
 

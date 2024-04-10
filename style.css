@@ -15,8 +15,8 @@ main {
     margin: 0;
     display: flex;
     flex-direction: column;
-    width: 100vw;
-    height: 100vh;
+    width: 99vw;
+    height: 99vh;
 }
 
 .topHalf {
@@ -28,7 +28,7 @@ main {
     /* Bug fixing */
     height: 35%;
     background-color: #7D0006;
-    border: 4mm ridge #FFFFFF;    
+    border: 4mm ridge #FFFFFF;
 }
 
 .screenDisplay {
@@ -38,9 +38,9 @@ main {
 }
 
 .screen {
-    border: 4mm ridge #FFFFFF;    
+    border: 4mm ridge #FFFFFF;
     border-bottom: 0mm;
-    border-right: 0mm;    
+    border-right: 0mm;
     background-color: #191970;
     width: 80%;
     height: 100%;
@@ -48,7 +48,7 @@ main {
 
 .inventory {
     border: 4mm ridge #FFFFFF;
-    border-bottom: 0mm;    
+    border-bottom: 0mm;
     background-color: #98572b;
     width: 20%;
     height: 100%;
@@ -64,12 +64,10 @@ main {
 .btnGrid {
     display: grid;
     grid-template-columns: repeat(3, auto);
-    gap: 10px;
-    /* margin-top: 20px;
-    margin-left: 7vw;
-    margin-left: 7vw; */
+    gap: 7px;
     height: 100%;
-    width: 90%;
+    width: 100%;
+    justify-content: space-evenly;
 }
 
 .textDisplay {
@@ -79,34 +77,57 @@ main {
     padding: 20px;
     align-items: center;
     justify-content: center;
-    
+
 }
 
 #text {
-    font-size: 40px;
+    font-size: clamp(.8rem, 0.4982rem + 1.03vw, 1.7rem);
     display: block;
     color: #FFFFFF;
-    font-size: larger;
 }
 
 .buttons {
     display: flex;
-    height: 30%;
+    flex-direction: column;
+    align-items: center;
+    height: 70%;
     width: 100%;
-    margin: 1%;
 }
 
 .btn {
-    max-width: 20vw;
-    max-height: 30vh;
-    margin: 10%;
+
     border-radius: 10% / 50%;
-    border: 2mm ridge #FFFFFF;   
+    border: 2mm ridge #FFFFFF;
     text-align: center;
+    max-height: 45%;
+    min-width: 9vw;
+    max-width: 20vw;
+}
+
+.btn:hover {
+    /* background-color:#d2d2d2 ; */
+    border-color: #000000;
+    color: rgb(79, 10, 10)
 }
 
 .btnAdvances {
     display: flex;
-    flex-direction: column;
-    width: 10%;
+    flex-direction: row;
+    align-content: center;
+    justify-content: space-evenly;
+    width: 19%;
+    height: 40%;
+
 }
+
+/* max 1873px > 117rem .06
+min 470px >29.3rem .37
+
+max 1.7 rem
+min .8 rem
+
+.9 / 87.69
+0.0102 slope
+0.4982 y
+
+*/
