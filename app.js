@@ -2,7 +2,19 @@
 const textElement = document.getElementById('text');
 const optionButtonsElement = document.getElementById('btnOptions');
 
-let player = {}
+let player = {
+  wis: 0,
+  str: 0,
+  con: 0,
+  dex: 0,
+  bow: 0,
+  rapier: 0,
+  greatAxe: 0,
+  spear: 0,
+  shortSword: 0,
+  healPot: 0,
+  jade: 0,
+}
 
 function startGame() {
   player = {
@@ -19,6 +31,7 @@ function startGame() {
     jade: 0,
   }
   showTextNode(1)
+
 }
 
 function showTextNode(textNodeIndex) {
@@ -53,6 +66,26 @@ function selectOption(option) {
   showTextNode(nextTextNodeId)
 }
 
+function startCombat(enemy1, enemy2, enemy3, enemy1Hp, enemy2Hp, enemy3Hp,) {
+
+  let playerHp = 100
+
+
+  if (player.con >= 9) {
+    playerHp = 150
+  }
+  else if (player.con >= 6) {
+    playerHp = 125
+  }
+  else if (player.con >= 3) {
+    playerHp = 110
+  }
+  else { playerHp = 100 }
+
+  console.log(player.str)
+
+
+}
 
 const textNodes = [
   {
@@ -65,7 +98,8 @@ const textNodes = [
         nextText: 2 //brings it to the next id 
       }, // make sure to add commas
       {
-        text: `PLAY`, //text was is visable first
+        text: `PLAY`,
+        setPlayer: { str: 1 },//text was is visable first
         nextText: 4 //brings it to the next id 
       }, // make sure to add commas
       {
@@ -100,10 +134,12 @@ const textNodes = [
     options: [
       {
         text: `More Info`,
+
         nextText: 2
       },
       {
         text: `PLAY`,
+
         nextText: 4
       },
       {
@@ -112,13 +148,14 @@ const textNodes = [
       }
     ],
   },
-{
+  {
     id: 4,
     text: `Placeholder`,
     options: [
       {
-        text: `More Info`,
-        nextText: 2
+        text: `combat`,
+        nextText: 2,
+        function: startCombat(true, false, false, 1, 0, 0)
       },
       {
         text: `More Info`,
@@ -136,17 +173,42 @@ const textNodes = [
         text: `More Info`,
         nextText: 2
       }
-    ]
+    ],
 
 
-  }
+  },
+  {
+    id: 5,
+    text: `Combat`,
+    options: [
+      {
+        text: `Slash`,
+        nextText: 2
+      },
+      {
+        text: `Heal Potions`,
+        nextText: 2
+      },
+      {
+        text: `Scare`,
+        nextText: 2
+      },
+      {
+        text: `Stab`,
+        nextText: 2
+      },
+      {
+        text: `Pendant of Pain`,
+        nextText: 2
+      },
+      {
+        text: `Persuade`,
+        nextText: 2
+      }
+    ],
+  },
 ]
 
-// while (textNodeIndex != 1 || 2) {
-//   let inv = player
-
-// document.getElementById(`invText`).innerText = inv
-// }
 
 startGame()
 
