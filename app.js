@@ -1,7 +1,7 @@
 
 const textElement = document.getElementById('text');
 const optionButtonsElement = document.getElementById('btnOptions');
-
+let playerHp = 100
 let player = {
   wis: 0,
   str: 0,
@@ -66,14 +66,17 @@ function selectOption(option) {
   showTextNode(nextTextNodeId)
 }
 
-function startCombat(enemy1, enemy2, enemy3, enemy1Hp, enemy2Hp, enemy3Hp,) {
+document.getElementsByClassName(`btn`).onclick = startCombat
 
-  let playerHp = 100
+function startCombat(enemy1, enemy1Hp, enemy1Peace, enemy2, enemy2Hp, enemy2Peace, enemy3, enemy3Hp, enemy3Peace,) {
+
+
 
 
   if (player.con >= 9) {
     playerHp = 150
   }
+
   else if (player.con >= 6) {
     playerHp = 125
   }
@@ -82,12 +85,18 @@ function startCombat(enemy1, enemy2, enemy3, enemy1Hp, enemy2Hp, enemy3Hp,) {
   }
   else { playerHp = 100 }
 
-  console.log(player.str)
+function slash(){}
+
+console.log(`it works`)
+  document.getElementById(`slash`).onclick = slash()
 
 
+  function endCombat() {
+
+  }
 }
 
-const textNodes = [
+let textNodes = [
   {
     id: 1, //story element or story part or section
     text: `Welcome to our Knight text adventure, click Play to start`, //text was is visable first
@@ -95,11 +104,13 @@ const textNodes = [
       { //to set something: setPlayer: {},
         //to require player: requiredPlayer: {element boolien elemenet},
         text: `More Info`, //text was is visable first
-        nextText: 2 //brings it to the next id 
+        setPlayer: { con: 5 },
+        nextText: 2, //brings it to the next id 
+        combatName: `none`
       }, // make sure to add commas
       {
         text: `PLAY`,
-        setPlayer: { str: 1 },//text was is visable first
+        //text was is visable first
         nextText: 4 //brings it to the next id 
       }, // make sure to add commas
       {
@@ -114,7 +125,8 @@ const textNodes = [
     options: [
       {
         text: `Back`,
-        nextText: 1
+        nextText: 1,
+        combatName: `none`
       },
       {
         text: `PLAY`,
@@ -134,12 +146,11 @@ const textNodes = [
     options: [
       {
         text: `More Info`,
-
+        combatName: `none`,
         nextText: 2
       },
       {
         text: `PLAY`,
-
         nextText: 4
       },
       {
@@ -150,35 +161,6 @@ const textNodes = [
   },
   {
     id: 4,
-    text: `Placeholder`,
-    options: [
-      {
-        text: `combat`,
-        nextText: 2,
-        function: startCombat(true, false, false, 1, 0, 0)
-      },
-      {
-        text: `More Info`,
-        nextText: 2
-      },
-      {
-        text: `More Info`,
-        nextText: 2
-      },
-      {
-        text: `More Info`,
-        nextText: 2
-      },
-      {
-        text: `More Info`,
-        nextText: 2
-      }
-    ],
-
-
-  },
-  {
-    id: 5,
     text: `Combat`,
     options: [
       {
@@ -209,6 +191,14 @@ const textNodes = [
   },
 ]
 
+if (textNodes[3].id == 0) {
+  startCombat(true, 50, 0, false, 0, 0, false, 0, 0)
+  console.log(`it work 2.0`)
+}
 
+
+
+
+console.log(textNodes[4])
 startGame()
 
