@@ -1,6 +1,8 @@
 
 const textElement = document.getElementById('text');
 const optionButtonsElement = document.getElementById('btnOptions');
+let inventoryElement = document.getElementById(`invText`)
+
 let playerHp = 100
 let player = {
   wis: 0,
@@ -57,16 +59,20 @@ function showOption(option) {
   return option.requiredPlayer == null || option.requiredPlayer(player)
 }
 
+function update(){
+inventoryElement.innerText = player
+console.log(`neato`)
+}
+
 function selectOption(option) {
   const nextTextNodeId = option.nextText
   if (nextTextNodeId <= 0) {
     return startGame()
   }
   player = Object.assign(player, option.setPlayer)
+  update()
   showTextNode(nextTextNodeId)
 }
-
-document.getElementsByClassName(`btn`).onclick = startCombat
 
 function startCombat(enemy1, enemy1Hp, enemy1Peace, enemy2, enemy2Hp, enemy2Peace, enemy3, enemy3Hp, enemy3Peace,) {
 
