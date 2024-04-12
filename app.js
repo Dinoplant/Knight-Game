@@ -39,6 +39,11 @@ function startGame() {
 function showTextNode(textNodeIndex) {
   const textNode = textNodes.find(textNode => textNode.id === textNodeIndex)
   textElement.innerText = textNode.text
+  if (textNode.startCombat == 1) {
+    console.log('combat mode engaged');
+  } else {
+    console.log('no violence = sad pandas');
+  }
   while (optionButtonsElement.firstChild) {
     optionButtonsElement.removeChild(optionButtonsElement.firstChild)
   }
@@ -77,8 +82,6 @@ function selectOption(option) {
 function startCombat(enemy1, enemy1Hp, enemy1Peace, enemy2, enemy2Hp, enemy2Peace, enemy3, enemy3Hp, enemy3Peace,) {
 
 
-
-
   if (player.con >= 9) {
     playerHp = 150
   }
@@ -91,6 +94,8 @@ function startCombat(enemy1, enemy1Hp, enemy1Peace, enemy2, enemy2Hp, enemy2Peac
   }
   else { playerHp = 100 }
 
+
+
 function slash(){}
 
 console.log(`it works`)
@@ -100,6 +105,8 @@ console.log(`it works`)
   function endCombat() {
 
   }
+
+  
 }
 
 let textNodes = [
@@ -122,7 +129,8 @@ let textNodes = [
       {
         text: `Credits`, //text was is visable first
         nextText: 3 //brings it to the next id 
-      }
+      },
+      
     ], // make sure to add commas
   },
   {
@@ -164,6 +172,7 @@ let textNodes = [
         nextText: 1
       }
     ],
+    startCombat: true
   },
   {
     id: 4,
@@ -194,6 +203,7 @@ let textNodes = [
         nextText: 2
       }
     ],
+    startCombat: 1
   },
 ]
 
@@ -203,7 +213,7 @@ if (textNodes[3].id == 0) {
 }
 
 
-
+console.log(textNodes.id)
 
 console.log(textNodes[4])
 startGame()
