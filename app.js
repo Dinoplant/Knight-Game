@@ -2,6 +2,13 @@
 const textElement = document.getElementById('text');
 const optionButtonsElement = document.getElementById('btnOptions');
 let inventoryElement = document.getElementById(`invText`)
+let d4one = 0
+let d4two = 0
+let d6one = 0
+let d6two = 0
+let d12 = 0
+let d20 = 0
+
 
 let playerHp = 100
 let player = {
@@ -40,10 +47,16 @@ function showTextNode(textNodeIndex) {
   const textNode = textNodes.find(textNode => textNode.id === textNodeIndex)
   textElement.innerText = textNode.text
   if (textNode.startCombat == 1) {
+    startCombat(true, 20, 0, false, 0, 0, false, 0, 0)
     console.log('combat mode engaged');
   } else {
     console.log('no violence = sad pandas');
   }
+
+
+
+
+
   while (optionButtonsElement.firstChild) {
     optionButtonsElement.removeChild(optionButtonsElement.firstChild)
   }
@@ -64,9 +77,9 @@ function showOption(option) {
   return option.requiredPlayer == null || option.requiredPlayer(player)
 }
 
-function update(){
-inventoryElement.innerText = player
-console.log(`neato`)
+function update() {
+  inventoryElement.innerText = player
+  console.log(`neato`)
 }
 
 function selectOption(option) {
@@ -95,18 +108,17 @@ function startCombat(enemy1, enemy1Hp, enemy1Peace, enemy2, enemy2Hp, enemy2Peac
   else { playerHp = 100 }
 
 
+function slash() {}
 
-function slash(){}
-
-console.log(`it works`)
-  document.getElementById(`slash`).onclick = slash()
+  console.log(`it works`)
+ 
 
 
   function endCombat() {
 
   }
 
-  
+
 }
 
 let textNodes = [
@@ -117,9 +129,7 @@ let textNodes = [
       { //to set something: setPlayer: {},
         //to require player: requiredPlayer: {element boolien elemenet},
         text: `More Info`, //text was is visable first
-        setPlayer: { con: 5 },
         nextText: 2, //brings it to the next id 
-        combatName: `none`
       }, // make sure to add commas
       {
         text: `PLAY`,
@@ -130,7 +140,7 @@ let textNodes = [
         text: `Credits`, //text was is visable first
         nextText: 3 //brings it to the next id 
       },
-      
+
     ], // make sure to add commas
   },
   {
@@ -140,7 +150,6 @@ let textNodes = [
       {
         text: `Back`,
         nextText: 1,
-        combatName: `none`
       },
       {
         text: `PLAY`,
@@ -160,7 +169,6 @@ let textNodes = [
     options: [
       {
         text: `More Info`,
-        combatName: `none`,
         nextText: 2
       },
       {
@@ -172,15 +180,14 @@ let textNodes = [
         nextText: 1
       }
     ],
-    startCombat: true
   },
   {
     id: 4,
-    text: `Combat`,
+    text: `Currently battling`,
     options: [
       {
         text: `Slash`,
-        nextText: 2
+        nextText: 5
       },
       {
         text: `Heal Potions`,
@@ -205,16 +212,51 @@ let textNodes = [
     ],
     startCombat: 1
   },
+  {
+    id: 5,
+    text: `This lets you roll a d12, and multiply that roll by 1.5 to damage A enemy.`,
+    options: [
+      {
+        text: `Confirm Slash`,
+        nextText: 6
+      },
+      {
+        text: `Back to Selection`,
+        nextText: 4
+      },
+    ],
+
+  },
+  {
+    id: 6,
+    text: `Choose who you want to attack.`,
+    options: [
+      {
+        text: `name`,
+        nextText: 7
+      },
+      {
+        text: `name2`,
+        nextText: 7
+      },
+      {
+        text: `name23`,
+        nextText: 7
+      },
+    ],
+  },
+  {
+    id: 7,
+    text: `Slash did 4 damage, the Enemy has 3 HP left. The enemy did 3 damage to you, you have --16 HP-- left.`,
+    options: [
+      {
+        text: `Ok`,
+        nextText: 4
+      }
+    ],
+
+  },
 ]
 
-if (textNodes[3].id == 0) {
-  startCombat(true, 50, 0, false, 0, 0, false, 0, 0)
-  console.log(`it work 2.0`)
-}
-
-
-console.log(textNodes.id)
-
-console.log(textNodes[4])
 startGame()
 
