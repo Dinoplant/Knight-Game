@@ -68,6 +68,27 @@ function showTextNode(textNodeIndex) {
       button.innerText = option.text
       button.classList.add('btn')
       button.addEventListener('click', () => selectOption(option))
+
+if (option ===  textNode.options[0]){
+  button.addEventListener('click', () => slash())
+}
+else if (option ===  textNode.options[0]){
+  button.addEventListener('click', () => slash())
+}
+else if (option ===  textNode.options[0]){
+  button.addEventListener('click', () => slash())
+}
+else if (option ===  textNode.options[0]){
+  button.addEventListener('click', () => slash())
+}
+else if (option ===  textNode.options[0]){
+  button.addEventListener('click', () => slash())
+}
+else if (option ===  textNode.options[0]){
+  button.addEventListener('click', () => slash())
+}
+
+
       optionButtonsElement.appendChild(button)
     }
   })
@@ -92,6 +113,8 @@ function selectOption(option) {
   showTextNode(nextTextNodeId)
 }
 
+function slash() {  console.log(`it works`)}
+
 function startCombat(enemy1, enemy1Hp, enemy1Peace, enemy2, enemy2Hp, enemy2Peace, enemy3, enemy3Hp, enemy3Peace,) {
 
 
@@ -108,18 +131,17 @@ function startCombat(enemy1, enemy1Hp, enemy1Peace, enemy2, enemy2Hp, enemy2Peac
   else { playerHp = 100 }
 
 
-function slash() {}
 
-  console.log(`it works`)
+
+
  
 
 
   function endCombat() {
 
   }
-
-
 }
+  
 
 let textNodes = [
   {
@@ -164,8 +186,7 @@ let textNodes = [
   {
     id: 3,
     text: `Made by: Angel Delgado Jimenez (Lead Programer)
-    Loghan Hornor (Lead Writer & Art Direction)
-    Lily Sanchez(Lead Artist & Editor)`,
+    Loghan Hornor (Lead Writer & Art Direction)`,
     options: [
       {
         text: `More Info`,
