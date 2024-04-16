@@ -8,7 +8,8 @@ let d6one = 0
 let d6two = 0
 let d12 = 0
 let d20 = 0
-
+let pendant = 1
+let combatQuestion = false
 
 let playerHp = 100
 let player = {
@@ -47,10 +48,18 @@ function showTextNode(textNodeIndex) {
   const textNode = textNodes.find(textNode => textNode.id === textNodeIndex)
   textElement.innerText = textNode.text
   if (textNode.startCombat == 1) {
-    startCombat(true, 20, 0, false, 0, 0, false, 0, 0)
+    startCombat(true, `Man`, 20, 0, false, `none`, 0, 0, false, `none`, 0, 0)
     console.log('combat mode engaged');
-  } else {
+    combatQuestion = true
+  }
+  if (textNode.continueCombat === true) {
+
+    console.log('combat mode cont');
+    combatQuestion = true
+  }
+  else {
     console.log('no violence = sad pandas');
+    combatQuestion = false
   }
 
 
@@ -69,24 +78,24 @@ function showTextNode(textNodeIndex) {
       button.classList.add('btn')
       button.addEventListener('click', () => selectOption(option))
 
-if (option ===  textNode.options[0]){
-  button.addEventListener('click', () => slash())
-}
-else if (option ===  textNode.options[0]){
-  button.addEventListener('click', () => slash())
-}
-else if (option ===  textNode.options[0]){
-  button.addEventListener('click', () => slash())
-}
-else if (option ===  textNode.options[0]){
-  button.addEventListener('click', () => slash())
-}
-else if (option ===  textNode.options[0]){
-  button.addEventListener('click', () => slash())
-}
-else if (option ===  textNode.options[0]){
-  button.addEventListener('click', () => slash())
-}
+      if (option === textNode.options[0]) {
+        button.addEventListener('click', () => slash())
+      }
+      else if (option === textNode.options[1]) {
+        button.addEventListener('click', () => slash())
+      }
+      else if (option === textNode.options[2]) {
+        button.addEventListener('click', () => slash())
+      }
+      else if (option === textNode.options[3]) {
+        button.addEventListener('click', () => slash())
+      }
+      else if (option === textNode.options[4]) {
+        button.addEventListener('click', () => slash())
+      }
+      else if (option === textNode.options[5]) {
+        button.addEventListener('click', () => slash())
+      }
 
 
       optionButtonsElement.appendChild(button)
@@ -113,9 +122,20 @@ function selectOption(option) {
   showTextNode(nextTextNodeId)
 }
 
-function slash() {  console.log(`it works`)}
 
-function startCombat(enemy1, enemy1Hp, enemy1Peace, enemy2, enemy2Hp, enemy2Peace, enemy3, enemy3Hp, enemy3Peace,) {
+function slash() {
+
+  if (combatQuestion === true || continueCombat === true) {
+    console.log(`Yooooooooooooooooooooooo`)
+    d12 = Math.floor(Math.random() * (13 - 1) + 1)
+  }
+  else {
+    console.log(`na man`)
+  }
+}
+
+
+function startCombat(enemy1, enemy1Name, enemy1Hp, enemy1Peace, enemy2, enemy2Name, enemy2Hp, enemy2Peace, enemy3, enemy3Name, enemy3Hp, enemy3Peace,) {
 
 
   if (player.con >= 9) {
@@ -134,14 +154,15 @@ function startCombat(enemy1, enemy1Hp, enemy1Peace, enemy2, enemy2Hp, enemy2Peac
 
 
 
- 
+
+
 
 
   function endCombat() {
 
   }
 }
-  
+
 
 let textNodes = [
   {
@@ -202,6 +223,24 @@ let textNodes = [
       }
     ],
   },
+  // {
+  //   id: 0,
+  //   text: `Our story begins in 40 AD on the newly conquered island of Britannia. Our protagonist is in a small village that seemed almost unaffected by the Roman invasion until one night when everything changed.`,
+  //   options: [
+  //     {
+  //       text: `More Info`,
+  //       nextText: 1
+  //     },
+  //     {
+  //       text: `Continue`,
+  //       nextText: 4
+  //     },
+  //     {
+  //       text: `Credits`,
+  //       nextText: 3
+  //     }
+  //   ],
+  // },
   {
     id: 4,
     text: `Currently battling`,
@@ -246,7 +285,7 @@ let textNodes = [
         nextText: 4
       },
     ],
-
+    continueCombat: true
   },
   {
     id: 6,
@@ -265,6 +304,7 @@ let textNodes = [
         nextText: 7
       },
     ],
+    continueCombat: true
   },
   {
     id: 7,
@@ -275,9 +315,39 @@ let textNodes = [
         nextText: 4
       }
     ],
-
+    continueCombat: true
+  },
+  {
+    id: 8,
+    text: `Currently battling`,
+    options: [
+      {
+        text: `Slash`,
+        nextText: 5
+      },
+      {
+        text: `Heal Potions`,
+        nextText: 2
+      },
+      {
+        text: `Scare`,
+        nextText: 2
+      },
+      {
+        text: `Stab`,
+        nextText: 2
+      },
+      {
+        text: `Pendant of Pain`,
+        nextText: 2
+      },
+      {
+        text: `Persuade`,
+        nextText: 2
+      }
+    ],
+    continueCombat: true
   },
 ]
-
 startGame()
 
