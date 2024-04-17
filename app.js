@@ -1,5 +1,5 @@
 
-const textElement = document.getElementById('text');
+const textElement = document.getElementById('text'); //gets the ids from the html to change the text for the story
 const optionButtonsElement = document.getElementById('btnOptions');
 let inventoryElement = document.getElementById(`invText`)
 let d4one = 0
@@ -11,8 +11,26 @@ let d20 = 0
 let pendant = 1
 let combatQuestion = false
 let continueCombat = false
-let playerHp = 100
+let playerHp = 150
 let damage = 0
+let attack = false
+let enemy1 = false
+let enemy1Name = `none`
+let enemy1Hp = 0
+let enemy1Peace = 0
+let enemy2 = false
+let enemy2Name = `none`
+let enemy2Hp = 0
+let enemy2Peace = 0
+let enemy3 = false
+let enemy3Name = `none`
+let enemy3Hp = 0
+let enemy3Peace = 0
+
+
+
+
+
 
 
 
@@ -21,11 +39,11 @@ let player = {
   str: 0,
   con: 0,
   dex: 0,
-  bow: 0,
-  rapier: 0,
-  greatAxe: 0,
-  spear: 0,
-  shortSword: 0,
+  bow: false,
+  rapier: false,
+  greatAxe: false,
+  spear: false,
+  shortSword: false,
   healPot: 0,
   jade: 0,
 }
@@ -48,21 +66,21 @@ function startGame() {
 
 }
 
-function showTextNode(textNodeIndex) {
+function showTextNode(textNodeIndex) { // goes through tthe text nodes checks what I put for the text and changes the text in the HTML
   const textNode = textNodes.find(textNode => textNode.id === textNodeIndex)
   textElement.innerText = textNode.text
-  if (textNode.startCombat == 1) {
+  if (textNode.startCombat == 1) { //just checks is a paramantor to see if combat starts
     startCombat(true, `Man`, 20, 0, false, `none`, 0, 0, false, `none`, 0, 0)
     console.log('combat mode engaged');
     combatQuestion = true
   }
-  else if (textNode.continueCombat === true) {
+  else if (textNode.continueCombat === true) { //checks if you are continue combat
 
     console.log('combat mode cont');
     combatQuestion = true
   }
   else {
-    console.log('no violence = sad pandas');
+    console.log('no violence = sad pandas'); 
     combatQuestion = false
   }
 
@@ -70,20 +88,20 @@ function showTextNode(textNodeIndex) {
 
 
 
-  while (optionButtonsElement.firstChild) {
+  while (optionButtonsElement.firstChild) { //removes buttons for combat, deletes the buttons but then adds new buttons
     optionButtonsElement.removeChild(optionButtonsElement.firstChild)
   }
 
 
-  textNode.options.forEach(option => {
+  textNode.options.forEach(option => { //makes the options by checking the opition premator see how mnay optitions there are
     if (showOption(option)) {
       const button = document.createElement('button')
       button.innerText = option.text
       button.classList.add('btn')
-      button.addEventListener('click', () => selectOption(option))
+      button.addEventListener('click', () => selectOption(option)) 
 
       if (option === textNode.options[0]) {
-        button.addEventListener('click', () => slash())
+        button.addEventListener('click', () => slash()) //checking certain buttons and adding the comabt funation accordin to each one
       }
       else if (option === textNode.options[1]) {
         button.addEventListener('click', () => slash())
@@ -107,7 +125,7 @@ function showTextNode(textNodeIndex) {
   })
 }
 
-function showOption(option) {
+function showOption(option) { //sho2ws the opitions if they have a certain item and such
   return option.requiredPlayer == null || option.requiredPlayer(player)
 }
 
@@ -116,7 +134,7 @@ function update() {
   console.log(`neato`)
 }
 
-function selectOption(option) {
+function selectOption(option) { //decetcs if button is clicked with a set player demator, and does what it is told to do
   const nextTextNodeId = option.nextText
   if (nextTextNodeId <= 0) {
     return startGame()
@@ -127,7 +145,7 @@ function selectOption(option) {
 }
 
 
-function slash() {
+function slash() { //combat function only works if the combat funation is true and will only work if combat is on going or started 
 
   if (combatQuestion === true || continueCombat === true) {
     console.log(`Yooooooooooooooooooooooo`)
@@ -156,34 +174,38 @@ function slash() {
     damage += 3
   }
 
+  attack = true
 }
 
-
-function startCombat(enemy1, enemy1Name, enemy1Hp, enemy1Peace, enemy2, enemy2Name, enemy2Hp, enemy2Peace, enemy3, enemy3Name, enemy3Hp, enemy3Peace,) {
+// comstumizable combat system, it has evrything needed
+function startCombat(enemy1, enemy1Name, enemy1Hp, enemy1Peace, enemy2, enemy2Name, enemy2Hp, enemy2Peace, enemy3, enemy3Name, enemy3Hp, enemy3Peace,) { 
 
 
   if (player.con >= 9) {
-    playerHp = 150
-  }
-
-  else if (player.con >= 6) {
-    playerHp = 125
-  }
-  else if (player.con >= 3) {
-    playerHp = 110
-  }
-  else { playerHp = 100 }
+    playerHp = 200
+  } else if (player.con >= 6) {
+    playerHp = 175
+  } else if (player.con >= 3) {
+    playerHp = 160
+  } else { playerHp = 150 }
 
 
-  console.log(damage)
+ 
+
+if(attack === true && enemy1Hp >= 1){
+enemy1Hp -= damage * 1.5
 
 
+
+textElement.innerText = textNode.text
+}
 }
 
 function endCombat() {
 
 }
 
+//holds all the story elements along with the options 
 let textNodes = [
   {
     id: 1, //story element or story part or section
@@ -290,7 +312,7 @@ let textNodes = [
         nextText: 2
       }
     ],
-    startCombat: 1
+    startCombat: 1 //depending on the number combat will change emenies or allies
   },
   {
     id: 5,
@@ -366,7 +388,7 @@ let textNodes = [
         nextText: 2
       }
     ],
-    continueCombat: true
+    continueCombat: true 
   },
 ]
 startGame()
