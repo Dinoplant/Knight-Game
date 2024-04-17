@@ -10,8 +10,12 @@ let d12 = 0
 let d20 = 0
 let pendant = 1
 let combatQuestion = false
-
+let continueCombat = false
 let playerHp = 100
+let damage = 0
+
+
+
 let player = {
   wis: 0,
   str: 0,
@@ -52,7 +56,7 @@ function showTextNode(textNodeIndex) {
     console.log('combat mode engaged');
     combatQuestion = true
   }
-  if (textNode.continueCombat === true) {
+  else if (textNode.continueCombat === true) {
 
     console.log('combat mode cont');
     combatQuestion = true
@@ -128,10 +132,30 @@ function slash() {
   if (combatQuestion === true || continueCombat === true) {
     console.log(`Yooooooooooooooooooooooo`)
     d12 = Math.floor(Math.random() * (13 - 1) + 1)
+    damage = d12
   }
   else {
     console.log(`na man`)
   }
+
+
+  if (player.greatAxe >= 0 && player.str >= 7) {
+    damage += 5
+  }
+  else if (player.str >= 9) {
+    damage += 4
+  }
+  else if (player.str >= 6) {
+    damage += 2
+  }
+  else if (player.str >= 3) {
+    damage += 1
+  }
+
+  if (player.bow >= 1 && player.wis >= 5) {
+    damage += 3
+  }
+
 }
 
 
@@ -151,18 +175,14 @@ function startCombat(enemy1, enemy1Name, enemy1Hp, enemy1Peace, enemy2, enemy2Na
   else { playerHp = 100 }
 
 
+  console.log(damage)
 
 
-
-
-
-
-
-  function endCombat() {
-
-  }
 }
 
+function endCombat() {
+
+}
 
 let textNodes = [
   {
