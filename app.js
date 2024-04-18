@@ -26,7 +26,7 @@ let enemy3 = false
 let enemy3Name = `none`
 let enemy3Hp = 0
 let enemy3Peace = 0
-
+let enemyd20 = 0
 
 
 
@@ -75,9 +75,9 @@ function showTextNode(textNodeIndex) { // goes through tthe text nodes checks wh
     combatQuestion = true
   }
   else if (textNode.continueCombat === true) { //checks if you are continue combat
-
     console.log('combat mode cont');
     combatQuestion = true
+
   }
   else {
     console.log('no violence = sad pandas'); 
@@ -131,7 +131,7 @@ function showOption(option) { //sho2ws the opitions if they have a certain item 
 
 function update() {
   inventoryElement.innerText = player
-  console.log(`neato`)
+  // console.log(`neato`)
 }
 
 function selectOption(option) { //decetcs if button is clicked with a set player demator, and does what it is told to do
@@ -173,15 +173,16 @@ function slash() { //combat function only works if the combat funation is true a
   if (player.bow >= 1 && player.wis >= 5) {
     damage += 3
   }
-
+damage = damage * 1.5
   attack = true
+  startCombat(enemy1, enemy1Name, enemy1Hp, enemy1Peace, enemy2, enemy2Name, enemy2Hp, enemy2Peace, enemy3, enemy3Name, enemy3Hp, enemy3Peace,)
 }
 
 // comstumizable combat system, it has evrything needed
 function startCombat(enemy1, enemy1Name, enemy1Hp, enemy1Peace, enemy2, enemy2Name, enemy2Hp, enemy2Peace, enemy3, enemy3Name, enemy3Hp, enemy3Peace,) { 
 
 
-  if (player.con >= 9) {
+  if (player.con >= 9 && combatQuestion === true) {
     playerHp = 200
   } else if (player.con >= 6) {
     playerHp = 175
@@ -189,16 +190,29 @@ function startCombat(enemy1, enemy1Name, enemy1Hp, enemy1Peace, enemy2, enemy2Na
     playerHp = 160
   } else { playerHp = 150 }
 
-
+ 
  
 
 if(attack === true && enemy1Hp >= 1){
-enemy1Hp -= damage * 1.5
 
+enemy1Hp -= damage
 
+ enemyd20 = Math.floor(Math.random() * (21 - 1) + 1)
 
-textElement.innerText = textNode.text
+ console.log(`hey this is the damage`, enemyd20)
+// if (){} for extra high rolls like bosses, checks enemyName
+
+enemyd20 = enemyd20 * 1.7
+
+playerHp -= enemyd20
+console.log(`You did`, damage, `damage to the`, enemy1Name, `whhich leave them with`, enemy1Hp, `HP left.`, `The`, enemy1Name, `did`, enemyd20, `damage, leaving you with`, playerHp, `HP left.`)
+textElement.innerText = (`You did`, damage, `damage to the`, enemy1Name, `whhich leave them with--`, enemy1Hp, `--HP left.`, `The`, enemy1Name, `did`, enemyd20, `damage, leaving you with--`, playerHp, `--HP left.`)
 }
+else {console.log(`did not work`)}
+//console.log(`You did`, damage, `damage to the`, enemy1Name, `whhich leave them with`, enemy1Hp, `HP left.`, `The`, enemy1Name, `did`, enemyd20, `damage, leaving you with`, playerHp, `HP left.`)
+
+
+
 }
 
 function endCombat() {
@@ -324,43 +338,24 @@ let textNodes = [
       },
       {
         text: `Back to Selection`,
-        nextText: 4
+        nextText: 7
       },
     ],
-    continueCombat: true
+
   },
   {
     id: 6,
-    text: `Choose who you want to attack.`,
-    options: [
-      {
-        text: `name`,
-        nextText: 7
-      },
-      {
-        text: `name2`,
-        nextText: 7
-      },
-      {
-        text: `name23`,
-        nextText: 7
-      },
-    ],
-    continueCombat: true
-  },
-  {
-    id: 7,
     text: `Slash did 4 damage, the Enemy has 3 HP left. The enemy did 3 damage to you, you have --16 HP-- left.`,
     options: [
       {
         text: `Ok`,
-        nextText: 4
+        nextText: 7
       }
     ],
     continueCombat: true
   },
   {
-    id: 8,
+    id: 7,
     text: `Currently battling`,
     options: [
       {
@@ -388,7 +383,7 @@ let textNodes = [
         nextText: 2
       }
     ],
-    continueCombat: true 
+
   },
 ]
 startGame()
