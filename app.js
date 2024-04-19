@@ -14,25 +14,28 @@ let continueCombat = false
 let playerHp = 150
 let damage = 0
 let attack = false
-let enemy1 = false
-let enemy1Name = `none`
-let enemy1Hp = 0
-let enemy1Peace = 0
-let enemy2 = false
-let enemy2Name = `none`
-let enemy2Hp = 0
-let enemy2Peace = 0
-let enemy3 = false
-let enemy3Name = `none`
-let enemy3Hp = 0
-let enemy3Peace = 0
-let enemyd20 = 0
 
 
+class Enemy {
+  constructor(hp, name) {
+    this.name = 'Man';
+    this.hp = 20;
+  }
+}
 
+let Bear = new Enemy(30, 'bear');
 
+class boss extends Enemy {
+  constructor(hp, name, extraDamage) {
+    super(hp, name);
+    this.boss = extraDamage;
+  }
+}
 
+let king = new boss(23, `herny`, 20)
 
+// bandit bear, wolves, genral, Henry, gruad, archer, dragon, yourself, 
+// gernal, graud, archer, bear,  henry, dragoon, 
 
 let player = {
   wis: 0,
@@ -66,6 +69,11 @@ function startGame() {
 
 }
 
+
+
+
+console.log(enemyOne.name);
+
 function showTextNode(textNodeIndex) { // goes through tthe text nodes checks what I put for the text and changes the text in the HTML
   const textNode = textNodes.find(textNode => textNode.id === textNodeIndex)
   textElement.innerText = textNode.text
@@ -83,8 +91,6 @@ function showTextNode(textNodeIndex) { // goes through tthe text nodes checks wh
     console.log('no violence = sad pandas'); 
     combatQuestion = false
   }
-
-
 
 
 
@@ -175,11 +181,11 @@ function slash() { //combat function only works if the combat funation is true a
   }
 damage = damage * 1.5
   attack = true
-  startCombat(enemy1, enemy1Name, enemy1Hp, enemy1Peace, enemy2, enemy2Name, enemy2Hp, enemy2Peace, enemy3, enemy3Name, enemy3Hp, enemy3Peace,)
+  // startCombat(enemy1, enemy1Name, enemy1Hp, enemy1Peace, enemy2, enemy2Name, enemy2Hp, enemy2Peace, enemy3, enemy3Name, enemy3Hp, enemy3Peace,)
 }
 
 // comstumizable combat system, it has evrything needed
-function startCombat(enemy1, enemy1Name, enemy1Hp, enemy1Peace, enemy2, enemy2Name, enemy2Hp, enemy2Peace, enemy3, enemy3Name, enemy3Hp, enemy3Peace,) { 
+function startCombat(nextnode) { 
 
 
   if (player.con >= 9 && combatQuestion === true) {
@@ -190,10 +196,10 @@ function startCombat(enemy1, enemy1Name, enemy1Hp, enemy1Peace, enemy2, enemy2Na
     playerHp = 160
   } else { playerHp = 150 }
 
- 
- 
+ console.log(`hp`, enemy1Hp)
+ // attack === true && 
 
-if(attack === true && enemy1Hp >= 1){
+if(enemy1Hp >= 1){
 
 enemy1Hp -= damage
 
@@ -205,11 +211,11 @@ enemy1Hp -= damage
 enemyd20 = enemyd20 * 1.7
 
 playerHp -= enemyd20
-console.log(`You did`, damage, `damage to the`, enemy1Name, `whhich leave them with`, enemy1Hp, `HP left.`, `The`, enemy1Name, `did`, enemyd20, `damage, leaving you with`, playerHp, `HP left.`)
-textElement.innerText = (`You did`, damage, `damage to the`, enemy1Name, `whhich leave them with--`, enemy1Hp, `--HP left.`, `The`, enemy1Name, `did`, enemyd20, `damage, leaving you with--`, playerHp, `--HP left.`)
+// console.log(`You did ${damage} damage to the ${enemy1Name} which leave them with ${enemy1Hp} HP left. The ${enemy1Name} did ${enemyd20} damage, leaving you with ${playerHp} HP left.`)
+// textElement.innerText = (`You did ${damage} damage to the ${enemy1Name} which leave them with ${enemy1Hp} HP left.` `The ${enemy1Name} did ${enemyd20} damage, leaving you with ${playerHp} HP left.`)
 }
-else {console.log(`did not work`)}
-//console.log(`You did`, damage, `damage to the`, enemy1Name, `whhich leave them with`, enemy1Hp, `HP left.`, `The`, enemy1Name, `did`, enemyd20, `damage, leaving you with`, playerHp, `HP left.`)
+else {console.log(`did not work`)}  
+console.log(`You did ${damage} damage to the ${enemy1Name} which leave them with ${enemy1Hp} HP left. The ${enemy1Name} did ${enemyd20} damage, leaving you with ${playerHp} HP left.`)
 
 
 
