@@ -15,24 +15,26 @@ let playerHp = 150
 let damage = 0
 let attack = false
 
-
-class Enemy {
-  constructor(hp, name) {
-    this.name = 'Man';
-    this.hp = 20;
+class lvl1Enemy {
+  constructor(enemyName, enemyHp, enemyPeace) {
+    this.enemyName = enemyName;
+    this.enemyHp = enemyHp;
+    this.enemyPeace = enemyPeace;
   }
 }
 
-let Bear = new Enemy(30, 'bear');
 
-class boss extends Enemy {
-  constructor(hp, name, extraDamage) {
-    super(hp, name);
-    this.boss = extraDamage;
+class lvl2Enemy extends lvl1Enemy {
+  constructor(enemyHp, enemyName, enemyPeace, extraDamage, extraRoll) {
+    super(enemyHp, enemyName, enemyPeace);
+    this.extraDamage = extraDamage;
+    this.extraRoll = extraRoll;
   }
 }
+let Bandit = new lvl1Enemy (`Bandit`, 20, 10);
+let King = new lvl2Enemy (`King`, 100, 0, 30, 2)
 
-let king = new boss(23, `herny`, 20)
+console.log(Bandit)
 
 // bandit bear, wolves, genral, Henry, gruad, archer, dragon, yourself, 
 // gernal, graud, archer, bear,  henry, dragoon, 
@@ -69,16 +71,11 @@ function startGame() {
 
 }
 
-
-
-
-console.log(enemyOne.name);
-
 function showTextNode(textNodeIndex) { // goes through tthe text nodes checks what I put for the text and changes the text in the HTML
   const textNode = textNodes.find(textNode => textNode.id === textNodeIndex)
   textElement.innerText = textNode.text
   if (textNode.startCombat == 1) { //just checks is a paramantor to see if combat starts
-    startCombat(true, `Man`, 20, 0, false, `none`, 0, 0, false, `none`, 0, 0)
+    startCombat(Bandit, Bandit, false, 0)
     console.log('combat mode engaged');
     combatQuestion = true
   }
@@ -88,23 +85,19 @@ function showTextNode(textNodeIndex) { // goes through tthe text nodes checks wh
 
   }
   else {
-    console.log('no violence = sad pandas'); 
+    console.log('no violence = sad pandas');
     combatQuestion = false
   }
-
-
-
   while (optionButtonsElement.firstChild) { //removes buttons for combat, deletes the buttons but then adds new buttons
     optionButtonsElement.removeChild(optionButtonsElement.firstChild)
   }
-
 
   textNode.options.forEach(option => { //makes the options by checking the opition premator see how mnay optitions there are
     if (showOption(option)) {
       const button = document.createElement('button')
       button.innerText = option.text
       button.classList.add('btn')
-      button.addEventListener('click', () => selectOption(option)) 
+      button.addEventListener('click', () => selectOption(option))
 
       if (option === textNode.options[0]) {
         button.addEventListener('click', () => slash()) //checking certain buttons and adding the comabt funation accordin to each one
@@ -124,8 +117,6 @@ function showTextNode(textNodeIndex) { // goes through tthe text nodes checks wh
       else if (option === textNode.options[5]) {
         button.addEventListener('click', () => slash())
       }
-
-
       optionButtonsElement.appendChild(button)
     }
   })
@@ -150,42 +141,36 @@ function selectOption(option) { //decetcs if button is clicked with a set player
   showTextNode(nextTextNodeId)
 }
 
-
 function slash() { //combat function only works if the combat funation is true and will only work if combat is on going or started 
 
   if (combatQuestion === true || continueCombat === true) {
     console.log(`Yooooooooooooooooooooooo`)
     d12 = Math.floor(Math.random() * (13 - 1) + 1)
     damage = d12
-  }
-  else {
+  }else {
     console.log(`na man`)
   }
 
-
   if (player.greatAxe >= 0 && player.str >= 7) {
     damage += 5
-  }
-  else if (player.str >= 9) {
+  }else if (player.str >= 9) {
     damage += 4
-  }
-  else if (player.str >= 6) {
+  } else if (player.str >= 6) {
     damage += 2
-  }
-  else if (player.str >= 3) {
+  }else if (player.str >= 3) {
     damage += 1
   }
 
   if (player.bow >= 1 && player.wis >= 5) {
     damage += 3
   }
-damage = damage * 1.5
+  damage = damage * 1.5
   attack = true
   // startCombat(enemy1, enemy1Name, enemy1Hp, enemy1Peace, enemy2, enemy2Name, enemy2Hp, enemy2Peace, enemy3, enemy3Name, enemy3Hp, enemy3Peace,)
 }
 
 // comstumizable combat system, it has evrything needed
-function startCombat(nextnode) { 
+function startCombat(one, two, three, nextnode) {
 
 
   if (player.con >= 9 && combatQuestion === true) {
@@ -195,28 +180,6 @@ function startCombat(nextnode) {
   } else if (player.con >= 3) {
     playerHp = 160
   } else { playerHp = 150 }
-
- console.log(`hp`, enemy1Hp)
- // attack === true && 
-
-if(enemy1Hp >= 1){
-
-enemy1Hp -= damage
-
- enemyd20 = Math.floor(Math.random() * (21 - 1) + 1)
-
- console.log(`hey this is the damage`, enemyd20)
-// if (){} for extra high rolls like bosses, checks enemyName
-
-enemyd20 = enemyd20 * 1.7
-
-playerHp -= enemyd20
-// console.log(`You did ${damage} damage to the ${enemy1Name} which leave them with ${enemy1Hp} HP left. The ${enemy1Name} did ${enemyd20} damage, leaving you with ${playerHp} HP left.`)
-// textElement.innerText = (`You did ${damage} damage to the ${enemy1Name} which leave them with ${enemy1Hp} HP left.` `The ${enemy1Name} did ${enemyd20} damage, leaving you with ${playerHp} HP left.`)
-}
-else {console.log(`did not work`)}  
-console.log(`You did ${damage} damage to the ${enemy1Name} which leave them with ${enemy1Hp} HP left. The ${enemy1Name} did ${enemyd20} damage, leaving you with ${playerHp} HP left.`)
-
 
 
 }
