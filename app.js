@@ -12,12 +12,15 @@ let pendant = 1
 let combatQuestion = false
 let continueCombat = false
 let playerHp = 150
-let oldPlayerHp
+let beforePotPlayerHp = 0
+let afterPotPlayerHp = 0
+let onlyEnemy = 0
 let damage = 0
 let heal = 0
 let mutl = 0
 let attack = false
-let enemyD20 = 1
+let newText = `Currently in battle`
+let enemyD20 = 0
 let enemy1 = 0
 let enemy2 = 0
 let enemy3 = 0
@@ -80,7 +83,7 @@ function showTextNode(textNodeIndex) { // goes through tthe text nodes checks wh
     console.log('combat mode engaged');
     combatQuestion = false
     startCombat()
-    combat(1, 3, 3)
+    combat(1, 2, 3)
     endingNode = 8
   }
   if (textNode.startCombat === 2) { //just checks is a paramantor to see if combat starts
@@ -107,8 +110,8 @@ function showTextNode(textNodeIndex) { // goes through tthe text nodes checks wh
       button.innerText = option.text
       button.classList.add('btn')
       button.addEventListener('click', () => selectOption(option))
-      if (option === textNode.options[0]) {
-        button.addEventListener('click', () => slash()) //checking certain buttons and adding the comabt funation accordin to each one
+      if (option === textNode.options[0] && textNode.heal !== true) {
+        button.addEventListener('click', () => slash(), true) //checking certain buttons and adding the comabt funation accordin to each one
       } else if (option === textNode.options[1]) {
         button.addEventListener('click', () => healPot(player.healPot))
       } else if (option === textNode.options[2]) {
@@ -120,11 +123,13 @@ function showTextNode(textNodeIndex) { // goes through tthe text nodes checks wh
       } else if (option === textNode.options[5]) {
         button.addEventListener('click', () => slash())
       }
-      if (textNode.heal === true && option === textNode.options[1]) {
-        button.removeEventListener('click', () => slash())
-        button.addEventListener('click', () => healPot(player.healPot))
-      }
 
+      if (textNode.heal === true && option === textNode.options[0]) {
+        button.removeEventListener('click', () => slash(), true)
+        // button.removeEventListener('click', () => slash())
+        button.addEventListener('click', () => healPot(player.healPot))
+        console.log(button)
+      } else { console.log(`heal not work`) }
       optionButtonsElement.appendChild(button)
     }
 
@@ -132,16 +137,13 @@ function showTextNode(textNodeIndex) { // goes through tthe text nodes checks wh
 
   })
 }
-
 function showOption(option) { //shows the opitions if they have a certain item and such
   return option.requiredPlayer == null || option.requiredPlayer(player)
 }
-
 function update() {
   inventoryElement.innerText = player
   // console.log(`neato`)
 }
-
 function selectOption(option) { //decetcs if button is clicked with a set player demator, and does what it is told to do
   const nextTextNodeId = option.nextText
   if (nextTextNodeId <= 0) {
@@ -153,55 +155,57 @@ function selectOption(option) { //decetcs if button is clicked with a set player
 }
 
 function healPot(amount) {
-
-  switch (amount) {
-    case 10:
-      player.healPot = 9;
-      break;
-    case 9:
-      player.healPot = 8;
-      break;
-    case 8:
-      player.healPot = 7;
-      break;
-    case 7:
-      player.healPot = 6;
-      break;
-    case 6:
-      player.healPot = 5;
-      break;
-    case 5:
-      player.healPot = 4;
-      break;
-    case 4:
-      player.healPot = 3;
-      break;
-    case 3:
-      player.healPot = 2;
-      break;
-    case 2:
-      player.healPot = 1;
-      break;
-    case 1:
-      player.healPot = 0;
-      break;
-    default:
+  if (combatQuestion === true && textNodes.heal === true || continueCombat === true && textNodes.heal) {
+    switch (amount) {
+      case 10:
+        player.healPot = 9;
+        break;
+      case 9:
+        player.healPot = 8;
+        break;
+      case 8:
+        player.healPot = 7;
+        break;
+      case 7:
+        player.healPot = 6;
+        break;
+      case 6:
+        player.healPot = 5;
+        break;
+      case 5:
+        player.healPot = 4;
+        break;
+      case 4:
+        player.healPot = 3;
+        break;
+      case 3:
+        player.healPot = 2;
+        break;
+      case 2:
+        player.healPot = 1;
+        break;
+      case 1:
+        player.healPot = 0;
+        break;
+      default:
+    }
   }
-  if (player.healPot >= 0 && combatQuestion === true || player.healPot >= 0 && continueCombat === true) {
+  if (player.healPot >= 1 && combatQuestion === true || player.healPot >= 1 && continueCombat === true) {
     d8one = Math.floor(Math.random() * (9 - 1) + 1)
     d8two = Math.floor(Math.random() * (9 - 1) + 1)
-    oldPlayerHp = playerHp
-    if (player.str >= 9) {
+    beforePotPlayerHp = playerHp
+    if (player.wis >= 9) {
       damage += 6
-    } else if (player.str >= 6) {
+    } else if (player.wis >= 6) {
       damage += 3
-    } else if (player.str >= 3) {
+    } else if (player.wis >= 3) {
       damage += 2
     }
     heal = (d8one + d8two) * 2
     playerHp += heal
-
-    textElement.innerText = `You were at ${oldPlayerHp} HP but after drinking your potion, you are at <<${playerHp} Hp>>.`
+    afterPotPlayerHp = playerHp
+    onlyEnemy = 1
+    combat()
   }
 }
 function slash() { //combat function only works if the combat funation is true and will only work if combat is on going or started 
@@ -214,6 +218,7 @@ function slash() { //combat function only works if the combat funation is true a
     console.log(`na man`)
   }
 
+  console.log(`this is when this is on`)
   //debug
   if (player.debug >= 1) {
     damage += 100
@@ -233,7 +238,7 @@ function slash() { //combat function only works if the combat funation is true a
     damage += 3
   }
   damage = damage * 1.5
-
+  attack = true
   combat()
 }
 // comstumizable combat system, it has evrything needed
@@ -269,9 +274,8 @@ function endCombat() {
 
 
 }
-
 function combat(one, two, three) {
-
+  console.log(`this is when this is on but for combat`)
   if (one === 1) {
     enemy1 = Bandit
   } else if (one === 2) {
@@ -298,20 +302,24 @@ function combat(one, two, three) {
 
   battle1()
   function battle1() {
-    if (attack === true && combatQuestion === true && enemy1.enemyHp >= .1) {
+    if (attack === true && combatQuestion === true && enemy1.enemyHp >= .1 || onlyEnemy >= 1 && combatQuestion === true && enemy1.enemyHp >= .1) {
 
-      enemy1.enemyHp -= Math.floor(damage)
+      if (onlyEnemy === 1) {
+        enemyD20 = Math.floor((Math.random() * (21 - 1) + 1) + enemy1.extraRoll)
+        enemyD20 = Math.floor((enemyD20 * 1.2) + enemy1.extraDamage)
+        playerHp -= Math.floor(enemyD20)
+        newText = `You were at ${beforePotPlayerHp} HP but after drinking your potion, you are at <${afterPotPlayerHp} Hp>. The enemy took the chance to deal ${enemyD20} damage leaving you with <<${playerHp} Hp>> left`
+      } else {
+        enemy1.enemyHp -= Math.floor(damage)
 
-      enemyD20 = Math.floor((Math.random() * (21 - 1) + 1) + enemy1.extraRoll)
-      enemyD20 = Math.floor((enemyD20 * 1.7) + enemy1.extraDamage)
-      playerHp -= Math.floor(enemyD20)
-      textElement.innerText = `The ${enemy1.enemyName} did ${enemyD20} damage to you which leaves you with <<${playerHp} HP>> left. You did ${damage} damage, leaving them with <${enemy1.enemyHp} HP> left.`
-      console.log(`The ${enemy1.enemyName} did ${enemyD20} damage to you which leaves you with ${playerHp} HP left. You did ${damage} damage, leaving them with ${enemy1.enemyHp} HP left.`)
+        enemyD20 = Math.floor((Math.random() * (21 - 1) + 1) + enemy1.extraRoll)
+        enemyD20 = Math.floor((enemyD20 * 1.7) + enemy1.extraDamage)
+        playerHp -= Math.floor(enemyD20)
+        newText = `The ${enemy1.enemyName} did ${enemyD20} damage to you which leaves you with <<${playerHp} HP>> left. You did ${damage} damage, leaving them with <${enemy1.enemyHp} HP> left.`
+     }
       damage = 0
-
-    }
-
-    else {
+      
+    } else {
       battle2()
     }
   }
@@ -346,7 +354,11 @@ function combat(one, two, three) {
     } else { endCombat() }
   }
 
+    updateText()
+  
 }
+
+
 //holds all the story elements along with the options 
 let textNodes = [
   {
@@ -440,7 +452,7 @@ let textNodes = [
   },
   {
     id: 5,
-    text: `This lets you roll a d12, and multiply that roll by 1.5 to damage A enemy.`,
+    text: `This lets you roll a d12, and multiply that roll by 1.5 to damage the enemy.`,
     options: [
       {
         text: `Confirm Slash`,
@@ -451,7 +463,7 @@ let textNodes = [
         nextText: 7
       },
     ],
-
+    continueCombat: true
   },
   {
     id: 6,
@@ -462,6 +474,7 @@ let textNodes = [
         nextText: 7
       }
     ],
+    updateText: true,
     continueCombat: true
   },
   {
@@ -507,8 +520,14 @@ let textNodes = [
         nextText: 7
       },
     ],
+    continueCombat: true,
     heal: true
   },
 ]
+
+function updateText() {
+  textElement.innerText = newText
+  console.log(textElement.innerText = newText)
+}
 startGame()
 
