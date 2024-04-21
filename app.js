@@ -4,15 +4,18 @@ const optionButtonsElement = document.getElementById('btnOptions');
 let inventoryElement = document.getElementById(`invText`)
 let d4one = 0
 let d4two = 0
-let d6one = 0
-let d6two = 0
+let d8one = 0
+let d8two = 0
 let d12 = 0
 let d20 = 0
 let pendant = 1
 let combatQuestion = false
 let continueCombat = false
 let playerHp = 150
+let oldPlayerHp
 let damage = 0
+let heal = 0
+let mutl = 0
 let attack = false
 let enemyD20 = 1
 let enemy1 = 0
@@ -63,7 +66,7 @@ function startGame() {
     greatAxe: 0,
     spear: 0,
     shortSword: 0,
-    healPot: 10,
+    healPot: 7,
     jade: 0,
     debug: 0,
   }
@@ -117,8 +120,16 @@ function showTextNode(textNodeIndex) { // goes through tthe text nodes checks wh
       } else if (option === textNode.options[5]) {
         button.addEventListener('click', () => slash())
       }
+      if (textNode.heal === true && option === textNode.options[1]) {
+        button.removeEventListener('click', () => slash())
+        button.addEventListener('click', () => healPot(player.healPot))
+      }
+
       optionButtonsElement.appendChild(button)
     }
+
+
+
   })
 }
 
@@ -143,8 +154,55 @@ function selectOption(option) { //decetcs if button is clicked with a set player
 
 function healPot(amount) {
 
-  
+  switch (amount) {
+    case 10:
+      player.healPot = 9;
+      break;
+    case 9:
+      player.healPot = 8;
+      break;
+    case 8:
+      player.healPot = 7;
+      break;
+    case 7:
+      player.healPot = 6;
+      break;
+    case 6:
+      player.healPot = 5;
+      break;
+    case 5:
+      player.healPot = 4;
+      break;
+    case 4:
+      player.healPot = 3;
+      break;
+    case 3:
+      player.healPot = 2;
+      break;
+    case 2:
+      player.healPot = 1;
+      break;
+    case 1:
+      player.healPot = 0;
+      break;
+    default:
+  }
+  if (player.healPot >= 0 && combatQuestion === true || player.healPot >= 0 && continueCombat === true) {
+    d8one = Math.floor(Math.random() * (9 - 1) + 1)
+    d8two = Math.floor(Math.random() * (9 - 1) + 1)
+    oldPlayerHp = playerHp
+    if (player.str >= 9) {
+      damage += 6
+    } else if (player.str >= 6) {
+      damage += 3
+    } else if (player.str >= 3) {
+      damage += 2
+    }
+    heal = (d8one + d8two) * 2
+    playerHp += heal
 
+    textElement.innerText = `You were at ${oldPlayerHp} HP but after drinking your potion, you are at <<${playerHp} Hp>>.`
+  }
 }
 function slash() { //combat function only works if the combat funation is true and will only work if combat is on going or started 
 
@@ -350,24 +408,6 @@ let textNodes = [
     ],
   },
   {
-    id: 8,
-    text: `Our story begins in 40 AD on the newly conquered island of Britannia. Our protagonist is in a small village that seemed almost unaffected by the Roman invasion until one night when everything changed.`,
-    options: [
-      {
-        text: `More Info`,
-        nextText: 1
-      },
-      {
-        text: `Continue`,
-        nextText: 9
-      },
-      {
-        text: `Credits`,
-        nextText: 3
-      }
-    ],
-  },
-  {
     id: 4,
     text: `Currently battling`,
     options: [
@@ -377,7 +417,7 @@ let textNodes = [
       },
       {
         text: `Heal Potions`,
-        nextText: 2
+        nextText: 8
       },
       {
         text: `Scare`,
@@ -415,7 +455,7 @@ let textNodes = [
   },
   {
     id: 6,
-    text: `Slash did 4 damage, the Enemy has 3 HP left. The enemy did 3 damage to you, you have --16 HP-- left.`,
+    text: `Text will change based off action`,
     options: [
       {
         text: `Ok`,
@@ -434,7 +474,7 @@ let textNodes = [
       },
       {
         text: `Heal Potions`,
-        nextText: 2
+        nextText: 8
       },
       {
         text: `Scare`,
@@ -453,38 +493,21 @@ let textNodes = [
         nextText: 2
       }
     ],
-
   },
   {
-    id: 9,
-    text: `Currently battling id = 9`,
+    id: 8,
+    text: `This lets you roll a d12, and multiply that roll by 1.5 to damage A enemy.`,
     options: [
       {
-        text: `Slash`,
-        nextText: 5
+        text: `Drink Heal Potion`,
+        nextText: 6
       },
       {
-        text: `Heal Potions`,
-        nextText: 2
+        text: `Back to Selection`,
+        nextText: 7
       },
-      {
-        text: `Scare`,
-        nextText: 2
-      },
-      {
-        text: `Stab`,
-        nextText: 2
-      },
-      {
-        text: `Pendant of Pain`,
-        nextText: 2
-      },
-      {
-        text: `Persuade`,
-        nextText: 2
-      }
     ],
-    startCombat: 2 //depending on the number combat will change emenies or allies
+    heal: true
   },
 ]
 startGame()
