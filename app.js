@@ -16,8 +16,9 @@ let afterPotPlayerHp = 0
 let onlyEnemy = 0
 let damage = 0
 let talk = 0
+let type = 0
 let heal = 0
-let mutl = 0
+let multi = 1
 let attack = false
 let speech = false
 let newText = `Currently in battle`
@@ -29,19 +30,21 @@ let endingNode = 0
 
 
 class Enemy {
-  constructor(enemyName, enemyHp, enemyPeace, extraDamage, extraRoll) {
+  constructor(enemyName, enemyHp, enemyPeace, neededEnemyPeace, extraDamage, extraRoll) {
     this.enemyName = enemyName;
     this.enemyHp = enemyHp;
-    this.enemyPeace = enemyPeace;
+    this.neededEnemyPeace = neededEnemyPeace;
     this.extraDamage = extraDamage;
     this.extraRoll = extraRoll;
+    this.enemyPeace = enemyPeace
   }
 }
 
 
-let None = new Enemy(`Nothing`, 0, 0, 0, 0)
-let Bandit = new Enemy(`Bandit`, 20, 10, 0, 0);
-let King = new Enemy(`King`, 100, 0, 30, 0)
+let None = new Enemy(`Nothing`, 0, 0, 0, 0, 0)
+let Bandit = new Enemy(`Bandit`, 20, 0, 50, 0, 0)
+let bear = new Enemy(`bear`, 40, 0, 70, 0, 0)
+let King = new Enemy(`King`, 100, 0, 100, 30, 0)
 
 
 // bandit bear, wolves, genral, Henry, gruad, archer, dragon, yourself,
@@ -53,6 +56,7 @@ let player = {
   str: 0,
   con: 0,
   dex: 0,
+  cha: 0,
   bow: false,
   rapier: false,
   greatAxe: false,
@@ -70,6 +74,7 @@ function startGame() {
     str: 0,
     con: 0,
     dex: 0,
+    cha: 0,
     bow: 0,
     rapier: 0,
     greatAxe: 0,
@@ -93,12 +98,6 @@ function showTextNode(textNodeIndex) { // goes through tthe text nodes checks wh
     combat(1, 2, 3)
     endingNode = 8
   }
-  if (textNode.startCombat === 2) { //just checks is a paramantor to see if combat starts
-    console.log('combat mode engaged');
-    combatQuestion = false
-    startCombat()
-    combat(1, 3, 2, 1)
-  }
   else if (textNode.continueCombat === true) { //checks if you are continue combat
     console.log('combat mode cont');
     combatQuestion = true
@@ -107,6 +106,7 @@ function showTextNode(textNodeIndex) { // goes through tthe text nodes checks wh
     console.log('no violence = sad pandas');
     combatQuestion = false
   }
+
   while (optionButtonsElement.firstChild) { //removes buttons for combat, deletes the buttons but then adds new buttons
     optionButtonsElement.removeChild(optionButtonsElement.firstChild)
   }
@@ -118,27 +118,36 @@ function showTextNode(textNodeIndex) { // goes through tthe text nodes checks wh
       button.innerText = option.text
       button.classList.add('btn')
       button.addEventListener('click', () => selectOption(option))
-      if (option === textNode.options[0] && textNode.heal !== true && textNode.scare !== true) {
-        button.addEventListener('click', () => slash(true), true) //checking certain buttons and adding the comabt funation accordin to each one
+      if (option === textNode.options[0] && textNode.heal !== true && textNode.scare !== true && textNode.pendant !== true && textNode.stab !== true && textNode.persuade !== true && textNode.none !== true) {
+        button.addEventListener('click', () => slash(),) //checking certain buttons and adding the comabt funation accordin to each one
       } else if (option === textNode.options[1]) {
-        button.addEventListener('click', () => healPot(player.healPot, true))
+        button.addEventListener('click', () => healPot(player.healPot))
       } else if (option === textNode.options[2]) {
-        button.addEventListener('click', () => scare(true))
+        button.addEventListener('click', () => scare())
       } else if (option === textNode.options[3]) {
-        button.addEventListener('click', () => slash())
+        button.addEventListener('click', () => stab())
       } else if (option === textNode.options[4]) {
-        button.addEventListener('click', () => slash())
+        button.addEventListener('click', () => painPendant())
       } else if (option === textNode.options[5]) {
-        button.addEventListener('click', () => slash())
+        button.addEventListener('click', () => persuade())
       }
 
 
       if (textNode.heal === true && option === textNode.options[0]) {
-        button.removeEventListener('click', () => slash(true), true)
-        button.addEventListener('click', () => healPot(player.healPot, true))
+        button.removeEventListener('click', () => slash(),)
+        button.addEventListener('click', () => healPot(player.healPot))
       } else if (textNode.scare === true && option === textNode.options[0]) {
-        button.removeEventListener('click', () => slash(true), true)
-        button.addEventListener('click', () => scare(true))
+        button.removeEventListener('click', () => slash(),)
+        button.addEventListener('click', () => scare())
+      } else if (textNode.stab === true && option === textNode.options[0]) {
+        button.removeEventListener('click', () => slash(),)
+        button.addEventListener('click', () => stab())
+      } else if (textNode.pendant === true && option === textNode.options[0]) {
+        button.removeEventListener('click', () => slash(),)
+        button.addEventListener('click', () => painPendant())
+      } else if (textNode.persuade === true && option === textNode.options[0]) {
+        button.removeEventListener('click', () => slash(),)
+        button.addEventListener('click', () => persuade())
       }
       optionButtonsElement.appendChild(button)
     }
@@ -168,106 +177,96 @@ function selectOption(option) { //decetcs if button is clicked with a set player
 }
 
 
-function healPot(amount, working) {
-  if (combatQuestion === true && working === true || continueCombat === true && working === true) {
-    switch (amount) {
-      case 10:
-        player.healPot = 9;
-        break;
-      case 9:
-        player.healPot = 8;
-        break;
-      case 8:
-        player.healPot = 7;
-        break;
-      case 7:
-        player.healPot = 6;
-        break;
-      case 6:
-        player.healPot = 5;
-        break;
-      case 5:
-        player.healPot = 4;
-        break;
-      case 4:
-        player.healPot = 3;
-        break;
-      case 3:
-        player.healPot = 2;
-        break;
-      case 2:
-        player.healPot = 1;
-        break;
-      case 1:
-        player.healPot = 0;
-        break;
-      default:
-    }
-  }
-  if (player.healPot >= 1 && combatQuestion === true || player.healPot >= 1 && continueCombat === true) {
-    d8one = Math.floor(Math.random() * (9 - 1) + 1)
-    d8two = Math.floor(Math.random() * (9 - 1) + 1)
-    beforePotPlayerHp = playerHp
-    if (player.wis >= 9) {
-      damage += 6
-    } else if (player.wis >= 6) {
-      damage += 3
-    } else if (player.wis >= 3) {
-      damage += 2
-    }
-    heal = (d8one + d8two) * 2
-    onlyEnemy = 1
-    combat()
+function healPot(amount) {
+  if (combatQuestion === true || continueCombat === true) {
+    console.log(`Heal fucntion active`)
+
   }
 }
 
-function scare(working) {
+function painPendant() {
+  if (combatQuestion === true || continueCombat === true) {
+    console.log(`Pendant fucntion active`)
 
-  if (combatQuestion === true && working === true || continueCombat === true && working === true) {
+  }
+}
+
+function scare() {
+  if (combatQuestion === true || continueCombat === true) {
+    console.log(`Scare fucntion active`)
     d20 = Math.floor(Math.random() * (21 - 1) + 1)
+    if (player.con >= 9) {
+      d20 += 5
+    } else if (player.con >= 6) {
+      d20 += 3
+    } else if (player.con >= 3) {
+      d20 += 2
+    }
+    type === `sca`
     talk = d20
     speech = true
-    if (player.str >= 9) {
-      damage += 4
-    } else if (player.str >= 6) {
-      damage += 2
-    } else if (player.str >= 3) {
-      damage += 1
-    }
     talking()
   }
 }
-function slash(working) { //combat function only works if the combat funation is true and will only work if combat is on going or started
-  if (combatQuestion === true && working === true || continueCombat === true && working === true) {
+
+function persuade() {
+  if (combatQuestion === true || continueCombat === true) {
+    console.log(`Presuade fucntion active`)
+
+    d20 = Math.floor(Math.random() * (21 - 1) + 1)
+    if (player.cha >= 9) {
+      d20 += 5
+    } else if (player.cha >= 6) {
+      d20 += 3
+    } else if (player.cha >= 3) {
+      d20 += 2
+    }
+    type === `per`
+    talk = d20
+    speech = true
+    talking()
+  }
+}
+
+function slash() { //combat function only works if the combat funation is true and will only work if combat is on going or started
+  if (combatQuestion === true || continueCombat === true) {
+    console.log(`Slash fucntion active`)
     d12 = Math.floor(Math.random() * (13 - 1) + 1)
-    damage = d12
-    attack = true
-    console.log(`this is when this is on`)
-    //debug
-    if (player.debug >= 1) {
-      damage += 100
-    }
-    if (player.greatAxe >= 0 && player.str >= 7) {
-      damage += 5
-    } else if (player.str >= 9) {
-      damage += 4
+
+    if (player.str >= 9) {
+      d12 += 5
     } else if (player.str >= 6) {
-      damage += 2
+      d12 += 3
     } else if (player.str >= 3) {
-      damage += 1
+      d12 += 2
     }
 
-
-    if (player.bow >= 1 && player.wis >= 5) {
-      damage += 3
-    }
-    damage = damage * 1.5
+    damage = (d12 * multi) * 1.5
     attack = true
     combat()
-  } else {
-    console.log(`na man`)
   }
-
+}
+function stab() {
+  if (combatQuestion === true || continueCombat === true) {
+    console.log(`Stab fucntion active`)
+    d4one = Math.floor(Math.random() * (5 - 1) + 1)
+    d4two = Math.floor(Math.random() * (5 - 1) + 1)
+    if (player.dex >= 9) {
+      d4one += 4
+    } else if (player.dex >= 6) {
+      d4one += 2
+    } else if (player.dex >= 3) {
+      d4one += 1
+    }
+    if (player.con >= 8) {
+      d4one += 3
+    } else if (player.con >= 4) {
+      d4one += 1
+    }
+    damage = ((d4one + d4two) * multi) * 1.5
+    attack = true
+    combat()
+  }
 }
 // comstumizable combat system, it has evrything needed
 function startCombat() {
@@ -281,7 +280,7 @@ function startCombat() {
   } else { playerHp = 150 }
 
 
-  console.log(`It is in use`)
+  console.log(`Start COmbat is being used`)
   //debug
   if (player.debug >= 1) {
     playerHp = 690
@@ -289,26 +288,8 @@ function startCombat() {
 }
 
 
-function endCombat() {
-  if (playerHp <= 0) {
-    console.log(`yipee you are dead`)
-    startGame()
-  }
-  else if (enemy1.enemyHp <= 0 && enemy2.enemyHp <= 0 && enemy3.enemyHp <= 0 && combatQuestion === true) {
-    console.log(`YAY you are done`)
-    attack = false
-    combatQuestion = false
-    showTextNode(endingNode)
 
-
-  } else { console.log(`it did not work(end)`) }
-
-
-
-
-}
 function combat(one, two, three) {
-  console.log(`this is when this is on but for combat`)
   if (one === 1) {
     enemy1 = Bandit
   } else if (one === 2) {
@@ -333,10 +314,23 @@ function combat(one, two, three) {
     enemy3 = None
   }
 
-  battle1()
+  if (playerHp <= 0) {
+    endCombat()
+  }
+  else if (enemy1.enemyHp >= .1) {
+    battle1()
+  }
+  else if (enemy2.enemyHp >= .1) {
+    battle2()
+  }
+  else if (enemy3.enemyHp >= .1) {
+    battle3()
+  } else { endCombat() }
+
   function battle1() {
-    console.log(`battle console.log thing`)
+    console.log(`battle1 is being ran`)
     if (attack === true && combatQuestion === true && enemy1.enemyHp >= .1 || onlyEnemy >= 1 && combatQuestion === true && enemy1.enemyHp >= .1) {
+
       if (onlyEnemy === 1) {
         playerHp += heal
         afterPotPlayerHp = playerHp
@@ -346,131 +340,174 @@ function combat(one, two, three) {
         newText = `You were at ${beforePotPlayerHp} HP but after drinking your potion, you are at <${afterPotPlayerHp} Hp>. The enemy took the chance to deal ${enemyD20} damage leaving you with <<${playerHp} Hp>> left`
       } else if (attack === true) {
         enemy1.enemyHp -= Math.floor(damage)
-        console.log(`the damage is`, damage)
         enemyD20 = Math.floor((Math.random() * (21 - 1) + 1) + enemy1.extraRoll)
         enemyD20 = Math.floor((enemyD20 * 1.7) + enemy1.extraDamage)
         playerHp -= Math.floor(enemyD20)
         newText = (`The ${enemy1.enemyName} did ${enemyD20} damage to you which leaves you with <<${playerHp} HP>> left. You did ${damage} damage, leaving them with <${enemy1.enemyHp} HP> left.`)
-        updateText()
+
+
       }
-
-
-    } else {
-      battle2()
+      damage = 0
+      attack = false
     }
   }
 
 
   function battle2() {
-    if (attack === true && combatQuestion === true && enemy2.enemyHp >= .1) {
+    console.log(`battle3 is being called somehow`)
+    if (attack === true && combatQuestion === true && enemy2.enemyHp >= .1 || onlyEnemy >= 1 && combatQuestion === true && enemy2.enemyHp >= .1) {
+      console.log(`battle2 if statement thing is on`)
+      if (attack === true) {
+        enemy2.enemyHp -= Math.floor(damage)
+        enemyD20 = Math.floor((Math.random() * (21 - 1) + 1) + enemy2.extraRoll)
+        enemyD20 = Math.floor((enemyD20 * 1.7) + enemy2.extraDamage)
+        playerHp -= Math.floor(enemyD20)
+        newText = (`The ${enemy2.enemyName} did ${enemyD20} damage to you which leaves you with <<${playerHp} HP>> left. You did ${damage} damage, leaving them with <${enemy2.enemyHp} HP> left.`)
 
-
-      enemy2.enemyHp -= Math.floor(damage)
-
-
-      enemyD20 = Math.floor((Math.random() * (21 - 1) + 1) + enemy2.extraRoll)
-      enemyD20 = Math.floor((enemyD20 * 1.7) + enemy2.extraDamage)
-      playerHp -= Math.floor(enemyD20)
-      textElement.innerText = `The ${enemy2.enemyName} did ${enemyD20} damage to you which leaves you with <<${playerHp} HP>> left. You did ${damage} damage, leaving them with <${enemy2.enemyHp} HP> left.`
-      console.log(`The ${enemy2.enemyName} did ${enemyD20} damage to you which leaves you with ${playerHp} HP left. You did ${damage} damage, leaving them with ${enemy2.enemyHp} HP left.`)
-
-
-
-    } else { battle3() }
+      }
+    }
   }
 
 
   function battle3() {
-    if (attack === true && combatQuestion === true && enemy3.enemyHp >= .1) {
+    if (attack === true && combatQuestion === true && enemy2.enemyHp >= .1 || onlyEnemy >= 1 && combatQuestion === true && enemy2.enemyHp >= .1) {
+      console.log(`battle2 if statement thing is on`)
+      if (attack === true) {
+        enemy3.enemyHp -= Math.floor(damage)
+        enemyD20 = Math.floor((Math.random() * (21 - 1) + 1) + enemy3.extraRoll)
+        enemyD20 = Math.floor((enemyD20 * 1.7) + enemy3.extraDamage)
+        playerHp -= Math.floor(enemyD20)
+        newText = (`The ${enemy3.enemyName} did ${enemyD20} damage to you which leaves you with <<${playerHp} HP>> left. You did ${damage} damage, leaving them with <${enemy3.enemyHp} HP> left.`)
 
-
-      enemy3.enemyHp -= Math.floor(damage)
-
-
-      enemyD20 = Math.floor((Math.random() * (21 - 1) + 1) + enemy3.extraRoll)
-      enemyD20 = Math.floor((enemyD20 * 1.7) + enemy3.extraDamage)
-      playerHp -= Math.floor(enemyD20)
-      textElement.innerText = `The ${enemy3.enemyName} did ${enemyD20} damage to you which leaves you with <<${playerHp} HP>> left. You did ${damage} damage, leaving them with <${enemy3.enemyHp} HP> left.`
-      console.log(`The ${enemy3.enemyName} did ${enemyD20} damage to you which leaves you with ${playerHp} HP left. You did ${damage} damage, leaving them with ${enemy3.enemyHp} HP left.`)
-
-
-
-    } else { endCombat() }
+      }
+    }
   }
 
   attack = false
   // damage = 0
   updateText()
-
+  if (playerHp <= 0) {
+    endCombat()
+  }
 }
 
 function talking() {
 
 
-  talk1()
+  if (playerHp <= 0) {
+    endCombat()
+  }
+  else if (enemy1.enemyHp >= .1) {
+    talk1()
+  }
+  else if (enemy2.enemyHp >= .1) {
+    talk2()
+  }
+  else if (enemy3.enemyHp >= .1) {
+    talk3()
+  } else { endCombat() }
+
+
   function talk1() {
-    console.log(`tlak console .log thing or somthing`)
+    console.log(`talk1 is going`)
     if (speech === true && combatQuestion === true && enemy1.enemyHp >= .1) {
 
       if (talk >= 13) {
-        talk = Math.floor(talk * 1.6)
+        talk = Math.floor(talk * 1.7)
         enemy1.enemyPeace += talk
         enemyD20 = Math.floor((Math.random() * (21 - 1) + 1) + enemy1.extraRoll)
         enemyD20 = Math.floor((enemyD20 * 1.7) + enemy1.extraDamage)
         playerHp -= Math.floor(enemyD20)
-        if (enemy1.enemyPeace >= 100) {
+        if (enemy1.enemyPeace >= enemy1.neededEnemyPeace) {
           enemy1.enemyHp = 0
-          newText = `The ${enemy1.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>> left, but on the bright side you succesfully conviced the enemy to leave the battle`
+          newText = `The ${enemy1.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>> left, but on the bright side you succesfully conviced the enemy to leave the battle.`
         } else {
-          newText = `The ${enemy1.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>> left. You convinced the enemy and now they are <${enemy1.enemyPeace}%> convinced to leave the battle`
+          newText = `The ${enemy1.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>> left. You convinced the enemy and now they are <${enemy1.enemyPeace}/${enemy1.neededEnemyPeace}> convinced to leave the battle.`
         }
       } else if (talk <= 12) {
+        console.log(`did not make it for the talk`)
         enemyD20 = Math.floor((Math.random() * (21 - 1) + 1) + enemy1.extraRoll)
         enemyD20 = Math.floor((enemyD20 * 1.7) + enemy1.extraDamage)
         playerHp -= Math.floor(enemyD20)
 
         d4one = Math.floor(Math.random() * (5 - 1) + 1)
+        if (type === `sca`) {
 
-        switch (d4one) {
-          case 1:
+          if (d4one = 1) {
             newText = `You tired to scare the enemy, but you accidentally had a voice crack mid sentence. Then the ${enemy1.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>>`;
-            break;
-          case 2:
-            newText = `You tired to scare the enemy, but you didn't even make eye contact. Then the ${enemy1.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>>`;
-            break;
-          case 3:
+          } else  if (d4one = 2) {
+            newText = newText = `You tired to scare the enemy, but you didn't even make eye contact. Then the ${enemy1.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>>`;
+          } else  if (d4one = 3) {
             newText = `You scare the enemy, but you were day dreaming so nothing actually happened. Then the ${enemy1.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>>`;
-            break;
-          case 4:
+          } else if (d4one = 4) {
             newText = `You tired to scare the enemy, but since you don't look scary, they thought you were a two year old. Then the ${enemy1.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>>`;
-            break;
-          default:
+          }
+          // switch (d4one) {
+          //   case 1:
+          //     newText = `You tired to scare the enemy, but you accidentally had a voice crack mid sentence. Then the ${enemy1.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>>`;
+          //     break;
+          //   case 2:
+          //     newText = `You tired to scare the enemy, but you didn't even make eye contact. Then the ${enemy1.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>>`;
+          //     break;
+          //   case 3:
+          //     newText = `You scare the enemy, but you were day dreaming so nothing actually happened. Then the ${enemy1.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>>`;
+          //     break;
+          //   case 4:
+          //     newText = `You tired to scare the enemy, but since you don't look scary, they thought you were a two year old. Then the ${enemy1.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>>`;
+          //     break;
+          //   default:
+          //     newText = `Error`
+          // }
+        }
+        else if (type === `per`) {
+          switch (d4one) {
+            case 1:
+              newText = `You tired to presuade the enemy, but you ended rambling about how the election is corrupt. Then the ${enemy1.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>>`;
+              break;
+            case 2:
+              newText = `You tired to presuade the enemy, but you didn't even have five cited sources. Then the ${enemy1.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>>`;
+              break;
+            case 3:
+              newText = `You tired to presuade the enemy, but the ${enemy1.enemyName} had both earbuds in. Then the ${enemy1.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>>`;
+              break;
+            case 4:
+              newText = `You tired to presuade the enemy, but you forgot your key points. Then the ${enemy1.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>>`;
+              break;
+            default:
+          }
         }
 
-
-        talk = 0
-        speech = false
-        updateText()
       }
-      else { talk2() }
     }
     function talk2() {
       if (speech === true && combatQuestion === true && enemy2.enemyHp >= .1) {
 
       }
-      else { talk3() }
     }
 
     function talk3() {
       if (speech === true && combatQuestion === true && enemy2.enemyHp >= .1) {
 
       }
-      else { endCombat() }
     }
-
-
-
   }
+  talk = 0
+  speech = false
+  updateText()
+}
+function endCombat() {
+  if (playerHp <= 0) {
+    console.log(`yipee you are dead`)
+    showTextNode(13)
+  }
+  else if (enemy1.enemyHp <= 0 && enemy2.enemyHp <= 0 && enemy3.enemyHp <= 0 && combatQuestion === true) {
+    console.log(`YAY you are done`)
+    attack = false
+    combatQuestion = false
+    showTextNode(endingNode)
+    newText = `You have been killed and won't be missed`
+    updateText()
+  } else { console.log(`The end function did not work`) }
 }
 function updateText() {
   textElement.innerText = newText
@@ -554,15 +591,15 @@ let textNodes = [
       },
       {
         text: `Stab`,
-        nextText: 2
+        nextText: 10
       },
       {
         text: `Pendant of Pain`,
-        nextText: 2
+        nextText: 11
       },
       {
         text: `Persuade`,
-        nextText: 2
+        nextText: 12
       }
     ],
     startCombat: 1 //depending on the number combat will change emenies or allies
@@ -580,7 +617,6 @@ let textNodes = [
         nextText: 7
       },
     ],
-    // continueCombat: true
   },
   {
     id: 6,
@@ -591,6 +627,7 @@ let textNodes = [
         nextText: 7
       }
     ],
+    none: true,
     updateText: true,
     continueCombat: true
   },
@@ -612,15 +649,15 @@ let textNodes = [
       },
       {
         text: `Stab`,
-        nextText: 2
+        nextText: 10
       },
       {
         text: `Pendant of Pain`,
-        nextText: 2
+        nextText: 11
       },
       {
         text: `Persuade`,
-        nextText: 2
+        nextText: 12
       }
     ],
   },
@@ -641,7 +678,7 @@ let textNodes = [
   },
   {
     id: 9,
-    text: `Roll a d20 and if it's above a 13, multiply that roll by 2 to convince te enemy.`,
+    text: `Roll a d20 and if it's above a 13, multiply that roll by 2 to convince the enemy.`,
     options: [
       {
         text: `Scare enemy`,
@@ -655,50 +692,61 @@ let textNodes = [
     scare: true
   },
   {
-  id: 10,
-  text: `Roll a d20 and if it's above a 13, multiply that roll by 2 to convince te enemy.`,
-  options: [
-    {
-      text: `Scare enemy`,
-      nextText: 6
-    },
-    {
-      text: `Back to Selection`,
-      nextText: 7
-    },
-  ],
-  scare: true
-},
-{
-id: 11,
-text: `Roll a d20 and if it's above a 13, multiply that roll by 2 to convince te enemy.`,
-options: [
-  {
-    text: `Scare enemy`,
-    nextText: 6
+    id: 10,
+    text: `This lets you roll two d4s, and multiply that sum by 1.5 to damage the enemy.`,
+    options: [
+      {
+        text: `Stab enemy`,
+        nextText: 6
+      },
+      {
+        text: `Back to Selection`,
+        nextText: 7
+      },
+    ],
+    stab: true
   },
   {
-    text: `Back to Selection`,
-    nextText: 7
+    id: 11,
+    text: `Roll a d4 and that roll is used to multiply next dice roll that's not the pendant.`,
+    options: [
+      {
+        text: `Use Pendant of Pain`,
+        nextText: 6
+      },
+      {
+        text: `Back to Selection`,
+        nextText: 7
+      },
+    ],
+    pendant: true
   },
-],
-scare: true
-},
-{
-id: 12,
-text: `Roll a d20 and if it's above a 13, multiply that roll by 2 to convince te enemy.`,
-options: [
   {
-    text: `Scare enemy`,
-    nextText: 6
+    id: 12,
+    text: `Roll a d20 and if it's above a 13, multiply that roll by 2 to convince the enemy.`,
+    options: [
+      {
+        text: `Persuade enemy`,
+        nextText: 6
+      },
+      {
+        text: `Back to Selection`,
+        nextText: 7
+      },
+    ],
+    persuade: true
   },
   {
-    text: `Back to Selection`,
-    nextText: 7
+    id: 13,
+    text: `You have been killed`,
+    options: [
+      {
+        text: `Restart`,
+        nextText: -1
+      }
+    ],
+
   },
-],
-scare: true
-},
 ]
 
 
