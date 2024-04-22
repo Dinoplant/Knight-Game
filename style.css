@@ -110,16 +110,6 @@ main {
     color: rgb(79, 10, 10)
 }
 
-.btnAdvances {
-    display: flex;
-    flex-direction: row;
-    align-content: center;
-    justify-content: space-evenly;
-    width: 19%;
-    height: 40%;
-
-}
-
 /* max 1873px > 117rem .06
 min 470px >29.3rem .37
 

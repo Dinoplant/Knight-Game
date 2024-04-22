@@ -27,7 +27,8 @@ let enemy1 = 0
 let enemy2 = 0
 let enemy3 = 0
 let endingNode = 0
-
+//enemyPeace is the base of talking
+//neededEnemeyPeace amount of peace you need to talk out of fighting
 
 class Enemy {
   constructor(enemyName, enemyHp, enemyPeace, neededEnemyPeace, extraDamage, extraRoll) {
@@ -44,7 +45,7 @@ class Enemy {
 let None = new Enemy(`Nothing`, 0, 0, 0, 0, 0)
 let Bandit = new Enemy(`Bandit`, 20, 0, 50, 0, 0)
 let bear = new Enemy(`bear`, 40, 0, 70, 0, 0)
-let King = new Enemy(`King`, 100, 0, 100, 30, 0)
+let King = new Enemy(`King`, 100, 0, 1000, 30, 0)
 
 
 // bandit bear, wolves, genral, Henry, gruad, archer, dragon, yourself,
@@ -202,7 +203,7 @@ function scare() {
     } else if (player.con >= 3) {
       d20 += 2
     }
-    type === `sca`
+    type = `sca`
     talk = d20
     speech = true
     talking()
@@ -221,7 +222,7 @@ function persuade() {
     } else if (player.cha >= 3) {
       d20 += 2
     }
-    type === `per`
+    type = `per`
     talk = d20
     speech = true
     talking()
@@ -384,7 +385,7 @@ function combat(one, two, three) {
   }
 
   attack = false
-  // damage = 0
+  damage = 0
   updateText()
   if (playerHp <= 0) {
     endCombat()
@@ -432,32 +433,21 @@ function talking() {
 
         d4one = Math.floor(Math.random() * (5 - 1) + 1)
         if (type === `sca`) {
-
-          if (d4one = 1) {
-            newText = `You tired to scare the enemy, but you accidentally had a voice crack mid sentence. Then the ${enemy1.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>>`;
-          } else  if (d4one = 2) {
-            newText = newText = `You tired to scare the enemy, but you didn't even make eye contact. Then the ${enemy1.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>>`;
-          } else  if (d4one = 3) {
-            newText = `You scare the enemy, but you were day dreaming so nothing actually happened. Then the ${enemy1.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>>`;
-          } else if (d4one = 4) {
-            newText = `You tired to scare the enemy, but since you don't look scary, they thought you were a two year old. Then the ${enemy1.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>>`;
+          switch (d4one) {
+            case 1:
+              newText = `You tired to scare the enemy, but you accidentally had a voice crack mid sentence. Then the ${enemy1.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>>`;
+              break;
+            case 2:
+              newText = `You tired to scare the enemy, but you didn't even make eye contact. Then the ${enemy1.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>>`;
+              break;
+            case 3:
+              newText = `You scare the enemy, but you were day dreaming so nothing actually happened. Then the ${enemy1.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>>`;
+              break;
+            case 4:
+              newText = `You tired to scare the enemy, but since you don't look scary, they thought you were a two year old. Then the ${enemy1.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>>`;
+              break;
+            default:
           }
-          // switch (d4one) {
-          //   case 1:
-          //     newText = `You tired to scare the enemy, but you accidentally had a voice crack mid sentence. Then the ${enemy1.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>>`;
-          //     break;
-          //   case 2:
-          //     newText = `You tired to scare the enemy, but you didn't even make eye contact. Then the ${enemy1.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>>`;
-          //     break;
-          //   case 3:
-          //     newText = `You scare the enemy, but you were day dreaming so nothing actually happened. Then the ${enemy1.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>>`;
-          //     break;
-          //   case 4:
-          //     newText = `You tired to scare the enemy, but since you don't look scary, they thought you were a two year old. Then the ${enemy1.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>>`;
-          //     break;
-          //   default:
-          //     newText = `Error`
-          // }
         }
         else if (type === `per`) {
           switch (d4one) {
@@ -476,24 +466,27 @@ function talking() {
             default:
           }
         }
-
+        updateText()
       }
     }
-    function talk2() {
-      if (speech === true && combatQuestion === true && enemy2.enemyHp >= .1) {
+  }
+  function talk2() {
+    if (speech === true && combatQuestion === true && enemy2.enemyHp >= .1) {
 
-      }
     }
+  }
 
-    function talk3() {
-      if (speech === true && combatQuestion === true && enemy2.enemyHp >= .1) {
+  function talk3() {
+    if (speech === true && combatQuestion === true && enemy2.enemyHp >= .1) {
 
-      }
     }
   }
   talk = 0
   speech = false
   updateText()
+  if (playerHp <= 0) {
+    endCombat()
+  }
 }
 function endCombat() {
   if (playerHp <= 0) {
@@ -748,7 +741,5 @@ let textNodes = [
 
   },
 ]
-
-
 
 startGame()
