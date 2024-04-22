@@ -112,18 +112,18 @@ function showTextNode(textNodeIndex) { // goes through tthe text nodes checks wh
   }
 
 
-  textNode.options.forEach(option => { //makes the options by checking the opition premator see how mnay optitions there are
+  textNode.options.forEach(option => { //makes the options by checking the opition premator see how many optitions there are
     if (showOption(option)) {
       const button = document.createElement('button')
       button.innerText = option.text
       button.classList.add('btn')
       button.addEventListener('click', () => selectOption(option))
       if (option === textNode.options[0] && textNode.heal !== true && textNode.scare !== true) {
-        button.addEventListener('click', () => slash(), true) //checking certain buttons and adding the comabt funation accordin to each one
+        button.addEventListener('click', () => slash(true), true) //checking certain buttons and adding the comabt funation accordin to each one
       } else if (option === textNode.options[1]) {
-        button.addEventListener('click', () => healPot(player.healPot))
+        button.addEventListener('click', () => healPot(player.healPot, true))
       } else if (option === textNode.options[2]) {
-        button.addEventListener('click', () => scare())
+        button.addEventListener('click', () => scare(true))
       } else if (option === textNode.options[3]) {
         button.addEventListener('click', () => slash())
       } else if (option === textNode.options[4]) {
@@ -134,11 +134,11 @@ function showTextNode(textNodeIndex) { // goes through tthe text nodes checks wh
 
 
       if (textNode.heal === true && option === textNode.options[0]) {
-        button.removeEventListener('click', () => slash(), true)
-        button.addEventListener('click', () => healPot(player.healPot))
+        button.removeEventListener('click', () => slash(true), true)
+        button.addEventListener('click', () => healPot(player.healPot, true))
       } else if (textNode.scare === true && option === textNode.options[0]) {
-        button.removeEventListener('click', () => slash(), true)
-        button.addEventListener('click', () => scare())
+        button.removeEventListener('click', () => slash(true), true)
+        button.addEventListener('click', () => scare(true))
       }
       optionButtonsElement.appendChild(button)
     }
@@ -168,8 +168,8 @@ function selectOption(option) { //decetcs if button is clicked with a set player
 }
 
 
-function healPot(amount) {
-  if (combatQuestion === true || continueCombat === true) {
+function healPot(amount, working) {
+  if (combatQuestion === true && working === true || continueCombat === true && working === true) {
     switch (amount) {
       case 10:
         player.healPot = 9;
@@ -221,8 +221,9 @@ function healPot(amount) {
   }
 }
 
-function scare() {
-  if (combatQuestion === true || continueCombat === true) {
+function scare(working) {
+
+  if (combatQuestion === true && working === true || continueCombat === true && working === true) {
     d20 = Math.floor(Math.random() * (21 - 1) + 1)
     talk = d20
     speech = true
@@ -234,13 +235,10 @@ function scare() {
       damage += 1
     }
     talking()
-
   }
-
-
 }
-function slash() { //combat function only works if the combat funation is true and will only work if combat is on going or started
-  if (combatQuestion === true || continueCombat === true) {
+function slash(working) { //combat function only works if the combat funation is true and will only work if combat is on going or started
+  if (combatQuestion === true && working === true || continueCombat === true && working === true) {
     d12 = Math.floor(Math.random() * (13 - 1) + 1)
     damage = d12
     attack = true
@@ -273,7 +271,6 @@ function slash() { //combat function only works if the combat funation is true a
 }
 // comstumizable combat system, it has evrything needed
 function startCombat() {
-
 
   if (player.con >= 9 && combatQuestion === true) {
     playerHp = 200
@@ -338,6 +335,7 @@ function combat(one, two, three) {
 
   battle1()
   function battle1() {
+    console.log(`battle console.log thing`)
     if (attack === true && combatQuestion === true && enemy1.enemyHp >= .1 || onlyEnemy >= 1 && combatQuestion === true && enemy1.enemyHp >= .1) {
       if (onlyEnemy === 1) {
         playerHp += heal
@@ -355,7 +353,7 @@ function combat(one, two, three) {
         newText = (`The ${enemy1.enemyName} did ${enemyD20} damage to you which leaves you with <<${playerHp} HP>> left. You did ${damage} damage, leaving them with <${enemy1.enemyHp} HP> left.`)
         updateText()
       }
-      damage = 0
+
 
     } else {
       battle2()
@@ -375,7 +373,7 @@ function combat(one, two, three) {
       playerHp -= Math.floor(enemyD20)
       textElement.innerText = `The ${enemy2.enemyName} did ${enemyD20} damage to you which leaves you with <<${playerHp} HP>> left. You did ${damage} damage, leaving them with <${enemy2.enemyHp} HP> left.`
       console.log(`The ${enemy2.enemyName} did ${enemyD20} damage to you which leaves you with ${playerHp} HP left. You did ${damage} damage, leaving them with ${enemy2.enemyHp} HP left.`)
-      damage = 0
+
 
 
     } else { battle3() }
@@ -394,14 +392,14 @@ function combat(one, two, three) {
       playerHp -= Math.floor(enemyD20)
       textElement.innerText = `The ${enemy3.enemyName} did ${enemyD20} damage to you which leaves you with <<${playerHp} HP>> left. You did ${damage} damage, leaving them with <${enemy3.enemyHp} HP> left.`
       console.log(`The ${enemy3.enemyName} did ${enemyD20} damage to you which leaves you with ${playerHp} HP left. You did ${damage} damage, leaving them with ${enemy3.enemyHp} HP left.`)
-      damage = 0
+
 
 
     } else { endCombat() }
   }
 
-
-
+  attack = false
+  // damage = 0
   updateText()
 
 }
@@ -411,6 +409,7 @@ function talking() {
 
   talk1()
   function talk1() {
+    console.log(`tlak console .log thing or somthing`)
     if (speech === true && combatQuestion === true && enemy1.enemyHp >= .1) {
 
       if (talk >= 13) {
@@ -440,10 +439,10 @@ function talking() {
             newText = `You tired to scare the enemy, but you didn't even make eye contact. Then the ${enemy1.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>>`;
             break;
           case 3:
-            newText = `You scare the enemy, but you were dreaming so nothing actually happened. Then the ${enemy1.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>>`;
+            newText = `You scare the enemy, but you were day dreaming so nothing actually happened. Then the ${enemy1.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>>`;
             break;
           case 4:
-            newText = `You tired to scare the enemy, but since you don't look scary, they thought you were a tow year old. Then the ${enemy1.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>>`;
+            newText = `You tired to scare the enemy, but since you don't look scary, they thought you were a two year old. Then the ${enemy1.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>>`;
             break;
           default:
         }
@@ -498,8 +497,6 @@ let textNodes = [
         text: `Credits`, //text was is visable first
         nextText: 3 //brings it to the next id
       },
-
-
     ], // make sure to add commas
   },
   {
@@ -583,7 +580,7 @@ let textNodes = [
         nextText: 7
       },
     ],
-    continueCombat: true
+    // continueCombat: true
   },
   {
     id: 6,
@@ -657,6 +654,51 @@ let textNodes = [
     ],
     scare: true
   },
+  {
+  id: 10,
+  text: `Roll a d20 and if it's above a 13, multiply that roll by 2 to convince te enemy.`,
+  options: [
+    {
+      text: `Scare enemy`,
+      nextText: 6
+    },
+    {
+      text: `Back to Selection`,
+      nextText: 7
+    },
+  ],
+  scare: true
+},
+{
+id: 11,
+text: `Roll a d20 and if it's above a 13, multiply that roll by 2 to convince te enemy.`,
+options: [
+  {
+    text: `Scare enemy`,
+    nextText: 6
+  },
+  {
+    text: `Back to Selection`,
+    nextText: 7
+  },
+],
+scare: true
+},
+{
+id: 12,
+text: `Roll a d20 and if it's above a 13, multiply that roll by 2 to convince te enemy.`,
+options: [
+  {
+    text: `Scare enemy`,
+    nextText: 6
+  },
+  {
+    text: `Back to Selection`,
+    nextText: 7
+  },
+],
+scare: true
+},
 ]
 
 
