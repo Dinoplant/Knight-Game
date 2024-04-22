@@ -1,4 +1,3 @@
-
 const textElement = document.getElementById('text'); //gets the ids from the html to change the text for the story
 const optionButtonsElement = document.getElementById('btnOptions');
 let inventoryElement = document.getElementById(`invText`)
@@ -16,15 +15,18 @@ let beforePotPlayerHp = 0
 let afterPotPlayerHp = 0
 let onlyEnemy = 0
 let damage = 0
+let talk = 0
 let heal = 0
 let mutl = 0
 let attack = false
+let speech = false
 let newText = `Currently in battle`
 let enemyD20 = 0
 let enemy1 = 0
 let enemy2 = 0
 let enemy3 = 0
 let endingNode = 0
+
 
 class Enemy {
   constructor(enemyName, enemyHp, enemyPeace, extraDamage, extraRoll) {
@@ -36,12 +38,15 @@ class Enemy {
   }
 }
 
+
 let None = new Enemy(`Nothing`, 0, 0, 0, 0)
 let Bandit = new Enemy(`Bandit`, 20, 10, 0, 0);
 let King = new Enemy(`King`, 100, 0, 30, 0)
 
-// bandit bear, wolves, genral, Henry, gruad, archer, dragon, yourself, 
-// gernal, graud, archer, bear,  henry, dragoon, 
+
+// bandit bear, wolves, genral, Henry, gruad, archer, dragon, yourself,
+// gernal, graud, archer, bear,  henry, dragoon,
+
 
 let player = {
   wis: 0,
@@ -57,6 +62,7 @@ let player = {
   jade: 0,
   debug: 0,
 }
+
 
 function startGame() {
   player = {
@@ -75,6 +81,7 @@ function startGame() {
   }
   showTextNode(1)
 }
+
 
 function showTextNode(textNodeIndex) { // goes through tthe text nodes checks what I put for the text and changes the text in the HTML
   const textNode = textNodes.find(textNode => textNode.id === textNodeIndex)
@@ -104,18 +111,19 @@ function showTextNode(textNodeIndex) { // goes through tthe text nodes checks wh
     optionButtonsElement.removeChild(optionButtonsElement.firstChild)
   }
 
+
   textNode.options.forEach(option => { //makes the options by checking the opition premator see how mnay optitions there are
     if (showOption(option)) {
       const button = document.createElement('button')
       button.innerText = option.text
       button.classList.add('btn')
       button.addEventListener('click', () => selectOption(option))
-      if (option === textNode.options[0] && textNode.heal !== true) {
+      if (option === textNode.options[0] && textNode.heal !== true && textNode.scare !== true) {
         button.addEventListener('click', () => slash(), true) //checking certain buttons and adding the comabt funation accordin to each one
       } else if (option === textNode.options[1]) {
         button.addEventListener('click', () => healPot(player.healPot))
       } else if (option === textNode.options[2]) {
-        button.addEventListener('click', () => slash())
+        button.addEventListener('click', () => scare())
       } else if (option === textNode.options[3]) {
         button.addEventListener('click', () => slash())
       } else if (option === textNode.options[4]) {
@@ -124,14 +132,19 @@ function showTextNode(textNodeIndex) { // goes through tthe text nodes checks wh
         button.addEventListener('click', () => slash())
       }
 
+
       if (textNode.heal === true && option === textNode.options[0]) {
         button.removeEventListener('click', () => slash(), true)
-        // button.removeEventListener('click', () => slash())
         button.addEventListener('click', () => healPot(player.healPot))
-        console.log(button)
-      } else { console.log(`heal not work`) }
+      } else if (textNode.scare === true && option === textNode.options[0]) {
+        button.removeEventListener('click', () => slash(), true)
+        button.addEventListener('click', () => scare())
+      }
       optionButtonsElement.appendChild(button)
     }
+
+
+
 
 
 
@@ -154,8 +167,9 @@ function selectOption(option) { //decetcs if button is clicked with a set player
   showTextNode(nextTextNodeId)
 }
 
+
 function healPot(amount) {
-  if (combatQuestion === true && textNodes.heal === true || continueCombat === true && textNodes.heal) {
+  if (combatQuestion === true || continueCombat === true) {
     switch (amount) {
       case 10:
         player.healPot = 9;
@@ -202,47 +216,64 @@ function healPot(amount) {
       damage += 2
     }
     heal = (d8one + d8two) * 2
-    playerHp += heal
-    afterPotPlayerHp = playerHp
     onlyEnemy = 1
     combat()
   }
 }
-function slash() { //combat function only works if the combat funation is true and will only work if combat is on going or started 
 
+function scare() {
+  if (combatQuestion === true || continueCombat === true) {
+    d20 = Math.floor(Math.random() * (21 - 1) + 1)
+    talk = d20
+    speech = true
+    if (player.str >= 9) {
+      damage += 4
+    } else if (player.str >= 6) {
+      damage += 2
+    } else if (player.str >= 3) {
+      damage += 1
+    }
+    talking()
+
+  }
+
+
+}
+function slash() { //combat function only works if the combat funation is true and will only work if combat is on going or started
   if (combatQuestion === true || continueCombat === true) {
     d12 = Math.floor(Math.random() * (13 - 1) + 1)
     damage = d12
     attack = true
+    console.log(`this is when this is on`)
+    //debug
+    if (player.debug >= 1) {
+      damage += 100
+    }
+    if (player.greatAxe >= 0 && player.str >= 7) {
+      damage += 5
+    } else if (player.str >= 9) {
+      damage += 4
+    } else if (player.str >= 6) {
+      damage += 2
+    } else if (player.str >= 3) {
+      damage += 1
+    }
+
+
+    if (player.bow >= 1 && player.wis >= 5) {
+      damage += 3
+    }
+    damage = damage * 1.5
+    attack = true
+    combat()
   } else {
     console.log(`na man`)
   }
 
-  console.log(`this is when this is on`)
-  //debug
-  if (player.debug >= 1) {
-    damage += 100
-  }
-
-  if (player.greatAxe >= 0 && player.str >= 7) {
-    damage += 5
-  } else if (player.str >= 9) {
-    damage += 4
-  } else if (player.str >= 6) {
-    damage += 2
-  } else if (player.str >= 3) {
-    damage += 1
-  }
-
-  if (player.bow >= 1 && player.wis >= 5) {
-    damage += 3
-  }
-  damage = damage * 1.5
-  attack = true
-  combat()
 }
 // comstumizable combat system, it has evrything needed
 function startCombat() {
+
 
   if (player.con >= 9 && combatQuestion === true) {
     playerHp = 200
@@ -252,12 +283,14 @@ function startCombat() {
     playerHp = 160
   } else { playerHp = 150 }
 
+
   console.log(`It is in use`)
   //debug
   if (player.debug >= 1) {
     playerHp = 690
   }
 }
+
 
 function endCombat() {
   if (playerHp <= 0) {
@@ -270,7 +303,10 @@ function endCombat() {
     combatQuestion = false
     showTextNode(endingNode)
 
+
   } else { console.log(`it did not work(end)`) }
+
+
 
 
 }
@@ -303,31 +339,36 @@ function combat(one, two, three) {
   battle1()
   function battle1() {
     if (attack === true && combatQuestion === true && enemy1.enemyHp >= .1 || onlyEnemy >= 1 && combatQuestion === true && enemy1.enemyHp >= .1) {
-
       if (onlyEnemy === 1) {
+        playerHp += heal
+        afterPotPlayerHp = playerHp
         enemyD20 = Math.floor((Math.random() * (21 - 1) + 1) + enemy1.extraRoll)
         enemyD20 = Math.floor((enemyD20 * 1.2) + enemy1.extraDamage)
         playerHp -= Math.floor(enemyD20)
         newText = `You were at ${beforePotPlayerHp} HP but after drinking your potion, you are at <${afterPotPlayerHp} Hp>. The enemy took the chance to deal ${enemyD20} damage leaving you with <<${playerHp} Hp>> left`
-      } else {
+      } else if (attack === true) {
         enemy1.enemyHp -= Math.floor(damage)
-
+        console.log(`the damage is`, damage)
         enemyD20 = Math.floor((Math.random() * (21 - 1) + 1) + enemy1.extraRoll)
         enemyD20 = Math.floor((enemyD20 * 1.7) + enemy1.extraDamage)
         playerHp -= Math.floor(enemyD20)
-        newText = `The ${enemy1.enemyName} did ${enemyD20} damage to you which leaves you with <<${playerHp} HP>> left. You did ${damage} damage, leaving them with <${enemy1.enemyHp} HP> left.`
-     }
+        newText = (`The ${enemy1.enemyName} did ${enemyD20} damage to you which leaves you with <<${playerHp} HP>> left. You did ${damage} damage, leaving them with <${enemy1.enemyHp} HP> left.`)
+        updateText()
+      }
       damage = 0
-      
+
     } else {
       battle2()
     }
   }
 
+
   function battle2() {
     if (attack === true && combatQuestion === true && enemy2.enemyHp >= .1) {
 
+
       enemy2.enemyHp -= Math.floor(damage)
+
 
       enemyD20 = Math.floor((Math.random() * (21 - 1) + 1) + enemy2.extraRoll)
       enemyD20 = Math.floor((enemyD20 * 1.7) + enemy2.extraDamage)
@@ -336,13 +377,17 @@ function combat(one, two, three) {
       console.log(`The ${enemy2.enemyName} did ${enemyD20} damage to you which leaves you with ${playerHp} HP left. You did ${damage} damage, leaving them with ${enemy2.enemyHp} HP left.`)
       damage = 0
 
+
     } else { battle3() }
   }
+
 
   function battle3() {
     if (attack === true && combatQuestion === true && enemy3.enemyHp >= .1) {
 
+
       enemy3.enemyHp -= Math.floor(damage)
+
 
       enemyD20 = Math.floor((Math.random() * (21 - 1) + 1) + enemy3.extraRoll)
       enemyD20 = Math.floor((enemyD20 * 1.7) + enemy3.extraDamage)
@@ -351,15 +396,89 @@ function combat(one, two, three) {
       console.log(`The ${enemy3.enemyName} did ${enemyD20} damage to you which leaves you with ${playerHp} HP left. You did ${damage} damage, leaving them with ${enemy3.enemyHp} HP left.`)
       damage = 0
 
+
     } else { endCombat() }
   }
 
-    updateText()
-  
+
+
+  updateText()
+
+}
+
+function talking() {
+
+
+  talk1()
+  function talk1() {
+    if (speech === true && combatQuestion === true && enemy1.enemyHp >= .1) {
+
+      if (talk >= 13) {
+        talk = Math.floor(talk * 1.6)
+        enemy1.enemyPeace += talk
+        enemyD20 = Math.floor((Math.random() * (21 - 1) + 1) + enemy1.extraRoll)
+        enemyD20 = Math.floor((enemyD20 * 1.7) + enemy1.extraDamage)
+        playerHp -= Math.floor(enemyD20)
+        if (enemy1.enemyPeace >= 100) {
+          enemy1.enemyHp = 0
+          newText = `The ${enemy1.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>> left, but on the bright side you succesfully conviced the enemy to leave the battle`
+        } else {
+          newText = `The ${enemy1.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>> left. You convinced the enemy and now they are <${enemy1.enemyPeace}%> convinced to leave the battle`
+        }
+      } else if (talk <= 12) {
+        enemyD20 = Math.floor((Math.random() * (21 - 1) + 1) + enemy1.extraRoll)
+        enemyD20 = Math.floor((enemyD20 * 1.7) + enemy1.extraDamage)
+        playerHp -= Math.floor(enemyD20)
+
+        d4one = Math.floor(Math.random() * (5 - 1) + 1)
+
+        switch (d4one) {
+          case 1:
+            newText = `You tired to scare the enemy, but you accidentally had a voice crack mid sentence. Then the ${enemy1.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>>`;
+            break;
+          case 2:
+            newText = `You tired to scare the enemy, but you didn't even make eye contact. Then the ${enemy1.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>>`;
+            break;
+          case 3:
+            newText = `You scare the enemy, but you were dreaming so nothing actually happened. Then the ${enemy1.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>>`;
+            break;
+          case 4:
+            newText = `You tired to scare the enemy, but since you don't look scary, they thought you were a tow year old. Then the ${enemy1.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>>`;
+            break;
+          default:
+        }
+
+
+        talk = 0
+        speech = false
+        updateText()
+      }
+      else { talk2() }
+    }
+    function talk2() {
+      if (speech === true && combatQuestion === true && enemy2.enemyHp >= .1) {
+
+      }
+      else { talk3() }
+    }
+
+    function talk3() {
+      if (speech === true && combatQuestion === true && enemy2.enemyHp >= .1) {
+
+      }
+      else { endCombat() }
+    }
+
+
+
+  }
+}
+function updateText() {
+  textElement.innerText = newText
 }
 
 
-//holds all the story elements along with the options 
+//holds all the story elements along with the options
 let textNodes = [
   {
     id: 1, //story element or story part or section
@@ -368,17 +487,18 @@ let textNodes = [
       { //to set something: setPlayer: {},
         //to require player: requiredPlayer: {element boolien elemenet},
         text: `More Info`, //text was is visable first
-        nextText: 2, //brings it to the next id 
+        nextText: 2, //brings it to the next id
       }, // make sure to add commas
       {
         text: `PLAY`,
         //text was is visable first
-        nextText: 4 //brings it to the next id 
+        nextText: 4 //brings it to the next id
       }, // make sure to add commas
       {
         text: `Credits`, //text was is visable first
-        nextText: 3 //brings it to the next id 
+        nextText: 3 //brings it to the next id
       },
+
 
     ], // make sure to add commas
   },
@@ -433,7 +553,7 @@ let textNodes = [
       },
       {
         text: `Scare`,
-        nextText: 2
+        nextText: 9
       },
       {
         text: `Stab`,
@@ -491,7 +611,7 @@ let textNodes = [
       },
       {
         text: `Scare`,
-        nextText: 2
+        nextText: 9
       },
       {
         text: `Stab`,
@@ -509,7 +629,7 @@ let textNodes = [
   },
   {
     id: 8,
-    text: `This lets you roll a d12, and multiply that roll by 1.5 to damage A enemy.`,
+    text: `Roll two d8s and heal the sum of the dice multiplied by two.`,
     options: [
       {
         text: `Drink Heal Potion`,
@@ -520,14 +640,25 @@ let textNodes = [
         nextText: 7
       },
     ],
-    continueCombat: true,
     heal: true
+  },
+  {
+    id: 9,
+    text: `Roll a d20 and if it's above a 13, multiply that roll by 2 to convince te enemy.`,
+    options: [
+      {
+        text: `Scare enemy`,
+        nextText: 6
+      },
+      {
+        text: `Back to Selection`,
+        nextText: 7
+      },
+    ],
+    scare: true
   },
 ]
 
-function updateText() {
-  textElement.innerText = newText
-  console.log(textElement.innerText = newText)
-}
-startGame()
 
+
+startGame()
