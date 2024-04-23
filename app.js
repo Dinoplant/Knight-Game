@@ -751,7 +751,7 @@ let textNodes = [
   },
   {
     id: 4,
-    text: `Currently battling`,
+    text: `You are fighting a Bandit with the king next.`,
     options: [
       {
         text: `Slash`,
@@ -944,7 +944,7 @@ let textNodes = [
   },
   {
     id: 16,
-    text: `Our story begins in 40 AD on the newly conquered island of Britannia. Our protagonist is in a small village that seemed almost unaffected by the Roman invasion until one night when everything changed.`,
+    text: `Our story begins in a small town near a large river named Musia. The town is important to the trade in the eara due to its conveint location inbetween two empires. One of these Empires have decided to declare war on the Empire Britainia. These town has been taken over by the ___ Empire, where they are setting many bad polcies in place that negaite many of the econmic benfits of the trade in the area.`,
     options: [
       {
         text: `Next`,
