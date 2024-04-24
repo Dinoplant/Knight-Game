@@ -41,9 +41,11 @@ main {
     border: 4mm ridge #FFFFFF;
     border-bottom: 0mm;
     border-right: 0mm;
-    background-color: #191970;
     width: 80%;
     height: 100%;
+    background-image: url(/Images/startVillage.png);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .inventory { 

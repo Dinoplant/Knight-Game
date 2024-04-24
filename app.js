@@ -390,7 +390,7 @@ function stab() {
     console.log(`Stab fucntion active`)
     d4one = Math.floor(Math.random() * (5 - 1) + 1)
     d4two = Math.floor(Math.random() * (5 - 1) + 1)
-    
+
     if (player.dex >= 6 && player.rapier >= 1) {
       d12 += 4
     } else if (player.con >= 6 && player.shortSword >= 1) {
@@ -1388,14 +1388,184 @@ let textNodes = [
   },
   {
     id: 16,
-    text: `Our story begins in a small town near a large river named Musia. The town is important to the trade in the eara due to its conveint location inbetween two empires. One of these Empires have decided to declare war on the Empire Britainia. These town has been taken over by the ___ Empire, where they are setting many bad polcies in place that negaite many of the econmic benfits of the trade in the area.`,
+    text: `Our story begins in a small village, Lüdingfeld, near the capital of Etair. The village is an important part of the Etair due to its access to fresh water and has a salt mine, which is incredibly valuable for trade. A war broke out between the two Empires near Lüdingfeld, Etair and Bani. `,
     options: [
       {
-        text: `Next`,
-        nextText: 16
+        text: `Continue`,
+        nextText: 17
       }
     ],
-  }
+  },
+  {
+    id: 17,
+    text:'Even though the conflict has been around for about a year, Lüdingfeld has not changed its style of living and has not been very affected by the war, but the Bani lord, Henry Willaims,  has set his sights on the little village, but the environment has taken a hit. ',
+      options: [
+        {
+          text: `Continue`,
+          nextText: 18
+        }
+      ],
+  },
+  {
+    id: 18,
+    text:'There were great beasts that used to roam the lands, but ever since the first war many of the beasts have been hunted and killed. Now they are merely legends, none has seen one for over a century. There is a rumour that they may be disguised as other animals to avoid being hunted. Nobody really knows yet, until now.',
+      options: [
+        {
+          text: `Continue`,
+          nextText: 19
+        }
+      ],
+  },
+  {
+    id: 19,
+    text:'Dragon: "There was a time where this land was isolated and seemed to be at peace, but after a time many other countries became more anxious to conquer the world. After the failed revolution in the west, the sea demons turned their attention to the east. The land’s government wanted to stay in solitude and tried to obtain their ancient ways, but it was only a matter of time until the demons would come."',
+      options: [
+        {
+          text: `Continue`,
+          nextText: 20
+        }
+      ],
+  },
+  {
+    id: 17,
+    text:'',
+      options: [
+        {
+          text: `Continue`,
+          nextText: 18
+        }
+      ],
+  },  
+  {
+    id: 17,
+    text:'',
+      options: [
+        {
+          text: `Continue`,
+          nextText: 18
+        }
+      ],
+  },  
+  {
+    id: 17,
+    text:'',
+      options: [
+        {
+          text: `Continue`,
+          nextText: 18
+        }
+      ],
+  },  
+  {
+    id: 17,
+    text:'',
+      options: [
+        {
+          text: `Continue`,
+          nextText: 18
+        }
+      ],
+  },  
+  {
+    id: 17,
+    text:'',
+      options: [
+        {
+          text: `Continue`,
+          nextText: 18
+        }
+      ],
+  },  
+  {
+    id: 17,
+    text:'',
+      options: [
+        {
+          text: `Continue`,
+          nextText: 18
+        }
+      ],
+  },  
+  {
+    id: 17,
+    text:'',
+      options: [
+        {
+          text: `Continue`,
+          nextText: 18
+        }
+      ],
+  },  
+  {
+    id: 17,
+    text:'',
+      options: [
+        {
+          text: `Continue`,
+          nextText: 18
+        }
+      ],
+  },  
+  {
+    id: 17,
+    text:'',
+      options: [
+        {
+          text: `Continue`,
+          nextText: 18
+        }
+      ],
+  },  
+  {
+    id: 17,
+    text:'',
+      options: [
+        {
+          text: `Continue`,
+          nextText: 18
+        }
+      ],
+  },  
+  {
+    id: 17,
+    text:'',
+      options: [
+        {
+          text: `Continue`,
+          nextText: 18
+        }
+      ],
+  }, 
+  {
+    id: 17,
+    text:'',
+      options: [
+        {
+          text: `Continue`,
+          nextText: 18
+        }
+      ],
+  },  
+  {
+    id: 17,
+    text:'',
+      options: [
+        {
+          text: `Continue`,
+          nextText: 18
+        }
+      ],
+  },  
+  {
+    id: 17,
+    text:'',
+      options: [
+        {
+          text: `Continue`,
+          nextText: 18
+        }
+      ],
+  }, 
 ]
 
 startGame()
