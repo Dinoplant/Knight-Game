@@ -1398,174 +1398,276 @@ let textNodes = [
   },
   {
     id: 17,
-    text:'Even though the conflict has been around for about a year, Lüdingfeld has not changed its style of living and has not been very affected by the war, but the Bani lord, Henry Willaims,  has set his sights on the little village, but the environment has taken a hit. ',
-      options: [
-        {
-          text: `Continue`,
-          nextText: 18
-        }
-      ],
+    text: 'Even though the conflict has been around for about a year, Lüdingfeld has not changed its style of living and has not been very affected by the war, but the Bani lord, Henry Willaims,  has set his sights on the little village, but the environment has taken a hit. ',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 18
+      }
+    ],
   },
   {
     id: 18,
-    text:'There were great beasts that used to roam the lands, but ever since the first war many of the beasts have been hunted and killed. Now they are merely legends, none has seen one for over a century. There is a rumour that they may be disguised as other animals to avoid being hunted. Nobody really knows yet, until now.',
-      options: [
-        {
-          text: `Continue`,
-          nextText: 19
-        }
-      ],
+    text: 'There were great beasts that used to roam the lands, but ever since the first war many of the beasts have been hunted and killed. Now they are merely legends, none has seen one for over a century. There is a rumour that they may be disguised as other animals to avoid being hunted. Nobody really knows yet, until now.',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 19
+      }
+    ],
   },
   {
     id: 19,
-    text:'Dragon: "There was a time where this land was isolated and seemed to be at peace, but after a time many other countries became more anxious to conquer the world. After the failed revolution in the west, the sea demons turned their attention to the east. The land’s government wanted to stay in solitude and tried to obtain their ancient ways, but it was only a matter of time until the demons would come."',
-      options: [
-        {
-          text: `Continue`,
-          nextText: 20
-        }
-      ],
+    text: 'Dragon: "There was a time where this land was isolated and seemed to be at peace, but after a time many other countries became more anxious to conquer the world. After the failed revolution in the west, the sea demons turned their attention to the east. The land’s government wanted to stay in solitude and tried to obtain their ancient ways, but it was only a matter of time until the demons would come."',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 20
+      }
+    ],
+  },
+  {
+    id: 20,
+    text: 'Dragon: "During the War, this land would be reborn for the greedy. The usage of their guns and other unholy technology won them the land. Instead of just taking the land over they decided to create new forms of free labour to gather the land’s natural treasures. As time went on more and more of the ancient Gods left these lands in search of more prosperous peoples. Even I was about to leave until I met a man named Jack."',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 21
+      }
+    ],
+  },
+  {
+    id: 21,
+    text: 'Jack: "Before it all changed I used to live a peaceful life with my family, *sigh. My wife, the pride of the house. The one that kept everything whole. She was the only constant in my life. My two daughters, Victoria and Cami. Victoria was the loud, popular one who always found herself out of trouble. While Cami was the quiet one, she always was blamed for her sisters wrongs, I should have been there more."',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 22
+      }
+    ],
+  },
+  {
+    id: 22,
+    text: 'Jack: "My one son, the age of 2. He was going to be the successor of our family’s land. He loved playing with the flowers and enjoying time with his mother. I only wished I had more time with them."',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 23
+      }
+    ],
+  },
+  {
+    id: 23,
+    text: 'Jack :"I remember it like yesterday, the day when my greatest pride became my greatest failure. My daughters got mixed up with the wrong crowd, mostly Victoria. She met a man from the sea that promised her treasures if she stayed with him for a night. She accepted the gold, but never went to meet him. The man turned out to be a rich demon. Nights went by but nothing happened, until one night when the moon was fullest he came with his troops."',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 24
+      }
+    ],
+  },
+  {
+    id: 24,
+    text: 'Jack: "After pillaging the town, he made it to my home. At this time I had no clue about what my daughter did, but it was far too late. They were too quick, there was no time to defend our town or loved ones. He killed them then…, I will not speak of the things he did. After hours of horror, he let them die, but he didn’t share the same kindness with me. He left me with only his name Vito."',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 25
+      }
+    ],
+  },
+  {
+    id: 25,
+    text: 'This is where my story started and this is where it should have ended.',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 26
+      }
+    ],
+  },
+  // base stats start here
+  {
+    id: 26,
+    text: 'You first wake up in a burnt house surrounded by ash and taste of misery. You remember what happened to your family and one name rings constant: Henry. As you get up you feel nothing even though you were beat bloody. You look around and pick up your weapon and armour.',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 27
+      }
+    ],
+  },
+  // pick weapon 
+  {
+    id: 27,
+    text: 'You look around your house to see what is left.',
+    options: [
+      {
+        text: `Kitchen`,
+        nextText: 28
+      },
+      {
+        text: `Your Room`,
+        nextText: 29
+      },
+      {
+        text: `Examine the Room`,
+        nextText: 31
+      }
+    ],
+  },
+  {
+    id: 28,
+    text: 'You enter the kitchen, you do not know what you were expecting. Everything is burnt or broken. The place that you once ate at is now nothing but a place to grieve. You do find some of your healing potions in the chest under the table.',
+    options: [
+      {
+        text: `Kitchen`,
+        nextText: 27
+      },
+      {
+        text: `Your Room`,
+        nextText: 29
+      },
+      {
+        text: `Living Room`,
+        nextText: 30
+      }
+    ],
+  },
+  {
+    id: 29,
+    text: 'Your room is still intact but its been cut threw. You look through your chests and drawers, but you couldn’t find anything that can be helpfull. You then look towards the wall to see the map that your Grandpa made when he traveled. You take it off the wall and put in your bag you find next to the bed.',
+    options: [
+      {
+        text: `Kitchen`,
+        nextText: 28
+      },
+      {
+        text: `Your Room`,
+        nextText: 27
+      },
+      {
+        text: `Living Room`,
+        nextText: 30
+      }
+    ],
+  },
+  {
+    id: 30,
+    text: 'You walk back into the living room, you relive the memories of what he did looking at your family.',
+    options: [
+      {
+        text: `Kitchen`,
+        nextText: 28
+      },
+      {
+        text: `Your Room`,
+        nextText: 29
+      },
+      {
+        text: `Examine the Room`,
+        nextText: 31
+      }
+    ],
+  },
+  {
+    id: 27,
+    text: 'You look around the room for anything else you can grab or keep as a memory. You take your partener’s ring. You then decide too:',
+    options: [
+      {
+        text: `Burry your family`,
+        nextText: 28
+      },
+      {
+        text: ``,
+        nextText: 29
+      },
+      {
+        text: `Walk out of the room.`,
+        nextText: 30
+      }
+    ],
+  },
+  {
+    id: 28,
+    text: 'You walk outside your home, to see it all in ash. You yell out to see if anyone is still alive, none answers. You pray that at least some of your freinds made it out alive. You start to make your through the ruble, every now and then seeing stains of red.',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 29
+      }
+    ],
   },
   {
     id: 17,
-    text:'',
-      options: [
-        {
-          text: `Continue`,
-          nextText: 18
-        }
-      ],
-  },  
+    text: 'You make it the start of the road into the forest. You take one more look at your town, only feeling guilt and anger. As you are about your jounry to the next town you hear a dog.',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 18
+      }
+    ],
+  },
   {
     id: 17,
-    text:'',
-      options: [
-        {
-          text: `Continue`,
-          nextText: 18
-        }
-      ],
-  },  
+    text: '',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 18
+      }
+    ],
+  },
   {
     id: 17,
-    text:'',
-      options: [
-        {
-          text: `Continue`,
-          nextText: 18
-        }
-      ],
-  },  
+    text: '',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 18
+      }
+    ],
+  },
   {
     id: 17,
-    text:'',
-      options: [
-        {
-          text: `Continue`,
-          nextText: 18
-        }
-      ],
-  },  
+    text: '',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 18
+      }
+    ],
+  },
   {
     id: 17,
-    text:'',
-      options: [
-        {
-          text: `Continue`,
-          nextText: 18
-        }
-      ],
-  },  
+    text: '',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 18
+      }
+    ],
+  },
   {
     id: 17,
-    text:'',
-      options: [
-        {
-          text: `Continue`,
-          nextText: 18
-        }
-      ],
-  },  
+    text: '',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 18
+      }
+    ],
+  },
   {
     id: 17,
-    text:'',
-      options: [
-        {
-          text: `Continue`,
-          nextText: 18
-        }
-      ],
-  },  
-  {
-    id: 17,
-    text:'',
-      options: [
-        {
-          text: `Continue`,
-          nextText: 18
-        }
-      ],
-  },  
-  {
-    id: 17,
-    text:'',
-      options: [
-        {
-          text: `Continue`,
-          nextText: 18
-        }
-      ],
-  },  
-  {
-    id: 17,
-    text:'',
-      options: [
-        {
-          text: `Continue`,
-          nextText: 18
-        }
-      ],
-  },  
-  {
-    id: 17,
-    text:'',
-      options: [
-        {
-          text: `Continue`,
-          nextText: 18
-        }
-      ],
-  }, 
-  {
-    id: 17,
-    text:'',
-      options: [
-        {
-          text: `Continue`,
-          nextText: 18
-        }
-      ],
-  },  
-  {
-    id: 17,
-    text:'',
-      options: [
-        {
-          text: `Continue`,
-          nextText: 18
-        }
-      ],
-  },  
-  {
-    id: 17,
-    text:'',
-      options: [
-        {
-          text: `Continue`,
-          nextText: 18
-        }
-      ],
-  }, 
+    text: '',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 18
+      }
+    ],
+  },
 ]
 
 startGame()
