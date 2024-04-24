@@ -19,7 +19,7 @@ let Bandit3 = new Enemy(`Steven the Bandit`, 20, 5, 50, 0, 0)
 let Bandit4 = new Enemy(`Johnson the Bandit`, 40, 0, 35, 0, 0)
 let Bandit5 = new Enemy(`Nick the Bandit`, 30, 10, 80, 0, 0)
 let BanditGen1 = new Enemy(`The Bandit`, 35, 10, 40, 0, 0)
-let BanditGen2 = new Enemy(`The Bandit`, 20, 0, 50, 0, 0)
+let BanditGen2 = new Enemy(`The Bandit`, 20, 0, 50, 0, 0) // 10
 let BanditGen3 = new Enemy(`The Bandit`, 50, 20, 100, 0, 0)
 let BanditGen4 = new Enemy(`The Bandit`, 25, 0, 55, 0, 0)
 let LeadBandit = new Enemy(`Bandit Leader`, 50, 0, 100, 10, 0)
@@ -30,7 +30,7 @@ let Guard3 = new Enemy(`Duke the Guard`, 90, 0, 100, 4, 0)
 let Guard4 = new Enemy(`Brandon the Guard`, 80, 0, 110, 6, 0)
 let Guard5 = new Enemy(`Matthew the Guard`, 70, 0, 90, 8, 3)
 let GuardGen1 = new Enemy(`The Guard`, 70, 0, 100, 7, 0)
-let GuardGen2 = new Enemy(`The Guard`, 75, 12, 120, 2, 2)
+let GuardGen2 = new Enemy(`The Guard`, 75, 12, 120, 2, 2) // 20
 let GuardGen3 = new Enemy(`The Guard`, 80, 0, 100, 4, 1)
 let GuardGen4 = new Enemy(`The Guard`, 90, 5, 90, 3, 1)
 
@@ -43,7 +43,7 @@ let Genral = new Enemy(`The Genral`, 100, 0, 100, 10, 5)
 
 let Bear1 = new Enemy(`The Brown Bear`, 60, 0, 70, 7, 0)
 let Bear2 = new Enemy(`The Black Bear`, 50, 0, 60, 0, 3)
-let Wolf1 = new Enemy(`The Gray Wolf`, 40, 0, 70, 10, 1)
+let Wolf1 = new Enemy(`The Gray Wolf`, 40, 0, 70, 10, 1) //30
 let Wolf2 = new Enemy(`The Sliver Wolf`, 45, 0, 80, 7, 3)
 let Dragon = new Enemy(`The Dragon`, 300, 0, 350, 10, 10)
 let AlphaWolf = new Enemy(`The Alpha Wolf`, 70, -20, 90, 5, 5)
@@ -75,7 +75,7 @@ let multi = 1
 let weapon = `None`
 let attack = false
 let speech = false
-let newText = `Currently in battle`
+let newText = null
 let enemyD20 = 0
 let enemy1 = None1
 let enemy2 = None2
@@ -125,8 +125,34 @@ function showTextNode(textNodeIndex) { // goes through tthe text nodes checks wh
   if (textNode.startCombat === 1) { //just checks is a paramantor to see if combat starts
     console.log('combat mode engaged');
     combatQuestion = false
+    newText = `You are fighting a two Bandits.`
+    endingNode = 24
     startCombat()
-    combat(4, 5, 6)
+    combat(7, 11, 1)
+
+  } else if (textNode.startCombat === 2) { //just checks is a paramantor to see if combat starts
+    console.log('combat mode engaged');
+    combatQuestion = false
+    newText = `You are fighting a Bandit then a Bear, then Bandit Leader following after.`
+    endingNode = 25
+    startCombat()
+    combat(9, 28, 15)
+
+  } else if (textNode.startCombat === 3) { //just checks is a paramantor to see if combat starts
+    console.log('combat mode engaged');
+    combatQuestion = false
+    newText = `You are fighting 2 different Guards, and their Genral last.`
+    endingNode = 26
+    startCombat()
+    combat(14, 22, 27)
+
+  }
+  else if (textNode.startCombat === 4) { //just checks is a paramantor to see if combat starts
+    console.log('combat mode engaged');
+    combatQuestion = false
+    newText = `You are fighting 2 different Guards, and their <<KING>> last.`
+    startCombat()
+    combat(19, 21, 35)
     endingNode = 15
   }
   else if (textNode.continueCombat === true) { //checks if you are continue combat
@@ -211,7 +237,7 @@ function update() {
   Weapon: ${weapon}
   ${player.healPot} Heal Potions left
   Jade: ${player.jade}
-  Keys: ${player.key}
+  Boss Keys: ${player.key}
   `
 
   document.getElementById('staText').innerText = ` ${enemy1.enemyName}: 
@@ -390,7 +416,7 @@ function stab() {
     console.log(`Stab fucntion active`)
     d4one = Math.floor(Math.random() * (5 - 1) + 1)
     d4two = Math.floor(Math.random() * (5 - 1) + 1)
-    
+
     if (player.dex >= 6 && player.rapier >= 1) {
       d12 += 4
     } else if (player.con >= 6 && player.shortSword >= 1) {
@@ -505,51 +531,45 @@ function combat(one, two, three) {
       enemy1 = GuardGen4
       break;
     case 23:
-      enemy1 = BanditGen3
-      break;
-    case 24:
-      enemy1 = BanditGen4
-      break;
-    case 25:
       enemy1 = Archer1
       break;
-    case 26:
+    case 24:
       enemy1 = Archer2
       break;
-    case 27:
+    case 25:
       enemy1 = ArcherGen1
       break;
-    case 28:
+    case 26:
       enemy1 = ArcherGen2
       break;
-    case 29:
+    case 27:
       enemy1 = Genral
       break;
-    case 30:
+    case 28:
       enemy1 = Bear1
       break;
-    case 31:
+    case 29:
       enemy1 = Bear2
       break;
-    case 32:
+    case 30:
       enemy1 = Wolf1
       break;
-    case 33:
+    case 31:
       enemy1 = Wolf2
       break;
-    case 34:
+    case 32:
       enemy1 = Dragon
       break;
-    case 35:
+    case 33:
       enemy1 = AlphaWolf
       break;
-    case 36:
+    case 34:
       enemy1 = FirstHenry
       break;
-    case 37:
+    case 35:
       enemy1 = SecondHenry
       break;
-    case 38:
+    case 36:
       enemy1 = Yourself
       break;
     default:
@@ -622,52 +642,49 @@ function combat(one, two, three) {
     case 22:
       enemy2 = GuardGen4
       break;
+    case 22:
+      enemy1 = GuardGen4
+      break;
     case 23:
-      enemy2 = BanditGen3
-      break;
-    case 24:
-      enemy2 = BanditGen4
-      break;
-    case 25:
       enemy2 = Archer1
       break;
-    case 26:
+    case 24:
       enemy2 = Archer2
       break;
-    case 27:
+    case 25:
       enemy2 = ArcherGen1
       break;
-    case 28:
+    case 26:
       enemy2 = ArcherGen2
       break;
-    case 29:
+    case 27:
       enemy2 = Genral
       break;
-    case 30:
+    case 28:
       enemy2 = Bear1
       break;
-    case 31:
+    case 29:
       enemy2 = Bear2
       break;
-    case 32:
+    case 30:
       enemy2 = Wolf1
       break;
-    case 33:
+    case 31:
       enemy2 = Wolf2
       break;
-    case 34:
+    case 32:
       enemy2 = Dragon
       break;
-    case 35:
+    case 33:
       enemy2 = AlphaWolf
       break;
-    case 36:
+    case 34:
       enemy2 = FirstHenry
       break;
-    case 37:
+    case 35:
       enemy2 = SecondHenry
       break;
-    case 38:
+    case 36:
       enemy2 = Yourself
       break;
     default:
@@ -740,52 +757,49 @@ function combat(one, two, three) {
     case 22:
       enemy3 = GuardGen4
       break;
+    case 22:
+      enemy3 = GuardGen4
+      break;
     case 23:
-      enemy3 = BanditGen3
-      break;
-    case 24:
-      enemy3 = BanditGen4
-      break;
-    case 25:
       enemy3 = Archer1
       break;
-    case 26:
+    case 24:
       enemy3 = Archer2
       break;
-    case 27:
+    case 25:
       enemy3 = ArcherGen1
       break;
-    case 28:
+    case 26:
       enemy3 = ArcherGen2
       break;
-    case 29:
+    case 27:
       enemy3 = Genral
       break;
-    case 30:
+    case 28:
       enemy3 = Bear1
       break;
-    case 31:
+    case 29:
       enemy3 = Bear2
       break;
-    case 32:
+    case 30:
       enemy3 = Wolf1
       break;
-    case 33:
+    case 31:
       enemy3 = Wolf2
       break;
-    case 34:
+    case 32:
       enemy3 = Dragon
       break;
-    case 35:
+    case 33:
       enemy3 = AlphaWolf
       break;
-    case 36:
+    case 34:
       enemy3 = FirstHenry
       break;
-    case 37:
+    case 35:
       enemy3 = SecondHenry
       break;
-    case 38:
+    case 36:
       enemy3 = Yourself
       break;
     default:
@@ -1117,13 +1131,14 @@ function endCombat() {
   if (playerHp <= 0) {
     newText = `You have been killed and won't be missed`
     showTextNode(13)
+    playerHp = 150
   }
-  else if (enemy1.enemyHp <= 0 && enemy2.enemyHp <= 0 && enemy3.enemyHp <= 0 && combatQuestion === true) {
+  else if (enemy1.enemyHp <= 0 && enemy2.enemyHp <= 0 && enemy3.enemyHp <= 0|| enemy1.enemyHp <= 0 && enemy2.enemyHp <= 0 && enemy3.enemyHp <= 0) {
     attack = false
     combatQuestion = false
+    playerHp = 150
+    newText = `You have won the battle`
     showTextNode(endingNode)
-    newText = `You made it out of the battle as the victor.`
-    updateText()
   } else { console.log(`The end function did not work`) }
 }
 
@@ -1134,11 +1149,11 @@ function updateText() {
 
 //holds all the story elements along with the options
 
-// this is way to hide options if item/requiredPlayer: (currentState) => {currentState.str >= 1}
+// this is way to hide options if item/  requiredPlayer: (currentState) => {currentState.str >= 1}
 let textNodes = [
   {
     id: 1, //story element or story part or section
-    text: `Welcome to our Knight text adventure, click Play to start`, //text was is visable first
+    text: `Welcome to our Knight text adventure, click Play to start. This is the play test version`, //text was is visable first
     options: [ //creates the options
       { //to set something: setPlayer: {},
         //to require player: requiredPlayer: {element boolien elemenet},
@@ -1158,7 +1173,7 @@ let textNodes = [
   },
   {
     id: 2,
-    text: `This is a text adventure made for our CART lab. This was made in just about 6 week from planning to coding. There are lots of paths for you to take and many endings. Along with a combat system, Have Fun!`,
+    text: `This is a text adventure made for our CART lab. This was made in just about 6 week from planning to coding. There are lots of paths for you to take and many endings. Along with a combat system. The combat makes you roll dice to do actions, and stats can buff that dice roll, Have Fun!`,
     options: [
       {
         text: `Back`,
@@ -1198,7 +1213,7 @@ let textNodes = [
     text: `You are fighting a Bandit with the king next.`,
     options: [
       {
-        text: `Slash`,
+        text: `Slash/Shoot`,
         nextText: 5
       },
       {
@@ -1210,7 +1225,7 @@ let textNodes = [
         nextText: 9
       },
       {
-        text: `Stab`,
+        text: `Stab/Bow Bite`,
         nextText: 10
       },
       {
@@ -1248,7 +1263,6 @@ let textNodes = [
       }
     ],
     none: true,
-    updateText: true,
     continueCombat: true
   },
   {
@@ -1256,7 +1270,7 @@ let textNodes = [
     text: `Finish off the enemies`,
     options: [
       {
-        text: `Slash`,
+        text: `Slash/Shoot`,
         nextText: 5
       },
       {
@@ -1268,7 +1282,7 @@ let textNodes = [
         nextText: 9
       },
       {
-        text: `Stab`,
+        text: `Stab/Bow Bite`,
         nextText: 10
       },
       {
@@ -1280,6 +1294,7 @@ let textNodes = [
         nextText: 12
       }
     ],
+    continueCombat: true
   },
   {
     id: 8,
@@ -1368,7 +1383,7 @@ let textNodes = [
   },
   {
     id: 14,
-    text: `You have been murdered without completing your mission`,
+    text: `(Play Test Version) Warning, this version only has combat because story is not done yet, also the blue box is the screen and that is not done yet too.`,
     options: [
       {
         text: `Next`,
@@ -1378,7 +1393,7 @@ let textNodes = [
   },
   {
     id: 15,
-    text: `You can't let this happen again`,
+    text: `Some stats used with the right actions can buff your damage by adding to your dice roll, but first you need a weapon`,
     options: [
       {
         text: `Next`,
@@ -1388,14 +1403,439 @@ let textNodes = [
   },
   {
     id: 16,
-    text: `Our story begins in a small town near a large river named Musia. The town is important to the trade in the eara due to its conveint location inbetween two empires. One of these Empires have decided to declare war on the Empire Britainia. These town has been taken over by the ___ Empire, where they are setting many bad polcies in place that negaite many of the econmic benfits of the trade in the area.`,
+    text: `Pick a weapon.`,
     options: [
       {
-        text: `Next`,
-        nextText: 16
+        text: `Bow
+        (Best while using Shoot)`,
+        nextText: 17,
+        setPlayer: { bow: 1 }
+      },
+      {
+        text: `Great Axe
+        (Best while using Slash)`,
+        nextText: 17,
+        setPlayer: { greatAxe: 1 }
+      },
+      {
+        text: `Rapier
+        (Best while using Stab)`,
+        nextText: 17,
+        setPlayer: { rapier: 1 }
+      },
+      {
+        text: `Short Sword
+        (Best while using Stab)`,
+        nextText: 17,
+        setPlayer: { shortSword: 1 }
+      },
+      {
+        text: `Spear
+        (Best whilst having more HP)`,
+        nextText: 17,
+        setPlayer: { spear: 1 }
+      },
+    ],
+  },
+  {
+    id: 17,
+    text: `Set some stats, every 3 of one stat buffs a action in some way (Max of 10, and these are not adding your stats, they are setting).`,
+    options: [
+      {
+        text: `Constitution 3
+         (Best with Scare, Heal Potions, and gives more HP)`,
+        nextText: 18,
+        setPlayer: { con: 3 }
+      },
+      {
+        text: `Strength 3
+         (Best with Slash and Scare)`,
+        nextText: 19,
+        setPlayer: { str: 3 }
+      },
+      {
+        text: `Dexterity 3
+         (Better with Stab)`,
+        nextText: 19,
+        setPlayer: { dex: 3 }
+      },
+      {
+        text: `Wisdom 3
+         (Better with Persuade, Pendant, and Heal Potions)`,
+        nextText: 18,
+        setPlayer: { wis: 3 }
+      },
+      {
+        text: `Charisma 4
+         (Very Best with Persuade)`,
+        nextText: 18,
+        setPlayer: { cha: 4 }
+      },
+    ],
+  },
+  {
+    id: 18,
+    text: `Set some stats, every 3 of one stat buffs a action in some way (Max of 10, and these are not adding your stats, they are setting).`,
+    options: [
+      {
+        text: `Constitution 4 & Wisdom 5`,
+        nextText: 20,
+        setPlayer: { con: 4, wis: 5 }
+      },
+      {
+        text: `Charisma 6 & Wisdom 4`,
+        nextText: 21,
+        setPlayer: { cha: 6, wis: 4 }
+      },
+      {
+        text: `Constitution 4 & Strength 4`,
+        nextText: 22,
+        setPlayer: { con: 4, str: 4 }
+      },
+    ],
+  },
+  {
+    id: 19,
+    text: `Set some stats, every 3 of one stat buffs a action in some way (Max of 10, and these are not adding your stats, they are setting).`,
+    options: [
+      {
+        text: `Strength 6 & Constitution 4`,
+        nextText: 22,
+        setPlayer: { str: 6, con: 4 }
+      },
+      {
+        text: `Constitution 5 & Dexterity 5`,
+        nextText: 20,
+        setPlayer: { con: 5, dex: 5 }
+      },
+      {
+        text: `Dexterity 5 & Charisma 5`,
+        nextText: 21,
+        setPlayer: { dex: 5, cha: 5 }
+      },
+    ],
+  },
+  {
+    id: 20,
+    text: `Set some stats, every 3 of one stat buffs a action in some way (Max of 10, and these are not adding your stats, they are setting).`,
+    options: [
+      {
+        text: `Constitution 7 & Charisma 4`,
+        nextText: 23,
+        setPlayer: { con: 7, cha: 4 }
+      },
+      {
+        text: `Constitution 9 & Strength 5`,
+        nextText: 23,
+        setPlayer: { con: 9, str: 5 }
+      },
+      {
+        text: `Dexterity 7 & Wisdom 6`,
+        nextText: 23,
+        setPlayer: { dex: 7, wis: 6 }
+      },
+      {
+        text: `Wisdom 10`,
+        nextText: 23,
+        setPlayer: { wis: 10 }
+      },
+      {
+        text: `Constitution 10`,
+        nextText: 23,
+        setPlayer: { con: 10 }
       }
     ],
-  }
+  },
+  {
+    id: 21,
+    text: `Set some stats, every 3 of one stat buffs a action in some way (Max of 10, and these are not adding your stats, they are setting).`,
+    options: [
+      {
+        text: `Strength 6 & Dexterity 6`,
+        nextText: 23,
+        setPlayer: { str: 6, dex: 6 },
+      },
+      {
+        text: `Charisma 7 & Constitution 5`,
+        nextText: 23,
+        setPlayer: { cha: 7, con: 5 },
+      },
+      {
+        text: `Wisdom 7 & Charisma 8`,
+        nextText: 23,
+        setPlayer: { wis: 7, cha: 8 }
+      },
+      {
+        text: `Charisma 10`,
+        nextText: 23,
+        setPlayer: { cha: 10 }
+      },
+    ],
+  },
+  {
+    id: 22,
+    text: `Set some stats, every 3 of one stat buffs a action in some way (Max of 10, and these are not adding your stats, they are setting).`,
+    options: [
+      {
+        text: `Strength 7 & Constitution 7`,
+        nextText: 23,
+        setPlayer: { str: 7, con: 7 }
+      },
+      {
+        text: `Constitution 6 & Dexterity 6`,
+        nextText: 23,
+        setPlayer: { con: 6, dex: 6 }
+      },
+      {
+        text: `Dexterity 6 & Wisdom 5`,
+        nextText: 23,
+        setPlayer: { dex: 6, wis: 5 }
+      },
+      {
+        text: `Strength 10`,
+        nextText: 23,
+        setPlayer: { str: 10 }
+      },
+      {
+        text: `Dexterity 10`,
+        nextText: 23,
+        setPlayer: { dex: 10 }
+      },
+    ],
+  },
+  {
+    id: 23,
+    text: `After all those stats, chose how hard you want the battle to be`,
+    options: [
+      {
+        text: `Easy`,
+        nextText: 24,
+      },
+      {
+        text: `Normal`,
+        nextText: 25,
+      },
+      {
+        text: `Hard`,
+        nextText: 26,
+      },
+    ]
+  },
+  {
+    id: 24,
+    text: `You are fighting a two Bandits.`,
+    options: [
+      {
+        text: `Slash/Shoot`,
+        nextText: 5
+      },
+      {
+        text: `Heal Potions`,
+        nextText: 8
+      },
+      {
+        text: `Scare`,
+        nextText: 9
+      },
+      {
+        text: `Stab/Bow Bite`,
+        nextText: 10
+      },
+      {
+        text: `Pendant of Pain`,
+        nextText: 11
+      },
+      {
+        text: `Persuade`,
+        nextText: 12
+      }
+    ],
+    startCombat: 1
+  },
+  {
+    id: 25,
+    text: `You are fighting a Bandit then wolf, then Bandit Leader following after.`,
+    options: [
+      {
+        text: `Slash/Shoot`,
+        nextText: 5
+      },
+      {
+        text: `Heal Potions`,
+        nextText: 8
+      },
+      {
+        text: `Scare`,
+        nextText: 9
+      },
+      {
+        text: `Stab/Bow Bite`,
+        nextText: 10
+      },
+      {
+        text: `Pendant of Pain`,
+        nextText: 11
+      },
+      {
+        text: `Persuade`,
+        nextText: 12
+      }
+    ],
+    startCombat: 2
+  },
+  {
+    id: 26,
+    text: `You are fighting 2 different Guards, and their Genral last.`,
+    options: [
+      {
+        text: `Slash/Shoot`,
+        nextText: 5
+      },
+      {
+        text: `Heal Potions`,
+        nextText: 8
+      },
+      {
+        text: `Scare`,
+        nextText: 9
+      },
+      {
+        text: `Stab/Bow Bite`,
+        nextText: 10
+      },
+      {
+        text: `Pendant of Pain`,
+        nextText: 11
+      },
+      {
+        text: `Persuade`,
+        nextText: 12
+      }
+    ],
+    startCombat: 3
+  },
+  {
+    id: 27,
+    text: `You have won on easy mode, gg but do better.`,
+    options: [
+      {
+        text: `OK, I won't have a skill issue next time`,
+        nextText: 30
+      },
+
+    ],
+    continueCombat: true
+  },
+  {
+    id: 28,
+    text: `You won on normal, GG. You are a gamer.`,
+    options: [
+      {
+        text: `Ok :)`,
+        nextText: 30
+      },
+    ],
+    continueCombat: true
+  },
+  {
+    id: 29,
+    text: `YOU WON ON HARD, GG. I didn't even play test this one and you beat it.`,
+    options: [
+      {
+        text: `I am just built different`,
+        setPlayer: { key: 1 },
+        nextText: 30
+      },
+    ],
+    continueCombat: true
+  },
+  {
+    id: 30,
+    text: ` Thank you for playing this play test version, this will help me see if I need to change some combat things.`,
+    options: [
+      {
+        text: `Restart`,
+        nextText: -1
+      },
+      {
+        text: `Open the boss door using the key?!`,
+        requiredPlayer: (currentState) => { currentState.key >= 1 },
+        nextText: 31
+      },
+    ],
+  },
+  {
+    id: 31,
+    text: `Wait how did you... oh never mind. If you wan to fight the boss pick one stat to max out first. Choose Wisely.`,
+    options: [
+      {
+        text: `Constitution 10`,
+        nextText: 32,
+        setPlayer: { con: 10 }
+      },
+      {
+        text: `Strength 10`,
+        nextText: 32,
+        setPlayer: { str: 10 }
+      },
+      {
+        text: `Dexterity 10`,
+        nextText: 32,
+        setPlayer: { dex: 10 }
+      },
+      {
+        text: `Wisdom 10`,
+        nextText: 32,
+        setPlayer: { wis: 10 }
+      },
+      {
+        text: `Charisma 10`,
+        nextText: 32,
+        setPlayer: { cha: 10 }
+      },
+    ],
+  },
+  {
+    id: 32,
+    text: `You are fighting 2 different Guards, and their <<KING>> last.`,
+    options: [
+      {
+        text: `Slash/Shoot`,
+        nextText: 5
+      },
+      {
+        text: `Heal Potions`,
+        nextText: 8
+      },
+      {
+        text: `Scare`,
+        nextText: 9
+      },
+      {
+        text: `Stab/Bow Bite`,
+        nextText: 10
+      },
+      {
+        text: `Pendant of Pain`,
+        nextText: 11
+      },
+      {
+        text: `Persuade`,
+        nextText: 12
+      }
+    ],
+    startCombat: 4
+  },
+  {
+    id: 33,
+    text: `YOU WON ON THE BOSS, GG. I REALLY didn't play test this one and you beat it.`,
+    options: [
+      {
+        text: `I AM THE BEST IN THE WORLD (restart).`,
+        nextText: -1
+      },
+    ],
+  },
 ]
 
 startGame()
