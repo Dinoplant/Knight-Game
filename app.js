@@ -49,7 +49,7 @@ let Dragon = new Enemy(`The Dragon`, 300, 0, 350, 10, 10)
 let AlphaWolf = new Enemy(`The Alpha Wolf`, 70, -20, 90, 5, 5)
 let FirstHenry = new Enemy(`Henry`, 400, 0, 700, 15, 10)
 let SecondHenry = new Enemy(`Henry`, 250, 0, 300, 10, 7)
-let Yourself = new Enemy(`Youself`, 1000, 0, 3000, 0, 0)
+let Yourself = new Enemy(`Yourself`, 1000, 0, 3000, 0, 0)
 
 const textElement = document.getElementById('text'); //gets the ids from the html to change the text for the story
 const optionButtonsElement = document.getElementById('btnOptions');
@@ -122,7 +122,7 @@ function startGame() {
 function showTextNode(textNodeIndex) { // goes through tthe text nodes checks what I put for the text and changes the text in the HTML
   const textNode = textNodes.find(textNode => textNode.id === textNodeIndex)
   textElement.innerText = textNode.text
-  if (textNode.startCombat === 1) { //just checks is a paramantor to see if combat starts
+  if (textNode.startCombat === 1 && enemy1.enemyHp >= .1 && enemy2.enemyHp <= 0 && enemy3.enemyHp <= 0) { //just checks is a paramantor to see if combat starts
     console.log('combat mode engaged');
     combatQuestion = false
     newText = `You are fighting a two Bandits.`
@@ -405,6 +405,9 @@ function slash() { //combat function only works if the combat funation is true a
       d12 += 3
     } else if (player.str >= 3) {
       d12 += 2
+    }
+    if (player.debug >= 1){
+      d12 += 120
     }
     damage = (d12 * multi) * 1.5
     attack = true
@@ -850,6 +853,7 @@ function combat(one, two, three) {
       damage = 0
       heal = 0
       attack = false
+
     }
   }
   function battle2() {
@@ -922,10 +926,9 @@ function combat(one, two, three) {
       attack = false
     }
   }
-  attack = false
-  damage = 0
   updateText()
   if (playerHp <= 0) {
+    console.log(`the has died in the combat, combat detected death`)
     endCombat()
   }
 }
@@ -1128,13 +1131,16 @@ function talking() {
   }
 }
 function endCombat() {
+  console.log(combatQuestion, playerHp)
+
   if (playerHp <= 0) {
     newText = `You have been killed and won't be missed`
     showTextNode(13)
     playerHp = 150
   }
-  else if (enemy1.enemyHp <= 0 && enemy2.enemyHp <= 0 && enemy3.enemyHp <= 0|| enemy1.enemyHp <= 0 && enemy2.enemyHp <= 0 && enemy3.enemyHp <= 0) {
+  else if (enemy1.enemyHp <= 0 && enemy2.enemyHp <= 0 && enemy3.enemyHp <= 0 && combatQuestion === true || enemy1.enemyHp <= 0 && enemy2.enemyHp <= 0 && enemy3.enemyHp <= 0 && combatQuestion === true) {
     attack = false
+    console.log(`this did go in the end winning combat`)
     combatQuestion = false
     playerHp = 150
     newText = `You have won the battle`
@@ -1207,37 +1213,6 @@ let textNodes = [
         nextText: 1
       }
     ],
-  },
-  {
-    id: 4,
-    text: `You are fighting a Bandit with the king next.`,
-    options: [
-      {
-        text: `Slash/Shoot`,
-        nextText: 5
-      },
-      {
-        text: `Heal Potions`,
-        nextText: 8
-      },
-      {
-        text: `Scare`,
-        nextText: 9
-      },
-      {
-        text: `Stab/Bow Bite`,
-        nextText: 10
-      },
-      {
-        text: `Pendant of Pain`,
-        nextText: 11
-      },
-      {
-        text: `Persuade`,
-        nextText: 12
-      }
-    ],
-    startCombat: 1 //depending on the number combat will change emenies or allies
   },
   {
     id: 5,
@@ -1650,7 +1625,8 @@ let textNodes = [
         nextText: 12
       }
     ],
-    startCombat: 1
+    startCombat: 1,
+    continueCombat: true
   },
   {
     id: 25,
