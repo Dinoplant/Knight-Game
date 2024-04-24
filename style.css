@@ -46,12 +46,18 @@ main {
     height: 100%;
 }
 
-.inventory {
+.inventory { 
+    display: flex;
+    padding: 10px;
+    flex-direction: column;
+    align-items: center;
+    color: white;
     border: 4mm ridge #FFFFFF;
     border-bottom: 0mm;
-    background-color: #98572b;
+    background-color: #693f15;
     width: 20%;
     height: 100%;
+   
 }
 
 .storyDisplay {
@@ -109,6 +115,7 @@ main {
     border-color: #000000;
     color: rgb(79, 10, 10)
 }
+
 
 /* max 1873px > 117rem .06
 min 470px >29.3rem .37
