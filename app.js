@@ -81,6 +81,7 @@ let enemy1 = None1
 let enemy2 = None2
 let enemy3 = None3
 let endingNode = 0
+let combatEnded = false
 
 let player = {
   wis: 0,
@@ -122,38 +123,39 @@ function startGame() {
 function showTextNode(textNodeIndex) { // goes through tthe text nodes checks what I put for the text and changes the text in the HTML
   const textNode = textNodes.find(textNode => textNode.id === textNodeIndex)
   textElement.innerText = textNode.text
-  if (textNode.startCombat === 1 && enemy1.enemyHp >= .1 && enemy2.enemyHp <= 0 && enemy3.enemyHp <= 0) { //just checks is a paramantor to see if combat starts
+  if (textNode.startCombat === 1 && combatEnded === false) { //just checks is a paramantor to see if combat starts
     console.log('combat mode engaged');
     combatQuestion = false
     newText = `You are fighting a two Bandits.`
-    endingNode = 24
+    endingNode = 27
     startCombat()
     combat(7, 11, 1)
 
-  } else if (textNode.startCombat === 2) { //just checks is a paramantor to see if combat starts
+  } else if (textNode.startCombat === 2 && combatEnded === false) { //just checks is a paramantor to see if combat starts
     console.log('combat mode engaged');
     combatQuestion = false
     newText = `You are fighting a Bandit then a Bear, then Bandit Leader following after.`
-    endingNode = 25
+    endingNode = 28
     startCombat()
     combat(9, 28, 15)
 
-  } else if (textNode.startCombat === 3) { //just checks is a paramantor to see if combat starts
+  } else if (textNode.startCombat === 3 && combatEnded === false) { //just checks is a paramantor to see if combat starts
     console.log('combat mode engaged');
     combatQuestion = false
     newText = `You are fighting 2 different Guards, and their Genral last.`
-    endingNode = 26
+    endingNode = 29
     startCombat()
     combat(14, 22, 27)
 
   }
-  else if (textNode.startCombat === 4) { //just checks is a paramantor to see if combat starts
+  else if (textNode.startCombat === 4 && combatEnded === false) { //just checks is a paramantor to see if combat starts
     console.log('combat mode engaged');
     combatQuestion = false
     newText = `You are fighting 2 different Guards, and their <<KING>> last.`
-    startCombat()
+      endingNode = 33
+      startCombat()
     combat(19, 21, 35)
-    endingNode = 15
+  
   }
   else if (textNode.continueCombat === true) { //checks if you are continue combat
     console.log('combat mode cont');
@@ -406,7 +408,7 @@ function slash() { //combat function only works if the combat funation is true a
     } else if (player.str >= 3) {
       d12 += 2
     }
-    if (player.debug >= 1){
+    if (player.debug >= 1) {
       d12 += 120
     }
     damage = (d12 * multi) * 1.5
@@ -464,6 +466,7 @@ function startCombat() {
   if (player.debug >= 1) {
     playerHp = 690
   }
+
 }
 function combat(one, two, three) {
   switch (one) {
@@ -1132,13 +1135,16 @@ function talking() {
 }
 function endCombat() {
   console.log(combatQuestion, playerHp)
-
+  if (enemy1.enemyHp <= 0 && enemy2.enemyHp <= 0 && enemy3.enemyHp <= 0) {
+    combatEnded = true
+    console.log(`combat ended is true now`)
+  }
   if (playerHp <= 0) {
     newText = `You have been killed and won't be missed`
     showTextNode(13)
     playerHp = 150
   }
-  else if (enemy1.enemyHp <= 0 && enemy2.enemyHp <= 0 && enemy3.enemyHp <= 0 && combatQuestion === true || enemy1.enemyHp <= 0 && enemy2.enemyHp <= 0 && enemy3.enemyHp <= 0 && combatQuestion === true) {
+  else if (combatQuestion === true && combatEnded === true) {
     attack = false
     console.log(`this did go in the end winning combat`)
     combatQuestion = false
@@ -1804,6 +1810,16 @@ let textNodes = [
   },
   {
     id: 33,
+    text: `YOU WON ON THE BOSS, GG. I REALLY didn't play test this one and you beat it.`,
+    options: [
+      {
+        text: `I AM THE BEST IN THE WORLD (restart).`,
+        nextText: -1
+      },
+    ],
+  },
+  {
+    id: 34,
     text: `YOU WON ON THE BOSS, GG. I REALLY didn't play test this one and you beat it.`,
     options: [
       {
