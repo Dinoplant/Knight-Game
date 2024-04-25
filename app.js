@@ -20,9 +20,9 @@ let Bandit4 = new Enemy(`Johnson the Bandit`, 40, 0, 35, 0, 0) //7
 let Bandit5 = new Enemy(`Nick the Bandit`, 30, 10, 80, 0, 0)//8
 let BanditGen1 = new Enemy(`The Bandit`, 35, 10, 40, 0, 0) //9 
 let BanditGen2 = new Enemy(`The Bandit`, 20, 0, 50, 0, 0) // 10
-let BanditGen3 = new Enemy(`The Bandit`, 50, 20, 100, 0, 0)
-let BanditGen4 = new Enemy(`The Bandit`, 25, 0, 55, 0, 0)
-let LeadBandit = new Enemy(`Bandit Leader`, 50, 0, 100, 10, 0)
+let BanditGen3 = new Enemy(`The Bandit`, 50, 20, 100, 0, 0) //11
+let BanditGen4 = new Enemy(`The Bandit`, 25, 0, 55, 0, 0) //12
+let LeadBandit = new Enemy(`Bandit Leader`, 50, 0, 100, 10, 0) //13
 
 let Guard1 = new Enemy(`Eligh the Guard`, 70, 10, 120, 6, 2)
 let Guard2 = new Enemy(`Guston the Guard`, 60, 0, 70, 8, 0)
@@ -63,7 +63,7 @@ let d20 = 0
 let pendant = 1
 let combatQuestion = false
 let continueCombat = false
-let playerHp = 150
+let playerHp = 175
 let beforePotPlayerHp = 0
 let afterPotPlayerHp = 0
 let onlyEnemy = 0
@@ -113,7 +113,7 @@ function startGame() {
     greatAxe: 0,
     spear: 0,
     shortSword: 0,
-    healPot: 7,
+    healPot: 0,
     jade: 0,
     key: 0,
     debug: 0,
@@ -124,12 +124,18 @@ function startGame() {
 function showTextNode(textNodeIndex) { // goes through tthe text nodes checks what I put for the text and changes the text in the HTML
   const textNode = textNodes.find(textNode => textNode.id === textNodeIndex)
   textElement.innerText = textNode.text
-  if (textNode.startCombat === 1 && combatEnded === false) { //starts the combat
+  if (textNode.startCombat === 1 && combatEnded === false) { //starts the combat first
     console.log('combat mode engaged');
     combatQuestion = false;
     endingNode = 50;
     startCombat();
     combat(6, 10, 1); //ending id
+  } else if (textNode.startCombat === 2 && combatEnded === false) { //starts the combat 2nd
+    console.log('combat mode engaged');
+    combatQuestion = false;
+    endingNode = 83;
+    startCombat();
+    combat(6, 10, 13); //ending id
   }
   else if (textNode.continueCombat === true) { //checks if you are continue combat
     console.log('combat mode cont');
@@ -452,12 +458,12 @@ function stab() {
 // comstumizable combat system, it has evrything needed
 function startCombat() {
   if (player.con >= 9 && combatQuestion === true) {
-    playerHp = 200
+    playerHp = 225
   } else if (player.con >= 6) {
-    playerHp = 175
+    playerHp = 190
   } else if (player.con >= 3) {
-    playerHp = 160
-  } else { playerHp = 150 }
+    playerHp = 185
+  } else { playerHp = 175 }
   console.log(`Start COmbat is being used`)
   //debug
   if (player.debug >= 1) {
@@ -837,7 +843,7 @@ function combat(one, two, three) {
       } else if (attack === true) {
         enemy1.enemyHp -= Math.floor(damage)
         enemyD20 = Math.floor((Math.random() * (21 - 1) + 1) + enemy1.extraRoll)
-        enemyD20 = Math.floor((enemyD20 * 1.7) + enemy1.extraDamage)
+        enemyD20 = Math.floor((enemyD20 * 1.5) + enemy1.extraDamage)
         playerHp -= Math.floor(enemyD20)
         newText = (`${enemy1.enemyName} did ${enemyD20} damage to you which leaves you with <<${playerHp} HP>> left. You did ${damage} damage, leaving them with <${enemy1.enemyHp} HP> left.`)
         multi = 1
@@ -872,7 +878,7 @@ function combat(one, two, three) {
       } else if (attack === true) {
         enemy2.enemyHp -= Math.floor(damage)
         enemyD20 = Math.floor((Math.random() * (21 - 1) + 1) + enemy2.extraRoll)
-        enemyD20 = Math.floor((enemyD20 * 1.7) + enemy2.extraDamage)
+        enemyD20 = Math.floor((enemyD20 * 1.5) + enemy2.extraDamage)
         playerHp -= Math.floor(enemyD20)
         newText = (`${enemy2.enemyName} did ${enemyD20} damage to you which leaves you with <<${playerHp} HP>> left. You did ${damage} damage, leaving them with <${enemy2.enemyHp} HP> left.`)
         multi = 1
@@ -907,7 +913,7 @@ function combat(one, two, three) {
       } else if (attack === true) {
         enemy3.enemyHp -= Math.floor(damage)
         enemyD20 = Math.floor((Math.random() * (21 - 1) + 1) + enemy3.extraRoll)
-        enemyD20 = Math.floor((enemyD20 * 1.7) + enemy3.extraDamage)
+        enemyD20 = Math.floor((enemyD20 * 1.5) + enemy3.extraDamage)
         playerHp -= Math.floor(enemyD20)
         newText = (`${enemy3.enemyName} did ${enemyD20} damage to you which leaves you with <<${playerHp} HP>> left. You did ${damage} damage, leaving them with <${enemy3.enemyHp} HP> left.`)
         multi = 1
@@ -946,7 +952,7 @@ function talking() {
         talk = Math.floor(talk * 1.7)
         enemy1.enemyPeace += talk
         enemyD20 = Math.floor((Math.random() * (21 - 1) + 1) + enemy1.extraRoll)
-        enemyD20 = Math.floor((enemyD20 * 1.7) + enemy1.extraDamage)
+        enemyD20 = Math.floor((enemyD20 * 1.5) + enemy1.extraDamage)
         playerHp -= Math.floor(enemyD20)
         if (enemy1.enemyPeace >= enemy1.neededEnemyPeace) {
           enemy1.enemyHp = 0
@@ -957,7 +963,7 @@ function talking() {
       } else if (talk <= 12) {
         console.log(`did not make it for the talk`)
         enemyD20 = Math.floor((Math.random() * (21 - 1) + 1) + enemy1.extraRoll)
-        enemyD20 = Math.floor((enemyD20 * 1.7) + enemy1.extraDamage)
+        enemyD20 = Math.floor((enemyD20 * 1.5) + enemy1.extraDamage)
         playerHp -= Math.floor(enemyD20)
         d4one = Math.floor(Math.random() * (5 - 1) + 1)
         if (type === `sca`) {
@@ -1004,7 +1010,7 @@ function talking() {
         talk = Math.floor(talk * 1.7)
         enemy2.enemyPeace += talk
         enemyD20 = Math.floor((Math.random() * (21 - 1) + 1) + enemy2.extraRoll)
-        enemyD20 = Math.floor((enemyD20 * 1.7) + enemy2.extraDamage)
+        enemyD20 = Math.floor((enemyD20 * 1.5) + enemy2.extraDamage)
         playerHp -= Math.floor(enemyD20)
         if (enemy2.enemyPeace >= enemy2.neededEnemyPeace) {
           enemy2.enemyHp = 0
@@ -1015,7 +1021,7 @@ function talking() {
       } else if (talk <= 12) {
         console.log(`did not make it for the talk`)
         enemyD20 = Math.floor((Math.random() * (21 - 1) + 1) + enemy2.extraRoll)
-        enemyD20 = Math.floor((enemyD20 * 1.7) + enemy2.extraDamage)
+        enemyD20 = Math.floor((enemyD20 * 1.5) + enemy2.extraDamage)
         playerHp -= Math.floor(enemyD20)
         d4one = Math.floor(Math.random() * (5 - 1) + 1)
         if (type === `sca`) {
@@ -1063,7 +1069,7 @@ function talking() {
         talk = Math.floor(talk * 1.7)
         enemy3.enemyPeace += talk
         enemyD20 = Math.floor((Math.random() * (21 - 1) + 1) + enemy3.extraRoll)
-        enemyD20 = Math.floor((enemyD20 * 1.7) + enemy3.extraDamage)
+        enemyD20 = Math.floor((enemyD20 * 1.5) + enemy3.extraDamage)
         playerHp -= Math.floor(enemyD20)
         if (enemy3.enemyPeace >= enemy3.neededEnemyPeace) {
           enemy3.enemyHp = 0
@@ -1074,7 +1080,7 @@ function talking() {
       } else if (talk <= 12) {
         console.log(`did not make it for the talk`)
         enemyD20 = Math.floor((Math.random() * (21 - 1) + 1) + enemy3.extraRoll)
-        enemyD20 = Math.floor((enemyD20 * 1.7) + enemy3.extraDamage)
+        enemyD20 = Math.floor((enemyD20 * 1.5) + enemy3.extraDamage)
         playerHp -= Math.floor(enemyD20)
         d4one = Math.floor(Math.random() * (5 - 1) + 1)
         if (type === `sca`) {
@@ -1133,13 +1139,13 @@ function endCombat() {
   if (playerHp <= 0) {
     newText = `You have been killed and won't be missed`
     showTextNode(13)
-    playerHp = 150
+    playerHp = 175
   }
   else if (combatQuestion === true && combatEnded === true) {
     attack = false
     console.log(`this did go in the end winning combat`)
     combatQuestion = false
-    playerHp = 150
+    playerHp = 175
     newText = `You have won the battle`
     showTextNode(endingNode)
   } else { console.log(`The end function did not work`) }
@@ -1521,7 +1527,8 @@ let textNodes = [
     options: [
       {
         text: `Kitchen`,
-        nextText: 28
+        nextText: 28,
+        setPlayer: { healPot: 2 }
       },
       {
         text: `Your Room`,
@@ -1533,13 +1540,13 @@ let textNodes = [
       }
     ],
   },
-  {
+  { // gives the player 2 healing posions
     id: 28,
     text: 'You enter the kitchen, you do not know what you were expecting. Everything is burnt or broken. The place that you once ate at is now nothing but a place to grieve. You do find some of your healing potions in the chest under the table.',
     options: [
       {
-        text: `Kitchen`,
-        nextText: 27
+        text: `Back`,
+        nextText: 27,
       },
       {
         text: `Your Room`,
@@ -1557,10 +1564,11 @@ let textNodes = [
     options: [
       {
         text: `Kitchen`,
-        nextText: 28
+        nextText: 28,
+        setPlayer: { healPot: 2 }
       },
       {
-        text: `Your Room`,
+        text: `Back`,
         nextText: 27
       },
       {
@@ -1575,11 +1583,16 @@ let textNodes = [
     options: [
       {
         text: `Kitchen`,
-        nextText: 28
+        nextText: 28,
+        setPlayer: { healPot: 2 }
       },
       {
         text: `Your Room`,
         nextText: 29
+      },
+      {
+        text: `Back`,
+        nextText: 27
       },
       {
         text: `Examine the Room`,
@@ -2006,7 +2019,7 @@ let textNodes = [
     options: [
       {
         text: `What?`,
-        nextText: 67
+        nextText: 68
       }
     ],
   },
@@ -2021,7 +2034,359 @@ let textNodes = [
     ],
   },
   {// 
-    id: 61,
+    id: 68,
+    text: 'You walk into her home, it is very cossy, its been a few days since you have been in a functional house. Weapons covered the walls some of spears others of greataxes, she looks like she has been doing this for quite some time. You wonder why she is here alone, but you thought best not to mention that question',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 69
+      }
+    ],
+  },
+  {// 
+    id: 69,
+    text: 'Jack: "So why did you think I am a bandit, are they common around these parts?"',
+    options: [
+      {
+        text: `Listen`,
+        nextText: 70
+      }
+    ],
+  },
+  {// 
+    id: 70,
+    text: 'Marry: "Yes ever since there has been a change in leadership. They have been here more and more demanding more weapons, I am tired of suppling those idiots. The thing they do not know is that I have been giving them my worst weapons. I would do anything to get rid of those pests."',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 71
+      }
+    ],
+  },
+  {// 
+    id: 71,
+    text: 'Marry: "Why did you come out here?"',
+    options: [
+      {
+        text: `Explanation`,
+        nextText: 72
+      },
+    ],
+  },
+  {// 
+    id: 72,
+    text: 'Jack: "I am on a junory to find a mentor to help me learn how to get my revenge."',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 73
+      }
+    ],
+  },
+  {// 
+    id: 73,
+    text: 'Marry: "Hmmm, how about this. I will train you and you will help me take care of the bandits, how about it Jack?"',
+    options: [
+      {
+        text: `Yes, thankyou.`,
+        nextText: 74
+      }
+    ],
+  },
+  {// get to have more of a bonus to skills
+    id: 74,
+    text: 'You decide to join Marry and help her with the bandits. She losely teaches you how to use your weapons like a real warrior.',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 75.1
+      }
+    ],
+  },
+  {// 
+    id: 75.1,
+    text: 'After a year of working for Marry she finally started to teach you how to use a weapon instead of just using you as free labor.',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 75.2
+      }
+    ],
+  },
+  {// 
+    id: 75.2,
+    text: 'Marry: "Jack I will tell the basics of how to use your skills:"',
+    options: [
+      {
+        text: `Yes`,
+        nextText: 75.3
+      }
+    ],
+  },
+  {// 
+    id: 75.3,
+    text: 'Dex: is used for light attacks like stab and can be used to sneak out of your way out of things.',
+    options: [
+      {
+        text: `mhm`,
+        nextText: 75.4,
+      }
+    ],
+  },
+  {// 
+    id: 75.4,
+    text: 'Con: is used for bonus to health and can be used to scare enemies and heal more with potions.',
+    options: [
+      {
+        text: `Okay`,
+        nextText: 75.5,
+      }
+    ],
+  },
+  {// 
+    id: 75.5,
+    text: 'Wis: is used for persuading, knowing how to heal more with potions, and getting more benefit from the Pendant of Pain.',
+    options: [
+      {
+        text: `Yep`,
+        nextText: 75.6,
+      }
+    ],
+  },
+  {// 
+    id: 75.6,
+    text: 'Str: is used to add damage for slash damage and can scare your enemies.',
+    options: [
+      {
+        text: `Alright`,
+        nextText: 75.7,
+      }
+    ],
+  },
+  {// 
+    id: 75.7,
+    text: 'Cha: is used for talking your way out of situations.',
+    options: [
+      {
+        text: `Very cool`,
+        nextText: 75.8,
+      }
+    ],
+  },
+  {// input buttons for ability score
+    id: 75.8,
+    text: 'Pick your ability score',
+    options: [
+      {
+        text: `Cha (4)`,
+        nextText: 76,
+        setPlayer: {cha: 4}
+      },
+      {
+        text: `Dex (3)`,
+        nextText: 76,
+        setPlayer: {dex: 3}
+      },
+      {
+        text: `Wis (3)`,
+        nextText: 76,
+        setPlayer: {wis: 3}
+      },
+      {
+        text: `Str (3)`,
+        nextText: 76,
+        setPlayer: {str: 3}
+      },
+      {
+        text: `Con (3)`,
+        nextText: 76,
+        setPlayer: {con: 3}
+      },
+      {
+        text: `Back to info`,
+        nextText: 76,
+      },
+    ],
+  },
+  {// 
+    id: 76,
+    text: 'Marry: "I think its time we talk about you fighting the bandit leader. I have taught you as much as I could, they have been more involved in recent attacks with the local merchants that support my home. If you go kill the bandit leader I will make a great weapon for you."',
+    options: [
+      {
+        text: `Yes please`,
+        nextText: 77
+      },
+      {
+        text: `Gladly`,
+        nextText: 78
+      },
+      {
+        text: `Don’t Boss me around`,
+        nextText: 79
+      }
+    ],
+  },
+  {// 
+    id: 77,
+    text: 'Jack: "Thank you, Mrs. Marry, I will get the head of the bandit leader, then we can discuss other things afterwards."',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 80
+      }
+    ],
+  },
+  {// 
+    id: 78,
+    text: 'Jack: "I will gladly take out that mut. Its long over due for him to learn his lesson, I will get his head and prove my worth."',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 80
+      }
+    ],
+  },
+  {// 
+    id: 79,
+    text: 'Jack: "I will kill this man and I will get that weapon, then I can finally gey my revenge."',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 80
+      }
+    ],
+  },
+  {// 
+    id: 80,
+    text: 'You walk into the forest, you take out your map to see where they could be and you see the perfect place for a camp. You make your way there being a sneaky as possible knowning that one mistake could cost you everything.',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 81
+      }
+    ],
+  },
+  {// 
+    id: 81,
+    text: 'You wait till nightfall to attack, beat them at their own game. You get to the camp at dawn but you only see 3 different bandits, two goonies and the leader. You take your change your plan and decide to attack now before anyone else can help.',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 82
+      }
+    ],
+  },
+  {// conflict
+    id: 82,
+    text: 'You fight two bandits, and their leader after.',
+    options: [
+      {
+        text: `Slash`,
+        nextText: 5
+      },
+      {
+        text: `Heal Potions`,
+        nextText: 8
+      },
+      {
+        text: `Scare`,
+        nextText: 9
+      },
+      {
+        text: `Stab`,
+        nextText: 10
+      },
+      {
+        text: `Pendant of Pain`,
+        nextText: 11
+      },
+      {
+        text: `Persuade`,
+        nextText: 12
+      },
+    ],
+    startCombat: 2,
+  },
+  {// end conflict
+    id: 83,
+    text: 'blank',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 84
+      }
+    ],
+  },
+  {// 
+    id: 84,
+    text: 'You cut threw the bandits, it was a hard fight, but worth it. You have now showen not only to your mentor but to your self that you are ready to avenge your family and find Henry.',
+    options: [
+      {
+        text: `Walk back home`,
+        nextText: 85
+      }
+    ],
+  },
+  {// 
+    id: 85,
+    text: 'You walk into Marrys home, she looks at you and smiles. It is the first time you have seen her smile, you drop down your evidence and go out back to get your self clean. ',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 86
+      }
+    ],
+  },
+  {// 
+    id: 86,
+    text: 'You remeber the horrors done to your daughts infront fo your sons eyes and what they did to your wife. It fills you with rage, you know its time.',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 87
+      }
+    ],
+  },
+  {// add a bonus to skillset
+    id: 87,
+    text: 'The next morning, Marry: "Jack, I present for you, your weapon. I have all night creating this, I hope you use it well. Remeber that even though it may hurt taking out your hate by revengence will just create more death for you and everyone around you."',
+    options: [
+      {
+        text: `Yes, thank you.`,
+        nextText: 88
+      }
+    ],
+  },
+  {// 
+    id: 88,
+    text: 'JacK: "Thank you, but you do not understand what I have gone through it is the only way."',
+    options: [
+      {
+        text: `I will see you again after I am finished.`,
+        nextText: 89
+      },
+      {
+        text: `We may never see each other again, so thank you... for everything.`,
+        nextText: 89
+      },
+      {
+        text: `See you grandma.`,
+        nextText: 89
+      }
+    ],
+  },
+  {// 
+    id: 89,
+    text: 'Yes, until we meet again Jack, good luck on your jounry but do not forget yourself in your own rage.',
+    options: [
+      {
+        text: `Goodbye`,
+        nextText: 90
+      }
+    ],
+  },
+  {// 
+    id: 72,
     text: '',
     options: [
       {
@@ -2031,7 +2396,7 @@ let textNodes = [
     ],
   },
   {// 
-    id: 61,
+    id: 72,
     text: '',
     options: [
       {
@@ -2041,7 +2406,7 @@ let textNodes = [
     ],
   },
   {// 
-    id: 61,
+    id: 72,
     text: '',
     options: [
       {
@@ -2051,7 +2416,7 @@ let textNodes = [
     ],
   },
   {// 
-    id: 61,
+    id: 72,
     text: '',
     options: [
       {
@@ -2061,7 +2426,27 @@ let textNodes = [
     ],
   },
   {// 
-    id: 61,
+    id: 72,
+    text: '',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 18
+      }
+    ],
+  },
+  {// 
+    id: 72,
+    text: '',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 18
+      }
+    ],
+  },
+  {// 
+    id: 72,
     text: '',
     options: [
       {

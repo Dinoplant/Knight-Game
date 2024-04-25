@@ -118,15 +118,17 @@ main {
     color: rgb(79, 10, 10)
 }
 
+@media (width <= 700px) {
 
-/* max 1873px > 117rem .06
-min 470px >29.3rem .37
+    .btn {
+        min-width: 18vw;
+    }
 
-max 1.7 rem
-min .8 rem
+    .btnGrid{
+        height: 100%;
+    }
 
-.9 / 87.69
-0.0102 slope
-0.4982 y
-
-*/
+    .textDisplay{
+        height:40%;
+    }
+}
