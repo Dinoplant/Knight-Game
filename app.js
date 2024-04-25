@@ -131,30 +131,36 @@ function showTextNode(textNodeIndex) { // goes through tthe text nodes checks wh
     endingNode = 50;
     startCombat();
     combat(6, 7, 1); //ending id
-  } else if (textNode.startCombat === 2 && combatEnded === false) { //starts the combat 2nd
+  } else if (textNode.startCombat === 2 && combatEnded === false) { //starts the combat 2nd WRONG
     console.log('combat mode engaged');
     combatQuestion = false;
-    endingNode = 110;
+    endingNode = 110; //WHAT
     startCombat();
     combat(5, 10, 13); //ending id
-  } else if (textNode.startCombat === 3 && combatEnded === false) { //starts the combat 2nd
+  } else if (textNode.startCombat === 3 && combatEnded === false) { //starts the combat third
     console.log('combat mode engaged');
     combatQuestion = false;
     endingNode = 99;
     startCombat();
     combat(18, 1, 2); //ending id
-  } else if (textNode.startCombat === 4 && combatEnded === false) { //starts the combat third
+  } else if (textNode.startCombat === 4 && combatEnded === false) { //starts the combat 4 WRONG
     console.log('combat mode engaged');
     combatQuestion = false;
-    endingNode = 110;
+    endingNode = 110; //WHAT
     startCombat();
     combat(19, 23, 2); //ending id 
-  } else if (textNode.startCombat === 4 && combatEnded === false) { //starts the combat fourth
+  } else if (textNode.startCombat === 5 && combatEnded === false) { //starts the combat 5
     console.log('combat mode engaged');
     combatQuestion = false;
     endingNode = 124;
     startCombat();
     combat(34, 1, 2); //ending id 
+  } else if (textNode.startCombat === 6 && combatEnded === false) { //starts the combat 6
+    console.log('combat mode engaged');
+    combatQuestion = false;
+    endingNode = 189.9;
+    startCombat();
+    combat(15, 22, 2); //ending id 
   }
   else if (textNode.continueCombat === true) { //checks if you are continue combat
     console.log('combat mode cont');
@@ -2848,13 +2854,745 @@ let textNodes = [
     text: 'Guard: "Feeding Time!"',
     options: [
       {
-        text: `Continue`,
+        text: `Get up`,
         nextText: 129
       }
     ],
   },
+  {// wisdom check
+    id: 129,
+    text: 'You try to get yourself to your feet, but it feels like you are tied down. You look at the surroundings in the room to see where you are at.',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 130
+      }
+    ],
+  },
+  {// wisdom succeed
+    id: 130,
+    text: 'You focus on',
+    options: [
+      {
+        text: `Door`,
+        nextText: 130.1
+      },
+      {
+        text: `Figure 1`,
+        nextText: 130.2
+      },
+      {
+        text: `Figure 2`,
+        nextText: 130.3
+      },
+      {
+        text: `The plate`,
+        nextText: 130.4
+      },
+    ],
+  },
+  {// door
+    id: 130.1,
+    text: 'You see a faint light, it appears that there are some guards watching over. It looks like its made out of wood, you might be able to break it. You then see marks on the door, like someone has had the same idea, but it appears none has made it out like that.',
+    options: [
+      {
+        text: `Door`,
+        nextText: 130.1
+      },
+      {
+        text: `Figure 1`,
+        nextText: 130.2
+      },
+      {
+        text: `Figure 2`,
+        nextText: 130.3
+      },
+      {
+        text: `The plate`,
+        nextText: 130.4
+      },
+      {
+        text: `"Hello?"`,
+        nextText: 132.4
+      }
+    ],
+  },
+  {// figure 1
+    id: 130.2,
+    text: 'You see a man in the room staring at the door, he appears to be tall and skinny with long black hair.',
+    options: [
+      {
+        text: `Door`,
+        nextText: 130.1
+      },
+      {
+        text: `Figure 1`,
+        nextText: 130.2
+      },
+      {
+        text: `Figure 2`,
+        nextText: 130.3
+      },
+      {
+        text: `The plate`,
+        nextText: 130.4
+      },
+      {
+        text: `"Hello?"`,
+        nextText: 132
+      }
+    ],
+  },
+  {// figure 2
+    id: 130.3,
+    text: 'There is a man in the right corner that seems to be the average height, you can not make out any other features. He maybe wearing some type of cloak.',
+    options: [
+      {
+        text: `Door`,
+        nextText: 130.1
+      },
+      {
+        text: `Figure 1`,
+        nextText: 130.2
+      },
+      {
+        text: `Figure 2`,
+        nextText: 130.3
+      },
+      {
+        text: `The plate`,
+        nextText: 130.4
+      },
+      {
+        text: `"Hello?"`,
+        nextText: 132
+      }
+    ],
+  },
+  {// plate
+    id: 130.4,
+    text: 'You focus on the plate that was just thrown into the room. You mostly hear things, the room is almost pitch black, but you do see a large man run towards the plate. You hear a gulp then some more shulfling. You can make out that he is much more fit compared to the other two and pretty tall, does not look like someone to mess with.',
+    options: [
+      {
+        text: `Door`,
+        nextText: 130.1
+      },
+      {
+        text: `Figure 1`,
+        nextText: 130.2
+      },
+      {
+        text: `Figure 2`,
+        nextText: 130.3
+      },
+      {
+        text: `The plate`,
+        nextText: 130.4
+      },
+      {
+        text: `"Hello?"`,
+        nextText: 132
+      },
+    ],
+  },
+  { // fails wisdom
+    id: 130,
+    text: 'You try to see if you can make out anything, but you can only see black. The room is pitch black and your senses are still shout after that fight.',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 132
+      }
+    ],
+  },
+  {//
+    id: 132,
+    text: 'You try to at least sit up, you now hear chains jangle. Jack: "Where am I?"',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 133
+      }
+    ],
+  },
   {// 
-    id: 97,
+    id: 133,
+    text: '?: "heLLo? whAt do you think, hmm." Just hearing this guy makes you feel uneasy. ?: "Shut it… Sorry, who are you?" Its the same voice but a different tone and is much more clear.',
+    options: [
+      {
+        text: `I am Jack, where are we?`,
+        nextText: 134
+      },
+      {
+        text: `"Who are you, are there two of you?"`,
+        nextText: 135
+      },
+      {
+        text: `"Do not respond?"`,
+        nextText: 136
+      }
+    ],
+  },
+  {// 
+    id: 134,
+    text: 'Jin:"We are nowhere, but you will soon learn. I am Jin by the way."',
+    options: [
+      {
+        text: `What?`,
+        nextText: 137
+      }
+    ],
+  },
+  {// 
+    id: 135,
+    text: 'Jin: "I am Jin, its rude to ask people about their personal life, hmm?"',
+    options: [
+      {
+        text: `What?`,
+        nextText: 137
+      }
+    ],
+  },
+  {// 
+    id: 136,
+    text: 'Jin: "I am Jin, it rude to just stare, hahahaha!"',
+    options: [
+      {
+        text: `...`,
+        nextText: 137
+      }
+    ],
+  },
+  {// 
+    id: 137,
+    text: '?: "Jin, be quiet." A different voice from the right side of the room, its more deep and shallow. Jin: "Oh Frank, please I am just trying to make a new friend, are you jelous?" It seems like the mans name is Frank, what a wierd name.',
+    options: [
+      {
+        text: `Hey, what is this place?`,
+        nextText: 138
+      },
+      {
+        text: `A freind?`,
+        nextText: 138
+      },
+      {
+        text: `...`,
+        nextText: 138
+      }
+    ],
+  },
+  {// 
+    id: 138,
+    text: 'Guard: "Shut it in there!"',
+    options: [
+      {
+        text: `Listen`,
+        nextText: 139
+      }
+    ],
+  },
+  {// wisdom or dex check
+    id: 139,
+    text: 'Everything becomes silent again, expect for the faint noices of the gaurds talking.',
+    options: [
+      {
+        text: `Focus on the voices`,
+        nextText: 140
+      }
+    ],
+  },
+  {// secceeds
+    id: 130,
+    text: 'Gaurd 1: "Hey Guston, you hear the news?" The first gaurd seems to be on the older side. Guston: "You mean how Henry is promoting gaurds to his new home?" Guston seems to be a lot younger. You hear a loud slap Gaurd1: "Call him Lord Willaims, but yes. He moved to that old burnt down farming village next the river. Hopefully he promotes me, hahaha." Guston: "Fat chance of that."',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 141
+      }
+    ],
+  },
+  {// secceeds
+    id: 141,
+    text: 'The voices get quieter. You remeber you old home, would he really live on the graves of his victoms? At least you now know where he will be when you get out of here.',
+    options: [
+      {
+        text: `Go to sleep`,
+        nextText: 144
+      }
+    ],
+  },
+  {// fails
+    id: 143,
+    text: 'You can not make out anything, so you decide to sleep.',
+    options: [
+      {
+        text: `Go to sleep`,
+        nextText: 144
+      }
+    ],
+  },
+  {// 
+    id: 144,
+    text: 'You get woken to a bright light from the door being open. Guston: "Get out, its time for work." From what you know of prisons, they will probably make you mine for salt.',
+    options: [
+      {
+        text: `Get up and follow.`,
+        nextText: 145
+      }
+    ],
+  },
+  {// con check
+    id: 145,
+    text: 'You spend the day getting your grip on reality. You pick the pickaxe near you and start to get mining, but you feel weak like your arms are about to break.',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 146
+      }
+    ],
+  },
+  {// succeeds
+    id: 136,
+    text: 'You continue even though your arms feel like noodle, you see Frank and Jin looking impressed. You also see the other man, is huge man with bright red hair. He is laughing at your attempt to be "strong". He takes your pick and starts to show you how to work the rock.',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 18
+      }
+    ],
+  },
+  {// fails
+    id: 137,
+    text: 'You drop the pickaxe and see Frank and Jin walk away from you. You can finally see the last guy, a huge name with bright red hair. He looks like is about to help when you see a guard aproach.',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 137.1
+      }
+    ],
+  },
+  {// fails
+    id: 137.1,
+    text: 'You try to pick of the pickaxe before they notice, but its too late. They pick you up and then beat you for what feels like hours. Afterwards they throw you back into the mines. This time the big man is there holding you pickaxe, he shows you how to work the rock.',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 178
+      }
+    ],
+  },
+  {// 
+    id: 178,
+    text: 'Brian: "Weak boy, let Brian help, he big and strong." He is almost twice your size, he hits one rock and it breaks in half.',
+    options: [
+      {
+        text: `How have you been here?`,
+        nextText: 178.1
+      },
+      {
+        text: `What are you in here for?`,
+        nextText: 178.2
+      },
+      {
+        text: `I’m gonna cut to the chase, you know a way out?`,
+        nextText: 178.3
+      },
+    ],
+  },
+  {// 
+    id: 178.1,
+    text: 'Brian: "Been here very long, lost count. You will understand one day little man."',
+    options: [
+      {
+        text: `What are you in here for?`,
+        nextText: 178.2
+      },
+      {
+        text: `I’m gonna cut to the chase, you know a way out?`,
+        nextText: 178.3
+      },
+    ],
+  },
+  {// 
+    id: 178.2,
+    text: 'Brian: "Drunk fighting, he did not say sorry, killed the ant. They put me here."',
+    options: [
+      {
+        text: `How have you been here?`,
+        nextText: 178.1
+      },
+      {
+        text: `I’m gonna cut to the chase, you know a way out?`,
+        nextText: 178.3
+      },
+    ],
+  },
+  {// 
+    id: 178.3,
+    text: 'Brian: "Does not know what you mean?"',
+    options: [
+      {
+        text: `Oh come on you know what I mean.`,
+        nextText: 178.31
+      },
+    ],
+  },
+  {// 
+    id: 178.31,
+    text: 'Brian: "If Jack keeps talking I will be angry, Jack does not want Brian angry." You might be able to get him angry and start a mass fight, it could be  good distraction.',
+    options: [
+      {
+        text: `Sorry, thank you for your help.`,
+        nextText: 179
+      }
+    ],
+  },
+  {// 
+    id: 179,
+    text: 'You walk up to Jin to see what he is up to, you try to make it seem like you are still working, but you know if you swing one more time your arms will just fall off.',
+    options: [
+      {
+        text: `Hey`,
+        nextText: 180
+      }
+    ],
+  },
+  {// 
+    id: 180,
+    text: 'Jin: "yEs? SHHH" ... Jin: "Yes, what do you want?"',
+    options: [
+      {
+        text: `How have you been here?`,
+        nextText: 180.1
+      },
+      {
+        text: `Are you alright?`,
+        nextText: 180.2
+      },
+      {
+        text: `Have you got anything that may allow you or us to get out?`,
+        nextText: 180.3
+      },
+    ],
+  },
+  {// 
+    id: 180.1,
+    text: 'Jin: "They think of me crazy, so they put in prison. I also often lied about who I was to get what I want."',
+    options: [
+      {
+        text: `Are you alright?`,
+        nextText: 180.2
+      },
+      {
+        text: `Have you got anything that may allow you or us to get out?`,
+        nextText: 180.3
+      },
+    ],
+  },
+  {// 
+    id: 180.2,
+    text: 'Jin "I am doing as fine as someone can be in prison."',
+    options: [
+      {
+        text: `How have you been here?`,
+        nextText: 180.1
+      },
+      {
+        text: `Have you got anything that may allow you or us to get out?`,
+        nextText: 180.3
+      },
+    ],
+  },
+  {// 
+    id: 180.3,
+    text: 'Jin: "yES, wE wait FOR moments of TImE." The other voice came back. Jin: "SHUT IT, well yes I do know a way, but it takes time and its not time yet. I may let you in depending on if I like you later, HAHAHAHA." Gaurd2:"GET BACK TO WORK!"',
+    options: [
+      {
+        text: `Thank you, talk to you later.`,
+        nextText: 181
+      }
+    ],
+  },
+  {// 
+    id: 181,
+    text: 'You walk towards Frank, but he meets you in the middle, much smaller than the other two, but around the same size as you if not a little shorter. He is wearing a cloak to cover his face, you wonder how he is allowed to have that, but he also does not seem to be from this area.',
+    options: [
+      {
+        text: `Hey`,
+        nextText: 182
+      }
+    ],
+  },
+  {// 
+    id: 182,
+    text: 'Frank: "Jack?"',
+    options: [
+      {
+        text: `How did you get in here?`,
+        nextText: 182.1
+      },
+      {
+        text: `I was wondering where you are from, you look like a foreigner?`,
+        nextText: 182.2
+      },
+      {
+        text: `Have you got anything that may allow you or us to get out?`,
+        nextText: 182.3
+      },
+    ],
+  },
+  {// 
+    id: 182.1,
+    text: 'Frank: "Sorry, but you do not get to know why, just know that I am someone that can get anywhere they want."',
+    options: [
+      {
+        text: `I was wondering where you are from, you look like a foreigner?`,
+        nextText: 182.2
+      },
+      {
+        text: `Have you got anything that may allow you or us to get out?`,
+        nextText: 182.3
+      },
+    ],
+  },
+  {// 
+    id: 182.2,
+    text: 'Frank: "Yes I come from Bani."',
+    options: [
+      {
+        text: `How did you get in here?`,
+        nextText: 182.1
+      },
+      {
+        text: `Have you got anything that may allow you or us to get out?`,
+        nextText: 182.3
+      },
+    ],
+  },
+  {// 
+    id: 182.3,
+    text: 'Frank: "Maybe what is in it for me?"',
+    options: [
+      {
+        text: `Well it seems like you can't do it yourself, so you will be able to get out.`,
+        nextText: 182.31
+      },
+    ],
+  },
+  {// 
+    id: 182.31,
+    text: 'HAHAHA, okay then. We will talk more about this in farther detail later.',
+    options: [
+      {
+        text: `Alright see you later`,
+        nextText: 183
+      }
+    ],
+  }, {// 
+    id: 183,
+    text: 'You have come more enegy left and so you start to mine again. You spend another hour or two before hearing the church bell. They take you to the church to pay for your sins, a custome from Bina culture. You spend an hour in the church before being thrown back into your cell.',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 184
+      }
+    ],
+  },
+  {// 
+    id: 184,
+    text: 'Like the other night a plate gets thrown in, but this time none goes for it expect Jin. It appears like they are taking turns with the food. You remeber them talking about it while you were mining. You wonder when it will be your turn to eat and drink. You do not know how long it has been since your break in, but you do know that you are starving.',
+    options: [
+      {
+        text: `Go to sleep`,
+        nextText: 185
+      }
+    ],
+  },
+  {// 
+    id: 185,
+    text: 'You drift into sleep with nightmares of what happened. Jack: "I am sorry, I am so so sorry! Please I will..." You wake up and Frank is pointing to the food infront of you.',
+    options: [
+      {
+        text: `Thank you`,
+        nextText: 186
+      }
+    ],
+  },
+  {// 
+    id: 186,
+    text: 'You pick it up and take a bite out of what looks like bread, but turns out be rice. It suprises you, but you really are not in a position to complain about the food. You eat all of it before being called back out to work where you mine again.',
+    options: [
+      {
+        text: `5 Years Later`,
+        nextText: 187
+      }
+    ],
+  },
+  {// 
+    id: 187,
+    text: 'You have been doing the same thing for about 5 years now counting each week on your wall. Nothing new with Henry, but you have become good freinds with the people in your cell. The nightmares are still there, but you have a good feeling.',
+    options: [
+      {
+        text: `Eat the rice bread`,
+        nextText: 188
+      }
+    ],
+  },
+  {// how to break out of prison
+    id: 188,
+    text: 'You take a bite of the rice bread, everyone else is looking at it. Maybe if you help one of them more than the others they can help you excape.',
+    options: [
+      {//breaks out with Brian (bb)
+        text: `Give some to Brian `, //increases strength or con by 1
+        nextText: 189.1
+      },
+      {//breaks out with Jin (bj) //incresases charisma or wisdom by 1
+        text: `Give some to Jin`,
+        nextText: 190.1
+      },
+      {//breaks out with Frank (bf) //increases dex or charisma by 1
+        text: `Give some to Frank`,
+        nextText: 191.1
+      }
+    ],
+  },
+  {// bb
+    id: 189.1,
+    text: 'You hand the rest to Brian, the other guys look annoyed but do not say anything. Later that day you decide that you are gonna try to get Brian to start a fight. You can get both Brian and yourself out.',
+    options: [
+      {
+        text: `Hey`,
+        nextText: 189.2
+      }
+    ],
+  },
+  {// bb
+    id: 189.2,
+    text: 'Jack: "Brian, I have a plan to get us out of the dump. You want to hear about it? You want to be able to see your kids again?" It may be a bit much bringing up his kids, but you need to get out so the ends justify the means.',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 189.3
+      }
+    ],
+  },
+  {// bb
+    id: 189.3,
+    text: 'Brian: "Yes Brian wants to leave. How do Brian and freinds leave?"',
+    options: [
+      {
+        text: `Respond with the plan`,
+        nextText: 189.4
+      }
+    ],
+  },
+  {// bb
+    id: 189.4,
+    text: 'Brian: "Sounds Good" He walks away, you realized that you forgot to tell him when you will be doing this, but before you can tell him he pushes one of the other inmates down. The inmate gets up the then throws a punch. You see as a crowd starts to gather. The gaurds are no where to be seen, it looks like they are under maned today, lucky.',
+    options: [
+      {
+        text: `Watch`,
+        nextText: 189.5
+      }
+    ],
+  },
+  {// bb
+    id: 189.5,
+    text: 'You see as another fight breaks out, until there is not a single person that is not in a fight. You excape and see Brian look for you.',
+    options: [
+      {
+        text: `Call for Brian`, // leave with Brian (lb)
+        nextText: 189.6
+      },
+      {
+        text: 'Run without Brian', // leave without Brian (wb)
+        nextText: 189.61
+      }
+    ],
+  },
+  {// wb
+    id: 189.6,
+    text: 'You call out to Brian and he runs towards you. You start to burst out laughing, Jack: "We might just be able to get out, good job Brian." Brian smiles and picks you up. You guys make your way to the armory where you find your old blade, it appears to have been used, but its not in bad shape. Brian picks up a large great axe.',
+    options: [
+      {
+        text: `Lets get out of here!`,
+        nextText: 189.7
+      }
+    ],
+  },
+  {// lb
+    id: 189.61,
+    text: 'You look at Brian and think about if you really need him. You decide to run off to the armory and get your old sword, it appears to have been used, but its still in good shape. You run out and make your way out.',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 189.71
+      }
+    ],
+  },
+  {// wb
+    id: 189.7,
+    text: 'You run into some gaurds, only two of them they look tough, but you are ready for them. Brian takes one of them, so it only leaves you with one.',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 189.8
+      }
+    ],
+  },
+  {// lb
+    id: 189.71,
+    text: 'You run into some gaurds, only two of them they look tough, but you are ready for them.',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 189.8
+      }
+    ],
+  },
+  {// Conflict
+    id: 189.8,
+    text: 'You have been waiting to get some angry out',
+    options: [
+      {
+        text: `Slash`,
+        nextText: 5
+      },
+      {
+        text: `Heal Potions`,
+        nextText: 8
+      },
+      {
+        text: `Scare`,
+        nextText: 9
+      },
+      {
+        text: `Stab`,
+        nextText: 10
+      },
+      {
+        text: `Pendant of Pain`,
+        nextText: 11
+      },
+      {
+        text: `Persuade`,
+        nextText: 12
+      },
+    ],
+    startCombat: 5,
+  },
+  {// end conflict
+    id: 189.9,
+    text: 'blank',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 189.11
+      }
+    ],
+  },
+  {// 
+    id: 130,
     text: '',
     options: [
       {
@@ -2864,7 +3602,7 @@ let textNodes = [
     ],
   },
   {// 
-    id: 97,
+    id: 130,
     text: '',
     options: [
       {
@@ -2874,7 +3612,175 @@ let textNodes = [
     ],
   },
   {// 
-    id: 97,
+    id: 130,
+    text: '',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 18
+      }
+    ],
+  },
+  {// 
+    id: 130,
+    text: '',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 18
+      }
+    ],
+  },
+  {// 
+    id: 130,
+    text: '',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 18
+      }
+    ],
+  },
+  {// 
+    id: 130,
+    text: '',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 18
+      }
+    ],
+  },
+  {// 
+    id: 130,
+    text: '',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 18
+      }
+    ],
+  },
+  {// 
+    id: 130,
+    text: '',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 18
+      }
+    ],
+  },
+  {// 
+    id: 130,
+    text: '',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 18
+      }
+    ],
+  },
+  {// 
+    id: 130,
+    text: '',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 18
+      }
+    ],
+  },
+  {// 
+    id: 130,
+    text: '',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 18
+      }
+    ],
+  },
+  {// 
+    id: 130,
+    text: '',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 18
+      }
+    ],
+  }, {// 
+    id: 130,
+    text: '',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 18
+      }
+    ],
+  },
+  {// 
+    id: 130,
+    text: '',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 18
+      }
+    ],
+  },
+  {// 
+    id: 130,
+    text: '',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 18
+      }
+    ],
+  },
+  {// 
+    id: 130,
+    text: '',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 18
+      }
+    ],
+  },
+  {// 
+    id: 130,
+    text: '',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 18
+      }
+    ],
+  },
+  {// 
+    id: 130,
+    text: '',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 18
+      }
+    ],
+  }, {// 
+    id: 130,
+    text: '',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 18
+      }
+    ],
+  },
+  {// 
+    id: 130,
     text: '',
     options: [
       {
