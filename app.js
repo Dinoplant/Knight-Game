@@ -14,42 +14,42 @@ let None1 = new Enemy(`The Air`, 0, 0, 0, 0, 0)
 let None2 = new Enemy(`The Wind`, 0, 0, 0, 0, 0)
 let None3 = new Enemy(`The Breeze`, 0, 0, 0, 0, 0)
 let Bandit1 = new Enemy(`Nate the Bandit`, 25, 0, 45, 0, 0)
-let Bandit2 = new Enemy(`Josh the Bandit`, 30, 0, 50, 0, 0)//4
+let Bandit2 = new Enemy(`Josh the Bandit`, 30, 0, 50, 0, 0)//5
 let Bandit3 = new Enemy(`Steven the Bandit`, 20, 5, 50, 0, 0)//6
 let Bandit4 = new Enemy(`Johnson the Bandit`, 40, 0, 35, 0, 0) //7
 let Bandit5 = new Enemy(`Nick the Bandit`, 30, 10, 80, 0, 0)//8
-let BanditGen1 = new Enemy(`The Bandit`, 35, 10, 40, 0, 0) //9 
+let BanditGen1 = new Enemy(`The Bandit`, 35, 10, 40, 0, 0) //9
 let BanditGen2 = new Enemy(`The Bandit`, 20, 0, 50, 0, 0) // 10
 let BanditGen3 = new Enemy(`The Bandit`, 50, 20, 100, 0, 0) //11
 let BanditGen4 = new Enemy(`The Bandit`, 25, 0, 55, 0, 0) //12
 let LeadBandit = new Enemy(`Bandit Leader`, 50, 0, 100, 10, 0) //13
 
-let Guard1 = new Enemy(`Eligh the Guard`, 70, 10, 120, 6, 2)
-let Guard2 = new Enemy(`Guston the Guard`, 60, 0, 70, 8, 0)
-let Guard3 = new Enemy(`Duke the Guard`, 90, 0, 100, 4, 0)
-let Guard4 = new Enemy(`Brandon the Guard`, 80, 0, 110, 6, 0)
-let Guard5 = new Enemy(`Matthew the Guard`, 70, 0, 90, 8, 3)
-let GuardGen1 = new Enemy(`The Guard`, 70, 0, 100, 7, 0)
-let GuardGen2 = new Enemy(`The Guard`, 75, 12, 120, 2, 2)
-let GuardGen3 = new Enemy(`The Guard`, 80, 0, 100, 4, 1)
-let GuardGen4 = new Enemy(`The Guard`, 90, 5, 90, 3, 1)
+let Guard1 = new Enemy(`Eligh the Guard`, 70, 10, 120, 6, 2) //14
+let Guard2 = new Enemy(`Guston the Guard`, 60, 0, 70, 8, 0) //15
+let Guard3 = new Enemy(`Duke the Guard`, 90, 0, 100, 4, 0) //16
+let Guard4 = new Enemy(`Brandon the Guard`, 80, 0, 110, 6, 0) //17
+let Guard5 = new Enemy(`Matthew the Guard`, 70, 0, 90, 8, 3) //18
+let GuardGen1 = new Enemy(`The Guard`, 70, 0, 100, 7, 0) //19
+let GuardGen2 = new Enemy(`The Guard`, 75, 12, 120, 2, 2) //20
+let GuardGen3 = new Enemy(`The Guard`, 80, 0, 100, 4, 1) //21
+let GuardGen4 = new Enemy(`The Guard`, 90, 5, 90, 3, 1) //22
 
-let Archer1 = new Enemy(`Noah the Archer`, 50, 0, 90, 9, 4)
-let Archer2 = new Enemy(`Ezekiel the Archer`, 40, 0, 65, 5, 5)
-let ArcherGen1 = new Enemy(`The Archer`, 45, 0, 90, 4, 4)
-let ArcherGen2 = new Enemy(`The Archer`, 65, 0, 50, 7, 5)
+let Archer1 = new Enemy(`Noah the Archer`, 50, 0, 90, 9, 4)  //23
+let Archer2 = new Enemy(`Ezekiel the Archer`, 40, 0, 65, 5, 5) // 24
+let ArcherGen1 = new Enemy(`The Archer`, 45, 0, 90, 4, 4) //25
+let ArcherGen2 = new Enemy(`The Archer`, 65, 0, 50, 7, 5)//26
 
-let Genral = new Enemy(`The Genral`, 100, 0, 100, 10, 5)
+let Genral = new Enemy(`The Genral`, 100, 0, 100, 10, 5)//27
 
-let Bear1 = new Enemy(`The Brown Bear`, 60, 0, 70, 7, 0)
-let Bear2 = new Enemy(`The Black Bear`, 50, 0, 60, 0, 3)
-let Wolf1 = new Enemy(`The Gray Wolf`, 40, 0, 70, 10, 1)
-let Wolf2 = new Enemy(`The Sliver Wolf`, 45, 0, 80, 7, 3)
-let Dragon = new Enemy(`The Dragon`, 300, 0, 350, 10, 10)
-let AlphaWolf = new Enemy(`The Alpha Wolf`, 70, -20, 90, 5, 5)
-let FirstHenry = new Enemy(`Henry`, 400, 0, 700, 15, 10)
-let SecondHenry = new Enemy(`Henry`, 250, 0, 300, 10, 7)
-let Yourself = new Enemy(`Yourself`, 1000, 0, 3000, 0, 0)
+let Bear1 = new Enemy(`The Brown Bear`, 60, 0, 70, 7, 0)//28
+let Bear2 = new Enemy(`The Black Bear`, 50, 0, 60, 0, 3)//29
+let Wolf1 = new Enemy(`The Gray Wolf`, 40, 0, 70, 10, 1)//30
+let Wolf2 = new Enemy(`The Sliver Wolf`, 45, 0, 80, 7, 3)//31
+let Dragon = new Enemy(`The Dragon`, 300, 0, 350, 10, 10)//32
+let AlphaWolf = new Enemy(`The Alpha Wolf`, 70, -20, 90, 5, 5)//33
+let FirstHenry = new Enemy(`Henry`, 400, 0, 700, 15, 10)//34
+let SecondHenry = new Enemy(`Henry`, 250, 0, 300, 10, 7)//35
+let Yourself = new Enemy(`Yourself`, 1000, 0, 3000, 0, 0)//36
 
 const textElement = document.getElementById('text'); //gets the ids from the html to change the text for the story
 const optionButtonsElement = document.getElementById('btnOptions');
@@ -96,6 +96,7 @@ let player = {
   spear: false,
   shortSword: false,
   healPot: 0,
+  map: 0,
   jade: 0,
   debug: 0,
 }
@@ -129,13 +130,31 @@ function showTextNode(textNodeIndex) { // goes through tthe text nodes checks wh
     combatQuestion = false;
     endingNode = 50;
     startCombat();
-    combat(6, 10, 1); //ending id
+    combat(6, 7, 1); //ending id
   } else if (textNode.startCombat === 2 && combatEnded === false) { //starts the combat 2nd
     console.log('combat mode engaged');
     combatQuestion = false;
-    endingNode = 83;
+    endingNode = 110;
     startCombat();
-    combat(6, 10, 13); //ending id
+    combat(5, 10, 13); //ending id
+  } else if (textNode.startCombat === 3 && combatEnded === false) { //starts the combat 2nd
+    console.log('combat mode engaged');
+    combatQuestion = false;
+    endingNode = 99;
+    startCombat();
+    combat(18, 1, 2); //ending id
+  } else if (textNode.startCombat === 4 && combatEnded === false) { //starts the combat third
+    console.log('combat mode engaged');
+    combatQuestion = false;
+    endingNode = 110;
+    startCombat();
+    combat(19, 23, 2); //ending id 
+  } else if (textNode.startCombat === 4 && combatEnded === false) { //starts the combat fourth
+    console.log('combat mode engaged');
+    combatQuestion = false;
+    endingNode = 124;
+    startCombat();
+    combat(34, 1, 2); //ending id 
   }
   else if (textNode.continueCombat === true) { //checks if you are continue combat
     console.log('combat mode cont');
@@ -246,6 +265,7 @@ function update() {
   ${player.healPot} Heal Potions left
   Jade: ${player.jade}
   Keys: ${player.key}
+  Map: ${player.map}
   `
 
   document.getElementById('staText').innerText = ` ${enemy1.enemyName}: 
@@ -1412,7 +1432,7 @@ let textNodes = [
   },
   {
     id: 16,
-    text: `Our story begins in a small village, Lüdingfeld, near the capital of Etair. The village is an important part of the Etair due to its access to fresh water and has a salt mine, which is incredibly valuable for trade. A war broke out between the two Empires near Lüdingfeld, Etair and Bani. `,
+    text: `Our story begins in a small village, Lüdingfeld, near the capital of Etair. The village is an important part of the Etair due to its access to fresh water and a salt mine, that is incredibly valuable for trade. A war broke out between the two Empires near Lüdingfeld, Etair and Bani. `,
     options: [
       {
         text: `Continue`,
@@ -1422,7 +1442,7 @@ let textNodes = [
   },
   {
     id: 17,
-    text: 'Even though the conflict has been around for about a year, Lüdingfeld has not changed its style of living and has not been very affected by the war, but the Bani lord, Henry Willaims,  has set his sights on the little village, but the environment has taken a hit. ',
+    text: 'Even though the conflict has been around for about a year, Lüdingfeld has not changed its style of living and has not been very affected by the war, but the Bani lord, Henry Williams,  has set his sights on the little village, but their environment has taken a hit due to the war. ',
     options: [
       {
         text: `Continue`,
@@ -1432,7 +1452,7 @@ let textNodes = [
   },
   {
     id: 18,
-    text: 'There were great beasts that used to roam the lands, but ever since the first war many of the beasts have been hunted and killed. Now they are merely legends, none has seen one for over a century. There is a rumour that they may be disguised as other animals to avoid being hunted. Nobody really knows yet, until now.',
+    text: 'There were great beasts that used to roam the lands, but ever since the first war many of the beasts have been hunted and killed. Now they are merely legends. None have seen any for over a century. There are rumours that they may be disguised as other animals to avoid being hunted. Nobody really knows yet, until now.',
     options: [
       {
         text: `Continue`,
@@ -1442,7 +1462,7 @@ let textNodes = [
   },
   {
     id: 19,
-    text: 'Dragon: "There was a time where this land was isolated and seemed to be at peace, but after a time many other countries became more anxious to conquer the world. After the failed revolution in the west, the sea demons turned their attention to the east. The land’s government wanted to stay in solitude and tried to obtain their ancient ways, but it was only a matter of time until the demons would come."',
+    text: 'Dragon: "There was a time where this land was isolated and seemed to be at peace, but after sometime many other countries became more anxious to conquer the world. After the failed revolution in the west, the sea demons turned their attention to the east. The land’s government wanted to stay in solitude and tried to obtain their ancient ways, but it was only a matter of time until the evil would come."',
     options: [
       {
         text: `Continue`,
@@ -1452,7 +1472,7 @@ let textNodes = [
   },
   {
     id: 20,
-    text: 'Dragon: "During the War, this land would be reborn for the greedy. The usage of their guns and other unholy technology won them the land. Instead of just taking the land over they decided to create new forms of free labour to gather the land’s natural treasures. As time went on more and more of the ancient Gods left these lands in search of more prosperous peoples. Even I was about to leave until I met a man named Jack."',
+    text: 'Dragon: "During the War, this land would be reborn for the greedy. The usage of their guns and other unholy technology won them the land. Instead of just taking the land over they decided to create new forms of free labour to gather the land’s natural treasures. As time went on more and more of the ancient Gods left these lands in search of more prosperous peoples. Even I was about to leave until I met a man who goes by the named of Jack."',
     options: [
       {
         text: `Continue`,
@@ -1462,7 +1482,7 @@ let textNodes = [
   },
   {
     id: 21,
-    text: 'Jack: "Before it all changed I used to live a peaceful life with my family, *sigh. My wife, the pride of the house. The one that kept everything whole. She was the only constant in my life. My two daughters, Victoria and Cami. Victoria was the loud, popular one who always found herself out of trouble. While Cami was the quiet one, she always was blamed for her sisters wrongs, I should have been there more."',
+    text: 'Jack: "Before it all changed I used to live a peaceful life with my family, *sigh. My wife, the pride of the house. The one that kept everything whole. She was the only constant in my life. My two daughters, Victoria and Cami. Victoria was the loud, popular one who always found herself out of trouble. While Cami was the quiet one, she always was blamed for her sisters wrongs, I should have been in their life more."',
     options: [
       {
         text: `Continue`,
@@ -1472,7 +1492,7 @@ let textNodes = [
   },
   {
     id: 22,
-    text: 'Jack: "My one son, the age of 2. He was going to be the successor of our family’s land. He loved playing with the flowers and enjoying time with his mother. I only wished I had more time with them."',
+    text: 'Jack: "My only son, the age of 2. He was going to be the successor of our family’s land. He loved playing with the flowers and enjoying time with his mother. I only wished I had more time with him."',
     options: [
       {
         text: `Continue`,
@@ -1482,7 +1502,7 @@ let textNodes = [
   },
   {
     id: 23,
-    text: 'Jack :"I remember it like yesterday, the day when my greatest pride became my greatest failure. My daughters got mixed up with the wrong crowd, mostly Victoria. She met a man from the sea that promised her treasures if she stayed with him for a night. She accepted the gold, but never went to meet him. The man turned out to be a rich demon. Nights went by but nothing happened, until one night when the moon was fullest he came with his troops."',
+    text: 'Jack: "I remember it like yesterday, the day when my greatest pride became my greatest failure. My daughters got mixed up with the wrong crowd, mostly Victoria. She met a man from the sea that promised her treasures if she stayed with him for a night. She accepted the gold, but never went to meet him. The man turned out to be a rich demon of a person. Nights went by but nothing happened, until one night when the moon was fullest he came with his troops."',
     options: [
       {
         text: `Continue`,
@@ -1492,7 +1512,7 @@ let textNodes = [
   },
   {
     id: 24,
-    text: 'Jack: "After pillaging the town, he made it to my home. At this time I had no clue about what my daughter did, but it was far too late. They were too quick, there was no time to defend our town or loved ones. He killed them then…, I will not speak of the things he did. After hours of horror, he let them die, but he didn’t share the same kindness with me. He left me with only his name Vito."',
+    text: 'Jack: "After pillaging the town, he made it to my home. At this time I had no clue about what my daughter did, but it was far too late. They were too quick, there was no time to defend our town or loved ones. He killed them then mercilessly. After hours of horror, he let them die, but he didn’t share the same kindness with me. He left me with only his name Henry."',
     options: [
       {
         text: `Continue`,
@@ -1513,14 +1533,50 @@ let textNodes = [
   // base stats start here
   {
     id: 26,
-    text: 'You first wake up in a burnt house surrounded by ash and taste of misery. You remember what happened to your family and one name rings constantly: Henry. As you get up you feel nothing even though you were beat bloody. You look around and pick up your weapon and armour.', options: [
+    text: 'You first wake up in a burnt house surrounded by ash and taste of misery. You remember what happened to your family and one name rings constantly: Henry. As you get up you feel nothing even though you were beaten, bloodied, and battered. You look around and pick up your weapon and armour.', options: [
       {
         text: `Continue`,
-        nextText: 27
+        nextText: 26.1
       }
     ],
   },
   // pick weapon 
+  {
+    id: 26.1,
+    text: `While going through your house, you find some left over weapons around .`,
+    options: [
+      {
+        text: `Bow left by your Uncle
+        (Best while using Shoot)`,
+        nextText: 27,
+        setPlayer: { bow: 1 }
+      },
+      {
+        text: `Great Axe left by your Father
+        (Best while using Slash)`,
+        nextText: 27,
+        setPlayer: { greatAxe: 1 }
+      },
+      {
+        text: `Rapier left in a supply chest
+        (Best while using Stab)`,
+        nextText: 27,
+        setPlayer: { rapier: 1 }
+      },
+      {
+        text: `Short Sword left by the Guards
+        (Best while using Stab)`,
+        nextText: 27,
+        setPlayer: { shortSword: 1 }
+      },
+      {
+        text: `Spear left by the Guards
+        (Best whilst having more HP)`,
+        nextText: 27,
+        setPlayer: { spear: 1 }
+      },
+    ],
+  },
   {
     id: 27,
     text: 'You look around your house to see what is left.',
@@ -1532,7 +1588,8 @@ let textNodes = [
       },
       {
         text: `Your Room`,
-        nextText: 29
+        nextText: 29,
+        setPlayer: { map: 1 }
       },
       {
         text: `Examine the Room`,
@@ -1588,7 +1645,8 @@ let textNodes = [
       },
       {
         text: `Your Room`,
-        nextText: 29
+        nextText: 29,
+        setPlayer: { map: 1 }
       },
       {
         text: `Back`,
@@ -1606,10 +1664,11 @@ let textNodes = [
     options: [
       {
         text: `Bury your family`,
-        nextText: 32
+        nextText: 32,
+        setplayer: { con: 1 }
       },
       {
-        text: `Moarn then get on the road`,
+        text: `Mourn  then get on the road`,
         nextText: 33
       },
       {
@@ -1660,7 +1719,7 @@ let textNodes = [
   },
   {
     id: 36,
-    text: 'Dog: "Bark". The Dog looks at you and tilts its head, looking at your bag. It seems very skinny for a dog, you have never seen this dog before. (Important Choice)',
+    text: 'Dog: "Bark". The Dog looks at you and tilts its head, looking at your bag. It seems very skinny for a dog, you have never seen this dog before. <<Important Choice>>',
     options: [
       {
         text: `Help the dog.`,
@@ -1676,7 +1735,7 @@ let textNodes = [
   },
   {
     id: 37,
-    text: 'You take out some off your bread and tear a little piece and gave it to the dog. You tell let to follow and it seems to sorta understand and starts to follow you down the road.',
+    text: 'You take out some off your bread and tear a little piece and gave it to the dog. You tell it let to follow and it seems to sorta understand and starts to follow you down the road.',
     options: [
       {
         text: `Continue`,
@@ -1707,7 +1766,7 @@ let textNodes = [
   //keep dog
   {
     id: 40,
-    text: 'You start walking into the forest, you have heard many stories about what lurks within, but you are sure most of not true. The truth is that they are some word of bandits having a great influence over the region. You should tread carefully from now on, but lucky you are not alone.',
+    text: 'You start walking into the forest, you have heard many stories about what lurks within, but you are unsure what could be true. What is true is that they are wordd of bandits having a great influence over the region. You should tread carefully from now on, but lucky you are not alone.',
     options: [
       {
         text: `Continue`,
@@ -1727,7 +1786,7 @@ let textNodes = [
   },
   {
     id: 43,
-    text: 'As you get closer to the cart, you see a couple arrows stuck in the cart. You take it out to examine the arrows. You hear something in front of you, but you can only make out shadow figures.',
+    text: 'As you get closer to the cart, you see a couple arrows stuck in the cart. You take it out to examine the arrows. You hear something in front of you, but you can only make out some shadowy figures.',
     options: [
       {
         text: `Yell out.`,
@@ -1857,7 +1916,7 @@ let textNodes = [
   },
   {
     id: 52,
-    text: 'You clean yourself and settle for the night. You get some fire wood and try to remeber what your uncle told you, but as you try to remeber the only thoughts that come to mind are the memories of the horror you went threw. You go to bed without a fire, but you are confindent thing will happen.',
+    text: 'You clean yourself and settle for the night. You get some fire wood and try to remember what your uncle told you, but as you try to remeber the only thoughts that come to mind are the memories of the horror you went threw. You go to bed without a fire, but you are confindent thing will happen.',
     options: [
       {
         text: `Continue`,
@@ -2180,27 +2239,27 @@ let textNodes = [
       {
         text: `Cha (4)`,
         nextText: 76,
-        setPlayer: {cha: 4}
+        setPlayer: { cha: 4 }
       },
       {
         text: `Dex (3)`,
         nextText: 76,
-        setPlayer: {dex: 3}
+        setPlayer: { dex: 3 }
       },
       {
         text: `Wis (3)`,
         nextText: 76,
-        setPlayer: {wis: 3}
+        setPlayer: { wis: 3 }
       },
       {
         text: `Str (3)`,
         nextText: 76,
-        setPlayer: {str: 3}
+        setPlayer: { str: 3 }
       },
       {
         text: `Con (3)`,
         nextText: 76,
-        setPlayer: {con: 3}
+        setPlayer: { con: 3 }
       },
       {
         text: `Back to info`,
@@ -2386,7 +2445,416 @@ let textNodes = [
     ],
   },
   {// 
-    id: 72,
+    id: 91,
+    text: 'You walk out of the home, you turn around to get one more look at it and remember all the good times you had, you know that this will be the last moments of "fun" in your life.',
+    options: [
+      {
+        text: `Continue Walking`,
+        nextText: 92
+      }
+    ],
+  },
+  {// 
+    id: 92,
+    text: 'You run into some other travelers and see if they know a Henry, but never them knew where he lives.',
+    options: [
+      {
+        text: `Question More`,
+        nextText: 93
+      }
+    ],
+  },
+  {// 
+    id: 93,
+    text: 'You finally find a guard on patrol, Jack: ""',
+    options: [
+      {
+        text: `Do you a man named Henry?`,
+        nextText: 94
+      },
+      {
+        text: `Is there a lord in this area?`,
+        nextText: 95
+      },
+      {
+        text: `Tell me about Henry!?`,
+        nextText: 96
+      }
+    ],
+  },
+  {// 
+    id: 94,
+    text: 'Guard: "Lord Willaims? He is the lord around here, he lives near here."',
+    options: [
+      {
+        text: `What, really?`,
+        nextText: 18
+      }
+    ],
+  },
+  {// 
+    id: 95,
+    text: 'Guard: "Yes, there is a lord named Lord Wilaims. He lives around here."',
+    options: [
+      {
+        text: `What, really?`,
+        nextText: 18
+      }
+    ],
+  },
+  {// 
+    id: 96,
+    text: 'Guard: "I do not like your tone of your voice young man."',
+    options: [
+      {
+        text: `Sorry, is there a lord?`,
+        nextText: 94
+      },
+      {
+        text: `You heard me.`,
+        nextText: 98
+      }
+    ],
+  },
+  {// Conflict
+    id: 98,
+    text: 'The guard takes out his blade and swings.',
+    options: [
+      {
+        text: `Slash`,
+        nextText: 5
+      },
+      {
+        text: `Heal Potions`,
+        nextText: 8
+      },
+      {
+        text: `Scare`,
+        nextText: 9
+      },
+      {
+        text: `Stab`,
+        nextText: 10
+      },
+      {
+        text: `Pendant of Pain`,
+        nextText: 11
+      },
+      {
+        text: `Persuade`,
+        nextText: 12
+      },
+    ],
+    startCombat: 2,
+  },
+  {// end conflict
+    id: 99,
+    text: 'blank',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 100
+      }
+    ],
+  },
+  {// 
+    id: 100,
+    text: 'You loot his body and find a note by Lord Willaims. It seems that the guard has been hired by Henry, which leads you to believe the Henry lives somewhere near here. You take out his map of the area to see if there is a manor or castle.',
+    options: [
+      {
+        text: `Walk to Henry's home`,
+        nextText: 101
+      }
+    ],
+  },
+  {// 
+    id: 101,
+    text: 'You went to the spot of the map that looked that had the most importance. As you walk down the road you see a large house on top of a litle hill.',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 102
+      }
+    ],
+  },
+  {// roll a wisdom 15
+    id: 102,
+    text: 'You look at the home and see if there is a possible entrance through the home.',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 103
+      }
+    ],
+  },
+  {// wisdom succeeds (ws)
+    id: 103,
+    text: 'You can see there is an entrance below in the sewers, if you enter there none of the guards will be able to find you.',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 104
+      }
+    ],
+  },
+  {// wisdom fails (wf)
+    id: 105,
+    text: 'You can only see one way in, the front door. It may cause some chaos in the manor though. You can try to convince the gaurds to let you in to talk but it may fail.',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 106
+      }
+    ],
+  },
+  {// wf
+    id: 106,
+    text: 'You walk up to the front gates and look towards the guards.',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 107
+      }
+    ],
+  },
+  {// wf
+    id: 108,
+    text: 'Matthew: "What are you doing here?"',
+    options: [
+      { //charisma check
+        text: `I here to see Henry`,
+        nextText: 111
+      },
+      {
+        text: `Start Conflict`,
+        nextText: 109
+      },
+    ],
+  },
+  {// Conflict
+    id: 109,
+    text: 'The guard takes out his blade and swings.',
+    options: [
+      {
+        text: `Slash`,
+        nextText: 5
+      },
+      {
+        text: `Heal Potions`,
+        nextText: 8
+      },
+      {
+        text: `Scare`,
+        nextText: 9
+      },
+      {
+        text: `Stab`,
+        nextText: 10
+      },
+      {
+        text: `Pendant of Pain`,
+        nextText: 11
+      },
+      {
+        text: `Persuade`,
+        nextText: 12
+      },
+    ],
+    startCombat: 3,
+  },
+  {// end conflict
+    id: 110,
+    text: 'blank',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 100
+      }
+    ],
+  },
+  {// charisma succeeds
+    id: 111,
+    text: 'Matthew: "You are okay to see Henry"',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 116
+      }
+    ],
+  },
+  {// charisma fails
+    id: 112,
+    text: 'Matthew: "GET HIM!"',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 109
+      }
+    ],
+  },
+  {// ws
+    id: 113,
+    text: 'You sneak into the sewer and walk in. You are pretty sure this will work and you continue down. ',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 114
+      }
+    ],
+  },
+  {// ws
+    id: 115,
+    text: 'You make it to the end and you can see the kitchen above you. You climb up the ladder and try to make the least amount of noice as possible. You do not see anyone so, if you did make noise none will be the wiser.',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 116
+      }
+    ],
+  },
+  {// 
+    id: 116,
+    text: 'You open up the kitchen door to see the dinning room, you unexpectingly walk into Henry having a lunch with his family. You see 2 little boys enjoying a large bowl of rice and you lock eyes with the man who ruined everything.',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 117
+      }
+    ],
+  },
+  {// 
+    id: 117,
+    text: 'Henry: "Oh, I wasn’t expecting a visitor today. Henry! What did I say about eating with your mouth open? Sigh. What are you doing here and who are you? Oh wait, sorry where my manners are, please sit over there."',
+    options: [
+      {
+        text: `HOW DARE YOU!`,
+        nextText: 118
+      }
+    ],
+  },
+  {// 
+    id: 118,
+    text: 'Henry: "No need to be so loud you don’t want the kids to be scared?"',
+    options: [
+      {
+        text: `Examine the room`,
+        nextText: 119
+      }
+    ],
+  },
+  {// 
+    id: 119,
+    text: 'The first kid runs to his mom, but the one named Henry just sat there eating, staring into your soul. Distracted by memories you didn’t realise that Henry had pulled out his sword.',
+    options: [
+      {
+        text: `Look back at Henry`,
+        nextText: 120
+      }
+    ],
+  },
+  {// 
+    id: 121,
+    text: 'Jack: "Why did you do it? You could have done it any other way, why? Why did you leave me alive with these memories!"',
+    options: [
+      {
+        text: `Grip your blade`,
+        nextText: 122
+      }
+    ],
+  },
+  {// 
+    id: 122,
+    text: 'Henry: "Okay this is enough, get the kids out. This should not be to long, we can finish our meal later tonight."',
+    options: [
+      {
+        text: `Contain your anger`,
+        nextText: 123
+      }
+    ],
+  },
+  {// Conflict
+    id: 123,
+    text: 'This is your chance, get your revenge!',
+    options: [
+      {
+        text: `Slash`,
+        nextText: 5
+      },
+      {
+        text: `Heal Potions`,
+        nextText: 8
+      },
+      {
+        text: `Scare`,
+        nextText: 9
+      },
+      {
+        text: `Stab`,
+        nextText: 10
+      },
+      {
+        text: `Pendant of Pain`,
+        nextText: 11
+      },
+      {
+        text: `Persuade`,
+        nextText: 12
+      },
+    ],
+    startCombat: 4,
+  },
+  {// end conflict
+    id: 124,
+    text: 'blank',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 100
+      }
+    ],
+  },
+  {// 
+    id: 125,
+    text: 'You get a couple of good shots in, but Henry is just to strong. You take a seceond to catch your breath and by the time you get your mind back in he lunges at you with the dull end of his blade. Your vision got dark and the last thing you remeber were the kids eyes.',
+    options: [
+      {
+        text: `...........`,
+        nextText: 126
+      }
+    ],
+  },
+  {// 
+    id: 126,
+    text: 'What do you expect? Did you expect that you would come out on top? You’re in my home, since this blade has enough of your kinds’ filth on it, I will spare you.Guards escort our friend to the prison in the south, but I am curious who you are?',
+    options: [
+      {
+        text: `...........`,
+        nextText: 127
+      }
+    ],
+  },
+  {// 
+    id: 127,
+    text: 'You wake up in a chain, the only thing you can sense is iron. As you try to get up you realise you are locked up in chains in a room. You thought your eyes were closed but then you see a little bit of light.',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 128
+      }
+    ],
+  },
+  {// 
+    id: 128,
+    text: 'Guard: "Feeding Time!"',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 129
+      }
+    ],
+  },
+  {// 
+    id: 97,
     text: '',
     options: [
       {
@@ -2396,7 +2864,7 @@ let textNodes = [
     ],
   },
   {// 
-    id: 72,
+    id: 97,
     text: '',
     options: [
       {
@@ -2406,47 +2874,7 @@ let textNodes = [
     ],
   },
   {// 
-    id: 72,
-    text: '',
-    options: [
-      {
-        text: `Continue`,
-        nextText: 18
-      }
-    ],
-  },
-  {// 
-    id: 72,
-    text: '',
-    options: [
-      {
-        text: `Continue`,
-        nextText: 18
-      }
-    ],
-  },
-  {// 
-    id: 72,
-    text: '',
-    options: [
-      {
-        text: `Continue`,
-        nextText: 18
-      }
-    ],
-  },
-  {// 
-    id: 72,
-    text: '',
-    options: [
-      {
-        text: `Continue`,
-        nextText: 18
-      }
-    ],
-  },
-  {// 
-    id: 72,
+    id: 97,
     text: '',
     options: [
       {
