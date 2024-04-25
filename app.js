@@ -161,7 +161,7 @@ function showTextNode(textNodeIndex) { // goes through tthe text nodes checks wh
     endingNode = 189.9;
     startCombat();
     combat(15, 22, 2); //ending id 
-  }  else if (textNode.startCombat === 7 && combatEnded === false) { //starts the combat 7
+  } else if (textNode.startCombat === 7 && combatEnded === false) { //starts the combat 7
     console.log('combat mode engaged');
     combatQuestion = false;
     endingNode = 189.91;
@@ -191,7 +191,7 @@ function showTextNode(textNodeIndex) { // goes through tthe text nodes checks wh
     console.log(d20)
     if (d20 >= 14) {
       console.log(`the if in dice roll is running`)
-     return showTextNode(48)
+      return showTextNode(48)
     } else if (d20 <= 13) {
       return showTextNode(42)
     }
@@ -208,11 +208,11 @@ function showTextNode(textNodeIndex) { // goes through tthe text nodes checks wh
     }
     console.log(d20)
     if (d20 >= 15) {
-     return showTextNode(103)
+      return showTextNode(103)
     } else if (d20 <= 14) {
       return showTextNode(105)
     }
-  }  else if (textNode.diceRoll === 3) {
+  } else if (textNode.diceRoll === 3) {
     console.log(`The dice roller is on and did things`) // this is how you roll dice to see if someone does something
 
     d20 = Math.floor(Math.random() * (21 - 1) + 1)
@@ -225,7 +225,7 @@ function showTextNode(textNodeIndex) { // goes through tthe text nodes checks wh
     }
     console.log(d20)
     if (d20 >= 15) {
-     return showTextNode(111)
+      return showTextNode(111)
     } else if (d20 <= 14) {
       return showTextNode(112)
     }
@@ -1214,9 +1214,6 @@ function endCombat() {
 function updateText() {
   textElement.innerText = newText
 }
-
-function nodeShower(){
-
 
 //holds all the story elements along with the options
 
@@ -3688,16 +3685,16 @@ let textNodes = [
       },
     ],
   },
-    {// lb end
-      id: 189.111,
-      text: 'You take out the guards and make a dash for the exit. You think about taking out your anger and all the guards, but you are not dumb.',
-      options: [
-        {
-          text: `Freedom!`,
-          nextText: 193
-        }
-      ],
-    },
+  {// lb end
+    id: 189.111,
+    text: 'You take out the guards and make a dash for the exit. You think about taking out your anger and all the guards, but you are not dumb.',
+    options: [
+      {
+        text: `Freedom!`,
+        nextText: 193
+      }
+    ],
+  },
   {// wb
     id: 189.13,
     text: 'Brian: "Jack, thank you for helping Brian. I am okay with this, go do not waste your freedom on me..." Brians eyes close and he takes a breath out, hes not died but he is pretending to be to try to get you to leave.',
@@ -3749,7 +3746,7 @@ let textNodes = [
       {
         text: `Talk to Jin`,
         nextText: 18
-      } 
+      }
     ],
   },
   {// bj
@@ -3891,5 +3888,4 @@ let textNodes = [
     ],
   },
 ]
-}
 startGame()
