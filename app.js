@@ -1489,8 +1489,7 @@ let textNodes = [
   // base stats start here
   {
     id: 26,
-    text: 'You first wake up in a burnt house surrounded by ash and taste of misery. You remember what happened to your family and one name rings constant: Henry. As you get up you feel nothing even though you were beat bloody. You look around and pick up your weapon and armour.',
-    options: [
+    text: 'You first wake up in a burnt house surrounded by ash and taste of misery. You remember what happened to your family and one name rings constantly: Henry. As you get up you feel nothing even though you were beat bloody. You look around and pick up your weapon and armour.',    options: [
       {
         text: `Continue`,
         nextText: 27
@@ -1536,7 +1535,7 @@ let textNodes = [
   },
   {
     id: 29,
-    text: 'Your room is still intact but its been cut threw. You look through your chests and drawers, but you couldn’t find anything that can be helpfull. You then look towards the wall to see the map that your Grandpa made when he traveled. You take it off the wall and put in your bag you find next to the bed.',
+    text: 'Your room is still intact but it’s been cut through. You look through your chests and drawers, but you couldn’t find anything that can be helpful. You then look towards the wall to see the map that your Grandpa made when he travelled. You take it off the wall and put in your bag you find next to the bed.',
     options: [
       {
         text: `Kitchen`,
@@ -1571,36 +1570,185 @@ let textNodes = [
     ],
   },
   {
-    id: 27,
-    text: 'You look around the room for anything else you can grab or keep as a memory. You take your partener’s ring. You then decide too:',
+    id: 31,
+    text: 'You look around the room for anything else you can grab or keep as a memory. You take your partner’s ring. You then decide too:',
     options: [
       {
         text: `Burry your family`,
-        nextText: 28
+        nextText: 32
       },
       {
-        text: ``,
-        nextText: 29
+        text: `Moarn then get on the road`,
+        nextText: 33
       },
       {
         text: `Walk out of the room.`,
-        nextText: 30
+        nextText: 34
       }
     ],
   },
   {
-    id: 28,
-    text: 'You walk outside your home, to see it all in ash. You yell out to see if anyone is still alive, none answers. You pray that at least some of your freinds made it out alive. You start to make your through the ruble, every now and then seeing stains of red.',
+    id: 32,
+    text: 'You take the time to little graves and try to hold back the tears. It takes a three days, but you feel a little bit better and like they can now cross more comfortably.',
     options: [
       {
         text: `Continue`,
-        nextText: 29
+        nextText: 35
       }
     ],
   },
   {
-    id: 17,
-    text: 'You make it the start of the road into the forest. You take one more look at your town, only feeling guilt and anger. As you are about your jounry to the next town you hear a dog.',
+    id: 33,
+    text: 'You spend a day at the town’s church and pray for a safe passage through the afterlife. You spend one more night in your broken home.',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 35
+      }
+    ],
+  },
+  {
+    id: 34,
+    text: 'You have no time to spend thinking about the past, there is nothing to be done.',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 35
+      }
+    ],
+  },
+  {
+    id: 35,
+    text: 'You look around the town to see if there is anyone still alive. You can’t find anyone, you just pray that one of your friends got out. You yell out "Is there anyone!?" None answers, you make your way to the road that leads to forest seeing the burnt town full of ash and debris. You then hear a dog.',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 36
+      }
+    ],
+  },
+  {
+    id: 36,
+    text: 'Dog: "Bark". The Dog looks at you and tilts its head, looking at your bag. It seems very skinny for a dog, you have never seen this dog before. (Important Choice)',
+    options: [
+      {
+        text: `Help the dog.`,
+        nextText: 37
+      },
+      {
+        text: `Do not interact with the dog.`,
+        nextText: 38
+      },
+      {
+        text: `Tell the dog to go away.`,
+        nextText: 39
+      }
+    ],
+  },
+  {
+    id: 37,
+    text: 'You take out some off your bread and tear a little piece and gave it to the dog. You tell let to follow and it seems to sorta understand and starts to follow you down the road.',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 40
+      }
+    ],
+  },
+  {
+    id: 38,
+    text: 'You look at it and continue down the path, you see as it starts to follow you. You let it follow, but you have an uneasy feeling.',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 3000
+      }
+    ],
+  },
+  {
+    id: 39,
+    text: 'You look at the dog and tell it to stay and to go far away from this plcae. The dog looks at you then decides to continue forward, luckly it goes a different way.',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 6000
+      }
+    ],
+  },
+  //keep dog
+  {
+    id: 40,
+    text: 'You start walking into the forest, you have heard many stories about what lurks within, but you are sure most of not true. The truth is that they are some word of bandits having a great influence over the region. You should tread carefully from now on, but lucky you are not alone.',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 41
+      }
+    ],
+  },  
+  {
+    id: 39,
+    text: 'You feel like you have been walking for days, the dog stops for a second and starts to growl. You look around and you see a merhcant caravan, you get closer to see what has happened, but the dog is not moving with you.',
+    options: [
+      {
+        text: `Investigate`,
+        nextText: 40
+      }
+    ],
+  },  
+  {
+    id: 40,
+      text: 'As you get closer to the cart, you see a couple arrows stuck in the cart. You take it out to examine the arrows. You hear something in front of you, but you can only make out shadow figures.',
+    options: [
+      {
+        text: `Yell out.`,
+        nextText: 41
+      },
+      {
+        text: `Wait to meet.`,
+        nextText: 44
+      },
+      {
+        text: `Hide.`,
+        nextText: 45
+      }
+    ],
+  },  
+  {
+    id: 41,
+    text: 'Jack: "Hey, do you know what happened here?"',
+    options: [
+      {
+        text: `Wait for Response.`,
+        nextText: 42
+      }
+    ],
+  },  
+  {
+    id: 42,
+    text: 'You see them run at you, you prepare to take out your weapon you first think of warning them, but they are too quick. It only looks like two of them so you might have a chance',
+    options: [
+      {
+        text: `Take out weapon.`,
+        nextText: 43
+      }
+    ],
+  },  
+  //combat
+  {
+    id: 44,
+    text: 'You stand there and wait, you continue to examine the cart and you finally get a good look at the people. You realize that they are bandits, luckly there is only two of them so you can probably take them.',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 43
+      }
+    ],
+  },  
+  //combat
+  {
+    id: 39,
+    text: 'You get off the streak on try to stay out of sight, you may be able to sneak past.',
     options: [
       {
         text: `Continue`,
@@ -1609,7 +1757,7 @@ let textNodes = [
     ],
   },
   {
-    id: 17,
+    id: 39,
     text: '',
     options: [
       {
@@ -1619,7 +1767,7 @@ let textNodes = [
     ],
   },
   {
-    id: 17,
+    id: 39,
     text: '',
     options: [
       {
@@ -1629,7 +1777,7 @@ let textNodes = [
     ],
   },
   {
-    id: 17,
+    id: 39,
     text: '',
     options: [
       {
@@ -1639,7 +1787,7 @@ let textNodes = [
     ],
   },
   {
-    id: 17,
+    id: 39,
     text: '',
     options: [
       {
@@ -1649,7 +1797,39 @@ let textNodes = [
     ],
   },
   {
-    id: 17,
+    id: 39,
+    text: '',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 18
+      }
+    ],
+  },
+  //don't interact with dog
+  {
+    id: 3000,
+    text: '',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 18
+      }
+    ],
+  },  
+  {
+    id: 39,
+    text: '',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 18
+      }
+    ],
+  },  
+  //leave dog
+  {
+    id: 6000,
     text: '',
     options: [
       {
@@ -1659,7 +1839,7 @@ let textNodes = [
     ],
   },
   {
-    id: 17,
+    id: 39,
     text: '',
     options: [
       {
