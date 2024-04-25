@@ -14,12 +14,12 @@ let None1 = new Enemy(`The Air`, 0, 0, 0, 0, 0)
 let None2 = new Enemy(`The Wind`, 0, 0, 0, 0, 0)
 let None3 = new Enemy(`The Breeze`, 0, 0, 0, 0, 0)
 let Bandit1 = new Enemy(`Nate the Bandit`, 25, 0, 45, 0, 0)
-let Bandit2 = new Enemy(`Josh the Bandit`, 30, 0, 50, 0, 0)
-let Bandit3 = new Enemy(`Steven the Bandit`, 20, 5, 50, 0, 0)
-let Bandit4 = new Enemy(`Johnson the Bandit`, 40, 0, 35, 0, 0)
-let Bandit5 = new Enemy(`Nick the Bandit`, 30, 10, 80, 0, 0)
-let BanditGen1 = new Enemy(`The Bandit`, 35, 10, 40, 0, 0)
-let BanditGen2 = new Enemy(`The Bandit`, 20, 0, 50, 0, 0)
+let Bandit2 = new Enemy(`Josh the Bandit`, 30, 0, 50, 0, 0)//4
+let Bandit3 = new Enemy(`Steven the Bandit`, 20, 5, 50, 0, 0)//6
+let Bandit4 = new Enemy(`Johnson the Bandit`, 40, 0, 35, 0, 0) //7
+let Bandit5 = new Enemy(`Nick the Bandit`, 30, 10, 80, 0, 0)//8
+let BanditGen1 = new Enemy(`The Bandit`, 35, 10, 40, 0, 0) //9 
+let BanditGen2 = new Enemy(`The Bandit`, 20, 0, 50, 0, 0) // 10
 let BanditGen3 = new Enemy(`The Bandit`, 50, 20, 100, 0, 0)
 let BanditGen4 = new Enemy(`The Bandit`, 25, 0, 55, 0, 0)
 let LeadBandit = new Enemy(`Bandit Leader`, 50, 0, 100, 10, 0)
@@ -49,7 +49,7 @@ let Dragon = new Enemy(`The Dragon`, 300, 0, 350, 10, 10)
 let AlphaWolf = new Enemy(`The Alpha Wolf`, 70, -20, 90, 5, 5)
 let FirstHenry = new Enemy(`Henry`, 400, 0, 700, 15, 10)
 let SecondHenry = new Enemy(`Henry`, 250, 0, 300, 10, 7)
-let Yourself = new Enemy(`Youself`, 1000, 0, 3000, 0, 0)
+let Yourself = new Enemy(`Yourself`, 1000, 0, 3000, 0, 0)
 
 const textElement = document.getElementById('text'); //gets the ids from the html to change the text for the story
 const optionButtonsElement = document.getElementById('btnOptions');
@@ -81,6 +81,8 @@ let enemy1 = None1
 let enemy2 = None2
 let enemy3 = None3
 let endingNode = 0
+let combatEnded = false
+
 
 let player = {
   wis: 0,
@@ -122,12 +124,12 @@ function startGame() {
 function showTextNode(textNodeIndex) { // goes through tthe text nodes checks what I put for the text and changes the text in the HTML
   const textNode = textNodes.find(textNode => textNode.id === textNodeIndex)
   textElement.innerText = textNode.text
-  if (textNode.startCombat === 1) { //just checks is a paramantor to see if combat starts
+  if (textNode.startCombat === 1 && combatEnded === false) { //starts the combat
     console.log('combat mode engaged');
-    combatQuestion = false
-    startCombat()
-    combat(4, 5, 6)
-    endingNode = 15
+    combatQuestion = false;
+    endingNode = 50;
+    startCombat();
+    combat(6, 10, 1); //ending id
   }
   else if (textNode.continueCombat === true) { //checks if you are continue combat
     console.log('combat mode cont');
@@ -137,6 +139,32 @@ function showTextNode(textNodeIndex) { // goes through tthe text nodes checks wh
     console.log('no violence = sad pandas');
     combatQuestion = false
   }
+
+  if (textNode.diceRoll === 1) {
+    console.log(`The dice roller is on and did things`) // this is how you roll dice to see if someone does something
+
+    d20 = Math.floor(Math.random() * (21 - 1) + 1)
+    if (player.dex >= 9) {
+      d20 += 4
+    } else if (player.dex >= 6) {
+      d20 += 2
+    } else if (player.dex >= 3) {
+      d20 += 1
+    }
+    console.log(d20)
+    if (d20 >= 14) {
+      showTextNode(48)
+    } else if (d20 <= 14) {
+      showTextNode(42)
+    }
+
+    if (d20 >= 14) {
+      showTextNode(48)
+    } else if (d20 <= 14) {
+      showTextNode(42)
+    }
+  }
+
 
   while (optionButtonsElement.firstChild) { //removes buttons for combat, deletes the buttons but then adds new buttons
     optionButtonsElement.removeChild(optionButtonsElement.firstChild)
@@ -295,7 +323,6 @@ function healPot(amount) {
     }
   }
 }
-
 function painPendant() {
   if (combatQuestion === true || continueCombat === true) {
     multi = 1
@@ -310,7 +337,6 @@ function painPendant() {
     combat()
   }
 }
-
 function scare() {
   if (combatQuestion === true || continueCombat === true) {
     d20 = Math.floor(Math.random() * (21 - 1) + 1)
@@ -333,7 +359,6 @@ function scare() {
     talking()
   }
 }
-
 function persuade() {
   if (combatQuestion === true || continueCombat === true) {
     d20 = Math.floor(Math.random() * (21 - 1) + 1)
@@ -379,6 +404,9 @@ function slash() { //combat function only works if the combat funation is true a
       d12 += 3
     } else if (player.str >= 3) {
       d12 += 2
+    }
+    if (player.debug >= 1) {
+      d12 += 120
     }
     damage = (d12 * multi) * 1.5
     attack = true
@@ -505,51 +533,45 @@ function combat(one, two, three) {
       enemy1 = GuardGen4
       break;
     case 23:
-      enemy1 = BanditGen3
-      break;
-    case 24:
-      enemy1 = BanditGen4
-      break;
-    case 25:
       enemy1 = Archer1
       break;
-    case 26:
+    case 24:
       enemy1 = Archer2
       break;
-    case 27:
+    case 25:
       enemy1 = ArcherGen1
       break;
-    case 28:
+    case 26:
       enemy1 = ArcherGen2
       break;
-    case 29:
+    case 27:
       enemy1 = Genral
       break;
-    case 30:
+    case 28:
       enemy1 = Bear1
       break;
-    case 31:
+    case 29:
       enemy1 = Bear2
       break;
-    case 32:
+    case 30:
       enemy1 = Wolf1
       break;
-    case 33:
+    case 31:
       enemy1 = Wolf2
       break;
-    case 34:
+    case 32:
       enemy1 = Dragon
       break;
-    case 35:
+    case 33:
       enemy1 = AlphaWolf
       break;
-    case 36:
+    case 34:
       enemy1 = FirstHenry
       break;
-    case 37:
+    case 35:
       enemy1 = SecondHenry
       break;
-    case 38:
+    case 36:
       enemy1 = Yourself
       break;
     default:
@@ -623,51 +645,45 @@ function combat(one, two, three) {
       enemy2 = GuardGen4
       break;
     case 23:
-      enemy2 = BanditGen3
-      break;
-    case 24:
-      enemy2 = BanditGen4
-      break;
-    case 25:
       enemy2 = Archer1
       break;
-    case 26:
+    case 24:
       enemy2 = Archer2
       break;
-    case 27:
+    case 25:
       enemy2 = ArcherGen1
       break;
-    case 28:
+    case 26:
       enemy2 = ArcherGen2
       break;
-    case 29:
+    case 27:
       enemy2 = Genral
       break;
-    case 30:
+    case 28:
       enemy2 = Bear1
       break;
-    case 31:
+    case 29:
       enemy2 = Bear2
       break;
-    case 32:
+    case 30:
       enemy2 = Wolf1
       break;
-    case 33:
+    case 31:
       enemy2 = Wolf2
       break;
-    case 34:
+    case 32:
       enemy2 = Dragon
       break;
-    case 35:
+    case 33:
       enemy2 = AlphaWolf
       break;
-    case 36:
+    case 34:
       enemy2 = FirstHenry
       break;
-    case 37:
+    case 35:
       enemy2 = SecondHenry
       break;
-    case 38:
+    case 36:
       enemy2 = Yourself
       break;
     default:
@@ -723,70 +739,64 @@ function combat(one, two, three) {
       enemy3 = Guard3
       break;
     case 17:
-      enemy3 = Guard4
+      enemy1 = Guard4
       break;
     case 18:
-      enemy3 = Guard5
+      enemy1 = Guard5
       break;
     case 19:
-      enemy3 = GuardGen1
+      enemy1 = GuardGen1
       break;
     case 20:
-      enemy3 = GuardGen2
+      enemy1 = GuardGen2
       break;
     case 21:
-      enemy3 = GuardGen3
+      enemy1 = GuardGen3
       break;
     case 22:
-      enemy3 = GuardGen4
+      enemy1 = GuardGen4
       break;
     case 23:
-      enemy3 = BanditGen3
+      enemy1 = Archer1
       break;
     case 24:
-      enemy3 = BanditGen4
+      enemy1 = Archer2
       break;
     case 25:
-      enemy3 = Archer1
+      enemy1 = ArcherGen1
       break;
     case 26:
-      enemy3 = Archer2
+      enemy1 = ArcherGen2
       break;
     case 27:
-      enemy3 = ArcherGen1
+      enemy1 = Genral
       break;
     case 28:
-      enemy3 = ArcherGen2
+      enemy1 = Bear1
       break;
     case 29:
-      enemy3 = Genral
+      enemy1 = Bear2
       break;
     case 30:
-      enemy3 = Bear1
+      enemy1 = Wolf1
       break;
     case 31:
-      enemy3 = Bear2
+      enemy1 = Wolf2
       break;
     case 32:
-      enemy3 = Wolf1
+      enemy1 = Dragon
       break;
     case 33:
-      enemy3 = Wolf2
+      enemy1 = AlphaWolf
       break;
     case 34:
-      enemy3 = Dragon
+      enemy1 = FirstHenry
       break;
     case 35:
-      enemy3 = AlphaWolf
+      enemy1 = SecondHenry
       break;
     case 36:
-      enemy3 = FirstHenry
-      break;
-    case 37:
-      enemy3 = SecondHenry
-      break;
-    case 38:
-      enemy3 = Yourself
+      enemy1 = Yourself
       break;
     default:
   }
@@ -1114,16 +1124,24 @@ function talking() {
   }
 }
 function endCombat() {
+  console.log(combatQuestion, playerHp)
+  if (enemy1.enemyHp <= 0 && enemy2.enemyHp <= 0 && enemy3.enemyHp <= 0) {
+    combatEnded = true
+    console.log(`combat ended is true now`)
+  }
+
   if (playerHp <= 0) {
     newText = `You have been killed and won't be missed`
     showTextNode(13)
+    playerHp = 150
   }
-  else if (enemy1.enemyHp <= 0 && enemy2.enemyHp <= 0 && enemy3.enemyHp <= 0 && combatQuestion === true) {
+  else if (combatQuestion === true && combatEnded === true) {
     attack = false
+    console.log(`this did go in the end winning combat`)
     combatQuestion = false
+    playerHp = 150
+    newText = `You have won the battle`
     showTextNode(endingNode)
-    newText = `You made it out of the battle as the victor.`
-    updateText()
   } else { console.log(`The end function did not work`) }
 }
 
@@ -1489,7 +1507,7 @@ let textNodes = [
   // base stats start here
   {
     id: 26,
-    text: 'You first wake up in a burnt house surrounded by ash and taste of misery. You remember what happened to your family and one name rings constantly: Henry. As you get up you feel nothing even though you were beat bloody. You look around and pick up your weapon and armour.',    options: [
+    text: 'You first wake up in a burnt house surrounded by ash and taste of misery. You remember what happened to your family and one name rings constantly: Henry. As you get up you feel nothing even though you were beat bloody. You look around and pick up your weapon and armour.', options: [
       {
         text: `Continue`,
         nextText: 27
@@ -1574,7 +1592,7 @@ let textNodes = [
     text: 'You look around the room for anything else you can grab or keep as a memory. You take your partner’s ring. You then decide too:',
     options: [
       {
-        text: `Burry your family`,
+        text: `Bury your family`,
         nextText: 32
       },
       {
@@ -1637,11 +1655,9 @@ let textNodes = [
       },
       {
         text: `Do not interact with the dog.`,
-        nextText: 38
       },
       {
         text: `Tell the dog to go away.`,
-        nextText: 39
       }
     ],
   },
@@ -1685,70 +1701,328 @@ let textNodes = [
         nextText: 41
       }
     ],
-  },  
+  },
   {
-    id: 39,
+    id: 41,
     text: 'You feel like you have been walking for days, the dog stops for a second and starts to growl. You look around and you see a merhcant caravan, you get closer to see what has happened, but the dog is not moving with you.',
     options: [
       {
         text: `Investigate`,
-        nextText: 40
+        nextText: 43
       }
     ],
-  },  
+  },
   {
-    id: 40,
-      text: 'As you get closer to the cart, you see a couple arrows stuck in the cart. You take it out to examine the arrows. You hear something in front of you, but you can only make out shadow figures.',
+    id: 43,
+    text: 'As you get closer to the cart, you see a couple arrows stuck in the cart. You take it out to examine the arrows. You hear something in front of you, but you can only make out shadow figures.',
     options: [
       {
         text: `Yell out.`,
-        nextText: 41
-      },
-      {
-        text: `Wait to meet.`,
         nextText: 44
       },
       {
-        text: `Hide.`,
+        text: `Wait to meet.`,
         nextText: 45
+      },
+      {
+        text: `Hide.`,
+        nextText: 47
       }
     ],
-  },  
+  },
   {
-    id: 41,
+    id: 44, //talking
     text: 'Jack: "Hey, do you know what happened here?"',
     options: [
       {
         text: `Wait for Response.`,
-        nextText: 42
+        nextText: 45
       }
     ],
-  },  
+  },
   {
-    id: 42,
+    id: 45, //talking
     text: 'You see them run at you, you prepare to take out your weapon you first think of warning them, but they are too quick. It only looks like two of them so you might have a chance',
     options: [
       {
         text: `Take out weapon.`,
-        nextText: 43
+        nextText: 46
       }
     ],
-  },  
-  //combat
+  },
   {
-    id: 44,
+    id: 46, //stand off
     text: 'You stand there and wait, you continue to examine the cart and you finally get a good look at the people. You realize that they are bandits, luckly there is only two of them so you can probably take them.',
     options: [
       {
         text: `Continue`,
-        nextText: 43
+        nextText: 49
       }
     ],
-  },  
-  //combat
+  },
   {
-    id: 39,
-    text: 'You get off the streak on try to stay out of sight, you may be able to sneak past.',
+    id: 47, //sneak
+    text: 'You get off the road on try to stay out of sight, you may be able to sneak past.',
+    options: [
+      { //roll dice to see if you can sneak through dex if failed then becomes in combat
+        text: `Continue 47`,
+        nextText: 48
+      }
+    ],
+    diceRoll: 1
+  },
+  { //sneak
+    id: 48, //succeed on dex roll
+    text: 'You were able to sneak past the bandits, they would have been a rough fight for you. You wait for a little bit before contining going.',
+    options: [
+      {
+        text: `Continue 48`,
+        nextText: 51
+      }
+    ],
+  },
+  { //sneak
+    id: 42, //fails on dex roll
+    text: 'You start to try to sneak past them but you step some branches. The bandits stop to look at you and they take out their blades. You take out your weapon to get ready to fight, but you can always talk your way out.',
+    options: [
+      {
+        text: `Continue 42`,
+        nextText: 49
+      }
+    ],
+  },
+  { //combat
+    id: 49,
+    text: `You get into combat with the two bandits.`,
+    options: [
+      {
+        text: `Slash`,
+        nextText: 5
+      },
+      {
+        text: `Heal Potions`,
+        nextText: 8
+      },
+      {
+        text: `Scare`,
+        nextText: 9
+      },
+      {
+        text: `Stab`,
+        nextText: 10
+      },
+      {
+        text: `Pendant of Pain`,
+        nextText: 11
+      },
+      {
+        text: `Persuade`,
+        nextText: 12
+      },
+    ],
+    startCombat: 1,
+  },
+  {
+    id: 50, //end of combat
+    text: 'You have won',
+    options: [
+      {
+        text: `Leave as the victor`,
+        nextText: 51
+      }
+    ],
+  },
+  { //start after combat
+    id: 51,
+    text: 'You walk off with a sense of relief, you are happy to be alive but you do not know what you should feel. The dog comes out in from the forest and starts licking your face. ',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 52
+      }
+    ],
+  },
+  {
+    id: 52,
+    text: 'You clean yourself and settle for the night. You get some fire wood and try to remeber what your uncle told you, but as you try to remeber the only thoughts that come to mind are the memories of the horror you went threw. You go to bed without a fire, but you are confindent thing will happen.',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 53
+      }
+    ],
+  },
+  {//wisdom check
+    id: 53,
+    text: 'You wake up, but not where you remebered you being, the forest is more dense and there is a smell of smoke. You get up thinking that you were about to burn down the forest, but you quickly remeberized that you did not make a fire, so who did? You get up and look for around the dog is nowhere to be seen, but you do see his footprints',
+    options: [
+      {
+        text: `Where is that dog`,
+        nextText: 55
+      },
+      {
+        text: `What is that smell?`,
+        nextText: 56
+      },
+      {
+        text: `Continue on your path.`,
+        nextText: 57
+      }
+    ],
+  },
+  {// 
+    id: 55,
+    text: 'You get up and start to look for the dog, you see its footprints. You start to follow the path and it leads you to a little house in the middle of the forest.',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 58
+      }
+    ],
+  },
+  {// 
+    id: 56,
+    text: 'You get up and start to follow your nose, it leads you to a house that has smoke coming from it.',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 58
+      }
+    ],
+  },
+  {// 
+    id: 57,
+    text: 'You look around you to see if there is still a path, so you get up and you start to follow the path. The path leads you to a house, you were expecting a town, but the map is old so it maybe have been destoried.',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 58
+      }
+    ],
+  },
+  {// 
+    id: 58,
+    text: 'You look around to see if there is anyone, but there does not seem to be anyone making an loud noices.',
+    options: [
+      {
+        text: `Is anyone here?`,
+        nextText: 59
+      },
+      {
+        text: `Hello?`,
+        nextText: 59
+      },
+      {
+        text: `Hey!`,
+        nextText: 59
+      }
+    ],
+  },
+  {// 
+    id: 59,
+    text: 'Marry: "What are you doing on my land!?"',
+    options: [
+      {
+        text: `Sorry`,
+        nextText: 60
+      },
+      {
+        text: `Hi`,
+        nextText: 60
+      },
+      {
+        text: `*take out weapon`,
+        nextText: 65
+      }
+    ],
+  },
+  {// diplomatic approach
+    id: 60,
+    text: 'Marry: "Why are you here?"',
+    options: [
+      {
+        text: `Respond`,
+        nextText: 61
+      }
+    ],
+  },
+  {// diplomatic approach
+    id: 61,
+    text: 'Jack: "Hey sorry, I did not mean to intrude on your lands, I come a little village near by that was attacked by a man. Have you heard the name Herny?"',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 62
+      }
+    ],
+  },
+  {// diplomatic approach
+    id: 62,
+    text: 'Marry: "I can not say I have ran into a man with that name, so you are not one of those bandits are you?"',
+    options: [
+      {
+        text: `No`,
+        nextText: 63
+      }
+    ],
+  },
+  {// diplomatic approach
+    id: 63,
+    text: 'Jack: "I am not a bandit, I actaully saw a couple back there, I dealt with them. I am Jack, may I ask who you are? My uncle used to talk about someone who looks just like you, a weapon smith with a very "large" personilty."',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 64
+      }
+    ],
+  },
+  {// diplomatic approach
+    id: 64,
+    text: 'Marry: "I am a weapon smith, I have been here for quite a while. I have not been visted by someone for a long while, why do not you come in?"',
+    options: [
+      {
+        text: `Walk in`,
+        nextText: 67
+      }
+    ],
+  },
+  {// diplomatic approach
+    id: 65,
+    text: 'Marry: "Hey, no need for that, who are you?"',
+    options: [
+      {
+        text: `Respond`,
+        nextText: 61
+      },
+      {
+        text: `Stay quiet`,
+        nextText: 68
+      }
+    ],
+  },
+  {// goes with pulling out blade
+    id: 66,
+    text: 'Marry: "I am Marry, the black smith, if you may not go straight to violence we can both walk out of here alive and better for it."',
+    options: [
+      {
+        text: `What?`,
+        nextText: 67
+      }
+    ],
+  },
+  {// goes with pulling out blade
+    id: 67,
+    text: 'You remeber your uncle talking about a blacksmith, this person can be of help.',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 63
+      }
+    ],
+  },
+  {// 
+    id: 61,
+    text: '',
     options: [
       {
         text: `Continue`,
@@ -1756,8 +2030,8 @@ let textNodes = [
       }
     ],
   },
-  {
-    id: 39,
+  {// 
+    id: 61,
     text: '',
     options: [
       {
@@ -1766,8 +2040,8 @@ let textNodes = [
       }
     ],
   },
-  {
-    id: 39,
+  {// 
+    id: 61,
     text: '',
     options: [
       {
@@ -1776,8 +2050,8 @@ let textNodes = [
       }
     ],
   },
-  {
-    id: 39,
+  {// 
+    id: 61,
     text: '',
     options: [
       {
@@ -1786,60 +2060,8 @@ let textNodes = [
       }
     ],
   },
-  {
-    id: 39,
-    text: '',
-    options: [
-      {
-        text: `Continue`,
-        nextText: 18
-      }
-    ],
-  },
-  {
-    id: 39,
-    text: '',
-    options: [
-      {
-        text: `Continue`,
-        nextText: 18
-      }
-    ],
-  },
-  //don't interact with dog
-  {
-    id: 3000,
-    text: '',
-    options: [
-      {
-        text: `Continue`,
-        nextText: 18
-      }
-    ],
-  },  
-  {
-    id: 39,
-    text: '',
-    options: [
-      {
-        text: `Continue`,
-        nextText: 18
-      }
-    ],
-  },  
-  //leave dog
-  {
-    id: 6000,
-    text: '',
-    options: [
-      {
-        text: `Continue`,
-        nextText: 18
-      }
-    ],
-  },
-  {
-    id: 39,
+  {// 
+    id: 61,
     text: '',
     options: [
       {
