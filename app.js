@@ -184,15 +184,11 @@ function showTextNode(textNodeIndex) { // goes through tthe text nodes checks wh
     }
     console.log(d20)
     if (d20 >= 14) {
-      showTextNode(48)
+      endingNode = 48
+      nodeShower()
     } else if (d20 <= 14) {
-      showTextNode(42)
-    }
-
-    if (d20 >= 14) {
-      showTextNode(48)
-    } else if (d20 <= 14) {
-      showTextNode(42)
+      endingNode = 42
+      nodeShower()
     }
   }
 
@@ -1181,6 +1177,10 @@ function updateText() {
   textElement.innerText = newText
 }
 
+function nodeShower(){
+
+  showTextNode(endingNode)
+}
 
 //holds all the story elements along with the options
 
@@ -1843,11 +1843,21 @@ let textNodes = [
     text: 'You get off the road on try to stay out of sight, you may be able to sneak past.',
     options: [
       { //roll dice to see if you can sneak through dex if failed then becomes in combat
-        text: `Continue 47`,
-        nextText: 48
+        text: `Continue 47 to 47.1`,
+        nextText: 47.1
       }
     ],
     diceRoll: 1
+  },
+  {
+    id: 47.1, //sneak
+    text: 'You get off the road on try to stay out of sight, you may be able to sneak past.',
+    options: [
+      { //roll dice to see if you can sneak through dex if failed then becomes in combat
+        text: `Continue 47.1 to idk`,
+        nextText: 50
+      }
+    ],
   },
   { //sneak
     id: 48, //succeed on dex roll
