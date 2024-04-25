@@ -184,14 +184,46 @@ function showTextNode(textNodeIndex) { // goes through tthe text nodes checks wh
     }
     console.log(d20)
     if (d20 >= 14) {
-      endingNode = 48
-      nodeShower()
+      console.log(`the if in dice roll is running`)
+     return showTextNode(48)
+    } else if (d20 <= 13) {
+      return showTextNode(42)
+    }
+  } else if (textNode.diceRoll === 2) {
+    console.log(`The dice roller is on and did things`) // this is how you roll dice to see if someone does something
+
+    d20 = Math.floor(Math.random() * (21 - 1) + 1)
+    if (player.wis >= 9) {
+      d20 += 4
+    } else if (player.wis >= 6) {
+      d20 += 2
+    } else if (player.wis >= 3) {
+      d20 += 1
+    }
+    console.log(d20)
+    if (d20 >= 15) {
+     return showTextNode(103)
     } else if (d20 <= 14) {
-      endingNode = 42
-      nodeShower()
+      return showTextNode(105)
+    }
+  }  else if (textNode.diceRoll === 3) {
+    console.log(`The dice roller is on and did things`) // this is how you roll dice to see if someone does something
+
+    d20 = Math.floor(Math.random() * (21 - 1) + 1)
+    if (player.cha >= 9) {
+      d20 += 5
+    } else if (player.cha >= 6) {
+      d20 += 3
+    } else if (player.cha >= 3) {
+      d20 += 2
+    }
+    console.log(d20)
+    if (d20 >= 15) {
+     return showTextNode(111)
+    } else if (d20 <= 14) {
+      return showTextNode(112)
     }
   }
-
 
   while (optionButtonsElement.firstChild) { //removes buttons for combat, deletes the buttons but then adds new buttons
     optionButtonsElement.removeChild(optionButtonsElement.firstChild)
@@ -1177,10 +1209,7 @@ function updateText() {
   textElement.innerText = newText
 }
 
-function nodeShower(){
 
-  showTextNode(endingNode)
-}
 
 //holds all the story elements along with the options
 
@@ -1843,28 +1872,18 @@ let textNodes = [
     text: 'You get off the road on try to stay out of sight, you may be able to sneak past.',
     options: [
       { //roll dice to see if you can sneak through dex if failed then becomes in combat
-        text: `Continue 47 to 47.1`,
-        nextText: 47.1
+        text: `Continue`,
+        nextText: 47
       }
     ],
     diceRoll: 1
-  },
-  {
-    id: 47.1, //sneak
-    text: 'You get off the road on try to stay out of sight, you may be able to sneak past.',
-    options: [
-      { //roll dice to see if you can sneak through dex if failed then becomes in combat
-        text: `Continue 47.1 to idk`,
-        nextText: 50
-      }
-    ],
   },
   { //sneak
     id: 48, //succeed on dex roll
     text: 'You were able to sneak past the bandits, they would have been a rough fight for you. You wait for a little bit before contining going.',
     options: [
       {
-        text: `Continue 48`,
+        text: `Continue`,
         nextText: 51
       }
     ],
@@ -1874,7 +1893,7 @@ let textNodes = [
     text: 'You start to try to sneak past them but you step some branches. The bandits stop to look at you and they take out their blades. You take out your weapon to get ready to fight, but you can always talk your way out.',
     options: [
       {
-        text: `Continue 42`,
+        text: `Continue`,
         nextText: 49
       }
     ],
@@ -2248,7 +2267,7 @@ let textNodes = [
       }
     ],
   },
-  {// input buttons for ability score
+  {
     id: 75.8,
     text: 'Pick your ability score',
     options: [
@@ -2602,6 +2621,7 @@ let textNodes = [
         nextText: 103
       }
     ],
+    diceRoll: 2
   },
   {// wisdom succeeds (ws)
     id: 103,
@@ -2609,7 +2629,7 @@ let textNodes = [
     options: [
       {
         text: `Continue`,
-        nextText: 104
+        nextText: 113
       }
     ],
   },
@@ -2629,7 +2649,7 @@ let textNodes = [
     options: [
       {
         text: `Continue`,
-        nextText: 107
+        nextText: 108
       }
     ],
   },
@@ -2646,6 +2666,7 @@ let textNodes = [
         nextText: 109
       },
     ],
+    diceRoll: 3
   },
   {// Conflict
     id: 109,
@@ -2719,7 +2740,7 @@ let textNodes = [
     ],
   },
   {// ws
-    id: 115,
+    id: 114,
     text: 'You make it to the end and you can see the kitchen above you. You climb up the ladder and try to make the least amount of noice as possible. You do not see anyone so, if you did make noise none will be the wiser.',
     options: [
       {
@@ -2769,7 +2790,7 @@ let textNodes = [
     ],
   },
   {// 
-    id: 121,
+    id: 120,
     text: 'Jack: "Why did you do it? You could have done it any other way, why? Why did you leave me alive with these memories!"',
     options: [
       {
@@ -2825,7 +2846,7 @@ let textNodes = [
     options: [
       {
         text: `Continue`,
-        nextText: 100
+        nextText: 125
       }
     ],
   },
