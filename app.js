@@ -24,6 +24,7 @@ let BanditGen3 = new Enemy(`The Bandit`, 50, 20, 100, 0, 0) //11
 let BanditGen4 = new Enemy(`The Bandit`, 25, 0, 55, 0, 0) //12
 let LeadBandit = new Enemy(`Bandit Leader`, 50, 0, 100, 10, 0) //13
 
+
 let Guard1 = new Enemy(`Eligh the Guard`, 70, 10, 120, 6, 2) //14
 let Guard2 = new Enemy(`Guston the Guard`, 60, 0, 70, 8, 0) //15
 let Guard3 = new Enemy(`Duke the Guard`, 90, 0, 100, 4, 0) //16
@@ -34,12 +35,15 @@ let GuardGen2 = new Enemy(`The Guard`, 75, 12, 120, 2, 2) //20
 let GuardGen3 = new Enemy(`The Guard`, 80, 0, 100, 4, 1) //21
 let GuardGen4 = new Enemy(`The Guard`, 90, 5, 90, 3, 1) //22
 
+
 let Archer1 = new Enemy(`Noah the Archer`, 50, 0, 90, 9, 4)  //23
 let Archer2 = new Enemy(`Ezekiel the Archer`, 40, 0, 65, 5, 5) // 24
 let ArcherGen1 = new Enemy(`The Archer`, 45, 0, 90, 4, 4) //25
 let ArcherGen2 = new Enemy(`The Archer`, 65, 0, 50, 7, 5)//26
 
+
 let Genral = new Enemy(`The Genral`, 100, 0, 100, 10, 5)//27
+
 
 let Bear1 = new Enemy(`The Brown Bear`, 60, 0, 70, 7, 0)//28
 let Bear2 = new Enemy(`The Black Bear`, 50, 0, 60, 0, 3)//29
@@ -50,6 +54,7 @@ let AlphaWolf = new Enemy(`The Alpha Wolf`, 70, -20, 90, 5, 5)//33
 let FirstHenry = new Enemy(`Henry`, 400, 0, 700, 15, 10)//34
 let SecondHenry = new Enemy(`Henry`, 250, 0, 300, 10, 7)//35
 let Yourself = new Enemy(`Yourself`, 1000, 0, 3000, 0, 0)//36
+
 
 const textElement = document.getElementById('text'); //gets the ids from the html to change the text for the story
 const optionButtonsElement = document.getElementById('btnOptions');
@@ -84,6 +89,8 @@ let endingNode = 0
 let combatEnded = false
 
 
+
+
 let player = {
   wis: 0,
   str: 0,
@@ -100,6 +107,8 @@ let player = {
   jade: 0,
   debug: 0,
 }
+
+
 
 
 function startGame() {
@@ -121,6 +130,7 @@ function startGame() {
   }
   showTextNode(1)
 }
+
 
 function showTextNode(textNodeIndex) { // goes through tthe text nodes checks what I put for the text and changes the text in the HTML
   const textNode = textNodes.find(textNode => textNode.id === textNodeIndex)
@@ -177,8 +187,10 @@ function showTextNode(textNodeIndex) { // goes through tthe text nodes checks wh
     combatQuestion = false
   }
 
+
   if (textNode.diceRoll === 1) {
     console.log(`The dice roller is on and did things`) // this is how you roll dice to see if someone does something
+
 
     d20 = Math.floor(Math.random() * (21 - 1) + 1)
     if (player.dex >= 9) {
@@ -198,6 +210,7 @@ function showTextNode(textNodeIndex) { // goes through tthe text nodes checks wh
   } else if (textNode.diceRoll === 2) {
     console.log(`The dice roller is on and did things`) // this is how you roll dice to see if someone does something
 
+
     d20 = Math.floor(Math.random() * (21 - 1) + 1)
     if (player.wis >= 9) {
       d20 += 4
@@ -215,6 +228,7 @@ function showTextNode(textNodeIndex) { // goes through tthe text nodes checks wh
   } else if (textNode.diceRoll === 3) {
     console.log(`The dice roller is on and did things`) // this is how you roll dice to see if someone does something
 
+
     d20 = Math.floor(Math.random() * (21 - 1) + 1)
     if (player.cha >= 9) {
       d20 += 5
@@ -231,9 +245,12 @@ function showTextNode(textNodeIndex) { // goes through tthe text nodes checks wh
     }
   }
 
+
   while (optionButtonsElement.firstChild) { //removes buttons for combat, deletes the buttons but then adds new buttons
     optionButtonsElement.removeChild(optionButtonsElement.firstChild)
   }
+
+
 
 
   textNode.options.forEach(option => { //makes the options by checking the opition premator see how many optitions there are
@@ -255,6 +272,8 @@ function showTextNode(textNodeIndex) { // goes through tthe text nodes checks wh
       } else if (option === textNode.options[5]) {
         button.addEventListener('click', () => persuade())
       }
+
+
 
 
       if (textNode.heal === true && option === textNode.options[0]) {
@@ -307,6 +326,7 @@ function update() {
   Keys: ${player.key}
   Map: ${player.map}
   `
+
 
   document.getElementById('staText').innerText = ` ${enemy1.enemyName}: 
   ${enemy1.enemyHp} HP and ${enemy1.enemyPeace}/${enemy1.neededEnemyPeace} convinced
@@ -399,6 +419,7 @@ function painPendant() {
       multi += 1
     }
 
+
     onlyEnemy = 3
     combat()
   }
@@ -448,6 +469,7 @@ function persuade() {
   }
 }
 
+
 function slash() { //combat function only works if the combat funation is true and will only work if combat is on going or started
   if (combatQuestion === true || continueCombat === true) {
     d12 = Math.floor(Math.random() * (13 - 1) + 1)
@@ -484,6 +506,7 @@ function stab() {
     console.log(`Stab fucntion active`)
     d4one = Math.floor(Math.random() * (5 - 1) + 1)
     d4two = Math.floor(Math.random() * (5 - 1) + 1)
+
 
     if (player.dex >= 6 && player.rapier >= 1) {
       d12 += 4
@@ -643,6 +666,7 @@ function combat(one, two, three) {
     default:
   }
 
+
   switch (two) {
     case 1:
       enemy2 = None1
@@ -755,6 +779,7 @@ function combat(one, two, three) {
     default:
   }
 
+
   switch (three) {
     case 1:
       enemy3 = None1
@@ -866,6 +891,7 @@ function combat(one, two, three) {
       break;
     default:
   }
+
 
   if (playerHp <= 0) {
     endCombat()
@@ -991,6 +1017,7 @@ function combat(one, two, three) {
     endCombat()
   }
 }
+
 
 function talking() {
   if (playerHp <= 0) {
@@ -1196,6 +1223,7 @@ function endCombat() {
     console.log(`combat ended is true now`)
   }
 
+
   if (playerHp <= 0) {
     newText = `You have been killed and won't be missed`
     showTextNode(13)
@@ -1211,11 +1239,14 @@ function endCombat() {
   } else { console.log(`The end function did not work`) }
 }
 
+
 function updateText() {
   textElement.innerText = newText
 }
 
+
 //holds all the story elements along with the options
+
 
 // this is way to hide options if item/requiredPlayer: (currentState) => {currentState.str >= 1}
 let textNodes = [
