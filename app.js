@@ -54,7 +54,7 @@ let AlphaWolf = new Enemy(`The Alpha Wolf`, 70, -20, 90, 5, 5)//33
 let FirstHenry = new Enemy(`Henry`, 400, 0, 700, 15, 10)//34
 let SecondHenry = new Enemy(`Henry`, 250, 0, 300, 10, 7)//35
 let Yourself = new Enemy(`Yourself`, 1000, 0, 3000, 0, 0)//36
-
+let Jin = new Enemy('Jin', 100, 0, -1, 20, 10)//37
 
 const textElement = document.getElementById('text'); //gets the ids from the html to change the text for the story
 const optionButtonsElement = document.getElementById('btnOptions');
@@ -177,6 +177,24 @@ function showTextNode(textNodeIndex) { // goes through tthe text nodes checks wh
     endingNode = 189.91;
     startCombat();
     combat(15, 22, 2); //ending id 
+  } else if (textNode.startCombat === 8 && combatEnded === false) { //starts the combat 8
+    console.log('combat mode engaged');
+    combatQuestion = false;
+    endingNode = 190.9;
+    startCombat();
+    combat(21, 22, 2); //ending id 
+  } else if (textNode.startCombat === 9 && combatEnded === false) { //starts the combat 9
+    console.log('combat mode engaged');
+    combatQuestion = false;
+    endingNode = 190.15;
+    startCombat();
+    combat(37, 1, 2); //ending id 
+  } else if (textNode.startCombat === 10 && combatEnded === false) { //starts the combat 10
+    console.log('combat mode engaged');
+    combatQuestion = false;
+    endingNode = 190.24;
+    startCombat();
+    combat(20, 1, 2); //ending id 
   }
   else if (textNode.continueCombat === true) { //checks if you are continue combat
     console.log('combat mode cont');
@@ -242,6 +260,54 @@ function showTextNode(textNodeIndex) { // goes through tthe text nodes checks wh
       return showTextNode(111)
     } else if (d20 <= 14) {
       return showTextNode(112)
+    }
+  } else if (textNode.diceRoll === 4) {
+    console.log(`The dice roller is on and did things`) // this is how you roll dice to see if someone does somethine
+    d20 = Math.floor(Math.random() * (21 - 1) + 1)
+    if (player.wis >= 9) {
+      d20 += 4
+    } else if (player.wis >= 6) {
+      d20 += 2
+    } else if (player.wis >= 3) {
+      d20 += 1
+    }
+    console.log(d20)
+    if (d20 >= 15) {
+      return showTextNode(139.1)
+    } else if (d20 <= 14) {
+      return showTextNode(143)
+    }
+  } else if (textNode.diceRoll === 5) {
+    console.log(`The dice roller is on and did things`) // this is how you roll dice to see if someone does something
+    d20 = Math.floor(Math.random() * (21 - 1) + 1)
+    if (player.con >= 9) {
+      d20 += 4
+    } else if (player.con >= 6) {
+      d20 += 2
+    } else if (player.con >= 3) {
+      d20 += 1
+    }
+    console.log(d20)
+    if (d20 >= 16) {
+      return showTextNode(136)
+    } else if (d20 <= 15) {
+      return showTextNode(137)
+    }
+  } else if (textNode.diceRoll === 5) {
+    console.log(`The dice roller is on and did things`) // this is how you roll dice to see if someone does something
+    d20 = Math.floor(Math.random() * (21 - 1) + 1)
+    if (player.con >= 9) {
+      d20 += 4
+    } else if (player.con >= 6) {
+      d20 += 2
+    } else if (player.con >= 3) {
+      d20 += 1
+    }
+    console.log(d20)
+    if (d20 >= 16) {
+      return showTextNode(136)
+    } else if (d20 <= 15) {
+      return showTextNode(137)
     }
   }
 
@@ -1662,7 +1728,7 @@ let textNodes = [
         setPlayer: { map: 1 }
       },
       {
-        text: `Examine the Room`,
+        text: `Leave house`,
         nextText: 31
       }
     ],
@@ -1677,17 +1743,18 @@ let textNodes = [
       },
       {
         text: `Your Room`,
-        nextText: 29
+        nextText: 29,
+        setPlayer: { map: 1 }
       },
       {
-        text: `Living Room`,
+        text: `Leave house`,
         nextText: 30
       }
     ],
   },
   {
     id: 29,
-    text: 'Your room is still intact but it’s been cut through. You look through your chests and drawers, but you couldn’t find anything that can be helpful. You then look towards the wall to see the map that your Grandpa made when he travelled. You take it off the wall and put in your bag you find next to the bed.',
+    text: 'Your room is still intact but it\'s been cut through. You look through your chests and drawers, but you couldn’t find anything that can be helpful. You then look towards the wall to see the map that your Grandpa made when he travelled. You take it off the wall and put in your bag you find next to the bed.',
     options: [
       {
         text: `Kitchen`,
@@ -1699,7 +1766,7 @@ let textNodes = [
         nextText: 27
       },
       {
-        text: `Living Room`,
+        text: `Leave house`,
         nextText: 30
       }
     ],
@@ -1723,7 +1790,7 @@ let textNodes = [
         nextText: 27
       },
       {
-        text: `Examine the Room`,
+        text: `Leave house`,
         nextText: 31
       }
     ],
@@ -1759,7 +1826,7 @@ let textNodes = [
   },
   {
     id: 33,
-    text: 'You spend a day at the town’s church and pray for a safe passage through the afterlife. You spend one more night in your broken home.',
+    text: 'You spend a day at the town\'s church and pray for a safe passage through the afterlife. You spend one more night in your broken home.',
     options: [
       {
         text: `Continue`,
@@ -3062,7 +3129,7 @@ let textNodes = [
     ],
   },
   { // fails wisdom
-    id: 130,
+    id: 130.5,
     text: 'You try to see if you can make out anything, but you can only see black. The room is pitch black and your senses are still shout after that fight.',
     options: [
       {
@@ -3162,13 +3229,15 @@ let textNodes = [
     text: 'Everything becomes silent again, expect for the faint noices of the gaurds talking.',
     options: [
       {
-        text: `Focus on the voices`,
+        text: `Focus on the voices
+        `,
         nextText: 140
       }
     ],
+    diceRoll: 4
   },
   {// secceeds
-    id: 130,
+    id: 139.1,
     text: 'Gaurd 1: "Hey Guston, you hear the news?" The first gaurd seems to be on the older side. Guston: "You mean how Henry is promoting gaurds to his new home?" Guston seems to be a lot younger. You hear a loud slap Gaurd1: "Call him Lord Willaims, but yes. He moved to that old burnt down farming village next the river. Hopefully he promotes me, hahaha." Guston: "Fat chance of that."',
     options: [
       {
@@ -3216,6 +3285,7 @@ let textNodes = [
         nextText: 146
       }
     ],
+    diceRoll: 5
   },
   {// succeeds
     id: 136,
@@ -3510,15 +3580,18 @@ let textNodes = [
     options: [
       {//breaks out with Brian (bb)
         text: `Give some to Brian `, //increases strength or con by 1
-        nextText: 189.1
+        nextText: 189.1,
+        setPlayer: {str: 4}
       },
       {//breaks out with Jin (bj) //incresases charisma or wisdom by 1
         text: `Give some to Jin`,
-        nextText: 190.1
+        nextText: 190.1,
+        setPlayer: {wis: 4}
       },
       {//breaks out with Frank (bf) //increases dex or charisma by 1
         text: `Give some to Frank`,
-        nextText: 191.1
+        nextText: 191.1,
+        setPlayer: {dex: 4}
       }
     ],
   },
@@ -3790,7 +3863,7 @@ let textNodes = [
       }
     ],
   },
-  {// 
+  {// bj
     id: 190.3,
     text: 'Jin: "I am listening."',
     options: [
@@ -3800,7 +3873,7 @@ let textNodes = [
       }
     ],
   },
-  {// 
+  {// bj
     id: 190.4,
     text: 'Jin: "Hmm, that is my type of crazy I will not lie, hahaha. Sure lets try it. There is a a day where most of the guards will be gone because Lord Willaims is holding a party and need sore gaurds. So we will strike then."',
     options: [
@@ -3810,7 +3883,7 @@ let textNodes = [
       }
     ],
   },
-  {// 
+  {// bj
     id: 190.5,
     text: 'You wait for the Jin to talk to you again, a few weeks go by and you start to notice that most of the guards are out. Right now there is only like 10 of them.',
     options: [
@@ -3820,7 +3893,7 @@ let textNodes = [
       }
     ],
   },
-  {// 
+  {// bj
     id: 190.6,
     text: 'Jin: "Jack, today is the day, say your goodbyes we are leaving!" Jin: "LEAvinG, yes... yEs." You get a weird feeling about it, but you are too far into it now to just back out.',
     options: [
@@ -3830,22 +3903,230 @@ let textNodes = [
       }
     ],
   },
-  {// 
+  {// bj
     id: 190.7,
     text: 'You say your goodbyes and you and Jin wait for the moment to attack. You see an oppurnity to steal some weapons and take it. 2 gaurds see you, you will have to take them out, Jin is useless in combat.',
     options: [
       {
         text: `Pull out your weapon`,
-        nextText: 18
+        nextText: 190.8
       }
     ],
-  }, {// 
-    id: 130,
-    text: '',
+  },
+  {// bj
+    id: 190.8,
+    text: 'You have been waiting to get some angry out',
+    options: [
+      {
+        text: `Slash`,
+        nextText: 5
+      },
+      {
+        text: `Heal Potions`,
+        nextText: 8
+      },
+      {
+        text: `Scare`,
+        nextText: 9
+      },
+      {
+        text: `Stab`,
+        nextText: 10
+      },
+      {
+        text: `Pendant of Pain`,
+        nextText: 11
+      },
+      {
+        text: `Persuade`,
+        nextText: 12
+      },
+    ],
+    startCombat: 8,
+  },
+  {//bj
+    id: 190.9,
+    text: 'blank',
     options: [
       {
         text: `Continue`,
-        nextText: 18
+        nextText: 190.11
+      }
+    ],
+  },
+  {// bj
+    id: 190.11,
+    text: 'You hide their bodys in some bushes and make your way with Jin.',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 190.12
+      }
+    ],
+  },
+  {// bj
+    id: 190.12,
+    text: 'You reach the armory and take as some armor, for someone reason Jin has not said a word to you since you took out the guards. You are getting a weird feeling so you keep your weapon near you.',
+    options: [
+      {
+        text: `Are we ready?`,
+        nextText: 190.13
+      }
+    ],
+  },
+  {// bj
+    id: 190.13,
+    text: 'Jin looks at you and then swings his blade in your direction, you manage to dodge at the last second',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 190.14
+      }
+    ],
+  },
+  {// bj
+    id: 190.14,
+    text: 'You have been waiting to get some angry out',
+    options: [
+      {
+        text: `Slash`,
+        nextText: 5
+      },
+      {
+        text: `Heal Potions`,
+        nextText: 8
+      },
+      {
+        text: `Scare`,
+        nextText: 9
+      },
+      {
+        text: `Stab`,
+        nextText: 10
+      },
+      {
+        text: `Pendant of Pain`,
+        nextText: 11
+      },
+      {
+        text: `Persuade`,
+        nextText: 12
+      },
+    ],
+    startCombat: 8,
+  },
+  {//bj
+    id: 190.15,
+    text: 'You defeat Jin.',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 189.11
+      }
+    ],
+  },
+  {// bj
+    id: 190.16,
+    text: 'You stab Jin right in the chest and push him off you. Hey stumbles back before he falls into some crates. You do not really know why Jin would do that but you also knew that he was probably the most unstable out of the three inmates. You get up clean your weapon and walk straight threw the gates but then.',
+    options: [
+      {
+        text: `Guard: "Hey"!`,
+        nextText: 190.17
+      }
+    ],
+  },
+  {// bj
+    id: 190.17,
+    text: 'Guard: "Where do you think you are going?"',
+    options: [
+      {
+        text: `Attack`,
+        nextText: 190.22
+      },
+      {
+        text: `Talk`,
+        nextText: 190.18
+      }
+    ],
+  },
+  {//charisma check 10 bj
+    id: 190.18,
+    text: 'Jack: "Sorry, I need to go to the general. A inmate has killed a fellow inmate in the armory and I do not know where that inmate is."',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 190.19
+      }
+    ],
+  },
+  {// succeeds bj
+    id: 190.19,
+    text: 'Gaurd:"Yes, I see go find him he is in Lord Willaims manor just west of here in the town of Lüdingfeld."',
+    options: [
+      {
+        text: `Thank you, I will go immediately.`,
+        nextText: 190.21
+      }
+    ],
+  },
+  {// fails bj
+    id: 190.22,
+    text: 'Get him!',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 190.23
+      }
+    ],
+  },
+  {// bj
+    id: 190.23,
+    text: 'You have been waiting to get some angry out',
+    options: [
+      {
+        text: `Slash`,
+        nextText: 5
+      },
+      {
+        text: `Heal Potions`,
+        nextText: 8
+      },
+      {
+        text: `Scare`,
+        nextText: 9
+      },
+      {
+        text: `Stab`,
+        nextText: 10
+      },
+      {
+        text: `Pendant of Pain`,
+        nextText: 11
+      },
+      {
+        text: `Persuade`,
+        nextText: 12
+      },
+    ],
+    startCombat: 8,
+  },
+  {//bj
+    id: 190.24,
+    text: 'You defeat Jin.',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 190.25
+      }
+    ],
+  },
+  {// bj
+    id: 190.25,
+    text: 'You run out looking around what to do next',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 190.26
       }
     ],
   },
@@ -3898,7 +4179,48 @@ let textNodes = [
         nextText: 18
       }
     ],
-  }, {// 
+  },
+  {// 
+    id: 130,
+    text: '',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 18
+      }
+    ],
+  },
+  {// 
+    id: 130,
+    text: '',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 18
+      }
+    ],
+  },
+  {// 
+    id: 130,
+    text: '',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 18
+      }
+    ],
+  },
+  {// 
+    id: 130,
+    text: '',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 18
+      }
+    ],
+  },
+  {// 
     id: 130,
     text: '',
     options: [
