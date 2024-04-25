@@ -134,7 +134,7 @@ function showTextNode(textNodeIndex) { // goes through tthe text nodes checks wh
   } else if (textNode.startCombat === 2 && combatEnded === false) { //starts the combat 2nd WRONG
     console.log('combat mode engaged');
     combatQuestion = false;
-    endingNode = 110; //WHAT
+    endingNode = 83; //WHAT
     startCombat();
     combat(5, 10, 13); //ending id
   } else if (textNode.startCombat === 3 && combatEnded === false) { //starts the combat third
@@ -159,6 +159,12 @@ function showTextNode(textNodeIndex) { // goes through tthe text nodes checks wh
     console.log('combat mode engaged');
     combatQuestion = false;
     endingNode = 189.9;
+    startCombat();
+    combat(15, 22, 2); //ending id 
+  }  else if (textNode.startCombat === 7 && combatEnded === false) { //starts the combat 7
+    console.log('combat mode engaged');
+    combatQuestion = false;
+    endingNode = 189.91;
     startCombat();
     combat(15, 22, 2); //ending id 
   }
@@ -1177,7 +1183,7 @@ function updateText() {
   textElement.innerText = newText
 }
 
-function nodeShower(){
+function nodeShower() {
 
   showTextNode(endingNode)
 }
@@ -2084,7 +2090,7 @@ let textNodes = [
       },
       {
         text: `Stay quiet`,
-        nextText: 68
+        nextText: 66
       }
     ],
   },
@@ -2094,7 +2100,7 @@ let textNodes = [
     options: [
       {
         text: `What?`,
-        nextText: 68
+        nextText: 67
       }
     ],
   },
@@ -2104,7 +2110,7 @@ let textNodes = [
     options: [
       {
         text: `Continue`,
-        nextText: 63
+        nextText: 68
       }
     ],
   },
@@ -2279,7 +2285,7 @@ let textNodes = [
       },
       {
         text: `Back to info`,
-        nextText: 76,
+        nextText: 75.1,
       },
     ],
   },
@@ -2561,7 +2567,7 @@ let textNodes = [
         nextText: 12
       },
     ],
-    startCombat: 2,
+    startCombat: 3,
   },
   {// end conflict
     id: 99,
@@ -2676,7 +2682,7 @@ let textNodes = [
         nextText: 12
       },
     ],
-    startCombat: 3,
+    startCombat: 4,
   },
   {// end conflict
     id: 110,
@@ -2817,7 +2823,7 @@ let textNodes = [
         nextText: 12
       },
     ],
-    startCombat: 4,
+    startCombat: 5,
   },
   {// end conflict
     id: 124,
@@ -3556,11 +3562,11 @@ let textNodes = [
     options: [
       {
         text: `Continue`,
-        nextText: 189.8
+        nextText: 189.81
       }
     ],
   },
-  {// Conflict
+  {// Conflict wb
     id: 189.8,
     text: 'You have been waiting to get some angry out',
     options: [
@@ -3589,9 +3595,40 @@ let textNodes = [
         nextText: 12
       },
     ],
-    startCombat: 5,
+    startCombat: 6,
   },
-  {// end conflict
+  {// Conflict lb
+    id: 189.81,
+    text: 'You have been waiting to get some angry out',
+    options: [
+      {
+        text: `Slash`,
+        nextText: 5
+      },
+      {
+        text: `Heal Potions`,
+        nextText: 8
+      },
+      {
+        text: `Scare`,
+        nextText: 9
+      },
+      {
+        text: `Stab`,
+        nextText: 10
+      },
+      {
+        text: `Pendant of Pain`,
+        nextText: 11
+      },
+      {
+        text: `Persuade`,
+        nextText: 12
+      },
+    ],
+    startCombat: 7,
+  },
+  {// end conflict wb
     id: 189.9,
     text: 'blank',
     options: [
@@ -3601,9 +3638,101 @@ let textNodes = [
       }
     ],
   },
-  {// 
-    id: 130,
-    text: '',
+  {// end conflict lb
+    id: 189.91,
+    text: 'blank',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 189.111
+      }
+    ],
+  },
+  {// wb
+    id: 189.11,
+    text: 'You finish your gaurd just in time to see Brian get stabbed in the chest. He swings down his axe and kills the gaurd, but the wound is deep, a healing potion will not heal this one.',
+    options: [
+      {
+        text: `Brian!`,
+        nextText: 189.13
+      },
+      {
+        text: `Will you be okay?`,
+        nextText: 189.13
+      },
+      {
+        text: `Come on we are too close.`,
+        nextText: 189.16
+      },
+    ],
+  },
+    {// lb end
+      id: 189.111,
+      text: 'You take out the guards and make a dash for the exit. You think about taking out your anger and all the guards, but you are not dumb.',
+      options: [
+        {
+          text: `Freedom!`,
+          nextText: 193
+        }
+      ],
+    },
+  {// wb
+    id: 189.13,
+    text: 'Brian: "Jack, thank you for helping Brian. I am okay with this, go do not waste your freedom on me..." Brians eyes close and he takes a breath out, hes not died but he is pretending to be to try to get you to leave.',
+    options: [
+      {
+        text: `Help`,
+        nextText: 189.14
+      },
+      {
+        text: `Leave`,
+        nextText: 189.1
+      },
+    ],
+  },
+  {// help wb
+    id: 189.14,
+    text: 'Jack: "Come on Brian I know you are still alive, lets go. You will be able to make."',
+    options: [
+      {
+        text: `Try to help him up`,
+        nextText: 189.15
+      }
+    ],
+  },
+  {// help wb
+    id: 189.15,
+    text: 'Brian: "No I am died. Go without Brian, its okay, I want this."',
+    options: [
+      {
+        text: `leave`,
+        nextText: 189.16
+      }
+    ],
+  },
+  {// wb end
+    id: 189.6,
+    text: 'You decide to listen to Brian and leave him, it hurts you but you know that he will face a worse death outside of this prison. At least he gets to die on his own terms. You hand him one of the swords that the guards have, and walk out the door holfing back your rage to kill everyone in that prison.',
+    options: [
+      {
+        text: `Freedom`,
+        nextText: 193
+      }
+    ],
+  },
+  {// bj
+    id: 190.1,
+    text: 'You hand the rest to Jin, the other guys look annoyed but do not say anything. Later that day you decide that you are gonna try to get Jin to be able to enter the armory. Maybe he can make us seem like gaurds. You can get both Jin and yourself out.',
+    options: [
+      {
+        text: `Talk to Jin`,
+        nextText: 18
+      } 
+    ],
+  },
+  {// bj
+    id: 190.2,
+    text: 'Jack: "Jin, I have a plan to get us out of the dump. You want to hear about it?',
     options: [
       {
         text: `Continue`,
@@ -3612,111 +3741,51 @@ let textNodes = [
     ],
   },
   {// 
-    id: 130,
-    text: '',
+    id: 190.3,
+    text: 'Jin: "I am listening."',
     options: [
       {
-        text: `Continue`,
-        nextText: 18
+        text: `Explain him the plan`,
+        nextText: 190.4
       }
     ],
   },
   {// 
-    id: 130,
-    text: '',
+    id: 190.4,
+    text: 'Jin: "Hmm, that is my type of crazy I will not lie, hahaha. Sure lets try it. There is a a day where most of the guards will be gone because Lord Willaims is holding a party and need sore gaurds. So we will strike then."',
     options: [
       {
-        text: `Continue`,
-        nextText: 18
+        text: `Okay`,
+        nextText: 190.5
       }
     ],
   },
   {// 
-    id: 130,
-    text: '',
+    id: 190.5,
+    text: 'You wait for the Jin to talk to you again, a few weeks go by and you start to notice that most of the guards are out. Right now there is only like 10 of them.',
     options: [
       {
-        text: `Continue`,
-        nextText: 18
+        text: `Wait for Jin`,
+        nextText: 190.6
       }
     ],
   },
   {// 
-    id: 130,
-    text: '',
+    id: 190.6,
+    text: 'Jin: "Jack, today is the day, say your goodbyes we are leaving!" Jin: "LEAvinG, yes... yEs." You get a weird feeling about it, but you are too far into it now to just back out.',
     options: [
       {
         text: `Continue`,
-        nextText: 18
+        nextText: 190.7
       }
     ],
   },
   {// 
-    id: 130,
-    text: '',
+    id: 190.7,
+    text: 'You say your goodbyes and you and Jin wait for the moment to attack. You see an oppurnity to steal some weapons and take it. 2 gaurds see you, you will have to take them out, Jin is useless in combat.',
     options: [
       {
-        text: `Continue`,
-        nextText: 18
-      }
-    ],
-  },
-  {// 
-    id: 130,
-    text: '',
-    options: [
-      {
-        text: `Continue`,
-        nextText: 18
-      }
-    ],
-  },
-  {// 
-    id: 130,
-    text: '',
-    options: [
-      {
-        text: `Continue`,
-        nextText: 18
-      }
-    ],
-  },
-  {// 
-    id: 130,
-    text: '',
-    options: [
-      {
-        text: `Continue`,
-        nextText: 18
-      }
-    ],
-  },
-  {// 
-    id: 130,
-    text: '',
-    options: [
-      {
-        text: `Continue`,
-        nextText: 18
-      }
-    ],
-  },
-  {// 
-    id: 130,
-    text: '',
-    options: [
-      {
-        text: `Continue`,
-        nextText: 18
-      }
-    ],
-  },
-  {// 
-    id: 130,
-    text: '',
-    options: [
-      {
-        text: `Continue`,
+        text: `Pull out your weapon`,
         nextText: 18
       }
     ],
