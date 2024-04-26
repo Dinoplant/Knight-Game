@@ -42,13 +42,13 @@ let ArcherGen1 = new Enemy(`The Archer`, 45, 0, 90, 4, 4) //25
 let ArcherGen2 = new Enemy(`The Archer`, 35, 0, 50, 7, 5)//26
 
 
-let Genral = new Enemy(`The Genral`, 100, 0, 100, 10, 5)//27
+let General = new Enemy(`The General`, 100, 0, 100, 10, 5)//27
 
 
 let Bear1 = new Enemy(`The Brown Bear`, 60, 0, 70, 7, 0)//28
 let Bear2 = new Enemy(`The Black Bear`, 50, 0, 60, 0, 3)//29
 let Wolf1 = new Enemy(`The Gray Wolf`, 40, 0, 70, 10, 1)//30
-let Wolf2 = new Enemy(`The Sliver Wolf`, 45, 0, 80, 7, 3)//31
+let Wolf2 = new Enemy(`The Silver Wolf`, 45, 0, 80, 7, 3)//31
 let Dragon = new Enemy(`The Dragon`, 300, 0, 350, 10, 10)//32
 let AlphaWolf = new Enemy(`The Alpha Wolf`, 70, -20, 90, 5, 5)//33
 let FirstHenry = new Enemy(`Henry`, 400, 0, 700, 15, 10)//34
@@ -133,7 +133,7 @@ function startGame() {
 }
 
 
-function showTextNode(textNodeIndex) { // goes through tthe text nodes checks what I put for the text and changes the text in the HTML
+function showTextNode(textNodeIndex) { // goes through the text nodes checks what I put for the text and changes the text in the HTML
   const textNode = textNodes.find(textNode => textNode.id === textNodeIndex)
   textElement.innerText = textNode.text
   if (textNode.startCombat === 1 && combatEnded === false) { //starts the combat first
@@ -159,74 +159,74 @@ function showTextNode(textNodeIndex) { // goes through tthe text nodes checks wh
     combatQuestion = false;
     endingNode = 110; //WHAT
     startCombat();
-    combat(19, 23, 2); //ending id 
+    combat(19, 23, 2); //ending id
   } else if (textNode.startCombat === 5 && combatEnded === false) { //starts the combat 5
     console.log('combat mode engaged');
     combatQuestion = false;
     endingNode = 124;
     neededDeath = true
     startCombat();
-    combat(34, 1, 2); //ending id 
+    combat(34, 1, 2); //ending id
   } else if (textNode.startCombat === 6 && combatEnded === false) { //starts the combat 6
     console.log('combat mode engaged');
     combatQuestion = false;
     endingNode = 189.9;
     startCombat();
-    combat(15, 22, 2); //ending id 
+    combat(15, 22, 2); //ending id
   } else if (textNode.startCombat === 7 && combatEnded === false) { //starts the combat 7
     console.log('combat mode engaged');
     combatQuestion = false;
     endingNode = 189.91;
     startCombat();
-    combat(15, 22, 2); //ending id 
+    combat(15, 22, 2); //ending id
   } else if (textNode.startCombat === 8 && combatEnded === false) { //starts the combat 8
     console.log('combat mode engaged');
     combatQuestion = false;
     endingNode = 190.9;
     startCombat();
-    combat(21, 22, 2); //ending id 
+    combat(21, 22, 2); //ending id
   } else if (textNode.startCombat === 9 && combatEnded === false) { //starts the combat 9
     console.log('combat mode engaged');
     combatQuestion = false;
     endingNode = 190.15;
     startCombat();
-    combat(37, 1, 2); //ending id 
+    combat(37, 1, 2); //ending id
   } else if (textNode.startCombat === 10 && combatEnded === false) { //starts the combat 10
     console.log('combat mode engaged');
     combatQuestion = false;
     endingNode = 191.12;
     startCombat();
-    combat(21, 1, 2); //ending id 
+    combat(21, 1, 2); //ending id
   } else if (textNode.startCombat === 11 && combatEnded === false) { //starts the combat 11
     console.log('combat mode engaged');
     combatQuestion = false;
     endingNode = 191.19;
     startCombat();
-    combat(21, 23, 2); //ending id 
+    combat(21, 23, 2); //ending id
   } else if (textNode.startCombat === 12 && combatEnded === false) { //starts the combat 12
     console.log('combat mode engaged');
     combatQuestion = false;
     endingNode = 197;
     startCombat();
-    combat(28, 1, 2); //ending id 
+    combat(28, 1, 2); //ending id
   } else if (textNode.startCombat === 13 && combatEnded === false) { //starts the combat 13
     console.log('combat mode engaged');
     combatQuestion = false;
     endingNode = 233;
     startCombat();
-    combat(17, 16, 2); //ending id 
+    combat(17, 16, 2); //ending id
   } else if (textNode.startCombat === 14 && combatEnded === false) { //starts the combat 14
     console.log('combat mode engaged');
     combatQuestion = false;
     endingNode = 238;
     startCombat();
-    combat(27, 23, 24); //ending id 
+    combat(27, 23, 24); //ending id
   } else if (textNode.startCombat === 15 && combatEnded === false) { //starts the combat 15
     console.log('combat mode engaged');
     combatQuestion = false;
     endingNode = 252;
     startCombat();
-    combat(35, 1, 2); //ending id 
+    combat(35, 1, 2); //ending id
   }
   else if (textNode.continueCombat === true) { //checks if you are continue combat
     console.log('combat mode cont');
@@ -294,7 +294,7 @@ function showTextNode(textNodeIndex) { // goes through tthe text nodes checks wh
       return showTextNode(112)
     }
   } else if (textNode.diceRoll === 4) {
-    console.log(`The dice roller is on and did things`) // this is how you roll dice to see if someone does somethine
+    console.log(`The dice roller is on and did things`) // this is how you roll dice to see if someone does something
     d20 = Math.floor(Math.random() * (21 - 1) + 1)
     if (player.wis >= 9) {
       d20 += 4
@@ -351,14 +351,14 @@ function showTextNode(textNodeIndex) { // goes through tthe text nodes checks wh
 
 
 
-  textNode.options.forEach(option => { //makes the options by checking the opition premator see how many optitions there are
+  textNode.options.forEach(option => { //makes the options by checking the option premature see how many options there are
     if (showOption(option)) {
       const button = document.createElement('button')
       button.innerText = option.text
       button.classList.add('btn')
       button.addEventListener('click', () => selectOption(option))
       if (option === textNode.options[0] && textNode.heal !== true && textNode.scare !== true && textNode.pendant !== true && textNode.stab !== true && textNode.persuade !== true && textNode.none !== true) {
-        button.addEventListener('click', () => slash(),) //checking certain buttons and adding the comabt funation accordin to each one
+        button.addEventListener('click', () => slash(),) //checking certain buttons and adding the combat function according to each one
       } else if (option === textNode.options[1]) {
         button.addEventListener('click', () => healPot(player.healPot))
       } else if (option === textNode.options[2]) {
@@ -394,7 +394,7 @@ function showTextNode(textNodeIndex) { // goes through tthe text nodes checks wh
     }
   })
 }
-function showOption(option) { //shows the opitions if they have a certain item and such
+function showOption(option) { //shows the options if they have a certain item and such
   return option.requiredPlayer == null || option.requiredPlayer(player)
 }
 function weaponUpdate() {
@@ -426,16 +426,16 @@ function update() {
   `
 
 
-  document.getElementById('staText').innerText = ` ${enemy1.enemyName}: 
+  document.getElementById('staText').innerText = ` ${enemy1.enemyName}:
   ${enemy1.enemyHp} HP and ${enemy1.enemyPeace}/${enemy1.neededEnemyPeace} convinced
-   ${enemy2.enemyName}: 
+   ${enemy2.enemyName}:
   ${enemy2.enemyHp} HP and ${enemy2.enemyPeace}/${enemy2.neededEnemyPeace} convinced
-   ${enemy3.enemyName}: 
+   ${enemy3.enemyName}:
   ${enemy3.enemyHp} HP and ${enemy3.enemyPeace}/${enemy3.neededEnemyPeace} convinced
   `
   console.log(`Update function worked and ran`)
 }
-function selectOption(option) { //decetcs if button is clicked with a set player demator, and does what it is told to do
+function selectOption(option) { //detect if button is clicked with a set player demator, and does what it is told to do
   const nextTextNodeId = option.nextText
   if (nextTextNodeId <= 0) {
     return startGame()
@@ -568,7 +568,7 @@ function persuade() {
 }
 
 
-function slash() { //combat function only works if the combat funation is true and will only work if combat is on going or started
+function slash() { //combat function only works if the combat function is true and will only work if combat is on going or started
   if (combatQuestion === true || continueCombat === true) {
     d12 = Math.floor(Math.random() * (13 - 1) + 1)
     if (player.str >= 6 && player.greatAxe >= 1) {
@@ -636,7 +636,7 @@ function stab() {
     combat()
   }
 }
-// comstumizable combat system, it has evrything needed
+// customizable combat system, it has everything needed
 function startCombat() {
   if (player.con >= 9 && combatQuestion === true) {
     playerHp = 225
@@ -732,7 +732,7 @@ function combat(one, two, three) {
       enemy1 = ArcherGen2
       break;
     case 27:
-      enemy1 = Genral
+      enemy1 = General
       break;
     case 28:
       enemy1 = Bear1
@@ -848,7 +848,7 @@ function combat(one, two, three) {
       enemy2 = ArcherGen2
       break;
     case 27:
-      enemy2 = Genral
+      enemy2 = General
       break;
     case 28:
       enemy2 = Bear1
@@ -964,7 +964,7 @@ function combat(one, two, three) {
       enemy1 = ArcherGen2
       break;
     case 27:
-      enemy1 = Genral
+      enemy1 = General
       break;
     case 28:
       enemy1 = Bear1
@@ -1150,7 +1150,7 @@ function talking() {
         playerHp -= Math.floor(enemyD20)
         if (enemy1.enemyPeace >= enemy1.neededEnemyPeace) {
           enemy1.enemyHp = 0
-          newText = `${enemy1.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>> left, but on the bright side you succesfully conviced the enemy to leave the battle.`
+          newText = `${enemy1.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>> left, but on the bright side you successfully convinced the enemy to leave the battle.`
         } else {
           newText = `${enemy1.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>> left. You convinced the enemy and now they are <${enemy1.enemyPeace}/${enemy1.neededEnemyPeace}> convinced to leave the battle.`
         }
@@ -1163,16 +1163,16 @@ function talking() {
         if (type === `sca`) {
           switch (d4one) {
             case 1:
-              newText = `You tired to scare the enemy, but you accidentally had a voice crack mid sentence. Then the ${enemy1.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>>`;
+              newText = `You tried to scare the enemy, but you accidentally had a voice crack mid sentence. Then the ${enemy1.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>>`;
               break;
             case 2:
-              newText = `You tired to scare the enemy, but you didn't even make eye contact. Then the ${enemy1.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>>`;
+              newText = `You tried to scare the enemy, but you didn't even make eye contact. Then the ${enemy1.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>>`;
               break;
             case 3:
               newText = `You scare the enemy, but you were day dreaming so nothing actually happened. Then the ${enemy1.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>>`;
               break;
             case 4:
-              newText = `You tired to scare the enemy, but since you don't look scary, they thought you were a two year old. Then the ${enemy1.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>>`;
+              newText = `You tried to scare the enemy, but since you don't look scary, they thought you were a two year old. Then the ${enemy1.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>>`;
               break;
             default:
           }
@@ -1180,16 +1180,16 @@ function talking() {
         else if (type === `per`) {
           switch (d4one) {
             case 1:
-              newText = `You tired to presuade the enemy, but you ended rambling about how the election is corrupt. Then ${enemy1.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>>`;
+              newText = `You tried to persuade the enemy, but you ended up rambling about how the election is corrupt. Then ${enemy1.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>>`;
               break;
             case 2:
-              newText = `You tired to presuade the enemy, but you didn't even have five cited sources. Then ${enemy1.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>>`;
+              newText = `You tried to persuade the enemy, but you didn't even have five cited sources. Then ${enemy1.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>>`;
               break;
             case 3:
-              newText = `You tired to presuade the enemy, but ${enemy1.enemyName} had both earbuds in. Then ${enemy1.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>>`;
+              newText = `You tried to persuade the enemy, but ${enemy1.enemyName} had both earbuds in. Then ${enemy1.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>>`;
               break;
             case 4:
-              newText = `You tired to presuade the enemy, but you forgot your key points. Then ${enemy1.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>>`;
+              newText = `You tried to persuade the enemy, but you forgot your key points. Then ${enemy1.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>>`;
               break;
             default:
           }
@@ -1208,7 +1208,7 @@ function talking() {
         playerHp -= Math.floor(enemyD20)
         if (enemy2.enemyPeace >= enemy2.neededEnemyPeace) {
           enemy2.enemyHp = 0
-          newText = `The ${enemy2.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>> left, but on the bright side you succesfully conviced the enemy to leave the battle.`
+          newText = `The ${enemy2.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>> left, but on the bright side you successfully convinced the enemy to leave the battle.`
         } else {
           newText = `The ${enemy2.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>> left. You convinced the enemy and now they are <${enemy2.enemyPeace}/${enemy2.neededEnemyPeace}> convinced to leave the battle.`
         }
@@ -1221,16 +1221,16 @@ function talking() {
         if (type === `sca`) {
           switch (d4one) {
             case 1:
-              newText = `You tired to scare the enemy, but you accidentally had a voice crack mid sentence. Then ${enemy2.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>>`;
+              newText = `You tried to scare the enemy, but you accidentally had a voice crack mid sentence. Then ${enemy2.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>>`;
               break;
             case 2:
-              newText = `You tired to scare the enemy, but you didn't even make eye contact. Then ${enemy2.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>>`;
+              newText = `You tried to scare the enemy, but you didn't even make eye contact. Then ${enemy2.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>>`;
               break;
             case 3:
               newText = `You scare the enemy, but you were day dreaming so nothing actually happened. Then ${enemy2.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>>`;
               break;
             case 4:
-              newText = `You tired to scare the enemy, but since you don't look scary, they thought you were a two year old. Then ${enemy2.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>>`;
+              newText = `You tried to scare the enemy, but since you don't look scary, they thought you were a two year old. Then ${enemy2.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>>`;
               break;
             default:
           }
@@ -1238,16 +1238,16 @@ function talking() {
         else if (type === `per`) {
           switch (d4one) {
             case 1:
-              newText = `You tired to presuade the enemy, but you ended rambling about how the election is corrupt. Then ${enemy2.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>>`;
+              newText = `You tried to persuade the enemy, but you ended up rambling about how the election is corrupt. Then ${enemy2.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>>`;
               break;
             case 2:
-              newText = `You tired to presuade the enemy, but you didn't even have five cited sources. Then ${enemy2.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>>`;
+              newText = `You tried to persuade the enemy, but you didn't even have five cited sources. Then ${enemy2.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>>`;
               break;
             case 3:
-              newText = `You tired to presuade the enemy, but the ${enemy2.enemyName} had both earbuds in. Then ${enemy2.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>>`;
+              newText = `You tried to persuade the enemy, but the ${enemy2.enemyName} had both earbuds in. Then ${enemy2.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>>`;
               break;
             case 4:
-              newText = `You tired to presuade the enemy, but you forgot your key points. Then ${enemy2.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>>`;
+              newText = `You tried to persuade the enemy, but you forgot your key points. Then ${enemy2.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>>`;
               break;
             default:
           }
@@ -1267,7 +1267,7 @@ function talking() {
         playerHp -= Math.floor(enemyD20)
         if (enemy3.enemyPeace >= enemy3.neededEnemyPeace) {
           enemy3.enemyHp = 0
-          newText = `${enemy3.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>> left, but on the bright side you succesfully conviced the enemy to leave the battle.`
+          newText = `${enemy3.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>> left, but on the bright side you successfully convinced the enemy to leave the battle.`
         } else {
           newText = `${enemy3.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>> left. You convinced the enemy and now they are <${enemy3.enemyPeace}/${enemy3.neededEnemyPeace}> convinced to leave the battle.`
         }
@@ -1280,16 +1280,16 @@ function talking() {
         if (type === `sca`) {
           switch (d4one) {
             case 1:
-              newText = `You tired to scare the enemy, but you accidentally had a voice crack mid sentence. Then ${enemy3.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>>`;
+              newText = `You tried to scare the enemy, but you accidentally had a voice crack mid sentence. Then ${enemy3.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>>`;
               break;
             case 2:
-              newText = `You tired to scare the enemy, but you didn't even make eye contact. Then ${enemy3.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>>`;
+              newText = `You tried to scare the enemy, but you didn't even make eye contact. Then ${enemy3.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>>`;
               break;
             case 3:
               newText = `You scare the enemy, but you were day dreaming so nothing actually happened. Then ${enemy3.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>>`;
               break;
             case 4:
-              newText = `You tired to scare the enemy, but since you don't look scary, they thought you were a two year old. Then ${enemy3.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>>`;
+              newText = `You tried to scare the enemy, but since you don't look scary, they thought you were a two year old. Then ${enemy3.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>>`;
               break;
             default:
           }
@@ -1297,16 +1297,16 @@ function talking() {
         else if (type === `per`) {
           switch (d4one) {
             case 1:
-              newText = `You tired to presuade the enemy, but you ended rambling about how the election is corrupt. Then ${enemy3.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>>`;
+              newText = `You tried to persuade the enemy, but you ended up rambling about how the election is corrupt. Then ${enemy3.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>>`;
               break;
             case 2:
-              newText = `You tired to presuade the enemy, but you didn't even have five cited sources. Then ${enemy3.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>>`;
+              newText = `You tried to persuade the enemy, but you didn't even have five cited sources. Then ${enemy3.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>>`;
               break;
             case 3:
-              newText = `You tired to presuade the enemy, but the ${enemy3.enemyName} had both earbuds in. Then ${enemy3.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>>`;
+              newText = `You tried to persuade the enemy, but the ${enemy3.enemyName} had both earbuds in. Then ${enemy3.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>>`;
               break;
             case 4:
-              newText = `You tired to presuade the enemy, but you forgot your key points. Then ${enemy3.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>>`;
+              newText = `You tried to persuade the enemy, but you forgot your key points. Then ${enemy3.enemyName} attacked you dealing ${enemyD20} damage leaving you with <<${playerHp} HP>>`;
               break;
             default:
           }
@@ -1373,27 +1373,27 @@ function updateText() {
 let textNodes = [
   {
     id: 1, //story element or story part or section
-    text: `Welcome to our Knight text adventure, click Play to start`, //text was is visable first
+    text: `Welcome to our Knight text adventure, click Play to start`, //text was is visible first
     options: [ //creates the options
       { //to set something: setPlayer: {},
         //to require player: requiredPlayer: {element boolien elemenet},
-        text: `More Info`, //text was is visable first
+        text: `More Info`, //text was is visible first
         nextText: 2, //brings it to the next id
       }, // make sure to add commas
       {
         text: `PLAY`,
-        //text was is visable first
+        //text was is visible first
         nextText: 14 //brings it to the next id
       }, // make sure to add commas
       {
-        text: `Credits`, //text was is visable first
+        text: `Credits`, //text was is visible first
         nextText: 3 //brings it to the next id
       },
     ], // make sure to add commas
   },
   {
     id: 2,
-    text: `This is a text adventure made for our CART lab. This was made in just about 6 week from planning to coding. There are lots of paths for you to take and many endings. Along with a combat system, Have Fun!`,
+    text: `This is a text adventure made for our CART lab. This was made in just about 6 weeks from planning to coding. There are lots of paths for you to take and many endings. Along with a combat system, Have Fun!`,
     options: [
       {
         text: `Back`,
@@ -1412,7 +1412,7 @@ let textNodes = [
   {
     id: 3,
     text: `Made by: Angel Delgado Jimenez (Lead Programer)
-    Loghan Hornor (Lead Writer & Art Direction)`,
+	Loghan Hornor (Lead Writer & Art Direction)`,
     options: [
       {
         text: `More Info`,
@@ -1457,7 +1457,7 @@ let textNodes = [
         nextText: 12
       }
     ],
-    startCombat: 1 //depending on the number combat will change emenies or allies
+    startCombat: 1 //depending on the number combat will change enemies or allies
   },
   {
     id: 5,
@@ -1623,7 +1623,7 @@ let textNodes = [
   },
   {
     id: 16,
-    text: `Our story begins in a small village, Lüdingfeld, near the capital of Etair. The village is an important part of the Etair due to its access to fresh water and a salt mine, that is incredibly valuable for trade. A war broke out between the two Empires near Lüdingfeld, Etair and Bani. `,
+    text: `Our story begins in a small village, Lüdingfeld, near the capital of Etair. The village is an important part of the Etair due to its access to fresh water and a salt mine that is incredibly valuable for trade. A war broke out between the two Empires near Lüdingfeld, Etair and Bani. `,
     options: [
       {
         text: `Continue`,
@@ -1657,7 +1657,7 @@ let textNodes = [
   },
   {
     id: 19,
-    text: 'Dragon: "There was a time where this land was isolated and seemed to be at peace, but after sometime many other countries became more anxious to conquer the world. After the failed revolution in the west, the sea demons turned their attention to the east. The land’s government wanted to stay in solitude and tried to obtain their ancient ways, but it was only a matter of time until the evil would come."',
+    text: 'Dragon: "There was a time where this land was isolated and seemed to be at peace, but after some time many other countries became more anxious to conquer the world. After the failed revolution in the west, the sea demons turned their attention to the east. The land’s government wanted to stay in solitude and tried to obtain their ancient ways, but it was only a matter of time until the evil would come."',
     options: [
       {
         text: `Continue`,
@@ -1667,7 +1667,7 @@ let textNodes = [
   },
   {
     id: 20,
-    text: 'Dragon: "During the War, this land would be reborn for the greedy. The usage of their guns and other unholy technology won them the land. Instead of just taking the land over they decided to create new forms of free labour to gather the land’s natural treasures. As time went on more and more of the ancient Gods left these lands in search of more prosperous peoples. Even I was about to leave until I met a man who goes by the named of Jack."',
+    text: 'Dragon: "During the War, this land would be reborn for the greedy. The usage of their guns and other unholy technology won them the land. Instead of just taking the land over they decided to create new forms of free labour to gather the land’s natural treasures. As time went on more and more of the ancient Gods left these lands in search of more prosperous peoples. Even I was about to leave until I met a man who goes by the name of Jack."',
     options: [
       {
         text: `Continue`,
@@ -1737,7 +1737,7 @@ let textNodes = [
   },
   {
     id: 26.1,
-    text: `Tutorial: Sometimes combat will be engaged so you need to be ready for anything. Some weapons with the right number of a stat can give big bounus.`,
+    text: `Tutorial: Sometimes combat will be engaged so you need to be ready for anything. Some weapons with the right number of a stat can give big bonus.`,
     options: [
       {
         text: `OK, back to story`,
@@ -1745,38 +1745,38 @@ let textNodes = [
       }
     ],
   },
-  // pick weapon 
+  // pick weapon
   {
     id: 26.2,
     text: `While going through your house, you find some left over weapons around .`,
     options: [
       {
         text: `Bow left by your Uncle
-        (Best while using Shoot)`,
+    	(Best while using Shoot)`,
         nextText: 27,
         setPlayer: { bow: 1 }
       },
       {
         text: `Great Axe left by your Father
-        (Best while using Slash)`,
+    	(Best while using Slash)`,
         nextText: 27,
         setPlayer: { greatAxe: 1 }
       },
       {
         text: `Rapier left in a supply chest
-        (Best while using Stab)`,
+    	(Best while using Stab)`,
         nextText: 27,
         setPlayer: { rapier: 1 }
       },
       {
         text: `Short Sword left by the Guards
-        (Best while using Stab)`,
+    	(Best while using Stab)`,
         nextText: 27,
         setPlayer: { shortSword: 1 }
       },
       {
         text: `Spear left by the Guards
-        (Best whilst having more HP)`,
+    	(Best whilst having more HP)`,
         nextText: 27,
         setPlayer: { spear: 1 }
       },
@@ -1802,7 +1802,7 @@ let textNodes = [
       }
     ],
   },
-  { // gives the player 2 healing posions
+  { // gives the player 2 healing potions
     id: 28,
     text: 'You enter the kitchen, you do not know what you were expecting. Everything is burnt or broken. The place that you once ate at is now nothing but a place to grieve. You do find some of your healing potions in the chest under the table.',
     options: [
@@ -1915,7 +1915,7 @@ let textNodes = [
   },
   {
     id: 35,
-    text: 'You look around the town to see if there is anyone still alive. You can’t find anyone, you just pray that one of your friends got out. You yell out "Is there anyone!?" None answers, you make your way to the road that leads to forest seeing the burnt town full of ash and debris. You then hear a dog.',
+    text: 'You look around the town to see if there is anyone still alive. You can’t find anyone, you just pray that one of your friends gets out. You yell out "Is there anyone!?" None answers, you make your way to the road that leads to forest, seeing the burnt town full of ash and debris. You then hear a dog.',
     options: [
       {
         text: `Continue`,
@@ -1941,7 +1941,7 @@ let textNodes = [
   },
   {
     id: 37,
-    text: 'You take out some off your bread and tear a little piece and gave it to the dog. You tell it let to follow and it seems to sorta understand and starts to follow you down the road.',
+    text: 'You take out some of your bread and tear a little piece and give it to the dog. You tell it let to follow and it seems to sorta understand and starts to follow you down the road.',
     options: [
       {
         text: `Continue`,
@@ -1961,7 +1961,7 @@ let textNodes = [
   },
   {
     id: 39,
-    text: 'You look at the dog and tell it to stay and to go far away from this plcae. The dog looks at you then decides to continue forward, luckly it goes a different way.',
+    text: 'You look at the dog and tell it to stay and to go far away from this place. The dog looks at you then decides to continue forward, lucky it goes a different way.',
     options: [
       {
         text: `Continue`,
@@ -1972,7 +1972,7 @@ let textNodes = [
   //keep dog
   {
     id: 40,
-    text: 'You start walking into the forest, you have heard many stories about what lurks within, but you are unsure what could be true. What is true is that they are wordd of bandits having a great influence over the region. You should tread carefully from now on, but lucky you are not alone.',
+    text: 'You start walking into the forest, you have heard many stories about what lurks within, but you are unsure what could be true. What is true is that they are words of bandits having a great influence over the region. You should tread carefully from now on, but lucky you are not alone.',
     options: [
       {
         text: `Continue`,
@@ -1982,7 +1982,7 @@ let textNodes = [
   },
   {
     id: 41,
-    text: 'You feel like you have been walking for days, the dog stops for a second and starts to growl. You look around and you see a merhcant caravan, you get closer to see what has happened, but the dog is not moving with you.',
+    text: 'You feel like you have been walking for days, the dog stops for a second and starts to growl. You look around and you see a merchant caravan, you get closer to see what has happened, but the dog is not moving with you.',
     options: [
       {
         text: `Investigate`,
@@ -1992,7 +1992,7 @@ let textNodes = [
   },
   {
     id: 41.1,
-    text: `Tutorial: This is what combat looks like. Left side is damaging attacks, while right side is talking options. Middle is special options. (Click any Option to Continue)`,
+    text: `Tutorial: This is what combat looks like. Left side is damaging attacks, while the right side is talking options. Middle is a special option. (Click any Option to Continue)`,
     options: [
       {
         text: `Slash`,
@@ -2022,7 +2022,7 @@ let textNodes = [
   },
   {
     id: 41.2,
-    text: `Tutorial: These are attacking options. These roll a dice (EX: d12 or d4) and are mutliplied by 1.5 to do some damage to the enemy. (Click any Option to Continue)`,
+    text: `Tutorial: These are attacking options. These roll a dice (EX: d12 or d4) and are multiplied by 1.5 to do some damage to the enemy. (Click any Option to Continue)`,
     options: [
       {
         text: `Slash`,
@@ -2036,10 +2036,10 @@ let textNodes = [
   },
   {
     id: 41.3,
-    text: `Tutorial: These are talking options. These roll a dice (EX: d20) and if it is above a 14 mutliply that roll by 2, you will convince the enemy to leave the battle (Same as killing a enemy). (Click any Option to Continue)`,
+    text: `Tutorial: These are talking options. These roll a dice (EX: d20) and if it is above a 14 multiply that roll by 2, you will convince the enemy to leave the battle (Same as killing an enemy). (Click any Option to Continue)`,
     options: [
       {
-        text: `Persaude`,
+        text: `Persuade`,
         nextText: 41.4
       },
       {
@@ -2050,7 +2050,7 @@ let textNodes = [
   },
   {
     id: 41.4,
-    text: `Tutorial: These are the special options. Heal Potions roll a dice to heal a amount of health with enemies doing less damage but only if you have enough in your inventory (top right). The Pendant of Pain roll a 4 sided dice (d4) and that is used to mulitply your next roll by that amount. (Click any Option to Continue)`,
+    text: `Tutorial: These are the special options. Heal Potions roll a dice to heal an amount of health with enemies doing less damage but only if you have enough in your inventory (top right). The Pendant of Pain rolls a 4 sided dice (d4) and that is used to multiply your next roll by that amount. (Click any Option to Continue)`,
     options: [
       {
         text: `Heal Potions`,
@@ -2064,7 +2064,7 @@ let textNodes = [
   },
   {
     id: 41.5,
-    text: `Tutorial: Enemies will replace the "Air, Breeze, Wind" after you start using a action. Enemies are in a queue system and one has to be killed or convinced to move onto the next enemy. (Click any Option to Continue)`,
+    text: `Tutorial: Enemies will replace the "Air, Breeze, Wind" after you start using an action. Enemies are in a queue system and one has to be killed or convinced to move onto the next enemy. (Click any Option to Continue)`,
     options: [
       {
         text: `Next`,
@@ -2082,7 +2082,7 @@ let textNodes = [
       },
       {
         text: `Try to bust down door
-        [Check]`,
+    	[Check]`,
         nextText: 43
       },
     ],
@@ -2101,7 +2101,7 @@ let textNodes = [
       },
       {
         text: `Hide.
-        [Check]`,
+    	[Check]`,
         nextText: 47
       }
     ],
@@ -2128,7 +2128,7 @@ let textNodes = [
   },
   {
     id: 46, //stand off
-    text: 'You stand there and wait, you continue to examine the cart and you finally get a good look at the people. You realize that they are bandits, luckly there is only two of them so you can probably take them.',
+    text: 'You stand there and wait, you continue to examine the cart and you finally get a good look at the people. You realise that they are bandits, luckily there is only two of them so you can probably take them.',
     options: [
       {
         text: `Continue`,
@@ -2149,7 +2149,7 @@ let textNodes = [
   },
   { //sneak
     id: 48, //succeed on dex roll
-    text: 'You were able to sneak past the bandits, they would have been a rough fight for you. You wait for a little bit before contining going.',
+    text: 'You were able to sneak past the bandits, they would have been a rough fight for you. You wait for a little bit before continuing going.',
     options: [
       {
         text: `Continue`,
@@ -2159,7 +2159,7 @@ let textNodes = [
   },
   { //sneak
     id: 42, //fails on dex roll
-    text: 'You start to try to sneak past them but you step some branches. The bandits stop to look at you and they take out their blades. You take out your weapon to get ready to fight, but you can always talk your way out.',
+    text: 'You start to try to sneak past them but you step on some branches. The bandits stop to look at you and they take out their blades. You take out your weapon to get ready to fight, but you can always talk your way out.',
     options: [
       {
         text: `Continue`,
@@ -2210,7 +2210,7 @@ let textNodes = [
   },
   { //start after combat
     id: 51,
-    text: 'You walk off with a sense of relief, you are happy to be alive but you do not know what you should feel. The dog comes out in from the forest and starts licking your face. ',
+    text: 'You walk off with a sense of relief, you are happy to be alive but you do not know what you should feel. The dog comes out from the forest and starts licking your face. ',
     options: [
       {
         text: `Continue`,
@@ -2220,7 +2220,7 @@ let textNodes = [
   },
   {
     id: 52,
-    text: 'You clean yourself and settle for the night. You get some fire wood and try to remember what your uncle told you, but as you try to remeber the only thoughts that come to mind are the memories of the horror you went threw. You go to bed without a fire, but you are confindent thing will happen.',
+    text: 'You clean yourself and settle for the night. You get some firewood and try to remember what your uncle told you, but as you try to remember the only thoughts that come to mind are the memories of the horror you went through. You go to bed without a fire, but you are confident thing will happen.',
     options: [
       {
         text: `Continue`,
@@ -2246,7 +2246,7 @@ let textNodes = [
       }
     ],
   },
-  {// 
+  {//
     id: 55,
     text: 'You get up and start to look for the dog, you see its footprints. You start to follow the path and it leads you to a little house in the middle of the forest.',
     options: [
@@ -2256,7 +2256,7 @@ let textNodes = [
       }
     ],
   },
-  {// 
+  {//
     id: 56,
     text: 'You get up and start to follow your nose, it leads you to a house that has smoke coming from it.',
     options: [
@@ -2266,7 +2266,7 @@ let textNodes = [
       }
     ],
   },
-  {// 
+  {//
     id: 57,
     text: 'You look around you to see that there is still a path, so you get up and you start to follow the path. The path leads you to a house, but you were expecting a town. By the looks of it, your map seems to be outdated.',
     options: [
@@ -2276,7 +2276,7 @@ let textNodes = [
       }
     ],
   },
-  {// 
+  {//
     id: 58,
     text: 'You look around to see if there is anyone, but there does not seem to be anyone making an loud noises.',
     options: [
@@ -2294,7 +2294,7 @@ let textNodes = [
       }
     ],
   },
-  {// 
+  {//
     id: 59,
     text: 'Marry: "What are you doing on my land!?"',
     options: [
@@ -2324,7 +2324,7 @@ let textNodes = [
   },
   {// diplomatic approach
     id: 61,
-    text: 'Jack: "Hey sorry, I did not mean to intrude on your lands, I come a little village near by that was attacked by a man. Have you heard the name Herny?"',
+    text: 'Jack: "Hey sorry, I didn\'t mean to intrude on your lands, I came to a little village nearby that was attacked by a man. Have you heard the name Henry?"',
     options: [
       {
         text: `Continue`,
@@ -2344,7 +2344,7 @@ let textNodes = [
   },
   {// diplomatic approach
     id: 63,
-    text: 'Jack: "I am not a bandit, I actaully saw a couple back there, I dealt with them. I am Jack, may I ask who you are? My uncle used to talk about someone who looks just like you, a weapon smith with a very "large" personilty."',
+    text: 'Jack: "I am not a bandit, I actually saw a couple back there, I dealt with them. I am Jack, may I ask who you are? My uncle used to talk about someone who looks just like you, a weaponsmith with a very "large" personality."',
     options: [
       {
         text: `Continue`,
@@ -2354,7 +2354,7 @@ let textNodes = [
   },
   {// diplomatic approach
     id: 64,
-    text: 'Marry: "I am a weapon smith, I have been here for quite a while. I have not been visted by someone for a long while, why do not you come in?"',
+    text: 'Marry: "I am a weapon smith, I have been here for quite a while. I have not been visited by someone for a long while, why do not you come in?"',
     options: [
       {
         text: `Walk in`,
@@ -2396,9 +2396,9 @@ let textNodes = [
       }
     ],
   },
-  {// 
+  {//
     id: 68,
-    text: 'You walk into her home, it is very cossy, its been a few days since you have been in a functional house. Weapons covered the walls some of them spears others are Great Axes, she looks like she has been doing this for quite some time. You wonder why she is here alone, but you thought best not to mention that question',
+    text: 'You walk into her home, it is very cosy, it\'s been a few days since you have been in a functional house. Weapons covered the walls, some of them spears others are Great Axes, she looks like she has been doing this for quite some time. You wonder why she is here alone, but you thought best not to mention that question',
     options: [
       {
         text: `Continue`,
@@ -2406,7 +2406,7 @@ let textNodes = [
       }
     ],
   },
-  {// 
+  {//
     id: 69,
     text: 'Jack: "So why did you think I am a bandit, are they common around these parts?"',
     options: [
@@ -2416,9 +2416,9 @@ let textNodes = [
       }
     ],
   },
-  {// 
+  {//
     id: 70,
-    text: 'Marry: "Yes ever since there has been a change in leadership. They have demanding more and more weapons, I am tired of suppling those idiots. The thing is, they do not know that I have been giving them my worst weapons. I would do anything to get rid of those pests."',
+    text: 'Marry: "Yes ever since there has been a change in leadership. They are demanding more and more weapons, I am tired of supplying those idiots. The thing is, they do not know that I have been giving them my worst weapons. I would do anything to get rid of those pests."',
     options: [
       {
         text: `Continue`,
@@ -2426,7 +2426,7 @@ let textNodes = [
       }
     ],
   },
-  {// 
+  {//
     id: 71,
     text: 'Marry: "Why did you come out here?"',
     options: [
@@ -2436,7 +2436,7 @@ let textNodes = [
       },
     ],
   },
-  {// 
+  {//
     id: 72,
     text: 'Jack: "I am on a mission to find a mentor to train me so I can get my revenge."',
     options: [
@@ -2446,7 +2446,7 @@ let textNodes = [
       }
     ],
   },
-  {// 
+  {//
     id: 73,
     text: 'Marry: "Hmmm, how about this. I will train you and you will help me take care of the bandits, how about it Jack?"',
     options: [
@@ -2462,7 +2462,7 @@ let textNodes = [
   },
   {// get to have more of a bonus to skills
     id: 74,
-    text: 'You decide to join Marry and help her with the bandits. She losely teaches you how to use your weapons and hone your skills.',
+    text: 'You decide to join Marry and help her with the bandits. She loosely teaches you how to use your weapons and hone your skills.',
     options: [
       {
         text: `Continue`,
@@ -2470,9 +2470,9 @@ let textNodes = [
       }
     ],
   },
-  {// 
+  {//
     id: 75.1,
-    text: 'After a year of working for Marry she finally started to teach you how to use a weapon instead of just using you as free labor.',
+    text: 'After a year of working for Marry she finally started to teach you how to use a weapon instead of just using you as free labour.',
     options: [
       {
         text: `Continue`,
@@ -2480,7 +2480,7 @@ let textNodes = [
       }
     ],
   },
-  {// 
+  {//
     id: 75.2,
     text: 'Marry: "Jack I will tell the basics of how to use your skills:"',
     options: [
@@ -2490,7 +2490,7 @@ let textNodes = [
       }
     ],
   },
-  {// 
+  {//
     id: 75.3,
     text: 'Dexterity: is used for light attacks like stab and can be used to sneak out of your way out of things. Also best while using a Rapier.',
     options: [
@@ -2500,7 +2500,7 @@ let textNodes = [
       }
     ],
   },
-  {// 
+  {//
     id: 75.4,
     text: 'Constitution: is used for bonus to health and can be used to scare enemies and you heal more with potions. Also best while using a Short Sword.',
     options: [
@@ -2510,7 +2510,7 @@ let textNodes = [
       }
     ],
   },
-  {// 
+  {//
     id: 75.5,
     text: 'Wisdom: is used for persuading, knowing how to heal more with potions, and getting more benefit from the Pendant of Pain. Also best while using a Bow.',
     options: [
@@ -2520,7 +2520,7 @@ let textNodes = [
       }
     ],
   },
-  {// 
+  {//
     id: 75.6,
     text: 'Strength: is used to add damage for slash damage and can scare your enemies. Also best while using a Great Axe',
     options: [
@@ -2530,9 +2530,9 @@ let textNodes = [
       }
     ],
   },
-  {// 
+  {//
     id: 75.7,
-    text: 'Charisma: is used for presuading your way out of situations. It gets more benefit than other skills',
+    text: 'Charisma: is used for persuading your way out of situations. It gets more benefit than other skills',
     options: [
       {
         text: `Very cool`,
@@ -2542,7 +2542,7 @@ let textNodes = [
   },
   {
     id: 75.8,
-    text: 'Every skill give you a benefit every 3 of a skill you have (EX: 3 strength = +1 on your roll while using slash, then 6 for +2, and 9 for +4). [Checks] will also display which skill benefits it (EX: "[Check (Dex)]"',
+    text: 'Every skill gives you a benefit every 3 of a skill you have (EX: 3 strength = +1 on your roll while using slash, then 6 for +2, and 9 for +4). [Checks] will also display which skill benefits it (EX: "[Check (Dex)]"',
 
     options: [
       {
@@ -2586,9 +2586,9 @@ let textNodes = [
       },
     ],
   },
-  {// 
+  {//
     id: 76,
-    text: 'Marry: "I think its time we talk about you fighting the bandit leader. I have taught you as much as I could, they have been more involved in recent attacks with the local merchants than my home. If you go kill the bandit leader I will make a great weapon for you."',
+    text: 'Marry: "I think it\'s time we talk about you fighting the bandit leader. I have taught you as much as I could, they have been more involved in recent attacks with the local merchants than my home. If you go kill the bandit leader I will make a great weapon for you."',
     options: [
       {
         text: `Yes please`,
@@ -2604,7 +2604,7 @@ let textNodes = [
       }
     ],
   },
-  {// 
+  {//
     id: 77,
     text: 'Jack: "Thank you, Mrs. Marry, I will get the head of the bandit leader, then we can discuss other things afterwards."',
     options: [
@@ -2614,7 +2614,7 @@ let textNodes = [
       }
     ],
   },
-  {// 
+  {//
     id: 78,
     text: 'Jack: "I will gladly take out that mut. Its long over due for him to learn his lesson, I will get his head and prove my worth."',
     options: [
@@ -2624,7 +2624,7 @@ let textNodes = [
       }
     ],
   },
-  {// 
+  {//
     id: 79,
     text: 'Jack: "I will kill this man and I will get that weapon, then I can finally get my revenge."',
     options: [
@@ -2634,9 +2634,9 @@ let textNodes = [
       }
     ],
   },
-  {// 
+  {//
     id: 80,
-    text: 'You walk into the forest, you take out your map to see where they could be and you see the perfect place for a camp. You make your way there being a sneaky as possible knowning that one mistake could cost you everything.',
+    text: 'You walk into the forest, you take out your map to see where they could be and you see the perfect place for a camp. You make your way there being a sneaky as possible knowing that one mistake could cost you everything.',
     options: [
       {
         text: `Continue`,
@@ -2644,9 +2644,9 @@ let textNodes = [
       }
     ],
   },
-  {// 
+  {//
     id: 81,
-    text: 'You wait till nightfall to attack, beat them at their own game. You get to the camp at dawn but you only see 3 different bandits, two goonies and the leader. You have to hange your plan and decide to attack now before anyone else can help.',
+    text: 'You wait till nightfall to attack, beat them at their own game. You get to the camp at dawn but you only see 3 different bandits, two goonies and the leader. You have to change your plan and decide to attack now before anyone else can help.',
     options: [
       {
         text: `Continue`,
@@ -2695,9 +2695,9 @@ let textNodes = [
       }
     ],
   },
-  {// 
+  {//
     id: 84,
-    text: 'You cut threw the bandits, it was a hard fight, but worth it. You have now shown not only to your mentor, but to your self that you are ready to avenge your family and find Henry.',
+    text: 'You cut through the bandits, it was a hard fight, but worth it. You have now shown not only to your mentor, but to yourself that you are ready to avenge your family and find Henry.',
     options: [
       {
         text: `Walk back home`,
@@ -2705,9 +2705,9 @@ let textNodes = [
       }
     ],
   },
-  {// 
+  {//
     id: 85,
-    text: 'You walk into Marrys home, she looks at you and smiles. It is the first time you have seen her smile, you drop down your evidence and go out back to get your self clean. ',
+    text: 'You walk into Marrys home, she looks at you and smiles. It is the first time you have seen her smile, you drop down your evidence and go out back to get yourself clean. ',
     options: [
       {
         text: `Continue`,
@@ -2715,9 +2715,9 @@ let textNodes = [
       }
     ],
   },
-  {// 
+  {//
     id: 86,
-    text: 'You remeber the horrors done to your daughters infront of your sons eyes and what they did to your wife. It fills you with rage, you know its time.',
+    text: 'You remember the horrors done to your daughters in front of your son\'s eyes and what they did to your wife. It fills you with rage, you know it\'s time.',
     options: [
       {
         text: `Continue`,
@@ -2725,9 +2725,9 @@ let textNodes = [
       }
     ],
   },
-  {// add a bonus to skillset
+  {// add a bonus to skill set
     id: 87,
-    text: 'The next morning, Marry: "Jack, I present for you, your new fixed, and clean weapon along with some potions. I spent all night fixing it and buying some potions for you to have, I hope you use it well. Remember that even though it may feel as justice to you and your whatever, hate by revengence will just create more death for you and everyone around you."',
+    text: 'The next morning, Marry: "Jack, I present for you, your new fixed, and clean weapon along with some potions. I spent all night fixing it and buying some potions for you to have, I hope you use it well. Remember that even though it may feel as justice to you and your whatever, hate by revenge will just create more death for you and everyone around you."',
     options: [
       {
         text: `Yes, thank you.`,
@@ -2736,7 +2736,7 @@ let textNodes = [
       }
     ],
   },
-  {// 
+  {//
     id: 88,
     text: 'Jack: "Thank you, but you do not understand what I have gone through it is the only way."',
     options: [
@@ -2754,7 +2754,7 @@ let textNodes = [
       }
     ],
   },
-  {// 
+  {//
     id: 88.1,
     text: 'Marry: "Excuse me?"',
     options: [
@@ -2764,7 +2764,7 @@ let textNodes = [
       },
     ],
   },
-  {// 
+  {//
     id: 89,
     text: 'Yes, until we meet again Jack, good luck on your mission, but do not forget yourself in your own rage.',
     options: [
@@ -2774,7 +2774,7 @@ let textNodes = [
       }
     ],
   },
-  {// 
+  {//
     id: 91,
     text: 'You walk out of the home, you turn around to get one more look at it and remember all the good times you had, you know that this will be the last moments of "fun" in your life.',
     options: [
@@ -2784,9 +2784,9 @@ let textNodes = [
       }
     ],
   },
-  {// 
+  {//
     id: 92,
-    text: 'You run into some other travelers and see if they know a Henry, but none of them know where he lives.',
+    text: 'You run into some other travellers and see if they know a Henry, but none of them know where he lives.',
     options: [
       {
         text: `Question More`,
@@ -2794,7 +2794,7 @@ let textNodes = [
       }
     ],
   },
-  {// 
+  {//
     id: 93,
     text: 'You finally find a guard on patrol.',
     options: [
@@ -2812,7 +2812,7 @@ let textNodes = [
       }
     ],
   },
-  {// 
+  {//
     id: 94,
     text: 'Guard: "Lord Willaims? He is the lord around here, he lives near here."',
     options: [
@@ -2822,9 +2822,9 @@ let textNodes = [
       }
     ],
   },
-  {// 
+  {//
     id: 95,
-    text: 'Guard: "Yes, there is a lord named Lord Wilaims. He lives around here."',
+    text: 'Guard: "Yes, there is a lord named Lord Williams. He lives around here."',
     options: [
       {
         text: `What, really?`,
@@ -2832,9 +2832,9 @@ let textNodes = [
       }
     ],
   },
-  {// 
+  {//
     id: 95.5,
-    text: 'Guard: "Yes, he lives right here" He pulls out his map and points at a spot to show you were Henrys home is.',
+    text: 'Guard: "Yes, he lives right here" He pulls out his map and points at a spot to show you were Henry\'s home is.',
     options: [
       {
         text: `Thank you.`,
@@ -2842,7 +2842,7 @@ let textNodes = [
       }
     ],
   },
-  {// 
+  {//
     id: 96,
     text: 'Guard: "I do not like your tone of your voice young man."',
     options: [
@@ -2897,19 +2897,19 @@ let textNodes = [
       }
     ],
   },
-  {// 
+  {//
     id: 100,
-    text: 'You loot his body and find a note by Lord Willaims. It seems that the guard has been hired by Henry, which leads you to believe the Henry lives somewhere near here. You take out his map of the area to see if there is a manor or castle.',
+    text: 'You loot his body and find a note by Lord Willaims. It seems that the guard has been hired by Henry, which leads you to believe that Henry lives somewhere near here. You take out his map of the area to see if there is a manor or castle.',
     options: [
       {
-        text: `Walk to Henry's home`,
+        text: `Walk to Henry/'s home`,
         nextText: 101
       }
     ],
   },
-  {// 
+  {//
     id: 101,
-    text: 'You went to the spot of the map that looked that had the most importance. As you walk down the road you see a large house on top of a litle hill.',
+    text: 'You went to the spot of the map that looked the most important. As you walk down the road you see a large house on top of a little hill.',
     options: [
       {
         text: `Continue`,
@@ -2923,7 +2923,7 @@ let textNodes = [
     options: [
       {
         text: `Continue
-        [Check (Wis)]`,
+    	[Check (Wis)]`,
         nextText: 103
       }
     ],
@@ -2941,7 +2941,7 @@ let textNodes = [
   },
   {// wisdom fails (wf)
     id: 105,
-    text: 'You can only see one way in, the front door. It may cause some chaos in the manor though. You can try to convince the gaurds to let you in to talk but it may fail.',
+    text: 'You can only see one way in, the front door. It may cause some chaos in the manor though. You can try to convince the guards to let you in to talk but it may fail.',
     options: [
       {
         text: `Continue`,
@@ -2965,7 +2965,7 @@ let textNodes = [
     options: [
       { //charisma check
         text: `I here to see Henry
-        [Check (Cha)]`,
+    	[Check (Cha)]`,
         nextText: 108.1
       },
       {
@@ -2980,7 +2980,7 @@ let textNodes = [
     options: [
       { //charisma check
         text: `I here to see Henry
-        [Check (Cha)]`,
+    	[Check (Cha)]`,
         nextText: 111
       },
     ],
@@ -3067,9 +3067,9 @@ let textNodes = [
       }
     ],
   },
-  {// 
+  {//
     id: 116,
-    text: 'You open up the kitchen door to see the dinning room, you unexpectingly walk into Henry having a lunch with his family. You see 2 little boys enjoying a large bowl of rice and you lock eyes with the man who ruined everything.',
+    text: 'You open up the kitchen door to see the dining room, you unexpectedly walk into Henry having lunch with his family. You see 2 little boys enjoying a large bowl of rice and you lock eyes with the man who ruined everything.',
     options: [
       {
         text: `Continue`,
@@ -3077,9 +3077,9 @@ let textNodes = [
       }
     ],
   },
-  {// 
+  {//
     id: 116.1,
-    text: 'You make your way inside the gates and see his famliy having lunch in the dinning room.',
+    text: 'You make your way inside the gates and see his family having lunch in the dining room.',
     options: [
       {
         text: `WALK IN`,
@@ -3087,7 +3087,7 @@ let textNodes = [
       }
     ],
   },
-  {// 
+  {//
     id: 117,
     text: 'Henry: "Oh, I wasn’t expecting a visitor today. Henry! What did I say about eating with your mouth open? Sigh. What are you doing here and who are you? Oh wait, sorry where my manners are, please sit over there."',
     options: [
@@ -3097,7 +3097,7 @@ let textNodes = [
       }
     ],
   },
-  {// 
+  {//
     id: 118,
     text: 'Henry: "No need to be so loud you don’t want the kids to be scared?"',
     options: [
@@ -3107,7 +3107,7 @@ let textNodes = [
       }
     ],
   },
-  {// 
+  {//
     id: 119,
     text: 'The first kid runs to his mom, but the one named James just sat there eating, staring into your soul. Distracted by memories you didn’t realise that Henry had pulled out his sword.',
     options: [
@@ -3117,7 +3117,7 @@ let textNodes = [
       }
     ],
   },
-  {// 
+  {//
     id: 120,
     text: 'Jack: "Why did you do it? You could have done it any other way, why? Why did you leave me alive with these memories!"',
     options: [
@@ -3127,7 +3127,7 @@ let textNodes = [
       }
     ],
   },
-  {// 
+  {//
     id: 122,
     text: 'Henry: "Okay this is enough, get the kids out. This should not be to long, we can finish our meal later tonight."',
     options: [
@@ -3178,9 +3178,9 @@ let textNodes = [
       }
     ],
   },
-  {// 
+  {//
     id: 125,
-    text: 'You get a couple of good shots in, but Henry is just to strong. You take a moment to catch your breath and by the time you get your mind back in the battle, he jumps onto you with the dull end of his blade. Your vision got dark and the last thing you remeber were the kids eyes.',
+    text: 'You get a couple of good shots in, but Henry is just too strong. You take a moment to catch your breath and by the time you get your mind back in the battle, he jumps onto you with the dull end of his blade. Your vision got dark and the last thing you remember were the kids eyes.',
     options: [
       {
         text: `...........`,
@@ -3188,7 +3188,7 @@ let textNodes = [
       }
     ],
   },
-  {// 
+  {//
     id: 126,
     text: 'What do you expect? Did you expect that you would come out on top? You’re in my home, since this blade has enough of your kinds’ filth on it, I will spare you.Guards escort our friend to the prison in the south, but I am curious who you are?',
     options: [
@@ -3198,7 +3198,7 @@ let textNodes = [
       }
     ],
   },
-  {// 
+  {//
     id: 127,
     text: 'You wake up in a chain, the only thing you can sense is iron. As you try to get up you realise you are locked up in chains in a room. You thought your eyes were closed but then you see a little bit of light.',
     options: [
@@ -3208,7 +3208,7 @@ let textNodes = [
       }
     ],
   },
-  {// 
+  {//
     id: 128,
     text: 'Guard: "Feeding Time!"',
     options: [
@@ -3252,7 +3252,7 @@ let textNodes = [
   },
   {// door
     id: 130.1,
-    text: 'You see a faint light, it appears that there are some guards watching over. It looks like its made out of wood, you might be able to break it. You then see marks on the door, like someone has had the same idea, but it appears none has made it out like that.',
+    text: 'You see a faint light, it appears that there are some guards watching over. It looks like it\'s made out of wood, you might be able to break it. You then see marks on the door, like someone has had the same idea, but it appears none has made it out like that.',
     options: [
       {
         text: `Door`,
@@ -3330,7 +3330,7 @@ let textNodes = [
   },
   {// plate
     id: 130.4,
-    text: 'You focus on the plate that was just thrown into the room. You mostly hear things, the room is almost pitch black, but you do see a large man run towards the plate. You hear a gulp then some more shulfling. You can make out that he is much more fit compared to the other two and pretty tall, does not look like someone to mess with.',
+    text: 'You focus on the plate that was just thrown into the room. You mostly hear things, the room is almost pitch black, but you do see a large man run towards the plate. You hear a gulp then some more shuffling. You can make out that he is much more fit compared to the other two and pretty tall, does not look like someone to mess with.',
     options: [
       {
         text: `Door`,
@@ -3374,9 +3374,9 @@ let textNodes = [
       }
     ],
   },
-  {// 
+  {//
     id: 133,
-    text: '?: "heLLo? whAt do you think, hmm." Just hearing this guy makes you feel uneasy. ?: "Shut it… Sorry, who are you?" Its the same voice but a different tone and is much more clear.',
+    text: '?: "heLLo? whAt do you think, hmm." Just hearing this guy makes you feel uneasy. ?: "Shut it… Sorry, who are you?" It\'s the same voice but a different tone and is much more clear.',
     options: [
       {
         text: `I am Jack, where are we?`,
@@ -3392,7 +3392,7 @@ let textNodes = [
       }
     ],
   },
-  {// 
+  {//
     id: 134,
     text: 'Jin:"We are nowhere, but you will soon learn. I am Jin by the way."',
     options: [
@@ -3402,9 +3402,9 @@ let textNodes = [
       }
     ],
   },
-  {// 
+  {//
     id: 135,
-    text: 'Jin: "I am Jin, its rude to ask people about their personal life, hmm?"',
+    text: 'Jin: "I am Jin, it\'s rude to ask people about their personal life, hmm?"',
     options: [
       {
         text: `What?`,
@@ -3412,7 +3412,7 @@ let textNodes = [
       }
     ],
   },
-  {// 
+  {//
     id: 136,
     text: 'Jin: "I am Jin, it rude to just stare, hahahaha!"',
     options: [
@@ -3422,16 +3422,16 @@ let textNodes = [
       }
     ],
   },
-  {// 
+  {//
     id: 137,
-    text: '?: "Jin, be quiet." A different voice from the right side of the room, its more deep and shallow. Jin: "Oh Frank, please I am just trying to make a new friend, are you jelous?" It seems like the mans name is Frank, what a wierd name.',
+    text: '?: "Jin, be quiet." A different voice from the right side of the room, it\'s more deep and shallow. Jin: "Oh Frank, please I am just trying to make a new friend, are you jealous?" It seems like the man\'s name is Frank, what a weird name.',
     options: [
       {
         text: `Hey, what is this place?`,
         nextText: 138
       },
       {
-        text: `A freind?`,
+        text: `A friend?`,
         nextText: 138
       },
       {
@@ -3440,7 +3440,7 @@ let textNodes = [
       }
     ],
   },
-  {// 
+  {//
     id: 138,
     text: 'Guard: "Shut it in there!"',
     options: [
@@ -3452,19 +3452,19 @@ let textNodes = [
   },
   {// wisdom or dex check
     id: 139,
-    text: 'Everything becomes silent again, expect for the faint noices of the gaurds talking.',
+    text: 'Everything becomes silent again, expect for the faint noise of the guards talking.',
     options: [
       {
         text: `Focus on the voices
-        `,
+    	`,
         nextText: 140
       }
     ],
     diceRoll: 4
   },
-  {// secceeds
+  {// succeeds
     id: 139.1,
-    text: 'Gaurd 1: "Hey Guston, you hear the news?" The first gaurd seems to be on the older side. Guston: "You mean how Henry is promoting gaurds to his new home?" Guston seems to be a lot younger. You hear a loud slap Gaurd1: "Call him Lord Willaims, but yes. He moved to that old burnt down farming village next the river. Hopefully he promotes me, hahaha." Guston: "Fat chance of that."',
+    text: 'Guard 1: "Hey Guston, you hear the news?" The first guard seems to be on the older side. Guston: "You mean how Henry is promoting guards to his new home?" Guston seems to be a lot younger. You hear a loud slap Guard1: "Call him Lord Willaims, but yes. He moved to that old burnt down farming village next to the river. Hopefully he promotes me, hahaha." Guston: "Fat chance of that."',
     options: [
       {
         text: `Continue`,
@@ -3472,9 +3472,9 @@ let textNodes = [
       }
     ],
   },
-  {// secceeds
+  {// succeeds
     id: 141,
-    text: 'The voices get quieter. You remeber you old home, would he really live on the graves of his victoms? At least you now know where he will be when you get out of here.',
+    text: 'The voices get quieter. You remember your old home, would he really live on the graves of his victims? At least you now know where he will be when you get out of here.',
     options: [
       {
         text: `Go to sleep`,
@@ -3492,9 +3492,9 @@ let textNodes = [
       }
     ],
   },
-  {// 
+  {//
     id: 144,
-    text: 'You get woken to a bright light from the door being open. Guston: "Get out, its time for work." From what you know of prisons, they will probably make you mine for salt.',
+    text: 'You get woken to a bright light from the door being open. Guston: "Get out, it\'s time for work." From what you know of prisons, they will probably make you mine for salt.',
     options: [
       {
         text: `Get up and follow.`,
@@ -3515,7 +3515,7 @@ let textNodes = [
   },
   {// succeeds
     id: 136,
-    text: 'You continue even though your arms feel like noodle, you see Frank and Jin looking impressed. You also see the other man, is huge man with bright red hair. He is laughing at your attempt to be "strong". He takes your pick and starts to show you how to work the rock.',
+    text: 'You continue even though your arms feel like noodles, you see Frank and Jin looking impressed. You also see the other man, a huge man with bright red hair. He is laughing at your attempt to be "strong". He takes your pick and starts to show you how to work the rock.',
     options: [
       {
         text: `Continue`,
@@ -3525,7 +3525,7 @@ let textNodes = [
   },
   {// fails
     id: 137,
-    text: 'You drop the pickaxe and see Frank and Jin walk away from you. You can finally see the last guy, a huge name with bright red hair. He looks like is about to help when you see a guard aproach.',
+    text: 'You drop the pickaxe and see Frank and Jin walk away from you. You can finally see the last guy, a huge name with bright red hair. He looks like is about to help when you see a guard approach.',
     options: [
       {
         text: `Continue`,
@@ -3535,7 +3535,7 @@ let textNodes = [
   },
   {// fails
     id: 137.1,
-    text: 'You try to pick of the pickaxe before they notice, but its too late. They pick you up and then beat you for what feels like hours. Afterwards they throw you back into the mines. This time the big man is there holding you pickaxe, he shows you how to work the rock.',
+    text: 'You try to pick off the pickaxe before they notice, but it\'s too late. They pick you up and then beat you for what feels like hours. Afterwards they throw you back into the mines. This time the big man is there holding you pickaxe, he shows you how to work the rock.',
     options: [
       {
         text: `Continue`,
@@ -3543,9 +3543,9 @@ let textNodes = [
       }
     ],
   },
-  {// 
+  {//
     id: 178,
-    text: 'Brian: "Weak boy, let Brian help, he big and strong." He is almost twice your size, he hits one rock and it breaks in half.',
+    text: 'Brian: "Weak boy, let Brian help, he\'s big and strong." He is almost twice your size, he hits one rock and it breaks in half.',
     options: [
       {
         text: `How have you been here?`,
@@ -3561,7 +3561,7 @@ let textNodes = [
       },
     ],
   },
-  {// 
+  {//
     id: 178.1,
     text: 'Brian: "Been here very long, lost count. You will understand one day little man."',
     options: [
@@ -3575,7 +3575,7 @@ let textNodes = [
       },
     ],
   },
-  {// 
+  {//
     id: 178.2,
     text: 'Brian: "Drunk fighting, he did not say sorry, killed the ant. They put me here."',
     options: [
@@ -3589,7 +3589,7 @@ let textNodes = [
       },
     ],
   },
-  {// 
+  {//
     id: 178.3,
     text: 'Brian: "Does not know what you mean?"',
     options: [
@@ -3599,7 +3599,7 @@ let textNodes = [
       },
     ],
   },
-  {// 
+  {//
     id: 178.31,
     text: 'Brian: "If Jack keeps talking I will be angry, Jack does not want Brian angry." You might be able to get him angry and start a mass fight, it could be  good distraction.',
     options: [
@@ -3609,7 +3609,7 @@ let textNodes = [
       }
     ],
   },
-  {// 
+  {//
     id: 179,
     text: 'You walk up to Jin to see what he is up to, you try to make it seem like you are still working, but you know if you swing one more time your arms will just fall off.',
     options: [
@@ -3619,7 +3619,7 @@ let textNodes = [
       }
     ],
   },
-  {// 
+  {//
     id: 180,
     text: 'Jin: "yEs? SHHH" ... Jin: "Yes, what do you want?"',
     options: [
@@ -3637,9 +3637,9 @@ let textNodes = [
       },
     ],
   },
-  {// 
+  {//
     id: 180.1,
-    text: 'Jin: "They think of me crazy, so they put in prison. I also often lied about who I was to get what I want."',
+    text: 'Jin: "They think of me crazy, so they put me in prison. I also often lied about who I was to get what I want."',
     options: [
       {
         text: `Are you alright?`,
@@ -3651,7 +3651,7 @@ let textNodes = [
       },
     ],
   },
-  {// 
+  {//
     id: 180.2,
     text: 'Jin "I am doing as fine as someone can be in prison."',
     options: [
@@ -3665,9 +3665,9 @@ let textNodes = [
       },
     ],
   },
-  {// 
+  {//
     id: 180.3,
-    text: 'Jin: "yES, wE wait FOR moments of TImE." The other voice came back. Jin: "SHUT IT, well yes I do know a way, but it takes time and its not time yet. I may let you in depending on if I like you later, HAHAHAHA." Gaurd2:"GET BACK TO WORK!"',
+    text: 'Jin: "yES, wE wait FOR moments of TImE." The other voice came back. Jin: "SHUT IT, well yes I do know a way, but it takes time and it\'s not time yet. I may let you in depending on if I like you later, HAHAHAHA." Gaurd2:"GET BACK TO WORK!"',
     options: [
       {
         text: `Thank you, talk to you later.`,
@@ -3675,7 +3675,7 @@ let textNodes = [
       }
     ],
   },
-  {// 
+  {//
     id: 181,
     text: 'You walk towards Frank, but he meets you in the middle, much smaller than the other two, but around the same size as you if not a little shorter. He is wearing a cloak to cover his face, you wonder how he is allowed to have that, but he also does not seem to be from this area.',
     options: [
@@ -3685,7 +3685,7 @@ let textNodes = [
       }
     ],
   },
-  {// 
+  {//
     id: 182,
     text: 'Frank: "Jack?"',
     options: [
@@ -3703,7 +3703,7 @@ let textNodes = [
       },
     ],
   },
-  {// 
+  {//
     id: 182.1,
     text: 'Frank: "Sorry, but you do not get to know why, just know that I am someone that can get anywhere they want."',
     options: [
@@ -3717,7 +3717,7 @@ let textNodes = [
       },
     ],
   },
-  {// 
+  {//
     id: 182.2,
     text: 'Frank: "Yes I come from Bani."',
     options: [
@@ -3731,7 +3731,7 @@ let textNodes = [
       },
     ],
   },
-  {// 
+  {//
     id: 182.3,
     text: 'Frank: "Maybe what is in it for me?"',
     options: [
@@ -3741,18 +3741,18 @@ let textNodes = [
       },
     ],
   },
-  {// 
+  {//
     id: 182.31,
-    text: 'HAHAHA, okay then. We will talk more about this in farther detail later.',
+    text: 'HAHAHA, okay then. We will talk more about this in further detail later.',
     options: [
       {
         text: `Alright see you later`,
         nextText: 183
       }
     ],
-  }, {// 
+  }, {//
     id: 183,
-    text: 'You have come more enegy left and so you start to mine again. You spend another hour or two before hearing the church bell. They take you to the church to pay for your sins, a custome from Bina culture. You spend an hour in the church before being thrown back into your cell.',
+    text: 'You have more energy left and so you start to mine again. You spend another hour or two before hearing the church bell. They take you to the church to pay for your sins, a costume from Bina culture. You spend an hour in the church before being thrown back into your cell.',
     options: [
       {
         text: `Continue`,
@@ -3760,9 +3760,9 @@ let textNodes = [
       }
     ],
   },
-  {// 
+  {//
     id: 184,
-    text: 'Like the other night a plate gets thrown in, but this time none goes for it expect Jin. It appears like they are taking turns with the food. You remeber them talking about it while you were mining. You wonder when it will be your turn to eat and drink. You do not know how long it has been since your break in, but you do know that you are starving.',
+    text: 'Like the other night a plate gets thrown in, but this time none goes for it except Jin. It appears like they are taking turns with the food. You remember them talking about it while you were mining. You wonder when it will be your turn to eat and drink. You do not know how long it has been since your break in, but you do know that you are starving.',
     options: [
       {
         text: `Go to sleep`,
@@ -3770,9 +3770,9 @@ let textNodes = [
       }
     ],
   },
-  {// 
+  {//
     id: 185,
-    text: 'You drift into sleep with nightmares of what happened. Jack: "I am sorry, I am so so sorry! Please I will..." You wake up and Frank is pointing to the food infront of you.',
+    text: 'You drift into sleep with nightmares of what happened. Jack: "I am sorry, I am so so sorry! Please I will..." You wake up and Frank is pointing to the food in front of you.',
     options: [
       {
         text: `Thank you`,
@@ -3780,9 +3780,9 @@ let textNodes = [
       }
     ],
   },
-  {// 
+  {//
     id: 186,
-    text: 'You pick it up and take a bite out of what looks like bread, but turns out be rice. It suprises you, but you really are not in a position to complain about the food. You eat all of it before being called back out to work where you mine again.',
+    text: 'You pick it up and take a bite out of what looks like bread, but turns out to be rice. It surprises you, but you really are not in a position to complain about the food. You eat all of it before being called back out to work where you mine again.',
     options: [
       {
         text: `5 Years Later`,
@@ -3790,9 +3790,9 @@ let textNodes = [
       }
     ],
   },
-  {// 
+  {//
     id: 187,
-    text: 'You have been doing the same thing for about 5 years now counting each week on your wall. Nothing new with Henry, but you have become good freinds with the people in your cell. The nightmares are still there, but you have a good feeling.',
+    text: 'You have been doing the same thing for about 5 years now counting each week on your wall. Nothing new with Henry, but you have become good friends with the people in your cell. The nightmares are still there, but you have a good feeling.',
     options: [
       {
         text: `Eat the rice bread`,
@@ -3802,14 +3802,14 @@ let textNodes = [
   },
   {// how to break out of prison
     id: 188,
-    text: 'You take a bite of the rice bread, everyone else is looking at it. Maybe if you help one of them more than the others they can help you excape.',
+    text: 'You take a bite of the rice bread, everyone else is looking at it. Maybe if you help one of them more than the others they can help you escape.',
     options: [
       {//breaks out with Brian (bb)
         text: `Give some to Brian `, //increases strength or con by 1
         nextText: 189.1,
         setPlayer: { str: 4 }
       },
-      {//breaks out with Jin (bj) //incresases charisma or wisdom by 1
+      {//breaks out with Jin (bj) //increases charisma or wisdom by 1
         text: `Give some to Jin`,
         nextText: 190.1,
         setPlayer: { wis: 4 }
@@ -3843,7 +3843,7 @@ let textNodes = [
   },
   {// bb
     id: 189.3,
-    text: 'Brian: "Yes Brian wants to leave. How do Brian and freinds leave?"',
+    text: 'Brian: "Yes Brian wants to leave. How do Brian and friends leave?"',
     options: [
       {
         text: `Respond with the plan`,
@@ -3853,7 +3853,7 @@ let textNodes = [
   },
   {// bb
     id: 189.4,
-    text: 'Brian: "Sounds Good" He walks away, you realized that you forgot to tell him when you will be doing this, but before you can tell him he pushes one of the other inmates down. The inmate gets up the then throws a punch. You see as a crowd starts to gather. The gaurds are no where to be seen, it looks like they are under maned today, lucky.',
+    text: 'Brian: "Sounds Good" He walks away, you realise that you forgot to tell him when you will be doing this, but before you can tell him he pushes one of the other inmates down. The inmate gets up then throws a punch. You see as a crowd starts to gather. The guards are nowhere to be seen, it looks like they are under maned today, lucky.',
     options: [
       {
         text: `Watch`,
@@ -3863,7 +3863,7 @@ let textNodes = [
   },
   {// bb
     id: 189.5,
-    text: 'You see as another fight breaks out, until there is not a single person that is not in a fight. You excape and see Brian look for you.',
+    text: 'You see as another fight breaks out, until there is not a single person that is not in a fight. You escape and see Brian look for you.',
     options: [
       {
         text: `Call for Brian`, // leave with Brian (lb)
@@ -3877,17 +3877,17 @@ let textNodes = [
   },
   {// wb
     id: 189.6,
-    text: 'You call out to Brian and he runs towards you. You start to burst out laughing, Jack: "We might just be able to get out, good job Brian." Brian smiles and picks you up. You guys make your way to the armory where you find your old blade, it appears to have been used, but its not in bad shape. Brian picks up a large great axe.',
+    text: 'You call out to Brian and he runs towards you. You start to burst out laughing, Jack: "We might just be able to get out, good job Brian." Brian smiles and picks you up. You guys make your way to the armoury where you find your old blade, it appears to have been used, but it\'s not in bad shape. Brian picks up a large great axe.',
     options: [
       {
-        text: `Lets get out of here!`,
+        text: `Let's get out of here!`,
         nextText: 189.7
       }
     ],
   },
   {// lb
     id: 189.61,
-    text: 'You look at Brian and think about if you really need him. You decide to run off to the armory and get your old sword, it appears to have been used, but its still in good shape. You run out and make your way out.',
+    text: 'You look at Brian and think about if you really need him. You decide to run off to the armoury and get your old sword, it appears to have been used, but it\'s still in good shape. You run out and make your way out.',
     options: [
       {
         text: `Continue`,
@@ -3897,7 +3897,7 @@ let textNodes = [
   },
   {// wb
     id: 189.7,
-    text: 'You run into some gaurds, only two of them they look tough, but you are ready for them. Brian takes one of them, so it only leaves you with one.',
+    text: 'You run into some guards, only two of them look tough, but you are ready for them. Brian takes one of them, so it only leaves you with one.',
     options: [
       {
         text: `Continue`,
@@ -3907,7 +3907,7 @@ let textNodes = [
   },
   {// lb
     id: 189.71,
-    text: 'You run into some gaurds, only two of them they look tough, but you are ready for them.',
+    text: 'You run into some guards, only two of them they look tough, but you are ready for them.',
     options: [
       {
         text: `Continue`,
@@ -3999,7 +3999,7 @@ let textNodes = [
   },
   {// wb
     id: 189.11,
-    text: 'You finish your gaurd just in time to see Brian get stabbed in the chest. He swings down his axe and kills the gaurd, but the wound is deep, a healing potion will not heal this one.',
+    text: 'You finish your guard just in time to see Brian get stabbed in the chest. He swings down his axe and kills the guard, but the wound is deep, a healing potion will not heal this one.',
     options: [
       {
         text: `Brian!`,
@@ -4027,7 +4027,7 @@ let textNodes = [
   },
   {// wb
     id: 189.13,
-    text: 'Brian: "Jack, thank you for helping Brian. I am okay with this, go do not waste your freedom on me..." Brians eyes close and he takes a breath out, hes not died but he is pretending to be to try to get you to leave.',
+    text: 'Brian: "Jack, thank you for helping Brian. I am okay with this, go do not waste your freedom on me..." Brian\'s eyes close and he takes a breath out, he\'s not died but he is pretending to be to try to get you to leave.',
     options: [
       {
         text: `Help`,
@@ -4041,7 +4041,7 @@ let textNodes = [
   },
   {// help wb
     id: 189.14,
-    text: 'Jack: "Come on Brian I know you are still alive, lets go. You will be able to make."',
+    text: 'Jack: "Come on Brian I know you are still alive, let\'s go. You will be able to make."',
     options: [
       {
         text: `Try to help him up`,
@@ -4051,7 +4051,7 @@ let textNodes = [
   },
   {// help wb
     id: 189.15,
-    text: 'Brian: "No I am died. Go without Brian, its okay, I want this."',
+    text: 'Brian: "No I am dead. Go without Brian, its okay, I want this."',
     options: [
       {
         text: `leave`,
@@ -4061,7 +4061,7 @@ let textNodes = [
   },
   {// wb end
     id: 189.6,
-    text: 'You decide to listen to Brian and leave him, it hurts you but you know that he will face a worse death outside of this prison. At least he gets to die on his own terms. You hand him one of the swords that the guards have, and walk out the door holfing back your rage to kill everyone in that prison.',
+    text: 'You decide to listen to Brian and leave him, it hurts you but you know that he will face a worse death outside of this prison. At least he gets to die on his own terms. You hand him one of the swords that the guards have, and walk out the door holding back your rage to kill everyone in that prison.',
     options: [
       {
         text: `Freedom`,
@@ -4071,7 +4071,7 @@ let textNodes = [
   },
   {// bj
     id: 190.1,
-    text: 'You hand the rest to Jin, the other guys look annoyed but do not say anything. Later that day you decide that you are gonna try to get Jin to be able to enter the armory. Maybe he can make us seem like gaurds. You can get both Jin and yourself out.',
+    text: 'You hand the rest to Jin, the other guys look annoyed but do not say anything. Later that day you decide that you are gonna try to get Jin to be able to enter the armoury. Maybe he can make us seem like guards. You can get both Jin and yourself out.',
     options: [
       {
         text: `Talk to Jin`,
@@ -4101,7 +4101,7 @@ let textNodes = [
   },
   {// bj
     id: 190.4,
-    text: 'Jin: "Hmm, that is my type of crazy I will not lie, hahaha. Sure lets try it. There is a a day where most of the guards will be gone because Lord Willaims is holding a party and need sore gaurds. So we will strike then."',
+    text: 'Jin: "Hmm, that is my type of crazy. I will not lie, hahaha. Sure, let\'s try it. There is a day where most of the guards will be gone because Lord Willaims is holding a party and needs sore guards. So we will strike then."',
     options: [
       {
         text: `Okay`,
@@ -4111,7 +4111,7 @@ let textNodes = [
   },
   {// bj
     id: 190.5,
-    text: 'You wait for the Jin to talk to you again, a few weeks go by and you start to notice that most of the guards are out. Right now there is only like 10 of them.',
+    text: 'You wait for Jin to talk to you again, a few weeks go by and you start to notice that most of the guards are out. Right now there is only like 10 of them.',
     options: [
       {
         text: `Wait for Jin`,
@@ -4131,7 +4131,7 @@ let textNodes = [
   },
   {// bj
     id: 190.7,
-    text: 'You say your goodbyes and you and Jin wait for the moment to attack. You see an oppurnity to steal some weapons and take it. 2 gaurds see you, you will have to take them out, Jin is useless in combat.',
+    text: 'You say your goodbyes and you and Jin wait for the moment to attack. You see an opportunity to steal some weapons and take it. 2 guards see you, you will have to take them out, Jin is useless in combat.',
     options: [
       {
         text: `Pull out your weapon`,
@@ -4182,7 +4182,7 @@ let textNodes = [
   },
   {// bj
     id: 190.11,
-    text: 'You hide their bodys in some bushes and make your way with Jin.',
+    text: 'You hide their bodies in some bushes and make your way with Jin.',
     options: [
       {
         text: `Continue`,
@@ -4192,7 +4192,7 @@ let textNodes = [
   },
   {// bj
     id: 190.12,
-    text: 'You reach the armory and take as some armor, for someone reason Jin has not said a word to you since you took out the guards. You are getting a weird feeling so you keep your weapon near you.',
+    text: 'You reach the armoury and take some armour, for some reason Jin has not said a word to you since you took out the guards. You are getting a weird feeling so you keep your weapon near you.',
     options: [
       {
         text: `Are we ready?`,
@@ -4277,7 +4277,7 @@ let textNodes = [
   },
   {//charisma check 10 bj
     id: 190.18,
-    text: 'Jack: "Sorry, I need to go to the general. A inmate has killed a fellow inmate in the armory and I do not know where that inmate is."',
+    text: 'Jack: "Sorry, I need to go to the general. A inmate has killed a fellow inmate in the armoury and I do not know where that inmate is."',
     options: [
       {
         text: `Continue`,
@@ -4287,7 +4287,7 @@ let textNodes = [
   },
   {// succeeds bj
     id: 190.19,
-    text: 'Gaurd:"Yes, I see go find him he is in Lord Willaims manor just west of here in the town of Lüdingfeld."',
+    text: 'Guard:"Yes, I see go find him he is in Lord Willaims manor just west of here in the town of Lüdingfeld."',
     options: [
       {
         text: `Thank you, I will go immediately.`,
@@ -4358,7 +4358,7 @@ let textNodes = [
   },
   {// bf
     id: 191.2,
-    text: 'You hand the rest to Frank, the other guys look annoyed but do not say anything. Later that day you decide that you are gonna try to get Frank to excape woth you. He knows the fort much better than you and he can help you sneak through the fort.',
+    text: 'You hand the rest to Frank, the other guys look annoyed but do not say anything. Later that day you decide that you are gonna try to get Frank to escape with you. He knows the fort much better than you and he can help you sneak through the fort.',
     options: [
       {
         text: `Find Frank`,
@@ -4378,7 +4378,7 @@ let textNodes = [
   },
   {// bf
     id: 191.4,
-    text: 'Frank: "You mean excape the fort. Its possible but you need to be sneaky to travel with me or at least know how fight."',
+    text: 'Frank: "You mean escape the fort. It\'s possible but you need to be sneaky to travel with me or at least know how fight."',
     options: [
       {
         text: `Explain the plan.`,
@@ -4388,7 +4388,7 @@ let textNodes = [
   },
   {// bf
     id: 191.5,
-    text: 'Frank: "Interesting... This could work, lets wait for tonight. There will be less guards tonight, Lord Willaims is holding a party and they need more guards. Meet me at the armory."',
+    text: 'Frank: "Interesting... This could work, let\'s wait for tonight. There will be less guards tonight, Lord Willaims is holding a party and they need more guards. Meet me at the armoury."',
     options: [
       {
         text: `Alright I will meet you there`,
@@ -4408,7 +4408,7 @@ let textNodes = [
   },
   {// succeeds bf
     id: 191.7,
-    text: 'You make it in the armory without being seen.',
+    text: 'You make it in the armoury without being seen.',
     options: [
       {
         text: `Look for Frank`,
@@ -4469,7 +4469,7 @@ let textNodes = [
   },
   {// fails bf
     id: 191.13,
-    text: 'You rush to the armory trying not to get caught by any more guards.',
+    text: 'You rush to the armoury trying not to get caught by any more guards.',
     options: [
       {
         text: `Continue`,
@@ -4479,7 +4479,7 @@ let textNodes = [
   },
   {// bf
     id: 192.14,
-    text: 'You see Frank in the back, he seems like he has been here for a bit. Frank: "Took you long enough, lets get going." He starts walking towards a secret passage and waves for you to follow.',
+    text: 'You see Frank in the back, he seems like he has been here for a bit. Frank: "Took you long enough, let\'s get going." He starts walking towards a secret passage and waves for you to follow.',
     options: [
       {
         text: `Follow Frank`,
@@ -4489,8 +4489,8 @@ let textNodes = [
   },
   {// bf
     id: 192.15,
-    text: 'You go into the passage, you realize that you are actaully walking the walls. You can see everyone, some things you wished you didnt see. ',
-    options: [
+    text: 'You go into the passage, you realise that you are actually walking the walls. You can see everyone, some things you wished you didn\'t see. ',
+	  options: [
       {
         text: `Where are we going?`,
         nextText: 192.16
@@ -4517,7 +4517,7 @@ let textNodes = [
   },
   {// dex check 12 bf
     id: 192.17,
-    text: 'You make it to the end of the passaige, but there is three gaurds right in front of the door. You try to sneak past with Frank.',
+    text: 'You make it to the end of the passage, but there are three guards right in front of the door. You try to sneak past with Frank.',
     options: [
       {
         text: `Sneak off`,
@@ -4578,8 +4578,8 @@ let textNodes = [
   },
   {// fail bf
     id: 191.21,
-    text: 'You look around you to see where Frank is, but you cant find him. You do not have the time to stay around so you leave.',
-    options: [
+    text: 'You look around you to see where Frank is, but you can\'t find him.You do not have the time to stay around so you leave.',
+	options: [
       {
         text: `Continue`,
         nextText: 192
@@ -4588,7 +4588,7 @@ let textNodes = [
   },
   {// succeed bf
     id: 191.22,
-    text: 'You stay close to the shadows and when you reached the shrubs, you start to crawl away. You try searching for Frank, but he is no where to be seen. You do not have the time to look so you leave.',
+    text: 'You stay close to the shadows and when you reach the shrubs, you start to crawl away. You try searching for Frank, but he is nowhere to be seen. You do not have the time to look so you leave.',
     options: [
       {
         text: `Continue`,
@@ -4681,7 +4681,7 @@ let textNodes = [
       }
     ],
   },
-  {// 
+  {//
     id: 198,
     text: 'You stab the bear in its neck and it falls over. You are completely exhausted and you fall over.',
     options: [
@@ -4691,9 +4691,9 @@ let textNodes = [
       }
     ],
   },
-  {// 
+  {//
     id: 199,
-    text: 'You start to look for the main road, everything right now looks like the same. Each tree is so tall and so similar that it is almost impossible to know where you are going, but after several hours of searching you run into a road. You decide to follow the road to see where it leads.',
+    text: 'You start to look for the main road, everything right now looks the same. Each tree is so tall and so similar that it is almost impossible to know where you are going, but after several hours of searching you run into a road. You decide to follow the road to see where it leads.',
     options: [
       {
         text: `Follow the road`,
@@ -4701,776 +4701,778 @@ let textNodes = [
       }
     ],
   },
-  {// 
+  {//
     id: 200,
     text: 'You run into a merchant, at this point you are starving and tired. You have not gotten to eat or have an okay sleep since you left the fort. You walk up to the merchant:',
     options: [
       { //talk
-        text: `Exuse me can I catch a ride to the town of Lüdingfeld?`,
-        nextText: 201
-      },
-      { //scare
-        text: `Take out your weapon`,
-        nextText: 202
-      },
-    ],
+        text: `Excuse me, can I catch a ride to the town of Lüdingfeld?`,
+    	nextText: 201
+  	  },
+  	{ //scare
+    	text: `Take out your weapon`,
+    	nextText: 202
+  	},
+	],
   },
   {// talk
-    id: 201,
-    text: 'Merchant: "Sure, I am actaully going that way."',
-    options: [
-      {
-        text: `Thank you, I am... Peirce.`,
-        nextText: 203
-      }
-    ],
+	id: 201,
+	text: 'Merchant: "Sure, I am actually going that way."',
+	options: [
+  	{
+    	text: `Thank you, I am...Peirce.`,
+    	nextText: 203
+  	}
+	],
   },
   {// scare
-    id: 202,
-    text: 'Jack: "Take me to Lüdingfeld!" Merchant: "Please! Do not hurt, I will please."',
-    options: [
-      {
-        text: `Good.`,
-        nextText: 203
-      }
-    ],
+	id: 202,
+	text: 'Jack: "Take me to Lüdingfeld!" Merchant: "Please! Do not hurt, I will please."',
+	options: [
+  	{
+    	text: `Good.`,
+    	nextText: 203
+  	}
+	],
   },
-  {// 
-    id: 203,
-    text: 'You make it to Lüdingfeld, luckly you do not encounter any guards. You jump out of the cart before the merchant could notice. You do not want him to know where you are going or who you are.',
-    options: [
-      {
-        text: `Rush to Marrys home. `,
-        nextText: 204
-      }
-    ],
+  {//
+	id: 203,
+	text: 'You make it to Lüdingfeld, lucky you do not encounter any guards. You jump out of the cart before the merchant could notice. You do not want him to know where you are going or who you are.',
+	options: [
+  	{
+    	text: `Rush to Marrys home. `,
+    	nextText: 204
+  	}
+	],
   },
-  {// 
-    id: 204,
-    text: 'You find the dog, he looks at you, and wines. It loooks more skinny, even more skinny than the first time you meet it. The home is completely dead. Something is off.',
-    options: [
-      {
-        text: `Walk in`,
-        nextText: 205
-      }
-    ],
+  {//
+	id: 204,
+	text: 'You find the dog, he looks at you, and wines. It looks more skinny, even more skinny than the first time you meet it. The home is completely dead. Something is off.',
+	options: [
+  	{
+    	text: `Walk in `,
+    	nextText: 205
+  	}
+	],
   },
-  {// 
-    id: 205,
-    text: 'You run into the home looking for Marry. You find her died in the center of the room surrounded by bandits. As you go to investigate her body you see her necklace with a weird glowing jem. Last time you saw her, she had nothing of the sort. You take it off her neck to try to further understand why this happened. The bandits weren/’t ever this aggressive and only stuck to the roads.',
-    options: [
-      {
-        text: `Continue`,
-        nextText: 206
-      }
-    ],
+  {//
+	id: 205,
+	text: 'You run into the home looking for Marry. You find her dead in the centre of the room surrounded by bandits. As you go to investigate her body you see her necklace with a weird glowing jem. Last time you saw her, she had nothing of the sort. You take it off her neck to try to further understand why this happened. The bandits weren/’t ever this aggressive and only stuck to the roads.',
+	options: [
+  	{
+    	text: `Continue`,
+    	nextText: 206
+  	}
+	],
   },
-  {// 
-    text: 'You look for more clues. You see a note next to her bed, a picture on the wall to the left of the door, and she has something on her desk. You ',
-    text: 'Youlook for more clues. You see a note next to her bed, a picture on the wall to the left of the door, and she has something on her desk. You see that she has something in her hands, it looks like a jade.',
-    options: [
-      {
-        text: `Note`,
-        nextText: 207
-      },
-      {
-        text: `Painting`,
-        nextText: 208
-      },
-      {
-        text: `Desk`,
-        nextText: 209
-      },
-      {
-        text: `Jade`,
-        nextText: 211
-      }
-    ],
+  {//
+	text: 'You look for more clues. You see a note next to her bed, a picture on the wall to the left of the door, and she has something on her desk. You ',
+	text: 'You Look for more clues. You see a note next to her bed, a picture on the wall to the left of the door, and she has something on her desk. You see that she has something in her hands, it looks like a jade.',
+	options: [
+  	{
+    	text: `Note`,
+    	nextText: 207
+  	},
+  	{
+    	text: `Painting`,
+    	nextText: 208
+  	},
+  	{
+    	text: `Desk`,
+    	nextText: 209
+  	},
+  	{
+    	text: `Jade`,
+    	nextText: 211
+  	}
+	],
   },
-  {// 
-    id: 207,
-    text: 'Marrys Note: "The ‘Lung Jade’ is a very rare item only found in the caves of a dragon’s den. I once thought it was just something told to children to stay out of trouble, but now… The powers of the jade can only be fully used by a dragon. From what I understand you can still use it by using it like any other metal, but something this rare and beautiful shouldn’t be used on a weapon of man."',
-    options: [
-      {
-        text: `Examine`,
-        nextText: 208
-      }
-    ],
+  {//
+	id: 207,
+	text: 'Marrys Note: "The ‘Lung Jade’ is a very rare item only found in the caves of a dragon’s den. I once thought it was just something told to children to stay out of trouble, but now… The powers of the jade can only be fully used by a dragon. From what I understand you can still use it by using it like any other metal, but something this rare and beautiful shouldn’t be used on a weapon of man."',
+	options: [
+  	{
+    	text: `Examine`,
+    	nextText: 208
+  	}
+	],
   },
-  {// 
-    id: 208,
-    text: 'Jack: "I have heard of these beasts. They were thought to be the protectors of the lands, Gods that used ‘mortal’ bodies. They were said to ask for tributes and give great rewards to people that they deemed worthy. Unfortunately, after the first invasion many of them left the island. This was the first sign of the end of the war. I always assumed it was legends and just stories to tell, never did I think that it could be reality. The power that someone can possess with just one of these is unimaginable."',
-    options: [
-      {
-        text: `Painting`,
-        nextText: 209
-      },
-      {
-        text: `Desk`,
-        nextText: 210
-      },
-      {
-        text: `Jade`,
-        nextText: 211
-      }
-    ],
+  {//
+	id: 208,
+	text: 'Jack: "I have heard of these beasts. They were thought to be the protectors of the lands, Gods that used ‘mortal’ bodies. They were said to ask for tributes and give great rewards to people that they deemed worthy. Unfortunately, after the first invasion many of them left the island. This was the first sign of the end of the war. I always assumed it was legends and just stories to tell, never did I think that it could be reality. The power that someone can possess with just one of these is unimaginable."',
+	options: [
+  	{
+    	text: `Painting`,
+    	nextText: 209
+  	},
+  	{
+    	text: `Desk`,
+    	nextText: 210
+  	},
+  	{
+    	text: `Jade`,
+    	nextText: 211
+  	}
+	],
   },
-  {// 
-    id: 209,
-    text: 'You go towards the painting on the wall. It shows a man handing the jade to a dragon. Beautiful, but doesn’t tell you very much about what it does or how to use it.',
-    options: [
-      {
-        text: `Note`,
-        nextText: 207
-      },
-      {
-        text: `Desk`,
-        nextText: 210
-      },
-      {
-        text: `Jade`,
-        nextText: 211
-      }
-    ],
+  {//
+	id: 209,
+	text: 'You go towards the painting on the wall. It shows a man handing the jade to a dragon. Beautiful, but doesn’t tell you very much about what it does or how to use it.',
+	options: [
+  	{
+    	text: `Note`,
+    	nextText: 207
+  	},
+  	{
+    	text: `Desk`,
+    	nextText: 210
+  	},
+  	{
+    	text: `Jade`,
+    	nextText: 211
+  	}
+	],
   },
-  {// 
-    id: 210,
-    text: 'Marry: "I should have never taken this jade. To whoever reads this, please take the stone to the mountain in the west. This power is too powerful for one person. If you do use this jade, nothing but bad luck will follow you. Goodluck. PS: if you run into a man named Jack tell him what happened here."',
-    options: [
-      {
-        text: `Note`,
-        nextText: 207
-      },
-      {
-        text: `Painting`,
-        nextText: 208
-      },
-      {
-        text: `Jade`,
-        nextText: 211
-      }
-    ],
+  {//
+	id: 210,
+	text: 'Marry: "I should have never taken this jade. To whoever reads this, please take the stone to the mountain in the west. This power is too powerful for one person. If you do use this jade, nothing but bad luck will follow you. Goodluck. PS: if you run into a man named Jack tell him what happened here."',
+	options: [
+  	{
+    	text: `Note`,
+    	nextText: 207
+  	},
+  	{
+    	text: `Painting`,
+    	nextText: 208
+  	},
+  	{
+    	text: `Jade`,
+    	nextText: 211
+  	}
+	],
   },
-  {// 
-    id: 211,
-    text: 'You look down and grab the jade. You walk to the entrance of the house to get some fresh air. When you squat down the dog snatches the jade, before you have a chance to get the jade back the dog starts to shake. It transforms...',
-    options: [
-      {
-        text: `Buddy?`,
-        nextText: 212
-      }
-    ],
+  {//
+	id: 211,
+	text: 'You look down and grab the jade. You walk to the entrance of the house to get some fresh air. When you squat down the dog snatches the jade, before you have a chance to get the jade back the dog starts to shake. It transforms...',
+	options: [
+  	{
+    	text: `Buddy ? `,
+    	nextText: 212
+  	}
+	],
   },
-  {// 
-    id: 213,
-    text: 'Dragon: "Hello Jack. Thank you for your kindness. I know what you seek, I can help you in your journey. I know this must be a lot to process. I’ll explain."',
-    options: [
-      {
-        text: `Continue`,
-        nextText: 214
-      }
-    ],
+  {//
+	id: 213,
+	text: 'Dragon: "Hello Jack. Thank you for your kindness. I know what you seek, I can help you in your journey. I know this must be a lot to process. I’ll explain."',
+	options: [
+  	{
+    	text: `Continue`,
+    	nextText: 214
+  	}
+	],
   },
-  {// 
-    id: 214,
-    text: 'Dragon: "I am one of the only remaining Gods in this land and have been trapped in a dogs body for trying to support your kin. I have been searching for a way to be released from that prison. I was on my way to the capital to see if I could find a way in another land, but then I met you. I then followed you around, waited for you to make your way across the jade. You see, I couldn’t get myself. I needed a human with the feeling of revenge to bring it to me. Your mentor was too light hearted and couldn’t hold its hatred. She sadly fell to the jades curse."',
-    options: [
-      {
-        text: `What? So that means you were the dog?`,
-        nextText: 215
-      }
-    ],
+  {//
+	id: 214,
+	text: 'Dragon: "I am one of the only remaining Gods in this land and have been trapped in a dog\'s body for trying to support your kin. I have been searching for a way to be released from that prison. I was on my way to the capital to see if I could find a way in another land, but then I met you. I then followed you around, waited for you to make your way across the jade. You see, I couldn’t get myself. I needed a human with the feeling of revenge to bring it to me. Your mentor was too light hearted and couldn’t hold its hatred. She sadly fell to the jades curse."',
+	options: [
+  	{
+    	text: `What ? So that means you were the dog ? `,
+    	nextText: 215
+  	}
+	],
   },
-  {// 
-    id: 215,
-    text: 'Dragon: "Come with me and I will be able to train you to be able to enact your revenge."',
-    options: [
-      {
-        text: `Okay, it does not seem like I have anyone else`,
-        nextText: 216
-      }
-    ],
+  {//
+	id: 215,
+	text: 'Dragon: "Come with me and I will be able to train you to be able to enact your revenge."',
+	options: [
+  	{
+    	text: `Okay, it does not seem like I have anyone else`,
+    	nextText: 216
+  	}
+	],
   },
-  {// 
-    id: 216,
-    text: 'Dragon: "Come along." You see as the dragon raises its wings and starts to fly up.',
-    options: [
-      {
-        text: `Follow`,
-        nextText: 217
-      }
-    ],
+  {//
+	id: 216,
+	text: 'Dragon: "Come along." You see as the dragon raises its wings and starts to fly up.',
+	options: [
+  	{
+    	text: `Follow`,
+    	nextText: 217
+  	}
+	],
   },
-  {// 
-    id: 217,
-    text: 'You follow the dragon the best you can, you travel through a part of the forest you have never seen before. You think about asking where you were going but you thought better. As you continue through the path seems to be never ending, it feels like you have been walking in circles. Every tree looks the same, the only changing aspect of the path was you and the dragon.',
-    options: [
-      {
-        text: `Keep up`,
-        nextText: 218
-      }
-    ],
+  {//
+	id: 217,
+	text: 'You follow the dragon the best you can, you travel through a part of the forest you have never seen before. You think about asking where you were going but you thought better. As you continue through the path seems to be never ending, it feels like you have been walking in circles. Every tree looks the same, the only changing aspect of the path was you and the dragon.',
+	options: [
+  	{
+    	text: `Keep up`,
+    	nextText: 218
+  	}
+	],
   },
-  {// 
-    id: 218,
-    text: 'You finally make it out of the forest to the foot of a mountain. It’s known for being almost impossible to climb and none has been here since before the war, or at least that’s what you’ve been told.',
-    options: [
-      {
-        text: `Okay now what?`,
-        nextText: 219
-      }
-    ],
+  {//
+	id: 218,
+	text: 'You finally make it out of the forest to the foot of a mountain. It’s known for being almost impossible to climb and none has been here since before the war, or at least that’s what you’ve been told.',
+	options: [
+  	{
+    	text: `Okay now what ? `,
+    	nextText: 219
+  	}
+	],
   },
-  {// 
-    id: 219,
-    text: 'Dragon: "Get on my back and I will fly you up the mountain." The dragon bends its wing to allow you to climb ontop of it. Then it spreads its wings then takes you up the mountain. When you get on top the dragon tells of what training you will go threw, suprisingly you can not seem to remeber much of what it said, but understood the task.',
-    options: [
-      {
-        text: `Train`,
-        nextText: 220
-      }
-    ],
+  {//
+	id: 219,
+	text: 'Dragon: "Get on my back and I will fly you up the mountain." The dragon bends its wing to allow you to climb on top of it. Then it spreads its wings then takes you up the mountain. When you get on top the dragon tells of what training you will go threw, surprisingly you can not seem to remember much of what it said, but understood the task.',
+	options: [
+  	{
+    	text: `Train`,
+    	nextText: 220
+  	}
+	],
   },
   {// ability score improvement
-    id: 220,
-    text: 'Dragon: "Let it begin" He makes you practice fighing sprites and he teaches you meditation. You train with it, for what feels like months, but the daylight cycle didnt change, it confuses you but at least you now have the training to defeat Henry.',
-    options: [
-      {
-        text: `Train`,
-        nextText: 221
-      }
-    ],
+	id: 220,
+	text: 'Dragon: "Let it begin" He makes you practise fighting sprites and he teaches you meditation. You train with it, for what feels like months, but the daylight cycle did not change, it confuses you but at least you now have the training to defeat Henry.',
+	options: [
+  	{
+    	text: `Train`,
+    	nextText: 221
+  	}
+	],
   },
-  {// 
-    id: 221,
-    text: 'Dragn: "Its time for you to go for round two against the Henry. You are ready, just remeber this. If you do decide to go through with your revenge you will not survive to live in your glory."',
-    options: [
-      {
-        text: `Thank you will I take that to mind`,
-        nextText: 222
-      }
-    ],
+  {//
+	id: 221,
+	text: 'Dragon: "It\'s time for you to go for round two against Henry. You are ready, just remember this. If you do decide to go through with your revenge you will not survive to live in your glory."',
+	options: [
+  	{
+    	text: `Thank you will I take that to mind`,
+    	nextText: 222
+  	}
+	],
   },
-  {// 
-    id: 222,
-    text: 'Dragon: "I will help you in your feat. I can distract the archers and gun men while you find Henry and take your revenge."',
-    options: [
-      {
-        text: `Hmmm, this could work.`,
-        nextText: 223
-      },
-      {
-        text: `Thank you for your help.`,
-        nextText: 223
-      }
-    ],
+  {//
+	id: 222,
+	text: 'Dragon: "I will help you on your feat. I can distract the archers and gun men while you find Henry and take your revenge."',
+	options: [
+  	{
+    	text: `Hmmm, this could work.`,
+    	nextText: 223
+  	},
+  	{
+    	text: `Thank you for your help.`,
+    	nextText: 223
+  	}
+	],
   },
-  {// 
-    id: 224,
-    text: 'The dragon lets you ride on his back again, but this time you fly over lands that you recongized. You turn around but the mountain you where at is complete gone, you have time to worry about something like that. This will be your last attempt at getting your revenge. You have learnt so much and done so much to get here, it is time to use everything you have learnt.',
-    options: [
-      {
-        text: `Prepare`,
-        nextText: 225
-      }
-    ],
+  {//
+	id: 224,
+	text: 'The dragon lets you ride on his back again, but this time you fly over lands that you recognized. You turn around but the mountain you were at is completely gone, you have time to worry about something like that. This will be your last attempt at getting your revenge. You have learnt so much and done so much to get here, it is time to use everything you have learnt.',
+	options: [
+  	{
+    	text: `Prepare`,
+    	nextText: 225
+  	}
+	],
   },
-  {// 
-    id: 225,
-    text: 'The dragon lands in the entrance of your once great town of Lüdingfeld. The last time you were here it was frushly burnt with smoke and ash everywhere, but now its over grown with weeds and looks like old ruins. You remeber all the good times.',
-    options: [
-      {
-        text: `Continue`,
-        nextText: 226
-      }
-    ],
+  {//
+	id: 225,
+	text: 'The dragon lands in the entrance of your once great town of Lüdingfeld. The last time you were here it was freshly burnt with smoke and ash everywhere, but now it\'s overgrown with weeds and looks like old ruins. You remember all the good times.',
+	options: [
+  	{
+    	text: `Continue`,
+    	nextText: 226
+  	}
+	],
   },
-  {// 
-    id: 226,
-    text: 'You walk past the training area. You remeber how you were first taught how to use a sword by your dad here, he made me fight for hours until I could everyone there. You were going to train your son the same way, but you never got that chance... that right.',
-    options: [
-      {
-        text: `Walk towards the manor`,
-        nextText: 227
-      }
-    ],
+  {//
+	id: 226,
+	text: 'You walk past the training area. You remember how you were first taught how to use a sword by your dad here, he made me fight for hours until I could everyone there. You were going to train your son the same way, but you never got that chance... that right.',
+	options: [
+  	{
+    	text: `Walk towards the manor`,
+    	nextText: 227
+  	}
+	],
   },
-  {// 
-    id: 227,
-    text: 'You look at the market area, the place that you spent most of your time in town being in your adulthood. You remeber the day that you meet your wife, Jessy, it was a rainy day and she was by herself. I offered my coat and walked her home. It was a beautiful, or at least to you it was.',
-    options: [
-      {
-        text: `Walk towards the manor`,
-        nextText: 228
-      }
-    ],
+  {//
+	id: 227,
+	text: 'You look at the market area, the place that you spent most of your time in town being in your adulthood. You remember the day that you met your wife, Jessy, it was a rainy day and she was by herself. I offered my coat and walked her home. It was a beautiful, or at least to you it was.',
+	options: [
+  	{
+    	text: `Walk towards the manor`,
+    	nextText: 228
+  	}
+	],
   },
-  {// 
-    id: 228,
-    text: 'You walk past your home. The place that you felt the most safe at, its ironic that it is also the place that killed everything you loved. You continue forward, you have no time to moarn. If you get out of this alive you will bring flowers to their graves.',
-    options: [
-      {
-        text: `Walk towards the manor`,
-        nextText: 229
-      }
-    ],
+  {//
+	id: 228,
+	text: 'You walk past your home. The place that you felt the most safe at, it\'s ironic that it is also the place that killed everything you loved. You continue forward, you have no time to mourn. If you get out of this alive you will bring flowers to their graves.',
+	options: [
+  	{
+    	text: `Walk towards the manor`,
+    	nextText: 229
+  	}
+	],
   },
-  {// 
-    id: 229,
-    text: 'You get into vision of the manor. Jack: "Okay here is the plan you start flying to get their attention and try to keep it."',
-    options: [
-      {
-        text: `Thank you for everything.`,
-        nextText: 230
-      },
-      {
-        text: `Until we meet again.`,
-        nextText: 230
-      },
-    ],
+  {//
+	id: 229,
+	text: 'You get into vision of the manor. Jack: "Okay here is the plan you start flying to get their attention and try to keep it."',
+	options: [
+  	{
+    	text: `Thank you for everything.`,
+    	nextText: 230
+  	},
+  	{
+    	text: `Until we meet again.`,
+    	nextText: 230
+  	},
+	],
   },
-  {// 
-    id: 230,
-    text: 'The dragon starts to rises, and starts to fly towards the manor. You can hear the screams from all the way across the valley. You make your way to the manor by foot, it is not too different from his other home, but it is bigger and doesnt have the garden.',
-    options: [
-      {
-        text: `Confront guards`,
-        nextText: 231
-      }
-    ],
+  {//
+	id: 230,
+	text: 'The dragon starts to rise, and starts to fly towards the manor. You can hear the screams from all the way across the valley. You make your way to the manor by foot, it is not too different from his other home, but it is bigger and does not have the garden.',
+	options: [
+  	{
+    	text: `Confront guards`,
+    	nextText: 231
+  	}
+	],
   },
-  {// 
-    id: 231,
-    text: 'Guard1: "Wait who are you, is that with you?" Guard2: "Hes a demon, GET HIM!" You see as the first gaurd is terrified and there was a third but he ran back inside the manor to support the other men.',
-    options: [
-      {
-        text: `Pull out weapon`,
-        nextText: 232
-      }
-    ],
+  {//
+	id: 231,
+	text: 'Guard1: "Wait who are you, is that with you?" Guard2: "He\'s a demon, GET HIM!" You see as the first guard is terrified and there was a third but he ran back inside the manor to support the other men.',
+	options: [
+  	{
+    	text: `Pull out weapon`,
+    	nextText: 232
+  	}
+	],
   },
   {// combat
-    id: 232,
-    text: 'You have been waiting to get some angry out',
-    options: [
-      {
-        text: `Slash`,
-        nextText: 5
-      },
-      {
-        text: `Heal Potions`,
-        nextText: 8
-      },
-      {
-        text: `Scare`,
-        nextText: 9
-      },
-      {
-        text: `Stab`,
-        nextText: 10
-      },
-      {
-        text: `Pendant of Pain`,
-        nextText: 11
-      },
-      {
-        text: `Persuade`,
-        nextText: 12
-      },
-    ],
-    startCombat: 14,
+	id: 232,
+	text: 'You have been waiting to get some angry out',
+	options: [
+  	{
+    	text: `Slash`,
+    	nextText: 5
+  	},
+  	{
+    	text: `Heal Potions`,
+    	nextText: 8
+  	},
+  	{
+    	text: `Scare`,
+    	nextText: 9
+  	},
+  	{
+    	text: `Stab`,
+    	nextText: 10
+  	},
+  	{
+    	text: `Pendant of Pain`,
+    	nextText: 11
+  	},
+  	{
+    	text: `Persuade`,
+    	nextText: 12
+  	},
+	],
+	startCombat: 14,
   },
   {//end combat
-    id: 233,
-    text: 'Defeated Bear.',
-    options: [
-      {
-        text: `Continue`,
-        nextText: 234
-      }
-    ],
+	id: 233,
+	text: 'Defeated Bear.',
+	options: [
+  	{
+    	text: `Continue`,
+    	nextText: 234
+  	}
+	],
   },
-  {// 
-    id: 234,
-    text: 'You strike down the guards, you see a picture fall out of one of their pockets.',
-    options: [
-      {
-        text: `Push foward`,
-        nextText: 236
-      },
-      {
-        text: `Investigate the picture`,
-        nextText: 235
-      }
-    ],
+  {//
+	id: 234,
+	text: 'You strike down the guards, you see a picture fall out of one of their pockets.',
+	options: [
+  	{
+    	text: `Push forward`,
+    	nextText: 236
+  	},
+  	{
+    	text: `Investigate the picture`,
+    	nextText: 235
+  	}
+	],
   },
-  {// 
-    id: 235,
-    text: 'You look closer at the picture, its a drawing of the guards kids. You are taken back a little, maybe this isnt worth taking revenge on everyone. You then snap out of it remebering what happened to you.',
-    options: [
-      {
-        text: `Continue pushing foward`,
-        nextText: 236
-      }
-    ],
+  {//
+	id: 235,
+	text: 'You look closer at the picture, it\'s a drawing of the guards\' kids. You are taken back a little, maybe this isn\'t worth taking revenge on everyone. You then snap out of it remembering what happened to you.',
+	options: [
+  	{
+    	text: `Continue pushing forward`,
+    	nextText: 236
+  	}
+	],
   },
-  {// 
-    id: 236,
-    text: 'You walk over the dead guards, with everyone so focused on the dragon none pays attention to you, you kick open the doors to the manor, you walk into another fight, but these seems like the hardest one yet.',
-    options: [
-      {
-        text: `pull out your weapon`,
-        nextText: 237
-      }
-    ],
+  {//
+	id: 236,
+	text: 'You walk over the dead guards, with everyone so focused on the dragon none pays attention to you, you kick open the doors to the manor, you walk into another fight, but these seems like the hardest one yet.',
+	options: [
+  	{
+    	text: `pull out your weapon`,
+    	nextText: 237
+  	}
+	],
   },
-  {// combat 
-    id: 237,
-    text: 'You have been waiting to get some angry out',
-    options: [
-      {
-        text: `Slash`,
-        nextText: 5
-      },
-      {
-        text: `Heal Potions`,
-        nextText: 8
-      },
-      {
-        text: `Scare`,
-        nextText: 9
-      },
-      {
-        text: `Stab`,
-        nextText: 10
-      },
-      {
-        text: `Pendant of Pain`,
-        nextText: 11
-      },
-      {
-        text: `Persuade`,
-        nextText: 12
-      },
-    ],
-    startCombat: 14,
-  },
-  {// end combat
-    id: 238,
-    text: 'You cut through the guards.',
-    options: [
-      {
-        text: `Continue`,
-        nextText: 1
-      }
-    ],
-  },
-  {// 
-    id: 239,
-    text: 'You are feeling hurt, but you still have a job to finish. You run up the stairs to look for where Henry is.',
-    options: [
-      {
-        text: `Library`,
-        nextText: 240
-      },
-      {
-        text: `Kitchen`,
-        nextText: 244
-      },
-      {
-        text: `Guest Room`,
-        nextText: 245
-      }
-    ],
-  },
-  {// library
-    id: 240,
-    text: 'You walk into the library, its a large room with enough books to sufcaite someone with. You see someone sitting next to the fireplze. You remeber this boy from Hernys dinner, its his son Johnny.',
-    options: [
-      {
-        text: `Hey, Johnny is it?`,
-        nextText: 241
-      },
-      {
-        text: `WHERE IS YOUR FATHER`,
-        nextText: 242
-      },
-      {
-        text: `Leave quietly`,
-        nextText: 243
-      }
-    ],
-  },
-  {// library
-    id: 241,
-    text: 'JacK: "Johnny, I have business with your dad, do you know where he is?" The boy looks at you with the same terror from last time, he does not seem like he can form a sentence.',
-    options: [
-      {
-        text: `WHERE IS YOUR FATHER`,
-        nextText: 242
-      },
-      {
-        text: `Leave quietly`,
-        nextText: 243
-      }
-    ],
-  },
-  {// 
-    id: 242,
-    text: 'Johnny: "PLEASE! Please, please, please, please.. its just a nightmare, please" The boy can not say anything no matter what you do.',
-    options: [
-      {
-        text: `Leave quietly`,
-        nextText: 243
-      }
-    ],
-  },
-  {// library
-    id: 243,
-    text: 'You decide to walk out, but that boys eyes will haunt you for a bit.',
-    options: [
-      {
-        text: `Kitchen`,
-        nextText: 244
-      },
-      {
-        text: `Guest Room`,
-        nextText: 245
-      },
-      {
-        text: `Stairs`,
-        nextText: 246
-      },
-    ],
-  },
-  {// 
-    id: 244,
-    text: 'You walk into the kitchen, there is nothing but cooks that are huddled in a corner, you pear your head around the door to see if someone is eating, but there is no sign of Henry.',
-    options: [
-      {
-        text: `Library`,
-        nextText: 240
-      },
-      {
-        text: `Guest Room`,
-        nextText: 245
-      },
-      {
-        text: `Stairs`,
-        nextText: 246
-      },
-    ],
-  },
-  {// 
-    id: 245,
-    text: 'You walk into a room with only one bed. It appears to be pretty empty and there is no sign of anything in here.',
-    options: [
-      {
-        text: `Library`,
-        nextText: 240
-      },
-      {
-        text: `Kitchen`,
-        nextText: 244
-      },
-      {
-        text: `Stairs`,
-        nextText: 246
-      },
-    ],
-  },
-  {// 
-    id: 246,
-    text: 'You walk back to the stair from before, you see Henry at the bottom. You can not conatin your self, but you keep enough to control to not run at him.',
-    options: [
-      {
-        text: `Continue`,
-        nextText: 247
-      }
-    ],
-  },
-  {// 
-    id: 247,
-    text: 'Henry: "JACK! WHAT HAVE YOU DONE!? WHAT DID I DO!?"',
-    options: [
-      {
-        text: `You destroyed everything, I will give you the same fate!`,
-        nextText: 248
-      },
-      {
-        text: `You burned down my town… my home… my life.`,
-        nextText: 249
-      },
-      {
-        text: `Stay silent.`,
-        nextText: 250
-      }
-    ],
-  },
-  {// 
-    id: 248,
-    text: 'Henry: "What?"',
-    options: [
-      {
-        text: `You want to lie then? So be it.`,
-        nextText: 251
-      }
-    ],
-  },
-  {// 
-    id: 249,
-    text: 'I’m sorry I don’t remember that, are you sure it was me?',
-    options: [
-      {
-        text: `HOW DARE YOU!`,
-        nextText: 251
-      }
-    ],
-  },
-  {// 
-    id: 250,
-    text: 'Swings at you.',
-    options: [
-      {
-        text: `Swing at him`,
-        nextText: 251
-      }
-    ],
-  },
-  {// combat 
-    id: 251,
-    text: 'This is the final show down, make it count.',
-    options: [
-      {
-        text: `Slash`,
-        nextText: 5
-      },
-      {
-        text: `Heal Potions`,
-        nextText: 8
-      },
-      {
-        text: `Scare`,
-        nextText: 9
-      },
-      {
-        text: `Stab`,
-        nextText: 10
-      },
-      {
-        text: `Pendant of Pain`,
-        nextText: 11
-      },
-      {
-        text: `Persuade`,
-        nextText: 12
-      },
-    ],
-    startCombat: 15,
+  {// combat
+	id: 237,
+	text: 'You have been waiting to get some angry out',
+	options: [
+  	{
+    	text: `Slash`,
+    	nextText: 5
+  	},
+  	{
+    	text: `Heal Potions`,
+    	nextText: 8
+  	},
+  	{
+    	text: `Scare`,
+    	nextText: 9
+  	},
+  	{
+    	text: `Stab`,
+    	nextText: 10
+  	},
+  	{
+    	text: `Pendant of Pain`,
+    	nextText: 11
+  	},
+  	{
+    	text: `Persuade`,
+    	nextText: 12
+  	},
+	],
+	startCombat: 14,
   },
   {// end combat
-    id: 252,
-    text: 'You are filled with even more rage.',
-    options: [
-      {
-        text: `What will you do?`,
-        nextText: 253
-      }
-    ],
+	id: 238,
+	text: 'You cut through the guards.',
+	options: [
+  	{
+    	text: `Continue`,
+    	nextText: 1
+  	}
+	],
   },
-  {// 
-    id: 253,
-    text: 'You look at Henry, this is your chance take your revenge or do what you know is right.',
-    options: [
-      {
-        text: `Kill`,
-        nextText: 254
-      },
-      {
-        text: `Spare`,
-        nextText: 256
-      }
-    ],
+  {//
+	id: 239,
+	text: 'You are feeling hurt, but you still have a job to finish. You run up the stairs to look for where Henry is.',
+	options: [
+  	{
+    	text: `Library`,
+    	nextText: 240
+  	},
+  	{
+    	text: `Kitchen`,
+    	nextText: 244
+  	},
+  	{
+    	text: `Guest Room`,
+    	nextText: 245
+  	}
+	],
+  },
+  {// library
+	id: 240,
+	text: 'You walk into the library, it\'s a large room with enough books to suffocate someone with. You see someone sitting next to the fireplace. You remember this boy from Henry\'s dinner, it\'s his son Johnny.',
+	options: [
+  	{
+    	text: `Hey, Johnny is it ? `,
+    	nextText: 241
+  	},
+  	{
+    	text: `WHERE IS YOUR FATHER`,
+    	nextText: 242
+  	},
+  	{
+    	text: `Leave quietly`,
+    	nextText: 243
+  	}
+	],
+  },
+  {// library
+	id: 241,
+	text: 'JacK: "Johnny, I have business with your dad, do you know where he is?" The boy looks at you with the same terror from last time, he does not seem like he can form a sentence.',
+	options: [
+  	{
+    	text: `WHERE IS YOUR FATHER`,
+    	nextText: 242
+  	},
+  	{
+    	text: `Leave quietly`,
+    	nextText: 243
+  	}
+	],
+  },
+  {//
+	id: 242,
+	text: 'Johnny: "PLEASE! Please, please, please, please.. it\'s just a nightmare, please" The boy can not say anything no matter what you do.',
+	options: [
+  	{
+    	text: `Leave quietly`,
+    	nextText: 243
+  	}
+	],
+  },
+  {// library
+	id: 243,
+	text: 'You decide to walk out, but that boys eyes will haunt you for a bit.',
+	options: [
+  	{
+    	text: `Kitchen`,
+    	nextText: 244
+  	},
+  	{
+    	text: `Guest Room`,
+    	nextText: 245
+  	},
+  	{
+    	text: `Stairs`,
+    	nextText: 246
+  	},
+	],
+  },
+  {//
+	id: 244,
+	text: 'You walk into the kitchen, there is nothing but cooks that are huddled in a corner, you pair your head around the door to see if someone is eating, but there is no sign of Henry.',
+	options: [
+  	{
+    	text: `Library`,
+    	nextText: 240
+  	},
+  	{
+    	text: `Guest Room`,
+    	nextText: 245
+  	},
+  	{
+    	text: `Stairs`,
+    	nextText: 246
+  	},
+	],
+  },
+  {//
+	id: 245,
+	text: 'You walk into a room with only one bed. It appears to be pretty empty and there is no sign of anything in here.',
+	options: [
+  	{
+    	text: `Library`,
+    	nextText: 240
+  	},
+  	{
+    	text: `Kitchen`,
+    	nextText: 244
+  	},
+  	{
+    	text: `Stairs`,
+    	nextText: 246
+  	},
+	],
+  },
+  {//
+	id: 246,
+	text: 'You walk back to the stair from before, you see Henry at the bottom. You can not contain yourself, but you keep enough to control to not run at him.',
+	options: [
+  	{
+    	text: `Continue`,
+    	nextText: 247
+  	}
+	],
+  },
+  {//
+	id: 247,
+	text: 'Henry: "JACK! WHAT HAVE YOU DONE!? WHAT DID I DO!?"',
+	options: [
+  	{
+    	text: `You destroyed everything, I will give you the same fate!`,
+    	nextText: 248
+  	},
+  	{
+    	text: `You burned down my town… my home… my life.`,
+    	nextText: 249
+  	},
+  	{
+    	text: `Stay silent.`,
+    	nextText: 250
+  	}
+	],
+  },
+  {//
+	id: 248,
+	text: 'Henry: "What?"',
+	options: [
+  	{
+    	text: `You want to lie then ? So be it.`,
+    	nextText: 251
+  	}
+	],
+  },
+  {//
+	id: 249,
+	text: 'I’m sorry I don’t remember that, are you sure it was me?',
+	options: [
+  	{
+    	text: `HOW DARE YOU!`,
+    	nextText: 251
+  	}
+	],
+  },
+  {//
+	id: 250,
+	text: 'Swings at you.',
+	options: [
+  	{
+    	text: `Swing at him`,
+    	nextText: 251
+  	}
+	],
+  },
+  {// combat
+	id: 251,
+	text: 'This is the final showdown, make it count.',
+	options: [
+  	{
+    	text: `Slash`,
+    	nextText: 5
+  	},
+  	{
+    	text: `Heal Potions`,
+    	nextText: 8
+  	},
+  	{
+    	text: `Scare`,
+    	nextText: 9
+  	},
+  	{
+    	text: `Stab`,
+    	nextText: 10
+  	},
+  	{
+    	text: `Pendant of Pain`,
+    	nextText: 11
+  	},
+  	{
+    	text: `Persuade`,
+    	nextText: 12
+  	},
+	],
+	startCombat: 15,
+  },
+  {// end combat
+	id: 252,
+	text: 'You are filled with even more rage.',
+	options: [
+  	{
+    	text: `What will you do? `,
+    	nextText: 253
+  	}
+	],
+  },
+  {//
+	id: 253,
+	text: 'You look at Henry, this is your chance take your revenge or do what you know is right.',
+	options: [
+  	{
+    	text: `Kill`,
+    	nextText: 254
+  	},
+  	{
+    	text: `Spare`,
+    	nextText: 256
+  	}
+	],
   },
   {// kill
-    id: 254,
-    text: 'You look at Henry, you try to find a reason to keep him alive, but nothing comes to mind. You lift your weapon above your head and get hitting him with it until he is died.',
-    options: [
-      {
-        text: `What now?`,
-        nextText: 255
-      }
-    ],
+	id: 254,
+	text: 'You look at Henry, you try to find a reason to keep him alive, but nothing comes to mind. You lift your weapon above your head and get hitting him with it until he is died.',
+	options: [
+  	{
+    	text: `What now ? `,
+    	nextText: 255
+  	}
+	],
   },
   {// killing, bad end
-    id: 255,
-    text: 'You do not feel like anything changed, was this really the right path? Before you can think about what just happened you feel a sharp pain in your upper chest. You turn around to see Johnny, your vision becomes blurried until it reaches pitch black.',
-    options: [
-      {
-        text: `Continue`,
-        nextText: 1
-      }
-    ],
+	id: 255,
+	text: 'You do not feel like anything changed, was this really the right path? Before you can think about what just happened you feel a sharp pain in your upper chest. You turn around to see Johnny, your vision becomes blurred until it reaches pitch black.',
+	options: [
+  	{
+    	text: `Continue`,
+    	nextText: 1
+  	}
+	],
   },
   {// spare
-    id: 256,
-    text: 'You remeber his son, do you really want to be the same monster as him? You throw your blade infront of Henry and run out to get out.',
-    options: [
-      {
-        text: `Exit`,
-        nextText: 257
-      }
-    ],
+	id: 256,
+	text: 'You remember his son, do you really want to be the same monster as him? You throw your blade in front of Henry and run out to get out.',
+	options: [
+  	{
+    	text: `Exit`,
+    	nextText: 257
+  	}
+	],
   },
   {// spare
-    id: 247,
-    text: 'You run outside to see fire everywhere, the dragon is still distractioning the guards. You run into the forest, some arrows heading towards you, but you are too far for them to have good aim. The dragon still fought on.',
-    options: [
-      {
-        text: `Catch your breath`,
-        nextText: 192
-      }
-    ],
-  },
-  {// sparec
-    id: 248,
-    text: 'You pick up some flowers from the weeds near your home and put them ontop of you families grave. Ties come across your face, you fall to the floor and moarn.',
-    options: [
-      {
-        text: `...`,
-        nextText: 192
-      }
-    ],
+	id: 247,
+	text: 'You run outside to see fire everywhere, the dragon is still distracting the guards. You run into the forest, some arrows heading towards you, but you are too far for them to have good aim. The dragon still fought on.',
+	options: [
+  	{
+    	text: `Catch your breath`,
+    	nextText: 192
+  	}
+	],
   },
   {// spare
-    id: 248,
-    text: 'You get enough strength to get up and move on, tell them goodbye and start to take over Marrys busincess and become a blacksmith. You know one day someone will come after you, but at least you can live these days in peace.',
-    options: [
-      {
-        text: `Continue`,
-        nextText: 192
-      }
-    ],
+	id: 248,
+	text: 'You pick up some flowers from the weeds near your home and put them on top of your family\'s grave. Ties come across your face, you fall to the floor and moan.',
+	options: [
+  	{
+    	text: `...`,
+    	nextText: 192
+  	}
+	],
+  },
+  {// spare
+	id: 248,
+	text: 'You get enough strength to get up and move on, tell them goodbye and start to take over Mary\'s business and become a blacksmith. You know one day someone will come after you, but at least you can live these days in peace.',
+	options: [
+  	{
+    	text: `Continue`,
+    	nextText: 192
+  	}
+	],
   },
   {// good ending
-    id: 248,
-    text: 'THE END',
-    options: [
-      {
-        text: `Restart`,
-        nextText: 1
-      }
-    ],
+	id: 248,
+	text: 'THE END',
+	options: [
+  	{
+    	text: `Restart`,
+    	nextText: 1
+  	}
+	],
   },
-  {// 
-    id: 248,
-    text: '',
-    options: [
-      {
-        text: `Continue`,
-        nextText: 192
-      }
-    ],
+  {//
+	id: 248,
+	text: '',
+	options: [
+  	{
+    	text: `Continue`,
+    	nextText: 192
+  	}
+	],
   },
 ]
 startGame()
+
+
