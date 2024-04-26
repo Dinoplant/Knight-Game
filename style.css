@@ -153,11 +153,34 @@ main {
     }
 }
 
-@media (width <=360px) {
+@media (width <=430px) {
     .btn {
         max-height: 80%;
         min-width: 20vw;
         max-width: 30vw
+    }
+}
+
+@media (width <=375px) {
+    .btn {
+        max-height: 95%;
+        min-width: 20vw;
+        max-width: 30vw
+    }
+
+    #invText,
+    #staText {
+        font-size: x-small;
+    }
+
+    .invText>h2,
+    .staText>h2 {
+        font-size: small;
+    }
+
+    .topHalf,
+    .bottomHalf {
+        height: 50%;
     }
 }
 
@@ -166,16 +189,18 @@ main {
     .inventory,
     .screen {
         flex-direction: column;
-         height: 50%;
+        height: 50%;
     }
 
-    #invText, #staText{
+    #invText,
+    #staText {
         font-size: x-small;
     }
 
-    .invText > h2, .staText > h2{
-font-size: small;
-    } 
+    .invText>h2,
+    .staText>h2 {
+        font-size: small;
+    }
 
     .btn {
         max-height: 100%;
@@ -187,15 +212,16 @@ font-size: small;
         height: 20%;
     }
 
-.topHalf, .bottomHalf{
-    height:50%;
-}
+    .topHalf,
+    .bottomHalf {
+        height: 50%;
+    }
 
     .btnGrid {
         grid-template-columns: repeat(1, auto);
     }
 
-    .screen{
-        height:50%;
+    .screen {
+        height: 50%;
     }
 }
