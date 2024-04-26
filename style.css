@@ -107,9 +107,9 @@ main {
     border-radius: 10% / 50%;
     border: 2mm ridge #FFFFFF;
     text-align: center;
-    max-height: 45%;
-    min-width: 9vw;
-    max-width: 20vw;
+    max-height: 50%;
+    min-width: 15vw;
+    max-width: 25vw;
 }
 
 .btn:hover {
@@ -153,19 +153,49 @@ main {
     }
 }
 
+@media (width <=360px) {
+    .btn {
+        max-height: 80%;
+        min-width: 20vw;
+        max-width: 30vw
+    }
+}
+
 @media (width <=300px) {
+
     .inventory,
     .screen {
         flex-direction: column;
+         height: 50%;
     }
 
-.but{
-    max-height: 45%;
-    min-width: 14vw;
-    max-width: 26vw;
+    #invText, #staText{
+        font-size: x-small;
+    }
+
+    .invText > h2, .staText > h2{
+font-size: small;
+    } 
+
+    .btn {
+        max-height: 100%;
+        min-width: 25vw;
+        max-width: 60vw
+    }
+
+    .textDisplay {
+        height: 20%;
+    }
+
+.topHalf, .bottomHalf{
+    height:50%;
 }
 
-    .btnGrid{
+    .btnGrid {
         grid-template-columns: repeat(1, auto);
+    }
+
+    .screen{
+        height:50%;
     }
 }
