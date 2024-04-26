@@ -1950,7 +1950,7 @@ let textNodes = [
   // 
   // ADD region later 
   // Without the dog
-  // 
+  // 650 1, 733 2, 737 3, 752 4, 761 5,
   // 
   // 
   {
@@ -1960,10 +1960,10 @@ let textNodes = [
       {
         text: `Continue`,
         nextText: 640,
-        setplayer: { followDog: true }
+        setplayer: { followDog: false }
       }
     ],
-  },
+  },// this is what happens if you do not have dog following
   {
     id: 640,
     text: 'You start walking into the forest, you have heard many stories about what lurks within, but you are unsure what could be true. What is true is that they are words of bandits having a great influence over the region. You should tread carefully from now on.',
@@ -2833,32 +2833,32 @@ let textNodes = [
     options: [
       {
         text: `Stop the urge`,
-        nextText: 1
+        nextText: 756
       }
     ],
   },
   {// 
-    id: 755,
+    id: 756,
     text: 'You walk up the stairs were you found the library and you set it a blaze, you block each door and to make sure they can not excape you block the hallway as well. You then start to walk out of the house.',
     options: [
       {
         text: `Stop the urge`,
-        nextText: 1
+        nextText: 757
       }
     ],
   },
   {// Roll con save of 10
-    id: 755,
+    id: 757,
     text: 'Before you make it out to meet your fate to the guards, you stumble on one of Henry\'s sons. You sit there, you despritly trying to muster enough strength to walk past, but you have that itch again. Was this from that jade?',
     options: [
       {
         text: `STOP!`,
-        nextText: 1
+        nextText: 759
       }
     ],
   },
   {// fails, END 
-    id: 755,
+    id: 758,
     text: 'You can not stop it, you lose control. You blackout and wake up to the horric sight. You fall to your knees, you try throwing the blade away, but your hand doesn\'t listen. Your hand lifts, you feel a breif sharp pain, then nothing.',
     options: [
       {
@@ -2868,17 +2868,17 @@ let textNodes = [
     ],
   },
   {// Succeeds
-    id: 755,
+    id: 759,
     text: 'You pull yourself together and watch as the boy trumbles with fear, before running away. What have you turned into, your worse than Herny. You open up the door to see an army of guards.',
     options: [
       {
         text: `Ready yourself`,
-        nextText: 1
+        nextText: 760
       }
     ],
   },
   {// succeeds
-    id: 451,
+    id: 760,
     text: 'This is your last stand, your last action.',
     options: [
       {
@@ -2909,17 +2909,17 @@ let textNodes = [
     startCombat: 15,
   },
   {// end combat, END GAME
-    id: 452,
+    id: 761,
     text: 'You will not see this, if you do then wow. How did you do it?',
     options: [
       {
         text: `What will you do? `,
-        nextText: 453
+        nextText: 762
       }
     ],
   },
   {// killing, should have died ending
-    id: 455,
+    id: 762,
     text: 'Well congrats on winning the most rigged part of the game. Did you enjoy it? Well I\'ll just give the button to leave back the beginning. You should have kept the dog, this is one of the worse endings. There will be more to come though so stay tuned.',
     options: [
       {
