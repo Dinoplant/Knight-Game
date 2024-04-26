@@ -27,12 +27,13 @@ main {
 .bottomHalf {
     /* Bug fixing */
     height: 35%;
+    width: 100vw;
     background-color: #7D0006;
     border: 4mm ridge #FFFFFF;
 }
 
 .screenDisplay {
-    width: 100%;
+    width: 100vw;
     height: 100%;
     display: flex;
 }
@@ -76,6 +77,7 @@ main {
     height: 100%;
     width: 100%;
     justify-content: center;
+    align-items: center;
 }
 
 .textDisplay {
@@ -122,6 +124,7 @@ main {
 
     .btn {
         min-width: 18vw;
+        max-height: 70%;
     }
 
     .btnGrid {
@@ -134,16 +137,19 @@ main {
 
     .screenDisplay {
         flex-direction: column;
-        width: 100%;
     }
 
     .inventory,
     .screen {
         display: flex;
-        width: 100%;
+        width: 98vw;
         border-bottom: 0mm;
         flex-direction: row;
         justify-content: space-evenly;
+    }
+
+    .bottomHalf {
+        width: 98vw;
     }
 
     .invText,
@@ -153,11 +159,47 @@ main {
     }
 }
 
-@media (width <=430px) {
+@media (width <=500px) {
+
+    .screen {
+        display: none;
+    }
+
+    #text {
+        font-size: medium;
+    }
+
+    .inventory {
+        display: flex;
+        height: 78vw;
+    }
+
+    .bottomHalf {
+        height: 150vw;
+    }
+
+    .btnGrid {
+        grid-template-columns: repeat(3, auto);
+    }
+}
+
+@media (width <=431px) {
     .btn {
-        max-height: 80%;
         min-width: 20vw;
         max-width: 30vw
+    }
+
+    .inventory {
+        height: 50vh;
+    }
+
+    .bottomHalf {
+        height: 70vh;
+    }
+
+
+    .screen {
+        display: none;
     }
 }
 
@@ -186,42 +228,50 @@ main {
 
 @media (width <=300px) {
 
-    .inventory,
+    .inventory {
+        height: 30vh;
+        flex-direction: row;
+    }
+
+.textDisplay{
+    max-height: 35vh;
+}
+
+.bottomHalf{
+    height: 111vh;
+}
     .screen {
-        flex-direction: column;
-        height: 50%;
-    }
-
-    #invText,
-    #staText {
-        font-size: x-small;
-    }
-
-    .invText>h2,
-    .staText>h2 {
-        font-size: small;
+        display: none;
     }
 
     .btn {
-        max-height: 100%;
-        min-width: 25vw;
+        max-height: 20vh;
+        min-width: 20vw;
         max-width: 60vw
     }
 
-    .textDisplay {
-        height: 20%;
-    }
-
-    .topHalf,
-    .bottomHalf {
-        height: 50%;
-    }
-
     .btnGrid {
+        height: 100%;
         grid-template-columns: repeat(1, auto);
     }
-
-    .screen {
-        height: 50%;
-    }
 }
+/* @media (width <) */
+/* 
+
+ .screen{
+    display: none;
+ }
+
+
+ 
+ #invText,
+ #staText {
+     font-size: medium;
+ }
+
+ .invText>h2,
+ .staText>h2 {
+     font-size: large;
+ }
+
+ */
