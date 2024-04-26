@@ -39,8 +39,8 @@ main {
 
 .screen {
     border: 4mm ridge #FFFFFF;
-    border-bottom: 0mm;
-    border-right: 0mm;
+    /* border-bottom: 0mm;
+    border-right: 0mm; */
     width: 80%;
     height: 100%;
     background-image: url(/Images/startVillage.png);
@@ -48,7 +48,7 @@ main {
     background-size: cover;
 }
 
-.inventory { 
+.inventory {
     display: flex;
     padding: 10px;
     flex-direction: column;
@@ -59,7 +59,7 @@ main {
     background-color: #693f15;
     width: 20%;
     height: 100%;
-   
+
 }
 
 .storyDisplay {
@@ -118,17 +118,54 @@ main {
     color: rgb(79, 10, 10)
 }
 
-@media (width <= 700px) {
+@media (width <=700px) {
 
     .btn {
         min-width: 18vw;
     }
 
-    .btnGrid{
+    .btnGrid {
         height: 100%;
     }
 
-    .textDisplay{
-        height:40%;
+    .textDisplay {
+        height: 40%;
+    }
+
+    .screenDisplay {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .inventory,
+    .screen {
+        display: flex;
+        width: 100%;
+        border-bottom: 0mm;
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+
+    .invText,
+    .staText {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@media (width <=300px) {
+    .inventory,
+    .screen {
+        flex-direction: column;
+    }
+
+.but{
+    max-height: 45%;
+    min-width: 14vw;
+    max-width: 26vw;
+}
+
+    .btnGrid{
+        grid-template-columns: repeat(1, auto);
     }
 }

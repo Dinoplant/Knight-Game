@@ -106,6 +106,9 @@ let player = {
   healPot: 0,
   map: 0,
   jade: 0,
+  haveDog: 0,
+  followDog: 0,
+  noDog: 0,
   debug: 0,
 }
 
@@ -237,6 +240,9 @@ function showTextNode(textNodeIndex) { // goes through the text nodes checks wha
     combatQuestion = false
   }
 
+  if (textNode.dogFollow === true && player.followDog === true) {
+    showTextNode()
+  }
 
   if (textNode.diceRoll === 1) {
     console.log(`The dice roller is on and did things`) // this is how you roll dice to see if someone does something
@@ -277,8 +283,6 @@ function showTextNode(textNodeIndex) { // goes through the text nodes checks wha
     }
   } else if (textNode.diceRoll === 3) {
     console.log(`The dice roller is on and did things`) // this is how you roll dice to see if someone does something
-
-
     d20 = Math.floor(Math.random() * (21 - 1) + 1)
     if (player.cha >= 9) {
       d20 += 5
@@ -1371,6 +1375,7 @@ function updateText() {
 
 // this is way to hide options if item/requiredPlayer: (currentState) => {currentState.str >= 1}
 let textNodes = [
+
   {
     id: 1, //story element or story part or section
     text: `Welcome to our Knight text adventure, click Play to start`, //text was is visible first
@@ -1387,7 +1392,7 @@ let textNodes = [
       }, // make sure to add commas
       {
         text: `Credits`, //text was is visible first
-        nextText: 3 //brings it to the next id
+        nextText: 3//brings it to the next id
       },
     ], // make sure to add commas
   },
@@ -1933,12 +1938,624 @@ let textNodes = [
       },
       {
         text: `Do not interact with the dog.`,
+        nextText: 338
       },
       {
         text: `Tell the dog to go away.`,
+        nextText: 639
       }
     ],
   },
+  {
+    id: 338,
+    text: 'You look at the dog. Jack: "Go away", you see as the dog starts to walk away. Could it really understand you that well? Well its to late now, you continue down the road by yourself, but this is were you should begin to be more cautious.',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 40,
+        setplayer: { followDog: true }
+      }
+    ],
+  },
+  //
+  //
+  // ADD region later 
+  // do not do anything with dog
+  // keep dog parts until the end
+  //
+  //
+  {
+    id: 338,
+    text: 'You look at it and continue down the path, you see as it starts to follow you. You let it follow, but you have an uneasy feeling.',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 40,
+        setplayer: { followDog: true }
+      }
+    ],
+  },
+  //skip line
+  {//
+    id: 403,
+    text: 'You make it to Lüdingfeld, lucky you do not encounter any guards. You jump out of the cart before the merchant could notice. You do not want him to know where you are going or who you are.',
+    options: [
+      {
+        text: `Rush to Marrys home. `,
+        nextText: 404
+      }
+    ],
+  },
+  {//
+    id: 404,
+    text: 'You find no dog and the house seems so empty. You expected a greeting form Marry, but it does not seem like she\'s here. The home is completely dead. Something is off.',
+    options: [
+      {
+        text: `Walk in `,
+        nextText: 405
+      }
+    ],
+  },
+  {//
+    id: 405,
+    text: 'You run into the home looking for Marry. You find her dead in the centre of the room surrounded by bandits. As you go to investigate her body you see her necklace with a weird glowing jem. Last time you saw her, she had nothing of the sort. You take it off her neck to try to further understand why this happened. The bandits weren/’t ever this aggressive and only stuck to the roads.',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 406
+      }
+    ],
+  },
+  {//
+    text: 'You look for more clues. You see a note next to her bed, a picture on the wall to the left of the door, and she has something on her desk. You ',
+    options: [
+      {
+        text: `Note`,
+        nextText: 407
+      },
+      {
+        text: `Painting`,
+        nextText: 408
+      },
+      {
+        text: `Desk`,
+        nextText: 409
+      },
+      {
+        text: `Jade`,
+        nextText: 411
+      }
+    ],
+  },
+  {//
+    id: 407,
+    text: 'Marrys Note: "The ‘Lung Jade’ is a very rare item only found in the caves of a dragon’s den. I once thought it was just something told to children to stay out of trouble, but now… The powers of the jade can only be fully used by a dragon. From what I understand you can still use it by using it like any other metal, but something this rare and beautiful shouldn’t be used on a weapon of man."',
+    options: [
+      {
+        text: `Examine`,
+        nextText: 408
+      }
+    ],
+  },
+  {//
+    id: 408,
+    text: 'Jack: "I have heard of these beasts. They were thought to be the protectors of the lands, Gods that used ‘mortal’ bodies. They were said to ask for tributes and give great rewards to people that they deemed worthy. Unfortunately, after the first invasion many of them left the island. This was the first sign of the end of the war. I always assumed it was legends and just stories to tell, never did I think that it could be reality. The power that someone can possess with just one of these is unimaginable."',
+    options: [
+      {
+        text: `Painting`,
+        nextText: 409
+      },
+      {
+        text: `Desk`,
+        nextText: 410
+      },
+      {
+        text: `Jade`,
+        nextText: 411
+      }
+    ],
+  },
+  {//
+    id: 409,
+    text: 'You go towards the painting on the wall. It shows a man handing the jade to a dragon. Beautiful, but doesn’t tell you very much about what it does or how to use it.',
+    options: [
+      {
+        text: `Note`,
+        nextText: 407
+      },
+      {
+        text: `Desk`,
+        nextText: 410
+      },
+      {
+        text: `Jade`,
+        nextText: 411
+      }
+    ],
+  },
+  {//
+    id: 410,
+    text: 'Marry: "I should have never taken this jade. To whoever reads this, please take the stone to the mountain in the west. This power is too powerful for one person. If you do use this jade, nothing but bad luck will follow you. Goodluck. PS: if you run into a man named Jack tell him what happened here."',
+    options: [
+      {
+        text: `Note`,
+        nextText: 407
+      },
+      {
+        text: `Painting`,
+        nextText: 408
+      },
+      {
+        text: `Jade`,
+        nextText: 411
+      }
+    ],
+  },
+  {//
+    id: 411,
+    text: 'You look down and grab the little chain that seems like there was something attached to it. You think that who ever came here got what they wanted and stole the jade from her. When you are finished with Henry you will avenge her death as well.',
+    options: [
+      {
+        text: `Go to bed for the night`,
+        nextText: 412
+      }
+    ],
+  },
+  {//
+    id: 413,
+    text: 'You go into the master bed room and lay on the bed, you have never felt this before, this comfort. You almost immediately fall alseep without a second thought.',
+    options: [
+      {
+        text: `Wake up`,
+        nextText: 414
+      }
+    ],
+  },
+  {//
+    id: 414,
+    text: 'You get up to having a bit of the light pear from the window, you walk outside. The one thing you could have slept without was that smell, but it doesn\'t matter.',
+    options: [
+      {
+        text: `Investigate the home`,
+        nextText: 415
+      }
+    ],
+  },
+  {//increase con to max
+    id: 415,
+    text: 'You reenter the home to look for something can help you in your journey, you go into the armoury to see if she had any good armour. Looks like she has just made new armour, you take it.',
+    options: [
+      {
+        text: `Put on armour`,
+        nextText: 416
+      }
+    ],
+  },
+  {//
+    id: 416,
+    text: 'You feel ready, you feel like you can take any hit in this armour, its amazing. You can do without the noise, but isn\'t a huge deal. You start walking towards your old town.',
+    options: [
+      {
+        text: `Follow`,
+        nextText: 417
+      }
+    ],
+  },
+  {//
+    id: 421,
+    text: 'You enter the village, you are used to it been burnt, but now it\'s just overgrown. You start walking around to try to spot the manor.',
+    options: [
+      {
+        text: `Walk towards the manor`,
+        nextText: 422
+      }
+    ],
+  },
+  {//
+    id: 426,
+    text: 'You walk past the training area. You remember how you were first taught how to use a sword by your dad here, he made me fight for hours until I could everyone there. You were going to train your son the same way, but you never got that chance... that right.',
+    options: [
+      {
+        text: `Walk towards the manor`,
+        nextText: 427
+      }
+    ],
+  },
+  {//
+    id: 427,
+    text: 'You look at the market area, the place that you spent most of your time in town being in your adulthood. You remember the day that you met your wife, Jessy, it was a rainy day and she was by herself. I offered my coat and walked her home. It was a beautiful, or at least to you it was.',
+    options: [
+      {
+        text: `Walk towards the manor`,
+        nextText: 428
+      }
+    ],
+  },
+  {//
+    id: 428,
+    text: 'You walk past your home. The place that you felt the most safe at, it\'s ironic that it is also the place that killed everything you loved. You continue forward, you have no time to mourn. If you get out of this alive you will bring flowers to their graves.',
+    options: [
+      {
+        text: `Walk towards the manor`,
+        nextText: 429
+      }
+    ],
+  },
+  {//
+    id: 429,
+    text: 'You get into vision of the manor. You stay out of sight for the most part, they can not really see you from where you are at. The manor across the valley, you just need to cross',
+    options: [
+      {
+        text: `Cross valley`,
+        nextText: 430
+      },
+    ],
+  },
+  {//
+    id: 431,
+    text: 'Guard1: "Wait who are you, is that with you?" Guard2: "He\'s an intruder, GET HIM!" They pull out their swords',
+    options: [
+      {
+        text: `Pull out weapon`,
+        nextText: 432
+      }
+    ],
+  },
+  {// combat
+    id: 432,
+    text: 'You have been waiting to get some angry out',
+    options: [
+      {
+        text: `Slash`,
+        nextText: 5
+      },
+      {
+        text: `Heal Potions`,
+        nextText: 8
+      },
+      {
+        text: `Scare`,
+        nextText: 9
+      },
+      {
+        text: `Stab`,
+        nextText: 10
+      },
+      {
+        text: `Pendant of Pain`,
+        nextText: 11
+      },
+      {
+        text: `Persuade`,
+        nextText: 12
+      },
+    ],
+    startCombat: 14,
+  },
+  {//end combat
+    id: 433,
+    text: 'Defeated Bear.',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 434
+      }
+    ],
+  },
+  {//
+    id: 434,
+    text: 'You strike down the guards, you see a picture fall out of one of their pockets.',
+    options: [
+      {
+        text: `Push forward`,
+        nextText: 436
+      },
+      {
+        text: `Investigate the picture`,
+        nextText: 435
+      }
+    ],
+  },
+  {//
+    id: 435,
+    text: 'You look closer at the picture, it\'s a drawing of the guards\' kids. You are taken back a little, maybe this isn\'t worth taking revenge on everyone. You then snap out of it remembering what happened to you.',
+    options: [
+      {
+        text: `Continue pushing forward`,
+        nextText: 436
+      }
+    ],
+  },
+  {//
+    id: 436,
+    text: 'You walk over the dead guards, you try to stick to the walls to keep out of distance. When you make it near the front door, you slowly open it and slide right in. You turn around to see three different guards, they pull out their weapons.',
+    options: [
+      {
+        text: `pull out your weapon`,
+        nextText: 437
+      }
+    ],
+  },
+  {// combat
+    id: 437,
+    text: 'You have been waiting to get some angry out',
+    options: [
+      {
+        text: `Slash`,
+        nextText: 5
+      },
+      {
+        text: `Heal Potions`,
+        nextText: 8
+      },
+      {
+        text: `Scare`,
+        nextText: 9
+      },
+      {
+        text: `Stab`,
+        nextText: 10
+      },
+      {
+        text: `Pendant of Pain`,
+        nextText: 11
+      },
+      {
+        text: `Persuade`,
+        nextText: 12
+      },
+    ],
+    startCombat: 14,
+  },
+  {// end combat
+    id: 438,
+    text: 'You cut through the guards.',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 1
+      }
+    ],
+  },
+  {//
+    id: 439,
+    text: 'You are feeling hurt, but you still have a job to finish. You run up the stairs to look for where Henry is.',
+    options: [
+      {
+        text: `Library`,
+        nextText: 440
+      },
+      {
+        text: `Kitchen`,
+        nextText: 444
+      },
+      {
+        text: `Guest Room`,
+        nextText: 445
+      }
+    ],
+  },
+  {// library
+    id: 440,
+    text: 'You walk into the library, it\'s a large room with enough books to suffocate someone with. You see someone sitting next to the fireplace. You remember this boy from Henry\'s dinner, it\'s his son Johnny.',
+    options: [
+      {
+        text: `Hey, Johnny is it ? `,
+        nextText: 441
+      },
+      {
+        text: `WHERE IS YOUR FATHER`,
+        nextText: 442
+      },
+      {
+        text: `Leave quietly`,
+        nextText: 443
+      }
+    ],
+  },
+  {// library
+    id: 441,
+    text: 'JacK: "Johnny, I have business with your dad, do you know where he is?" The boy looks at you with the same terror from last time, he does not seem like he can form a sentence.',
+    options: [
+      {
+        text: `WHERE IS YOUR FATHER`,
+        nextText: 442
+      },
+      {
+        text: `Leave quietly`,
+        nextText: 443
+      }
+    ],
+  },
+  {//
+    id: 442,
+    text: 'Johnny: "PLEASE! Please, please, please, please.. it\'s just a nightmare, please" The boy can not say anything no matter what you do.',
+    options: [
+      {
+        text: `Leave quietly`,
+        nextText: 443
+      }
+    ],
+  },
+  {// library
+    id: 443,
+    text: 'You decide to walk out, but that boys eyes will haunt you for a bit.',
+    options: [
+      {
+        text: `Kitchen`,
+        nextText: 444
+      },
+      {
+        text: `Guest Room`,
+        nextText: 445
+      },
+      {
+        text: `Stairs`,
+        nextText: 446
+      },
+    ],
+  },
+  {//
+    id: 444,
+    text: 'You walk into the kitchen, there is nothing but cooks that are huddled in a corner, you pair your head around the door to see if someone is eating, but there is no sign of Henry.',
+    options: [
+      {
+        text: `Library`,
+        nextText: 440
+      },
+      {
+        text: `Guest Room`,
+        nextText: 445
+      },
+      {
+        text: `Stairs`,
+        nextText: 446
+      },
+    ],
+  },
+  {//
+    id: 445,
+    text: 'You walk into a room with only one bed. It appears to be pretty empty and there is no sign of anything in here.',
+    options: [
+      {
+        text: `Library`,
+        nextText: 440
+      },
+      {
+        text: `Kitchen`,
+        nextText: 444
+      },
+      {
+        text: `Stairs`,
+        nextText: 446
+      },
+    ],
+  },
+  {//
+    id: 446,
+    text: 'You walk back to the stair from before, you see Henry at the bottom. You can not contain yourself, but you keep enough to control to not run at him.',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 447
+      }
+    ],
+  },
+  {//
+    id: 447,
+    text: 'Henry: "JACK! WHAT HAVE YOU DONE!? WHAT DID I DO!?"',
+    options: [
+      {
+        text: `You destroyed everything, I will give you the same fate!`,
+        nextText: 448
+      },
+      {
+        text: `You burned down my town… my home… my life.`,
+        nextText: 449
+      },
+      {
+        text: `Stay silent.`,
+        nextText: 450
+      }
+    ],
+  },
+  {//
+    id: 448,
+    text: 'Henry: "What?"',
+    options: [
+      {
+        text: `You want to lie then? So be it.`,
+        nextText: 451
+      }
+    ],
+  },
+  {//
+    id: 449,
+    text: 'I’m sorry I don’t remember that, are you sure it was me?',
+    options: [
+      {
+        text: `HOW DARE YOU!`,
+        nextText: 451
+      }
+    ],
+  },
+  {//
+    id: 450,
+    text: 'Swings at you.',
+    options: [
+      {
+        text: `Swing at him`,
+        nextText: 451
+      }
+    ],
+  },
+  {// combat
+    id: 451,
+    text: 'This is the final showdown, make it count.',
+    options: [
+      {
+        text: `Slash`,
+        nextText: 5
+      },
+      {
+        text: `Heal Potions`,
+        nextText: 8
+      },
+      {
+        text: `Scare`,
+        nextText: 9
+      },
+      {
+        text: `Stab`,
+        nextText: 10
+      },
+      {
+        text: `Pendant of Pain`,
+        nextText: 11
+      },
+      {
+        text: `Persuade`,
+        nextText: 12
+      },
+    ],
+    startCombat: 15,
+  },
+  {// end combat
+    id: 452,
+    text: 'You are filled with even more rage.',
+    options: [
+      {
+        text: `What will you do? `,
+        nextText: 453
+      }
+    ],
+  },
+  {//
+    id: 453,
+    text: 'You look at Henry, you try to find a reason to keep him alive, but nothing comes to mind. You lift your weapon above your head and get hitting him with it until he is died.',
+    options: [
+      {
+        text: `Kill`,
+        nextText: 455
+      },
+    ],
+  },
+  {// killing, bad end
+    id: 455,
+    text: 'You do not feel like anything changed, was this really the right path? Before you can think about what just happened you feel a sharp pain in your upper chest. You turn around to see Johnny, your vision becomes blurred until it reaches pitch black.',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 1
+      }
+    ],
+  },
+  //
+  //
+  //help dog
+  //endregio
+  //
+  //
   {
     id: 37,
     text: 'You take out some of your bread and tear a little piece and give it to the dog. You tell it let to follow and it seems to sorta understand and starts to follow you down the road.',
@@ -1946,26 +2563,6 @@ let textNodes = [
       {
         text: `Continue`,
         nextText: 40
-      }
-    ],
-  },
-  {
-    id: 38,
-    text: 'You look at it and continue down the path, you see as it starts to follow you. You let it follow, but you have an uneasy feeling.',
-    options: [
-      {
-        text: `Continue`,
-        nextText: 3000
-      }
-    ],
-  },
-  {
-    id: 39,
-    text: 'You look at the dog and tell it to stay and to go far away from this place. The dog looks at you then decides to continue forward, lucky it goes a different way.',
-    options: [
-      {
-        text: `Continue`,
-        nextText: 6000
       }
     ],
   },
@@ -2230,7 +2827,7 @@ let textNodes = [
   },
   {
     id: 53,
-    text: 'You wake up, but not where you remembered you being, the forest is more dense and there is a smell of smoke. You get up thinking that you were about to burn down the forest, but you quickly remembered that you did not make a fire, so who did? You get up and look for around the dog that is nowhere to be seen, but you do see his footprints',
+    text: 'You wake up, but not where you remembered you being, the forest is more dense and there is a smell of smoke. You get up thinking that you were about to burn down the forest, but you quickly remembered that you did not make a fire, so who did? You get up and look for around the dog that is nowhere to be seen, but you do see his footprints.',
     options: [
       {
         text: `Where is that dog`,
@@ -2563,7 +3160,7 @@ let textNodes = [
       {
         text: `Dex (3)`,
         nextText: 76,
-        setPlayer: { dex: 3 }
+        setPlayer: { dex: 4 }
       },
       {
         text: `Wis (3)`,
@@ -2599,7 +3196,7 @@ let textNodes = [
         nextText: 78
       },
       {
-        text: `Don’t Boss me around`,
+        text: `Don\’t Boss me around`,
         nextText: 79
       }
     ],
@@ -4490,7 +5087,7 @@ let textNodes = [
   {// bf
     id: 192.15,
     text: 'You go into the passage, you realise that you are actually walking the walls. You can see everyone, some things you wished you didn\'t see. ',
-	  options: [
+    options: [
       {
         text: `Where are we going?`,
         nextText: 192.16
@@ -4579,7 +5176,7 @@ let textNodes = [
   {// fail bf
     id: 191.21,
     text: 'You look around you to see where Frank is, but you can\'t find him.You do not have the time to stay around so you leave.',
-	options: [
+    options: [
       {
         text: `Continue`,
         nextText: 192
@@ -4707,771 +5304,766 @@ let textNodes = [
     options: [
       { //talk
         text: `Excuse me, can I catch a ride to the town of Lüdingfeld?`,
-    	nextText: 201
-  	  },
-  	{ //scare
-    	text: `Take out your weapon`,
-    	nextText: 202
-  	},
-	],
+        nextText: 201
+      },
+      { //scare
+        text: `Take out your weapon`,
+        nextText: 202
+      },
+    ],
   },
   {// talk
-	id: 201,
-	text: 'Merchant: "Sure, I am actually going that way."',
-	options: [
-  	{
-    	text: `Thank you, I am...Peirce.`,
-    	nextText: 203
-  	}
-	],
+    id: 201,
+    text: 'Merchant: "Sure, I am actually going that way."',
+    options: [
+      {
+        text: `Thank you, I am...Peirce.`,
+        nextText: 203
+      }
+    ],
   },
   {// scare
-	id: 202,
-	text: 'Jack: "Take me to Lüdingfeld!" Merchant: "Please! Do not hurt, I will please."',
-	options: [
-  	{
-    	text: `Good.`,
-    	nextText: 203
-  	}
-	],
+    id: 202,
+    text: 'Jack: "Take me to Lüdingfeld!" Merchant: "Please! Do not hurt, I will please."',
+    options: [
+      {
+        text: `Good.`,
+        nextText: 203
+      }
+    ],
+  },
+  //
+  //this is where the story would switch if they did no do anything with the dog
+  //
+  {//
+    id: 203,
+    text: 'You make it to Lüdingfeld, lucky you do not encounter any guards. You jump out of the cart before the merchant could notice. You do not want him to know where you are going or who you are.',
+    options: [
+      {
+        text: `Rush to Marrys home. `,
+        nextText: 204
+      }
+    ],
+    dogFollow: true
   },
   {//
-	id: 203,
-	text: 'You make it to Lüdingfeld, lucky you do not encounter any guards. You jump out of the cart before the merchant could notice. You do not want him to know where you are going or who you are.',
-	options: [
-  	{
-    	text: `Rush to Marrys home. `,
-    	nextText: 204
-  	}
-	],
+    id: 204,
+    text: 'You find the dog, he looks at you, and wines. It looks more skinny, even more skinny than the first time you meet it. The home is completely dead. Something is off.',
+    options: [
+      {
+        text: `Walk in `,
+        nextText: 205
+      }
+    ],
   },
   {//
-	id: 204,
-	text: 'You find the dog, he looks at you, and wines. It looks more skinny, even more skinny than the first time you meet it. The home is completely dead. Something is off.',
-	options: [
-  	{
-    	text: `Walk in `,
-    	nextText: 205
-  	}
-	],
+    id: 205,
+    text: 'You run into the home looking for Marry. You find her dead in the centre of the room surrounded by bandits. As you go to investigate her body you see her necklace with a weird glowing jem. Last time you saw her, she had nothing of the sort. You take it off her neck to try to further understand why this happened. The bandits weren/’t ever this aggressive and only stuck to the roads.',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 206
+      }
+    ],
   },
   {//
-	id: 205,
-	text: 'You run into the home looking for Marry. You find her dead in the centre of the room surrounded by bandits. As you go to investigate her body you see her necklace with a weird glowing jem. Last time you saw her, she had nothing of the sort. You take it off her neck to try to further understand why this happened. The bandits weren/’t ever this aggressive and only stuck to the roads.',
-	options: [
-  	{
-    	text: `Continue`,
-    	nextText: 206
-  	}
-	],
+    text: 'You look for more clues. You see a note next to her bed, a picture on the wall to the left of the door, and she has something on her desk. You ',
+    text: 'You Look for more clues. You see a note next to her bed, a picture on the wall to the left of the door, and she has something on her desk. You see that she has something in her hands, it looks like a jade.',
+    options: [
+      {
+        text: `Note`,
+        nextText: 207
+      },
+      {
+        text: `Painting`,
+        nextText: 208
+      },
+      {
+        text: `Desk`,
+        nextText: 209
+      },
+      {
+        text: `Jade`,
+        nextText: 211
+      }
+    ],
   },
   {//
-	text: 'You look for more clues. You see a note next to her bed, a picture on the wall to the left of the door, and she has something on her desk. You ',
-	text: 'You Look for more clues. You see a note next to her bed, a picture on the wall to the left of the door, and she has something on her desk. You see that she has something in her hands, it looks like a jade.',
-	options: [
-  	{
-    	text: `Note`,
-    	nextText: 207
-  	},
-  	{
-    	text: `Painting`,
-    	nextText: 208
-  	},
-  	{
-    	text: `Desk`,
-    	nextText: 209
-  	},
-  	{
-    	text: `Jade`,
-    	nextText: 211
-  	}
-	],
+    id: 207,
+    text: 'Marrys Note: "The ‘Lung Jade’ is a very rare item only found in the caves of a dragon’s den. I once thought it was just something told to children to stay out of trouble, but now… The powers of the jade can only be fully used by a dragon. From what I understand you can still use it by using it like any other metal, but something this rare and beautiful shouldn’t be used on a weapon of man."',
+    options: [
+      {
+        text: `Examine`,
+        nextText: 208
+      }
+    ],
   },
   {//
-	id: 207,
-	text: 'Marrys Note: "The ‘Lung Jade’ is a very rare item only found in the caves of a dragon’s den. I once thought it was just something told to children to stay out of trouble, but now… The powers of the jade can only be fully used by a dragon. From what I understand you can still use it by using it like any other metal, but something this rare and beautiful shouldn’t be used on a weapon of man."',
-	options: [
-  	{
-    	text: `Examine`,
-    	nextText: 208
-  	}
-	],
+    id: 208,
+    text: 'Jack: "I have heard of these beasts. They were thought to be the protectors of the lands, Gods that used ‘mortal’ bodies. They were said to ask for tributes and give great rewards to people that they deemed worthy. Unfortunately, after the first invasion many of them left the island. This was the first sign of the end of the war. I always assumed it was legends and just stories to tell, never did I think that it could be reality. The power that someone can possess with just one of these is unimaginable."',
+    options: [
+      {
+        text: `Painting`,
+        nextText: 209
+      },
+      {
+        text: `Desk`,
+        nextText: 210
+      },
+      {
+        text: `Jade`,
+        nextText: 211
+      }
+    ],
   },
   {//
-	id: 208,
-	text: 'Jack: "I have heard of these beasts. They were thought to be the protectors of the lands, Gods that used ‘mortal’ bodies. They were said to ask for tributes and give great rewards to people that they deemed worthy. Unfortunately, after the first invasion many of them left the island. This was the first sign of the end of the war. I always assumed it was legends and just stories to tell, never did I think that it could be reality. The power that someone can possess with just one of these is unimaginable."',
-	options: [
-  	{
-    	text: `Painting`,
-    	nextText: 209
-  	},
-  	{
-    	text: `Desk`,
-    	nextText: 210
-  	},
-  	{
-    	text: `Jade`,
-    	nextText: 211
-  	}
-	],
+    id: 209,
+    text: 'You go towards the painting on the wall. It shows a man handing the jade to a dragon. Beautiful, but doesn’t tell you very much about what it does or how to use it.',
+    options: [
+      {
+        text: `Note`,
+        nextText: 207
+      },
+      {
+        text: `Desk`,
+        nextText: 210
+      },
+      {
+        text: `Jade`,
+        nextText: 211
+      }
+    ],
   },
   {//
-	id: 209,
-	text: 'You go towards the painting on the wall. It shows a man handing the jade to a dragon. Beautiful, but doesn’t tell you very much about what it does or how to use it.',
-	options: [
-  	{
-    	text: `Note`,
-    	nextText: 207
-  	},
-  	{
-    	text: `Desk`,
-    	nextText: 210
-  	},
-  	{
-    	text: `Jade`,
-    	nextText: 211
-  	}
-	],
+    id: 210,
+    text: 'Marry: "I should have never taken this jade. To whoever reads this, please take the stone to the mountain in the west. This power is too powerful for one person. If you do use this jade, nothing but bad luck will follow you. Goodluck. PS: if you run into a man named Jack tell him what happened here."',
+    options: [
+      {
+        text: `Note`,
+        nextText: 207
+      },
+      {
+        text: `Painting`,
+        nextText: 208
+      },
+      {
+        text: `Jade`,
+        nextText: 211
+      }
+    ],
   },
   {//
-	id: 210,
-	text: 'Marry: "I should have never taken this jade. To whoever reads this, please take the stone to the mountain in the west. This power is too powerful for one person. If you do use this jade, nothing but bad luck will follow you. Goodluck. PS: if you run into a man named Jack tell him what happened here."',
-	options: [
-  	{
-    	text: `Note`,
-    	nextText: 207
-  	},
-  	{
-    	text: `Painting`,
-    	nextText: 208
-  	},
-  	{
-    	text: `Jade`,
-    	nextText: 211
-  	}
-	],
+    id: 211,
+    text: 'You look down and grab the jade. You walk to the entrance of the house to get some fresh air. When you squat down the dog snatches the jade, before you have a chance to get the jade back the dog starts to shake. It transforms...',
+    options: [
+      {
+        text: `Buddy ? `,
+        nextText: 212
+      }
+    ],
   },
   {//
-	id: 211,
-	text: 'You look down and grab the jade. You walk to the entrance of the house to get some fresh air. When you squat down the dog snatches the jade, before you have a chance to get the jade back the dog starts to shake. It transforms...',
-	options: [
-  	{
-    	text: `Buddy ? `,
-    	nextText: 212
-  	}
-	],
+    id: 213,
+    text: 'Dragon: "Hello Jack. Thank you for your kindness. I know what you seek, I can help you in your journey. I know this must be a lot to process. I’ll explain."',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 214
+      }
+    ],
   },
   {//
-	id: 213,
-	text: 'Dragon: "Hello Jack. Thank you for your kindness. I know what you seek, I can help you in your journey. I know this must be a lot to process. I’ll explain."',
-	options: [
-  	{
-    	text: `Continue`,
-    	nextText: 214
-  	}
-	],
+    id: 214,
+    text: 'Dragon: "I am one of the only remaining Gods in this land and have been trapped in a dog\'s body for trying to support your kin. I have been searching for a way to be released from that prison. I was on my way to the capital to see if I could find a way in another land, but then I met you. I then followed you around, waited for you to make your way across the jade. You see, I couldn’t get myself. I needed a human with the feeling of revenge to bring it to me. Your mentor was too light hearted and couldn’t hold its hatred. She sadly fell to the jades curse."',
+    options: [
+      {
+        text: `What ? So that means you were the dog ? `,
+        nextText: 215
+      }
+    ],
   },
   {//
-	id: 214,
-	text: 'Dragon: "I am one of the only remaining Gods in this land and have been trapped in a dog\'s body for trying to support your kin. I have been searching for a way to be released from that prison. I was on my way to the capital to see if I could find a way in another land, but then I met you. I then followed you around, waited for you to make your way across the jade. You see, I couldn’t get myself. I needed a human with the feeling of revenge to bring it to me. Your mentor was too light hearted and couldn’t hold its hatred. She sadly fell to the jades curse."',
-	options: [
-  	{
-    	text: `What ? So that means you were the dog ? `,
-    	nextText: 215
-  	}
-	],
+    id: 215,
+    text: 'Dragon: "Come with me and I will be able to train you to be able to enact your revenge."',
+    options: [
+      {
+        text: `Okay, it does not seem like I have anyone else`,
+        nextText: 216
+      }
+    ],
   },
   {//
-	id: 215,
-	text: 'Dragon: "Come with me and I will be able to train you to be able to enact your revenge."',
-	options: [
-  	{
-    	text: `Okay, it does not seem like I have anyone else`,
-    	nextText: 216
-  	}
-	],
+    id: 216,
+    text: 'Dragon: "Come along." You see as the dragon raises its wings and starts to fly up.',
+    options: [
+      {
+        text: `Follow`,
+        nextText: 217
+      }
+    ],
   },
   {//
-	id: 216,
-	text: 'Dragon: "Come along." You see as the dragon raises its wings and starts to fly up.',
-	options: [
-  	{
-    	text: `Follow`,
-    	nextText: 217
-  	}
-	],
+    id: 217,
+    text: 'You follow the dragon the best you can, you travel through a part of the forest you have never seen before. You think about asking where you were going but you thought better. As you continue through the path seems to be never ending, it feels like you have been walking in circles. Every tree looks the same, the only changing aspect of the path was you and the dragon.',
+    options: [
+      {
+        text: `Keep up`,
+        nextText: 218
+      }
+    ],
   },
   {//
-	id: 217,
-	text: 'You follow the dragon the best you can, you travel through a part of the forest you have never seen before. You think about asking where you were going but you thought better. As you continue through the path seems to be never ending, it feels like you have been walking in circles. Every tree looks the same, the only changing aspect of the path was you and the dragon.',
-	options: [
-  	{
-    	text: `Keep up`,
-    	nextText: 218
-  	}
-	],
+    id: 218,
+    text: 'You finally make it out of the forest to the foot of a mountain. It’s known for being almost impossible to climb and none has been here since before the war, or at least that’s what you’ve been told.',
+    options: [
+      {
+        text: `Okay now what ? `,
+        nextText: 219
+      }
+    ],
   },
   {//
-	id: 218,
-	text: 'You finally make it out of the forest to the foot of a mountain. It’s known for being almost impossible to climb and none has been here since before the war, or at least that’s what you’ve been told.',
-	options: [
-  	{
-    	text: `Okay now what ? `,
-    	nextText: 219
-  	}
-	],
-  },
-  {//
-	id: 219,
-	text: 'Dragon: "Get on my back and I will fly you up the mountain." The dragon bends its wing to allow you to climb on top of it. Then it spreads its wings then takes you up the mountain. When you get on top the dragon tells of what training you will go threw, surprisingly you can not seem to remember much of what it said, but understood the task.',
-	options: [
-  	{
-    	text: `Train`,
-    	nextText: 220
-  	}
-	],
+    id: 219,
+    text: 'Dragon: "Get on my back and I will fly you up the mountain." The dragon bends its wing to allow you to climb on top of it. Then it spreads its wings then takes you up the mountain. When you get on top the dragon tells of what training you will go threw, surprisingly you can not seem to remember much of what it said, but understood the task.',
+    options: [
+      {
+        text: `Train`,
+        nextText: 220
+      }
+    ],
   },
   {// ability score improvement
-	id: 220,
-	text: 'Dragon: "Let it begin" He makes you practise fighting sprites and he teaches you meditation. You train with it, for what feels like months, but the daylight cycle did not change, it confuses you but at least you now have the training to defeat Henry.',
-	options: [
-  	{
-    	text: `Train`,
-    	nextText: 221
-  	}
-	],
+    id: 220,
+    text: 'Dragon: "Let it begin" He makes you practise fighting sprites and he teaches you meditation. You train with it, for what feels like months, but the daylight cycle did not change, it confuses you but at least you now have the training to defeat Henry.',
+    options: [
+      {
+        text: `Train`,
+        nextText: 221
+      }
+    ],
   },
   {//
-	id: 221,
-	text: 'Dragon: "It\'s time for you to go for round two against Henry. You are ready, just remember this. If you do decide to go through with your revenge you will not survive to live in your glory."',
-	options: [
-  	{
-    	text: `Thank you will I take that to mind`,
-    	nextText: 222
-  	}
-	],
+    id: 221,
+    text: 'Dragon: "It\'s time for you to go for round two against Henry. You are ready, just remember this. If you do decide to go through with your revenge you will not survive to live in your glory."',
+    options: [
+      {
+        text: `Thank you will I take that to mind`,
+        nextText: 222
+      }
+    ],
   },
   {//
-	id: 222,
-	text: 'Dragon: "I will help you on your feat. I can distract the archers and gun men while you find Henry and take your revenge."',
-	options: [
-  	{
-    	text: `Hmmm, this could work.`,
-    	nextText: 223
-  	},
-  	{
-    	text: `Thank you for your help.`,
-    	nextText: 223
-  	}
-	],
+    id: 222,
+    text: 'Dragon: "I will help you on your feat. I can distract the archers and gun men while you find Henry and take your revenge."',
+    options: [
+      {
+        text: `Hmmm, this could work.`,
+        nextText: 223
+      },
+      {
+        text: `Thank you for your help.`,
+        nextText: 223
+      }
+    ],
   },
   {//
-	id: 224,
-	text: 'The dragon lets you ride on his back again, but this time you fly over lands that you recognized. You turn around but the mountain you were at is completely gone, you have time to worry about something like that. This will be your last attempt at getting your revenge. You have learnt so much and done so much to get here, it is time to use everything you have learnt.',
-	options: [
-  	{
-    	text: `Prepare`,
-    	nextText: 225
-  	}
-	],
+    id: 224,
+    text: 'The dragon lets you ride on his back again, but this time you fly over lands that you recognized. You turn around but the mountain you were at is completely gone, you have time to worry about something like that. This will be your last attempt at getting your revenge. You have learnt so much and done so much to get here, it is time to use everything you have learnt.',
+    options: [
+      {
+        text: `Prepare`,
+        nextText: 225
+      }
+    ],
   },
   {//
-	id: 225,
-	text: 'The dragon lands in the entrance of your once great town of Lüdingfeld. The last time you were here it was freshly burnt with smoke and ash everywhere, but now it\'s overgrown with weeds and looks like old ruins. You remember all the good times.',
-	options: [
-  	{
-    	text: `Continue`,
-    	nextText: 226
-  	}
-	],
+    id: 225,
+    text: 'The dragon lands in the entrance of your once great town of Lüdingfeld. The last time you were here it was freshly burnt with smoke and ash everywhere, but now it\'s overgrown with weeds and looks like old ruins. You remember all the good times.',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 226
+      }
+    ],
   },
   {//
-	id: 226,
-	text: 'You walk past the training area. You remember how you were first taught how to use a sword by your dad here, he made me fight for hours until I could everyone there. You were going to train your son the same way, but you never got that chance... that right.',
-	options: [
-  	{
-    	text: `Walk towards the manor`,
-    	nextText: 227
-  	}
-	],
+    id: 226,
+    text: 'You walk past the training area. You remember how you were first taught how to use a sword by your dad here, he made me fight for hours until I could everyone there. You were going to train your son the same way, but you never got that chance... that right.',
+    options: [
+      {
+        text: `Walk towards the manor`,
+        nextText: 227
+      }
+    ],
   },
   {//
-	id: 227,
-	text: 'You look at the market area, the place that you spent most of your time in town being in your adulthood. You remember the day that you met your wife, Jessy, it was a rainy day and she was by herself. I offered my coat and walked her home. It was a beautiful, or at least to you it was.',
-	options: [
-  	{
-    	text: `Walk towards the manor`,
-    	nextText: 228
-  	}
-	],
+    id: 227,
+    text: 'You look at the market area, the place that you spent most of your time in town being in your adulthood. You remember the day that you met your wife, Jessy, it was a rainy day and she was by herself. I offered my coat and walked her home. It was a beautiful, or at least to you it was.',
+    options: [
+      {
+        text: `Walk towards the manor`,
+        nextText: 228
+      }
+    ],
   },
   {//
-	id: 228,
-	text: 'You walk past your home. The place that you felt the most safe at, it\'s ironic that it is also the place that killed everything you loved. You continue forward, you have no time to mourn. If you get out of this alive you will bring flowers to their graves.',
-	options: [
-  	{
-    	text: `Walk towards the manor`,
-    	nextText: 229
-  	}
-	],
+    id: 228,
+    text: 'You walk past your home. The place that you felt the most safe at, it\'s ironic that it is also the place that killed everything you loved. You continue forward, you have no time to mourn. If you get out of this alive you will bring flowers to their graves.',
+    options: [
+      {
+        text: `Walk towards the manor`,
+        nextText: 229
+      }
+    ],
   },
   {//
-	id: 229,
-	text: 'You get into vision of the manor. Jack: "Okay here is the plan you start flying to get their attention and try to keep it."',
-	options: [
-  	{
-    	text: `Thank you for everything.`,
-    	nextText: 230
-  	},
-  	{
-    	text: `Until we meet again.`,
-    	nextText: 230
-  	},
-	],
+    id: 229,
+    text: 'You get into vision of the manor. Jack: "Okay here is the plan you start flying to get their attention and try to keep it."',
+    options: [
+      {
+        text: `Thank you for everything.`,
+        nextText: 230
+      },
+      {
+        text: `Until we meet again.`,
+        nextText: 230
+      },
+    ],
   },
   {//
-	id: 230,
-	text: 'The dragon starts to rise, and starts to fly towards the manor. You can hear the screams from all the way across the valley. You make your way to the manor by foot, it is not too different from his other home, but it is bigger and does not have the garden.',
-	options: [
-  	{
-    	text: `Confront guards`,
-    	nextText: 231
-  	}
-	],
+    id: 230,
+    text: 'The dragon starts to rise, and starts to fly towards the manor. You can hear the screams from all the way across the valley. You make your way to the manor by foot, it is not too different from his other home, but it is bigger and does not have the garden.',
+    options: [
+      {
+        text: `Confront guards`,
+        nextText: 231
+      }
+    ],
   },
   {//
-	id: 231,
-	text: 'Guard1: "Wait who are you, is that with you?" Guard2: "He\'s a demon, GET HIM!" You see as the first guard is terrified and there was a third but he ran back inside the manor to support the other men.',
-	options: [
-  	{
-    	text: `Pull out weapon`,
-    	nextText: 232
-  	}
-	],
+    id: 231,
+    text: 'Guard1: "Wait who are you, is that with you?" Guard2: "He\'s a demon, GET HIM!" You see as the first guard is terrified and there was a third but he ran back inside the manor to support the other men.',
+    options: [
+      {
+        text: `Pull out weapon`,
+        nextText: 232
+      }
+    ],
   },
   {// combat
-	id: 232,
-	text: 'You have been waiting to get some angry out',
-	options: [
-  	{
-    	text: `Slash`,
-    	nextText: 5
-  	},
-  	{
-    	text: `Heal Potions`,
-    	nextText: 8
-  	},
-  	{
-    	text: `Scare`,
-    	nextText: 9
-  	},
-  	{
-    	text: `Stab`,
-    	nextText: 10
-  	},
-  	{
-    	text: `Pendant of Pain`,
-    	nextText: 11
-  	},
-  	{
-    	text: `Persuade`,
-    	nextText: 12
-  	},
-	],
-	startCombat: 14,
+    id: 232,
+    text: 'You have been waiting to get some angry out',
+    options: [
+      {
+        text: `Slash`,
+        nextText: 5
+      },
+      {
+        text: `Heal Potions`,
+        nextText: 8
+      },
+      {
+        text: `Scare`,
+        nextText: 9
+      },
+      {
+        text: `Stab`,
+        nextText: 10
+      },
+      {
+        text: `Pendant of Pain`,
+        nextText: 11
+      },
+      {
+        text: `Persuade`,
+        nextText: 12
+      },
+    ],
+    startCombat: 14,
   },
   {//end combat
-	id: 233,
-	text: 'Defeated Bear.',
-	options: [
-  	{
-    	text: `Continue`,
-    	nextText: 234
-  	}
-	],
+    id: 233,
+    text: 'Defeated Bear.',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 234
+      }
+    ],
   },
   {//
-	id: 234,
-	text: 'You strike down the guards, you see a picture fall out of one of their pockets.',
-	options: [
-  	{
-    	text: `Push forward`,
-    	nextText: 236
-  	},
-  	{
-    	text: `Investigate the picture`,
-    	nextText: 235
-  	}
-	],
+    id: 234,
+    text: 'You strike down the guards, you see a picture fall out of one of their pockets.',
+    options: [
+      {
+        text: `Push forward`,
+        nextText: 236
+      },
+      {
+        text: `Investigate the picture`,
+        nextText: 235
+      }
+    ],
   },
   {//
-	id: 235,
-	text: 'You look closer at the picture, it\'s a drawing of the guards\' kids. You are taken back a little, maybe this isn\'t worth taking revenge on everyone. You then snap out of it remembering what happened to you.',
-	options: [
-  	{
-    	text: `Continue pushing forward`,
-    	nextText: 236
-  	}
-	],
+    id: 235,
+    text: 'You look closer at the picture, it\'s a drawing of the guards\' kids. You are taken back a little, maybe this isn\'t worth taking revenge on everyone. You then snap out of it remembering what happened to you.',
+    options: [
+      {
+        text: `Continue pushing forward`,
+        nextText: 236
+      }
+    ],
   },
   {//
-	id: 236,
-	text: 'You walk over the dead guards, with everyone so focused on the dragon none pays attention to you, you kick open the doors to the manor, you walk into another fight, but these seems like the hardest one yet.',
-	options: [
-  	{
-    	text: `pull out your weapon`,
-    	nextText: 237
-  	}
-	],
+    id: 236,
+    text: 'You walk over the dead guards, with everyone so focused on the dragon none pays attention to you, you kick open the doors to the manor, you walk into another fight, but these seems like the hardest one yet.',
+    options: [
+      {
+        text: `pull out your weapon`,
+        nextText: 237
+      }
+    ],
   },
   {// combat
-	id: 237,
-	text: 'You have been waiting to get some angry out',
-	options: [
-  	{
-    	text: `Slash`,
-    	nextText: 5
-  	},
-  	{
-    	text: `Heal Potions`,
-    	nextText: 8
-  	},
-  	{
-    	text: `Scare`,
-    	nextText: 9
-  	},
-  	{
-    	text: `Stab`,
-    	nextText: 10
-  	},
-  	{
-    	text: `Pendant of Pain`,
-    	nextText: 11
-  	},
-  	{
-    	text: `Persuade`,
-    	nextText: 12
-  	},
-	],
-	startCombat: 14,
+    id: 237,
+    text: 'You have been waiting to get some angry out',
+    options: [
+      {
+        text: `Slash`,
+        nextText: 5
+      },
+      {
+        text: `Heal Potions`,
+        nextText: 8
+      },
+      {
+        text: `Scare`,
+        nextText: 9
+      },
+      {
+        text: `Stab`,
+        nextText: 10
+      },
+      {
+        text: `Pendant of Pain`,
+        nextText: 11
+      },
+      {
+        text: `Persuade`,
+        nextText: 12
+      },
+    ],
+    startCombat: 14,
   },
   {// end combat
-	id: 238,
-	text: 'You cut through the guards.',
-	options: [
-  	{
-    	text: `Continue`,
-    	nextText: 1
-  	}
-	],
+    id: 238,
+    text: 'You cut through the guards.',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 1
+      }
+    ],
   },
   {//
-	id: 239,
-	text: 'You are feeling hurt, but you still have a job to finish. You run up the stairs to look for where Henry is.',
-	options: [
-  	{
-    	text: `Library`,
-    	nextText: 240
-  	},
-  	{
-    	text: `Kitchen`,
-    	nextText: 244
-  	},
-  	{
-    	text: `Guest Room`,
-    	nextText: 245
-  	}
-	],
+    id: 239,
+    text: 'You are feeling hurt, but you still have a job to finish. You run up the stairs to look for where Henry is.',
+    options: [
+      {
+        text: `Library`,
+        nextText: 240
+      },
+      {
+        text: `Kitchen`,
+        nextText: 244
+      },
+      {
+        text: `Guest Room`,
+        nextText: 245
+      }
+    ],
   },
   {// library
-	id: 240,
-	text: 'You walk into the library, it\'s a large room with enough books to suffocate someone with. You see someone sitting next to the fireplace. You remember this boy from Henry\'s dinner, it\'s his son Johnny.',
-	options: [
-  	{
-    	text: `Hey, Johnny is it ? `,
-    	nextText: 241
-  	},
-  	{
-    	text: `WHERE IS YOUR FATHER`,
-    	nextText: 242
-  	},
-  	{
-    	text: `Leave quietly`,
-    	nextText: 243
-  	}
-	],
+    id: 240,
+    text: 'You walk into the library, it\'s a large room with enough books to suffocate someone with. You see someone sitting next to the fireplace. You remember this boy from Henry\'s dinner, it\'s his son Johnny.',
+    options: [
+      {
+        text: `Hey, Johnny is it ? `,
+        nextText: 241
+      },
+      {
+        text: `WHERE IS YOUR FATHER`,
+        nextText: 242
+      },
+      {
+        text: `Leave quietly`,
+        nextText: 243
+      }
+    ],
   },
   {// library
-	id: 241,
-	text: 'JacK: "Johnny, I have business with your dad, do you know where he is?" The boy looks at you with the same terror from last time, he does not seem like he can form a sentence.',
-	options: [
-  	{
-    	text: `WHERE IS YOUR FATHER`,
-    	nextText: 242
-  	},
-  	{
-    	text: `Leave quietly`,
-    	nextText: 243
-  	}
-	],
+    id: 241,
+    text: 'JacK: "Johnny, I have business with your dad, do you know where he is?" The boy looks at you with the same terror from last time, he does not seem like he can form a sentence.',
+    options: [
+      {
+        text: `WHERE IS YOUR FATHER`,
+        nextText: 242
+      },
+      {
+        text: `Leave quietly`,
+        nextText: 243
+      }
+    ],
   },
   {//
-	id: 242,
-	text: 'Johnny: "PLEASE! Please, please, please, please.. it\'s just a nightmare, please" The boy can not say anything no matter what you do.',
-	options: [
-  	{
-    	text: `Leave quietly`,
-    	nextText: 243
-  	}
-	],
+    id: 242,
+    text: 'Johnny: "PLEASE! Please, please, please, please.. it\'s just a nightmare, please" The boy can not say anything no matter what you do.',
+    options: [
+      {
+        text: `Leave quietly`,
+        nextText: 243
+      }
+    ],
   },
   {// library
-	id: 243,
-	text: 'You decide to walk out, but that boys eyes will haunt you for a bit.',
-	options: [
-  	{
-    	text: `Kitchen`,
-    	nextText: 244
-  	},
-  	{
-    	text: `Guest Room`,
-    	nextText: 245
-  	},
-  	{
-    	text: `Stairs`,
-    	nextText: 246
-  	},
-	],
+    id: 243,
+    text: 'You decide to walk out, but that boys eyes will haunt you for a bit.',
+    options: [
+      {
+        text: `Kitchen`,
+        nextText: 244
+      },
+      {
+        text: `Guest Room`,
+        nextText: 245
+      },
+      {
+        text: `Stairs`,
+        nextText: 246
+      },
+    ],
   },
   {//
-	id: 244,
-	text: 'You walk into the kitchen, there is nothing but cooks that are huddled in a corner, you pair your head around the door to see if someone is eating, but there is no sign of Henry.',
-	options: [
-  	{
-    	text: `Library`,
-    	nextText: 240
-  	},
-  	{
-    	text: `Guest Room`,
-    	nextText: 245
-  	},
-  	{
-    	text: `Stairs`,
-    	nextText: 246
-  	},
-	],
+    id: 244,
+    text: 'You walk into the kitchen, there is nothing but cooks that are huddled in a corner, you pair your head around the door to see if someone is eating, but there is no sign of Henry.',
+    options: [
+      {
+        text: `Library`,
+        nextText: 240
+      },
+      {
+        text: `Guest Room`,
+        nextText: 245
+      },
+      {
+        text: `Stairs`,
+        nextText: 246
+      },
+    ],
   },
   {//
-	id: 245,
-	text: 'You walk into a room with only one bed. It appears to be pretty empty and there is no sign of anything in here.',
-	options: [
-  	{
-    	text: `Library`,
-    	nextText: 240
-  	},
-  	{
-    	text: `Kitchen`,
-    	nextText: 244
-  	},
-  	{
-    	text: `Stairs`,
-    	nextText: 246
-  	},
-	],
+    id: 245,
+    text: 'You walk into a room with only one bed. It appears to be pretty empty and there is no sign of anything in here.',
+    options: [
+      {
+        text: `Library`,
+        nextText: 240
+      },
+      {
+        text: `Kitchen`,
+        nextText: 244
+      },
+      {
+        text: `Stairs`,
+        nextText: 246
+      },
+    ],
   },
   {//
-	id: 246,
-	text: 'You walk back to the stair from before, you see Henry at the bottom. You can not contain yourself, but you keep enough to control to not run at him.',
-	options: [
-  	{
-    	text: `Continue`,
-    	nextText: 247
-  	}
-	],
+    id: 246,
+    text: 'You walk back to the stair from before, you see Henry at the bottom. You can not contain yourself, but you keep enough to control to not run at him.',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 247
+      }
+    ],
   },
   {//
-	id: 247,
-	text: 'Henry: "JACK! WHAT HAVE YOU DONE!? WHAT DID I DO!?"',
-	options: [
-  	{
-    	text: `You destroyed everything, I will give you the same fate!`,
-    	nextText: 248
-  	},
-  	{
-    	text: `You burned down my town… my home… my life.`,
-    	nextText: 249
-  	},
-  	{
-    	text: `Stay silent.`,
-    	nextText: 250
-  	}
-	],
+    id: 247,
+    text: 'Henry: "JACK! WHAT HAVE YOU DONE!? WHAT DID I DO!?"',
+    options: [
+      {
+        text: `You destroyed everything, I will give you the same fate!`,
+        nextText: 248
+      },
+      {
+        text: `You burned down my town… my home… my life.`,
+        nextText: 249
+      },
+      {
+        text: `Stay silent.`,
+        nextText: 250
+      }
+    ],
   },
   {//
-	id: 248,
-	text: 'Henry: "What?"',
-	options: [
-  	{
-    	text: `You want to lie then ? So be it.`,
-    	nextText: 251
-  	}
-	],
+    id: 248,
+    text: 'Henry: "What?"',
+    options: [
+      {
+        text: `You want to lie then ? So be it.`,
+        nextText: 251
+      }
+    ],
   },
   {//
-	id: 249,
-	text: 'I’m sorry I don’t remember that, are you sure it was me?',
-	options: [
-  	{
-    	text: `HOW DARE YOU!`,
-    	nextText: 251
-  	}
-	],
+    id: 249,
+    text: 'I’m sorry I don’t remember that, are you sure it was me?',
+    options: [
+      {
+        text: `HOW DARE YOU!`,
+        nextText: 251
+      }
+    ],
   },
   {//
-	id: 250,
-	text: 'Swings at you.',
-	options: [
-  	{
-    	text: `Swing at him`,
-    	nextText: 251
-  	}
-	],
+    id: 250,
+    text: 'Swings at you.',
+    options: [
+      {
+        text: `Swing at him`,
+        nextText: 251
+      }
+    ],
   },
   {// combat
-	id: 251,
-	text: 'This is the final showdown, make it count.',
-	options: [
-  	{
-    	text: `Slash`,
-    	nextText: 5
-  	},
-  	{
-    	text: `Heal Potions`,
-    	nextText: 8
-  	},
-  	{
-    	text: `Scare`,
-    	nextText: 9
-  	},
-  	{
-    	text: `Stab`,
-    	nextText: 10
-  	},
-  	{
-    	text: `Pendant of Pain`,
-    	nextText: 11
-  	},
-  	{
-    	text: `Persuade`,
-    	nextText: 12
-  	},
-	],
-	startCombat: 15,
+    id: 251,
+    text: 'This is the final showdown, make it count.',
+    options: [
+      {
+        text: `Slash`,
+        nextText: 5
+      },
+      {
+        text: `Heal Potions`,
+        nextText: 8
+      },
+      {
+        text: `Scare`,
+        nextText: 9
+      },
+      {
+        text: `Stab`,
+        nextText: 10
+      },
+      {
+        text: `Pendant of Pain`,
+        nextText: 11
+      },
+      {
+        text: `Persuade`,
+        nextText: 12
+      },
+    ],
+    startCombat: 15,
   },
   {// end combat
-	id: 252,
-	text: 'You are filled with even more rage.',
-	options: [
-  	{
-    	text: `What will you do? `,
-    	nextText: 253
-  	}
-	],
+    id: 252,
+    text: 'You are filled with even more rage.',
+    options: [
+      {
+        text: `What will you do? `,
+        nextText: 253
+      }
+    ],
   },
   {//
-	id: 253,
-	text: 'You look at Henry, this is your chance take your revenge or do what you know is right.',
-	options: [
-  	{
-    	text: `Kill`,
-    	nextText: 254
-  	},
-  	{
-    	text: `Spare`,
-    	nextText: 256
-  	}
-	],
+    id: 253,
+    text: 'You look at Henry, this is your chance take your revenge or do what you know is right.',
+    options: [
+      {
+        text: `Kill`,
+        nextText: 254
+      },
+      {
+        text: `Spare`,
+        nextText: 256
+      }
+    ],
   },
   {// kill
-	id: 254,
-	text: 'You look at Henry, you try to find a reason to keep him alive, but nothing comes to mind. You lift your weapon above your head and get hitting him with it until he is died.',
-	options: [
-  	{
-    	text: `What now ? `,
-    	nextText: 255
-  	}
-	],
+    id: 254,
+    text: 'You look at Henry, you try to find a reason to keep him alive, but nothing comes to mind. You lift your weapon above your head and get hitting him with it until he is died.',
+    options: [
+      {
+        text: `What now ? `,
+        nextText: 255
+      }
+    ],
   },
   {// killing, bad end
-	id: 255,
-	text: 'You do not feel like anything changed, was this really the right path? Before you can think about what just happened you feel a sharp pain in your upper chest. You turn around to see Johnny, your vision becomes blurred until it reaches pitch black.',
-	options: [
-  	{
-    	text: `Continue`,
-    	nextText: 1
-  	}
-	],
+    id: 255,
+    text: 'You do not feel like anything changed, was this really the right path? Before you can think about what just happened you feel a sharp pain in your upper chest. You turn around to see Johnny, your vision becomes blurred until it reaches pitch black.',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 1
+      }
+    ],
   },
   {// spare
-	id: 256,
-	text: 'You remember his son, do you really want to be the same monster as him? You throw your blade in front of Henry and run out to get out.',
-	options: [
-  	{
-    	text: `Exit`,
-    	nextText: 257
-  	}
-	],
+    id: 256,
+    text: 'You remember his son, do you really want to be the same monster as him? You throw your blade in front of Henry and run out to get out.',
+    options: [
+      {
+        text: `Exit`,
+        nextText: 257
+      }
+    ],
   },
   {// spare
-	id: 247,
-	text: 'You run outside to see fire everywhere, the dragon is still distracting the guards. You run into the forest, some arrows heading towards you, but you are too far for them to have good aim. The dragon still fought on.',
-	options: [
-  	{
-    	text: `Catch your breath`,
-    	nextText: 192
-  	}
-	],
+    id: 247,
+    text: 'You run outside to see fire everywhere, the dragon is still distracting the guards. You run into the forest, some arrows heading towards you, but you are too far for them to have good aim. The dragon still fought on.',
+    options: [
+      {
+        text: `Catch your breath`,
+        nextText: 192
+      }
+    ],
   },
   {// spare
-	id: 248,
-	text: 'You pick up some flowers from the weeds near your home and put them on top of your family\'s grave. Ties come across your face, you fall to the floor and moan.',
-	options: [
-  	{
-    	text: `...`,
-    	nextText: 192
-  	}
-	],
+    id: 248,
+    text: 'You pick up some flowers from the weeds near your home and put them on top of your family\'s grave. Ties come across your face, you fall to the floor and moan.',
+    options: [
+      {
+        text: `...`,
+        nextText: 192
+      }
+    ],
   },
   {// spare
-	id: 248,
-	text: 'You get enough strength to get up and move on, tell them goodbye and start to take over Mary\'s business and become a blacksmith. You know one day someone will come after you, but at least you can live these days in peace.',
-	options: [
-  	{
-    	text: `Continue`,
-    	nextText: 192
-  	}
-	],
+    id: 248,
+    text: 'You get enough strength to get up and move on, tell them goodbye and start to take over Mary\'s business and become a blacksmith. You know one day someone will come after you, but at least you can live these days in peace.',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 192
+      }
+    ],
   },
   {// good ending
-	id: 248,
-	text: 'THE END',
-	options: [
-  	{
-    	text: `Restart`,
-    	nextText: 1
-  	}
-	],
+    id: 248,
+    text: 'THE END',
+    options: [
+      {
+        text: `Restart`,
+        nextText: -1
+      }
+    ],
   },
-  {//
-	id: 248,
-	text: '',
-	options: [
-  	{
-    	text: `Continue`,
-    	nextText: 192
-  	}
-	],
-  },
+
 ]
 startGame()
 
