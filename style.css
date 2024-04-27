@@ -38,16 +38,29 @@ main {
     display: flex;
 }
 
-.screen {
+#screen {
     border: 4mm ridge #FFFFFF;
     /* border-bottom: 0mm;
     border-right: 0mm; */
     width: 80%;
     height: 100%;
-    background-image: url(/Images/startVillage.png);
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+.startVillage{
+    background-image: url(/Images/startVillage.png);
+}
+
+.marryForge{
+    background-image: url(/Images/MarryForge.png);
+}
+
+
+
+
+
+
 
 .inventory {
     display: flex;
@@ -109,6 +122,7 @@ main {
     border-radius: 10% / 50%;
     border: 2mm ridge #FFFFFF;
     text-align: center;
+    height: 10vh;
     max-height: 50%;
     min-width: 15vw;
     max-width: 25vw;
@@ -135,12 +149,12 @@ main {
         height: 40%;
     }
 
-    .screenDisplay {
+    #screenDisplay {
         flex-direction: column;
     }
 
     .inventory,
-    .screen {
+    #screen {
         display: flex;
         width: 98vw;
         border-bottom: 0mm;
@@ -159,9 +173,9 @@ main {
     }
 }
 
-@media (width <=500px) {
+@media (width <=501px) {
 
-    .screen {
+    #screen {
         display: none;
     }
 
@@ -175,7 +189,7 @@ main {
     }
 
     .bottomHalf {
-        height: 150vw;
+        height: 166vw;
     }
 
     .btnGrid {
@@ -198,13 +212,14 @@ main {
     }
 
 
-    .screen {
+    #screen {
         display: none;
     }
 }
 
 @media (width <=375px) {
     .btn {
+        font-size: xx-small;
         max-height: 95%;
         min-width: 20vw;
         max-width: 30vw
@@ -240,7 +255,7 @@ main {
 .bottomHalf{
     height: 111vh;
 }
-    .screen {
+    #screen {
         display: none;
     }
 

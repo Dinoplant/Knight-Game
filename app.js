@@ -58,6 +58,7 @@ let Jin = new Enemy('Jin', 100, 0, -1, 20, 10)//37
 
 const textElement = document.getElementById('text'); //gets the ids from the html to change the text for the story
 const optionButtonsElement = document.getElementById('btnOptions');
+const imageClassScreen = document.getElementById(`screen`)
 let inventoryElement = document.getElementById(`invText`)
 let d4one = 0
 let d4two = 0
@@ -89,9 +90,6 @@ let endingNode = 0
 let combatEnded = false
 let neededDeath = false
 
-
-
-
 let player = {
   wis: 0,
   str: 0,
@@ -106,14 +104,8 @@ let player = {
   healPot: 0,
   map: 0,
   jade: 0,
-  haveDog: 0,
-  followDog: 0,
-  noDog: 0,
   debug: 0,
 }
-
-
-
 
 function startGame() {
   player = {
@@ -128,7 +120,11 @@ function startGame() {
     spear: 0,
     shortSword: 0,
     healPot: 0,
+    map: 0,
     jade: 0,
+    haveDog: false,
+    followDog: false,
+    noDog: false,
     key: 0,
     debug: 0,
   }
@@ -136,9 +132,31 @@ function startGame() {
 }
 
 
+
 function showTextNode(textNodeIndex) { // goes through the text nodes checks what I put for the text and changes the text in the HTML
   const textNode = textNodes.find(textNode => textNode.id === textNodeIndex)
   textElement.innerText = textNode.text
+
+
+  if (textNode.checkDog === 1) {
+    if (player.hasDog === true) {
+showOption()
+    }
+    else if (player.followDog === true) {
+
+    }
+    else (player.noDog === true){
+
+    }
+  } else if (textNode.imageIndex === 2) {
+    console.log(`image index 2`)
+    imageClassScreen.classList.remove(firstChild)
+    imageClassScreen.classList.add(`marryForge`)
+  } else {
+    console.log(`Image index not working `)
+  }
+
+
   if (textNode.startCombat === 1 && combatEnded === false) { //starts the combat first
     console.log('combat mode engaged');
     combatQuestion = false;
@@ -198,7 +216,7 @@ function showTextNode(textNodeIndex) { // goes through the text nodes checks wha
   else if (textNode.startCombat === 10 && combatEnded === false) { //starts the combat 10
     console.log('combat mode engaged');
     combatQuestion = false;
-    endingNode = 191.24;
+    endingNode = 190.24;
     startCombat();
     combat(25, 26, 2); //ending id
   } else if (textNode.startCombat === 11 && combatEnded === false) { //starts the combat 10
@@ -264,15 +282,11 @@ function showTextNode(textNodeIndex) { // goes through the text nodes checks wha
     console.log('no violence = sad pandas');
     combatQuestion = false
   }
-
   if (textNode.dogFollow === true && player.followDog === true) {
     showTextNode()
   }
-
   if (textNode.diceRoll === 1) {
     console.log(`The dice roller is on and did things`) // this is how you roll dice to see if someone does something
-
-
     d20 = Math.floor(Math.random() * (21 - 1) + 1)
     if (player.dex >= 9) {
       d20 += 4
@@ -370,7 +384,7 @@ function showTextNode(textNodeIndex) { // goes through the text nodes checks wha
     } else if (d20 <= 9) {
       return showTextNode(190.22)
     }
-  }else if (textNode.diceRoll === 7) {
+  } else if (textNode.diceRoll === 7) {
     console.log(`The dice roller is on and did things`) // this is how you roll dice to see if someone does something
     d20 = Math.floor(Math.random() * (21 - 1) + 1)
     if (player.cha >= 10) {
@@ -435,16 +449,9 @@ function showTextNode(textNodeIndex) { // goes through the text nodes checks wha
       return showTextNode(758)
     }
   }
-
-
-
   while (optionButtonsElement.firstChild) { //removes buttons for combat, deletes the buttons but then adds new buttons
     optionButtonsElement.removeChild(optionButtonsElement.firstChild)
   }
-
-
-
-
   textNode.options.forEach(option => { //makes the options by checking the option premature see how many options there are
     if (showOption(option)) {
       const button = document.createElement('button')
@@ -464,10 +471,6 @@ function showTextNode(textNodeIndex) { // goes through the text nodes checks wha
       } else if (option === textNode.options[5]) {
         button.addEventListener('click', () => persuade())
       }
-
-
-
-
       if (textNode.heal === true && option === textNode.options[0]) {
         button.removeEventListener('click', () => slash(),)
         button.addEventListener('click', () => healPot(player.healPot))
@@ -1433,21 +1436,27 @@ function endCombat() {
 
   if (playerHp <= 0 && neededDeath !== true) {
     newText = `You have been killed and won't be missed`
+
     showTextNode(13)
     playerHp = 175
   } else if (combatQuestion === true && combatEnded === true && neededDeath === true) {
-    attack = false
     console.log(`this did go in the end winning combat`)
+    attack = false
+    talk = false
     neededDeath = false
     combatQuestion = false
+    combatEnded = false
     playerHp = 175
     newText = `You have failed, and lost to Henry`
     showTextNode(endingNode)
   }
   else if (combatQuestion === true && combatEnded === true) {
-    attack = false
     console.log(`this did go in the end winning combat`)
+    attack = false
+    talk = false
+    neededDeath = false
     combatQuestion = false
+    combatEnded = false
     playerHp = 175
     newText = `You have won the battle`
     showTextNode(endingNode)
@@ -1770,6 +1779,7 @@ let textNodes = [
         nextText: 21
       }
     ],
+    imageIndex: 2
   },
   {
     id: 21,
@@ -2025,18 +2035,18 @@ let textNodes = [
     options: [
       {
         text: `Help the dog.`,
-        setplayer: { hasDog: true },
+        setplayer: { haveDog: true },
         nextText: 37,
       },
       {
         text: `Do not interact with the dog.`,
-        nextText: 338,
-        setplayer: { followDog: true }
+        setplayer: { followDog: true },
+        nextText: 338
       },
       {
         text: `Tell the dog to go away.`,
-        nextText: 639,
-        setplayer: { noDog: true }
+        setPlayer: { noDog: true },
+        nextText: 638
       }
     ],
   },
@@ -2055,6 +2065,7 @@ let textNodes = [
         nextText: 40
       }
     ],
+    checkDog: 1
   },
   //keep dog
   {
@@ -2155,7 +2166,7 @@ let textNodes = [
     options: [
       {
         text: `Next`,
-        nextText: 43
+        nextText: 41.6
       },
     ],
   },
@@ -2165,27 +2176,15 @@ let textNodes = [
     options: [
       //keep/has dog
       {
-        text: `Go around`,
+        requiredPlayer: (currentState) => { currentState.haveDog === true },
+        text: `Leave Tutorial`,
         nextText: 43,
-        requiredPlayer: (currentState) => { currentState.hasDog === true || currentState.followDog === true }
-      },
-      {
-        text: `Try to bust down door
-    	[Check]`,
-        nextText: 43,
-        requiredPlayer: (currentState) => { currentState.hasDog === true || currentState.followDog === true }
       },
       //no dog
       {
-        text: `Go around`,
+        requiredPlayer: (currentState) => { currentState.noDog === 1 },
+        text: `Leave Tutorial no dog`,
         nextText: 643,
-        requiredPlayer: (currentState) => { currentState.noDog === true }
-      },
-      {
-        text: `Try to bust down door
-        [Check]`,
-        nextText: 643,
-        requiredPlayer: (currentState) => { currentState.noDog === true }
       },
     ],
   },
@@ -2255,7 +2254,13 @@ let textNodes = [
     options: [
       {
         text: `Continue`,
-        nextText: 51
+        nextText: 51,
+        requiredPlayer: (currentState) => { currentState.haveDog === true || currentState.followDog === true },
+      },
+      {
+        text: `Continue`,
+        nextText: 651,
+        requiredPlayer: (currentState) => { currentState.noDog === true },
       }
     ],
   },
@@ -2265,7 +2270,7 @@ let textNodes = [
     options: [
       {
         text: `Continue`,
-        nextText: 49
+        nextText: 49,
       }
     ],
   },
@@ -2306,8 +2311,8 @@ let textNodes = [
     options: [
       {
         text: `Leave as the victor`,
-        nextText: 51
-      }
+        nextText: 51,
+      },
     ],
   },
   { //start after combat
@@ -2315,8 +2320,14 @@ let textNodes = [
     text: 'You walk off with a sense of relief, you are happy to be alive but you do not know what you should feel. The dog comes out from the forest and starts licking your face. ',
     options: [
       {
-        text: `Continue`,
-        nextText: 52
+        text: `Leave as the victor dog`,
+        nextText: 51,
+        requiredPlayer: (currentState) => { currentState.haveDog === true || currentState.followDog === true },
+      },
+      {
+        text: `Leave as the victor no dog`,
+        nextText: 651,
+        requiredPlayer: (currentState) => { currentState.noDog === true },
       }
     ],
   },
@@ -3293,7 +3304,7 @@ let textNodes = [
   },
   {// end conflict
     id: 124,
-    text: 'blank',
+    text: 'You are tried and a loser.',
     options: [
       {
         text: `Continue`,
@@ -4441,7 +4452,7 @@ let textNodes = [
         nextText: 190.19
       }
     ],
-diceRoll: 6
+    diceRoll: 6
   },
   {// succeeds bj
     id: 190.19,
@@ -4449,7 +4460,7 @@ diceRoll: 6
     options: [
       {
         text: `Thank you, I will go immediately.`,
-        nextText: 190.21
+        nextText: 190.22
       }
     ],
   },
@@ -4500,7 +4511,7 @@ diceRoll: 6
     options: [
       {
         text: `Continue`,
-        nextText: 192.25
+        nextText: 190.25
       }
     ],
   },
@@ -4564,17 +4575,17 @@ diceRoll: 6
       }
     ],
   },
-    {// dex check 10 bf
-      id: 191.61,
-      text: 'Blank due to dice roll.',
-      options: [
-        {
-          text: `Make it for the Armoury`,
-          nextText: 191.7
-        }
-      ],
-      diceRoll: 8
-    },
+  {// dex check 10 bf
+    id: 191.61,
+    text: 'Blank due to dice roll.',
+    options: [
+      {
+        text: `Make it for the Armoury`,
+        nextText: 191.7
+      }
+    ],
+    diceRoll: 8
+  },
   {// succeeds bf
     id: 191.7,
     text: 'You make it in the armoury without being seen.',
@@ -4694,17 +4705,17 @@ diceRoll: 6
       }
     ],
   },
-    {// dex check 12 bf
-      id: 192.171,
-      text: 'Blank due to dice roll.',
-      options: [
-        {
-          text: `Sneak off`,
-          nextText: 192.22
-        }
-      ],
-      diceRoll: 9
-    },
+  {// dex check 12 bf
+    id: 192.171,
+    text: 'Blank due to dice roll.',
+    options: [
+      {
+        text: `Sneak off`,
+        nextText: 192.22
+      }
+    ],
+    diceRoll: 9
+  },
   {// fail bf
     id: 192.18,
     text: 'Guard: "Stop right there!"',
@@ -4911,7 +4922,13 @@ diceRoll: 6
     options: [
       {
         text: `Good.`,
-        nextText: 203
+        nextText: 203,
+        requiredPlayer: (currentState) => { currentState.haveDog === true || currentState.followDog === true },
+      },
+      {
+        text: `Good.`,
+        nextText: 703,
+        requiredPlayer: (currentState) => { currentState.noDog === true },
       }
     ],
   },
@@ -4925,18 +4942,13 @@ diceRoll: 6
       {
         text: `Rush to Marrys home. `,
         nextText: 204,
-        requiredPlayer: (currentState) => { currentState.hasDog === true }
+        requiredPlayer: (currentState) => { currentState.haveDog === true }
       },
       {
         text: `Rush to Marrys home. `,
         nextText: 404,
         requiredPlayer: (currentState) => { currentState.followDog === true }
       },
-      {
-        text: `Rush to Marrys home. `,
-        nextText: 704,
-        requiredPlayer: (currentState) => { currentState.noDog === true }
-      }
     ],
   },
   {//
@@ -4951,7 +4963,7 @@ diceRoll: 6
   },
   {//
     id: 205,
-    text: 'You run into the home looking for Marry. You find her dead in the centre of the room surrounded by bandits. As you go to investigate her body you see her necklace with a weird glowing jade. Last time you saw her, she had nothing of the sort. You take it off her neck to try to further understand why this happened. The bandits weren/’t ever this aggressive and only stuck to the roads.',
+    text: 'You run into the home looking for Marry. You find her dead in the center of the room surrounded by bandits. As you go to investigate her body you see her necklace with a weird glowing jade. Last time you saw her, she had nothing of the sort. You take it off her neck to try to further understand why this happened. The bandits weren/’t ever this aggressive and only stuck to the roads.',
     options: [
       {
         text: `Continue`,
@@ -5561,23 +5573,23 @@ diceRoll: 6
     ],
     startCombat: 15,
   },
-  {// end combat
+  {// end combat, switches you back to the other branches to finish off the story
     id: 252,
     text: 'You are filled with even more rage.',
     options: [
       {
         text: `What will you do? `,
-        nextText: 253,
-        requiredPlayer: (currentState) => { currentState.hasDog === true }
+        nextText: 253, //0-2 with dog
+        requiredPlayer: (currentState) => { currentState.haveDog === true }
       },
       {
         text: `What will you do? `,
-        nextText: 453,
+        nextText: 453, // following dogs 3 and 4
         requiredPlayer: (currentState) => { currentState.followDog === true }
       },
       {
         text: `What will you do? `,
-        nextText: 753,
+        nextText: 753, //no dog 700s and 600s
         requiredPlayer: (currentState) => { currentState.noDog === true }
       }
     ],
@@ -5680,6 +5692,7 @@ diceRoll: 6
       {
         text: `Continue`,
         nextText: 40,
+
       }
     ],
   },
@@ -5984,7 +5997,7 @@ diceRoll: 6
       }
     ],
   },
-  //skip scene
+  //skip scene to the keep dog where you will fight henry then the branches will sepurate once more
   {// end combat
     id: 452,
     text: 'You are filled with even more rage.',
@@ -6011,7 +6024,7 @@ diceRoll: 6
     options: [
       {
         text: `Continue`,
-        nextText: 1
+        nextText: -1
       }
     ],
   },
@@ -6070,6 +6083,7 @@ diceRoll: 6
         nextText: 647
       }
     ],
+    diceRoll: 1
   },
   {
     id: 644, //talking
@@ -6131,37 +6145,6 @@ diceRoll: 6
         nextText: 649
       }
     ],
-  },
-  { //combat
-    id: 649,
-    text: `You get into combat with the two bandits.`,
-    options: [
-      {
-        text: `Slash`,
-        nextText: 5
-      },
-      {
-        text: `Heal Potions`,
-        nextText: 8
-      },
-      {
-        text: `Scare`,
-        nextText: 9
-      },
-      {
-        text: `Stab`,
-        nextText: 10
-      },
-      {
-        text: `Pendant of Pain`,
-        nextText: 11
-      },
-      {
-        text: `Persuade`,
-        nextText: 12
-      },
-    ],
-    startCombat: 1,
   },
   {
     id: 650, //end of combat
@@ -6253,7 +6236,7 @@ diceRoll: 6
   },
   {//
     id: 705,
-    text: 'You run into the home looking for Marry. You find her dead in the centre of the room surrounded by bandits. As you go to investigate her body you see her necklace with a weird glowing jade. Last time you saw her, she had nothing of the sort. You take it off her neck to try to further understand why this happened. The bandits weren/’t ever this aggressive and only stuck to the roads.',
+    text: 'You run into the home looking for Marry. You find her dead in the center of the room surrounded by bandits. As you go to investigate her body you see her necklace with a weird glowing jade. Last time you saw her, she had nothing of the sort. You take it off her neck to try to further understand why this happened. The bandits weren/’t ever this aggressive and only stuck to the roads.',
     options: [
       {
         text: `Continue`,
@@ -6392,7 +6375,7 @@ diceRoll: 6
     options: [
       {
         text: `Go to your old home`,
-        nextText: 417
+        nextText: 417 //this takes you to the part of the story where you enter the village, which will take you to fight herny and then after the fight end back up at this branch
       }
     ],
   },
@@ -6418,9 +6401,7 @@ diceRoll: 6
       },
     ],
   },
-  //
-  //
-  {// this is where you have to return to this story
+  {
     id: 755,
     text: 'You pull back your weapon, but you yearn for more, this is not normal. You have only killed when you had to, but you have the urge to kill everything in the home. You lose control.',
     options: [
@@ -6451,17 +6432,17 @@ diceRoll: 6
       }
     ],
   },
-    {// Roll con save of 10
-      id: 757,
-      text: 'Blank due to dice roll.',
-      options: [
-        {
-          text: `STOP!`,
-          nextText: 759
-        }
-      ],
-      diceRoll: 10
-    },
+  {// Roll con save of 10
+    id: 757,
+    text: 'Blank due to dice roll.',
+    options: [
+      {
+        text: `STOP!`,
+        nextText: 759
+      }
+    ],
+    diceRoll: 10
+  },
   {// fails, END 
     id: 758,
     text: 'You cannot stop it, you lose control. You blackout and wake up to the horrid sight. You fall to your knees, you try throwing the blade away, but your hand doesn\'t listen. Your hand lifts, you feel a brief sharp pain, then nothing.',
