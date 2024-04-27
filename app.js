@@ -309,11 +309,11 @@ function showTextNode(textNodeIndex) { // goes through the text nodes checks wha
   } else if (textNode.diceRoll === 3) {
     console.log(`The dice roller is on and did things`) // this is how you roll dice to see if someone does something
     d20 = Math.floor(Math.random() * (21 - 1) + 1)
-    if (player.cha >= 9) {
+    if (player.cha >= 10) {
       d20 += 5
-    } else if (player.cha >= 6) {
+    } else if (player.cha >= 7) {
       d20 += 3
-    } else if (player.cha >= 3) {
+    } else if (player.cha >= 4) {
       d20 += 2
     }
     console.log(d20)
@@ -354,7 +354,71 @@ function showTextNode(textNodeIndex) { // goes through the text nodes checks wha
     } else if (d20 <= 15) {
       return showTextNode(137)
     }
-  } else if (textNode.diceRoll === 5) {
+  } else if (textNode.diceRoll === 6) {
+    console.log(`The dice roller is on and did things`) // this is how you roll dice to see if someone does something
+    d20 = Math.floor(Math.random() * (21 - 1) + 1)
+    if (player.cha >= 10) {
+      d20 += 5
+    } else if (player.cha >= 7) {
+      d20 += 3
+    } else if (player.cha >= 4) {
+      d20 += 2
+    }
+    console.log(d20)
+    if (d20 >= 10) {
+      return showTextNode(190.19)
+    } else if (d20 <= 9) {
+      return showTextNode(190.22)
+    }
+  }else if (textNode.diceRoll === 7) {
+    console.log(`The dice roller is on and did things`) // this is how you roll dice to see if someone does something
+    d20 = Math.floor(Math.random() * (21 - 1) + 1)
+    if (player.cha >= 10) {
+      d20 += 5
+    } else if (player.cha >= 7) {
+      d20 += 3
+    } else if (player.cha >= 4) {
+      d20 += 2
+    }
+    console.log(d20)
+    if (d20 >= 10) {
+      return showTextNode(190.19)
+    } else if (d20 <= 9) {
+      return showTextNode(190.22)
+    }
+  } else if (textNode.diceRoll === 8) {
+    console.log(`The dice roller is on and did things`) // this is how you roll dice to see if someone does something
+    d20 = Math.floor(Math.random() * (21 - 1) + 1)
+    if (player.dex >= 9) {
+      d20 += 4
+    } else if (player.dex >= 6) {
+      d20 += 2
+    } else if (player.dex >= 3) {
+      d20 += 1
+    }
+    console.log(d20)
+    if (d20 >= 10) {
+      return showTextNode(191.7)
+    } else if (d20 <= 9) {
+      return showTextNode(191.8)
+    }
+  } else if (textNode.diceRoll === 9) {
+    console.log(`The dice roller is on and did things`) // this is how you roll dice to see if someone does something
+    d20 = Math.floor(Math.random() * (21 - 1) + 1)
+    if (player.dex >= 9) {
+      d20 += 4
+    } else if (player.dex >= 6) {
+      d20 += 2
+    } else if (player.dex >= 3) {
+      d20 += 1
+    }
+    console.log(d20)
+    if (d20 >= 12) {
+      return showTextNode(191.22)
+    } else if (d20 <= 11) {
+      return showTextNode(192.18)
+    }
+  } else if (textNode.diceRoll === 10) {
     console.log(`The dice roller is on and did things`) // this is how you roll dice to see if someone does something
     d20 = Math.floor(Math.random() * (21 - 1) + 1)
     if (player.con >= 9) {
@@ -365,12 +429,13 @@ function showTextNode(textNodeIndex) { // goes through the text nodes checks wha
       d20 += 1
     }
     console.log(d20)
-    if (d20 >= 16) {
-      return showTextNode(136)
-    } else if (d20 <= 15) {
-      return showTextNode(137)
+    if (d20 >= 10) {
+      return showTextNode(759)
+    } else if (d20 <= 9) {
+      return showTextNode(758)
     }
   }
+
 
 
   while (optionButtonsElement.firstChild) { //removes buttons for combat, deletes the buttons but then adds new buttons
@@ -576,11 +641,11 @@ function scare() {
 function persuade() {
   if (combatQuestion === true || continueCombat === true) {
     d20 = Math.floor(Math.random() * (21 - 1) + 1)
-    if (player.cha >= 9) {
+    if (player.cha >= 10) {
       d20 += 5
-    } else if (player.cha >= 6) {
+    } else if (player.cha >= 7) {
       d20 += 3
-    } else if (player.cha >= 3) {
+    } else if (player.cha >= 4) {
       d20 += 2
     }
     if (player.wis >= 9) {
@@ -2961,7 +3026,18 @@ let textNodes = [
       {
         text: `Continue
     	[Check (Wis)]`,
-        nextText: 103
+        nextText: 103.1
+      }
+    ],
+
+  },
+  {// wisdom succeeds (ws)
+    id: 103.1,
+    text: 'Blank due to dice roll',
+    options: [
+      {
+        text: `Continue`,
+        nextText: 113
       }
     ],
     diceRoll: 2
@@ -3013,7 +3089,7 @@ let textNodes = [
   },
   {// wf
     id: 108.1,
-    text: 'Matthew: "What are you doing here?"',
+    text: 'Blank due to dice roll"',
     options: [
       { //charisma check
         text: `I here to see Henry
@@ -3066,10 +3142,20 @@ let textNodes = [
   },
   {// charisma succeeds
     id: 111,
-    text: 'Matthew: "You are okay to see Henry"',
+    text: 'Matthew: "Oh, I remember you, you are the new maid right?"',
     options: [
       {
-        text: `Continue`,
+        text: `Uh Yes Sir`,
+        nextText: 111.1
+      }
+    ],
+  },
+  {//
+    id: 111,
+    text: 'Matthew: "Where are my manners, go right ahead."',
+    options: [
+      {
+        text: `Thank You`,
         nextText: 116
       }
     ],
@@ -3264,6 +3350,7 @@ let textNodes = [
         nextText: 130
       }
     ],
+    diceRoll: 6
   },
   {// wisdom succeed
     id: 130,
@@ -3493,7 +3580,17 @@ let textNodes = [
     options: [
       {
         text: `Focus on the voices
-    	`,
+        [Check (Wis)]`,
+        nextText: 139.1
+      }
+    ],
+  },
+  {// wisdom or dex check
+    id: 139.1,
+    text: 'Blank due to dice roll',
+    options: [
+      {
+        text: `Focus on the voices`,
         nextText: 140
       }
     ],
@@ -3544,6 +3641,17 @@ let textNodes = [
     text: 'You spend the day getting your grip on reality. You pick the pickaxe near you and start to get mining, but you feel weak like your arms are about to break.',
     options: [
       {
+        text: `Mine the Rock
+        [Check (con)]`,
+        nextText: 145.1
+      }
+    ],
+  },
+  {// con check
+    id: 145.1,
+    text: 'Blank due to dice roll.',
+    options: [
+      {
         text: `Continue`,
         nextText: 146
       }
@@ -3556,7 +3664,7 @@ let textNodes = [
     options: [
       {
         text: `Continue`,
-        nextText: 18
+        nextText: 178
       }
     ],
   },
@@ -4317,10 +4425,23 @@ let textNodes = [
     text: 'Jack: "Sorry, I need to go to the general. An inmate has killed a fellow inmate in the armoury and I do not know where that inmate is."',
     options: [
       {
+        text: `Continue
+        [Check (cha)]`,
+        nextText: 190.181
+      }
+    ],
+    diceRoll: 7
+  },
+  {//charisma check 10 bj
+    id: 190.181,
+    text: 'Blank due too dice roll."',
+    options: [
+      {
         text: `Continue`,
         nextText: 190.19
       }
     ],
+diceRoll: 6
   },
   {// succeeds bj
     id: 190.19,
@@ -4439,10 +4560,21 @@ let textNodes = [
     options: [
       {
         text: `Make it for the Armoury`,
-        nextText: 191.7
+        nextText: 191.61
       }
     ],
   },
+    {// dex check 10 bf
+      id: 191.61,
+      text: 'Blank due to dice roll.',
+      options: [
+        {
+          text: `Make it for the Armoury`,
+          nextText: 191.7
+        }
+      ],
+      diceRoll: 8
+    },
   {// succeeds bf
     id: 191.7,
     text: 'You make it in the armoury without being seen.',
@@ -4558,10 +4690,21 @@ let textNodes = [
     options: [
       {
         text: `Sneak off`,
-        nextText: 192.22
+        nextText: 192.171
       }
     ],
   },
+    {// dex check 12 bf
+      id: 192.171,
+      text: 'Blank due to dice roll.',
+      options: [
+        {
+          text: `Sneak off`,
+          nextText: 192.22
+        }
+      ],
+      diceRoll: 9
+    },
   {// fail bf
     id: 192.18,
     text: 'Guard: "Stop right there!"',
@@ -5211,7 +5354,7 @@ let textNodes = [
     options: [
       {
         text: `Continue`,
-        nextText: 1
+        nextText: 239
       }
     ],
   },
@@ -5469,7 +5612,7 @@ let textNodes = [
     options: [
       {
         text: `Continue`,
-        nextText: 1
+        nextText: -1
       }
     ],
   },
@@ -5967,7 +6110,7 @@ let textNodes = [
         nextText: 647
       }
     ],
-    diceRoll: 1
+    diceRoll: 10
   },
   { //sneak
     id: 648, //succeed on dex roll
@@ -6302,18 +6445,30 @@ let textNodes = [
     text: 'Before you make it out to meet your fate to the guards, you stumble on one of Henry\'s sons. You sit there, you desperately trying to muster enough strength to walk past, but you have that itch again. Was this from that jade?',
     options: [
       {
-        text: `STOP!`,
+        text: `STOP!
+        [Check (con)]`,
         nextText: 759
       }
     ],
   },
+    {// Roll con save of 10
+      id: 757,
+      text: 'Blank due to dice roll.',
+      options: [
+        {
+          text: `STOP!`,
+          nextText: 759
+        }
+      ],
+      diceRoll: 10
+    },
   {// fails, END 
     id: 758,
     text: 'You cannot stop it, you lose control. You blackout and wake up to the horrid sight. You fall to your knees, you try throwing the blade away, but your hand doesn\'t listen. Your hand lifts, you feel a brief sharp pain, then nothing.',
     options: [
       {
         text: `Bad Ending`,
-        nextText: 1
+        nextText: -1
       }
     ],
   },
@@ -6374,11 +6529,9 @@ let textNodes = [
     options: [
       {
         text: `Congrats, you live.`,
-        nextText: 1
+        nextText: -1
       }
     ],
   },
 ]
 startGame()
-
-
