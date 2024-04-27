@@ -58,7 +58,6 @@ let Jin = new Enemy('Jin', 100, 0, -1, 20, 10)//37
 
 const textElement = document.getElementById('text'); //gets the ids from the html to change the text for the story
 const optionButtonsElement = document.getElementById('btnOptions');
-const imageClassScreen = document.getElementById(`screen`)
 let inventoryElement = document.getElementById(`invText`)
 let d4one = 0
 let d4two = 0
@@ -90,6 +89,9 @@ let endingNode = 0
 let combatEnded = false
 let neededDeath = false
 
+
+
+
 let player = {
   wis: 0,
   str: 0,
@@ -104,8 +106,14 @@ let player = {
   healPot: 0,
   map: 0,
   jade: 0,
+  haveDog: 0,
+  followDog: 0,
+  noDog: 0,
   debug: 0,
 }
+
+
+
 
 function startGame() {
   player = {
@@ -120,17 +128,12 @@ function startGame() {
     spear: 0,
     shortSword: 0,
     healPot: 0,
-    map: 0,
     jade: 0,
-    haveDog: false,
-    followDog: false,
-    noDog: false,
     key: 0,
     debug: 0,
   }
   showTextNode(1)
 }
-
 
 
 function showTextNode(textNodeIndex) { // goes through the text nodes checks what I put for the text and changes the text in the HTML
@@ -139,154 +142,203 @@ function showTextNode(textNodeIndex) { // goes through the text nodes checks wha
 
 
   if (textNode.checkDog === 1) {
+    console.log(`check dog work`)
     if (player.hasDog === true) {
-showOption()
+      console.log(`check dog  has`)
+      showTextNode(51)
     }
     else if (player.followDog === true) {
-
+      console.log(`check dog follow`)
+      showTextNode(51)
     }
-    else (player.noDog === true){
-
+    else if (player.noDog === true) {
+      console.log(`check dog no`)
+      showTextNode(651)
     }
   } else if (textNode.imageIndex === 2) {
     console.log(`image index 2`)
     imageClassScreen.classList.remove(firstChild)
     imageClassScreen.classList.add(`marryForge`)
-  } else {
-    console.log(`Image index not working `)
-  }
+  } else if (textNode.checkDog === 2) {
+    console.log(`check dog work`)
+    if (player.hasDog === true) {
+      console.log(`check dog  has`)
+      showTextNode(203)
+    }
+    else if (player.followDog === true) {
+      console.log(`check dog follow`)
+      showTextNode(203)
+    }
+    else if (player.noDog === true) {
+      console.log(`check dog no`)
+      showTextNode(703)
+    }
+  } else if (textNode.imageIndex === 3) {
+    console.log(`image index 2`)
+    imageClassScreen.classList.remove(firstChild)
+    imageClassScreen.classList.add(`marryForge`)
+  } else if (textNode.checkDog === 3) {
+    console.log(`check dog work`)
+    if (player.hasDog === true) {
+      console.log(`check dog  has`)
+      showTextNode(204)
+    }
+    else if (player.followDog === true) {
+      console.log(`check dog follow`)
+      showTextNode(404)
+    }
+  } else if (textNode.checkDog === 4) {
+    console.log(`check dog work`)
+    if (player.hasDog === true) {
+      console.log(`check dog  has`)
+      showTextNode(253)
+    }
+    else if (player.followDog === true) {
+      console.log(`check dog follow`)
+      showTextNode(453)
+    }
+    else if (player.noDog === true) {
+      console.log(`check dog no`)
+      showTextNode(753)
+    }
 
 
-  if (textNode.startCombat === 1 && combatEnded === false) { //starts the combat first
-    console.log('combat mode engaged');
-    combatQuestion = false;
-    endingNode = 50;
-    startCombat();
-    combat(6, 7, 1); //ending id
-  } else if (textNode.startCombat === 2 && combatEnded === false) { //starts the combat 2nd WRONG
-    console.log('combat mode engaged');
-    combatQuestion = false;
-    endingNode = 83; //WHAT
-    startCombat();
-    combat(5, 10, 13); //ending id
-  } else if (textNode.startCombat === 3 && combatEnded === false) { //starts the combat third
-    console.log('combat mode engaged');
-    combatQuestion = false;
-    endingNode = 99;
-    startCombat();
-    combat(18, 1, 2); //ending id
-  } else if (textNode.startCombat === 4 && combatEnded === false) { //starts the combat 4 WRONG
-    console.log('combat mode engaged');
-    combatQuestion = false;
-    endingNode = 110; //WHAT
-    startCombat();
-    combat(19, 23, 2); //ending id
-  } else if (textNode.startCombat === 5 && combatEnded === false) { //starts the combat 5
-    console.log('combat mode engaged');
-    combatQuestion = false;
-    endingNode = 124;
-    neededDeath = true
-    startCombat();
-    combat(34, 1, 2); //ending id
-  } else if (textNode.startCombat === 6 && combatEnded === false) { //starts the combat 6
-    console.log('combat mode engaged');
-    combatQuestion = false;
-    endingNode = 189.9;
-    startCombat();
-    combat(15, 22, 2); //ending id
-  } else if (textNode.startCombat === 7 && combatEnded === false) { //starts the combat 7
-    console.log('combat mode engaged');
-    combatQuestion = false;
-    endingNode = 189.91;
-    startCombat();
-    combat(15, 22, 2); //ending id
-  } else if (textNode.startCombat === 8 && combatEnded === false) { //starts the combat 8
-    console.log('combat mode engaged');
-    combatQuestion = false;
-    endingNode = 190.9;
-    startCombat();
-    combat(21, 22, 2); //ending id
-  } else if (textNode.startCombat === 9 && combatEnded === false) { //starts the combat 9
-    console.log('combat mode engaged');
-    combatQuestion = false;
-    endingNode = 190.15;
-    startCombat();
-    combat(37, 1, 2); //ending id
-  }
-  else if (textNode.startCombat === 10 && combatEnded === false) { //starts the combat 10
-    console.log('combat mode engaged');
-    combatQuestion = false;
-    endingNode = 190.24;
-    startCombat();
-    combat(25, 26, 2); //ending id
-  } else if (textNode.startCombat === 11 && combatEnded === false) { //starts the combat 10
-    console.log('combat mode engaged');
-    combatQuestion = false;
-    endingNode = 191.12;
-    startCombat();
-    combat(21, 1, 2); //ending id
-  } else if (textNode.startCombat === 12 && combatEnded === false) { //starts the combat 11
-    console.log('combat mode engaged');
-    combatQuestion = false;
-    endingNode = 191.19;
-    startCombat();
-    combat(21, 23, 2); //ending id
-  } else if (textNode.startCombat === 13 && combatEnded === false) { //starts the combat 12
-    console.log('combat mode engaged');
-    combatQuestion = false;
-    endingNode = 197;
-    startCombat();
-    combat(28, 1, 2); //ending id
-  } else if (textNode.startCombat === 14 && combatEnded === false) { //starts the combat 13
-    console.log('combat mode engaged');
-    combatQuestion = false;
-    endingNode = 233;
-    startCombat();
-    combat(17, 16, 2); //ending id
-  } else if (textNode.startCombat === 15 && combatEnded === false) { //starts the combat 14
-    console.log('combat mode engaged');
-    combatQuestion = false;
-    endingNode = 238;
-    startCombat();
-    combat(27, 23, 24); //ending id
-  } else if (textNode.startCombat === 16 && combatEnded === false) { //starts the combat 15
-    console.log('combat mode engaged');
-    combatQuestion = false;
-    endingNode = 252;
-    startCombat();
-    combat(35, 1, 2); //ending id
-  } else if (textNode.startCombat === 17 && combatEnded === false) { //starts the combat 10
-    console.log('combat mode engaged');
-    combatQuestion = false;
-    endingNode = 433;
-    startCombat();
-    combat(17, 16, 2); //ending id
-  } else if (textNode.startCombat === 18 && combatEnded === false) { //starts the combat 10
-    console.log('combat mode engaged');
-    combatQuestion = false;
-    endingNode = 650;
-    startCombat();
-    combat(6, 7, 2); //ending id
-  } else if (textNode.startCombat === 19 && combatEnded === false) { //starts the combat 10
-    console.log('combat mode engaged');
-    combatQuestion = false;
-    endingNode = 761;
-    startCombat();
-    combat(5, 10, 13); //ending id
-  }
-  else if (textNode.continueCombat === true) { //checks if you are continue combat
-    console.log('combat mode cont');
-    combatQuestion = true
-  }
-  else {
-    console.log('no violence = sad pandas');
-    combatQuestion = false
+
+
+    if (textNode.startCombat === 1 && combatEnded === false) { //starts the combat first
+      console.log('combat mode engaged');
+      combatQuestion = false;
+      endingNode = 50;
+      startCombat();
+      combat(6, 7, 1); //ending id
+    } else if (textNode.startCombat === 2 && combatEnded === false) { //starts the combat 2nd WRONG
+      console.log('combat mode engaged');
+      combatQuestion = false;
+      endingNode = 83; //WHAT
+      startCombat();
+      combat(5, 10, 13); //ending id
+    } else if (textNode.startCombat === 3 && combatEnded === false) { //starts the combat third
+      console.log('combat mode engaged');
+      combatQuestion = false;
+      endingNode = 99;
+      startCombat();
+      combat(18, 1, 2); //ending id
+    } else if (textNode.startCombat === 4 && combatEnded === false) { //starts the combat 4 WRONG
+      console.log('combat mode engaged');
+      combatQuestion = false;
+      endingNode = 110; //WHAT
+      startCombat();
+      combat(19, 23, 2); //ending id
+    } else if (textNode.startCombat === 5 && combatEnded === false) { //starts the combat 5
+      console.log('combat mode engaged');
+      combatQuestion = false;
+      endingNode = 124;
+      neededDeath = true
+      startCombat();
+      combat(34, 1, 2); //ending id
+    } else if (textNode.startCombat === 6 && combatEnded === false) { //starts the combat 6
+      console.log('combat mode engaged');
+      combatQuestion = false;
+      endingNode = 189.9;
+      startCombat();
+      combat(15, 22, 2); //ending id
+    } else if (textNode.startCombat === 7 && combatEnded === false) { //starts the combat 7
+      console.log('combat mode engaged');
+      combatQuestion = false;
+      endingNode = 189.91;
+      startCombat();
+      combat(15, 22, 2); //ending id
+    } else if (textNode.startCombat === 8 && combatEnded === false) { //starts the combat 8
+      console.log('combat mode engaged');
+      combatQuestion = false;
+      endingNode = 190.9;
+      startCombat();
+      combat(21, 22, 2); //ending id
+    } else if (textNode.startCombat === 9 && combatEnded === false) { //starts the combat 9
+      console.log('combat mode engaged');
+      combatQuestion = false;
+      endingNode = 190.15;
+      startCombat();
+      combat(37, 1, 2); //ending id
+    }
+    else if (textNode.startCombat === 10 && combatEnded === false) { //starts the combat 10
+      console.log('combat mode engaged');
+      combatQuestion = false;
+      endingNode = 191.24;
+      startCombat();
+      combat(25, 26, 2); //ending id
+    } else if (textNode.startCombat === 11 && combatEnded === false) { //starts the combat 10
+      console.log('combat mode engaged');
+      combatQuestion = false;
+      endingNode = 191.12;
+      startCombat();
+      combat(21, 1, 2); //ending id
+    } else if (textNode.startCombat === 12 && combatEnded === false) { //starts the combat 11
+      console.log('combat mode engaged');
+      combatQuestion = false;
+      endingNode = 191.19;
+      startCombat();
+      combat(21, 23, 2); //ending id
+    } else if (textNode.startCombat === 13 && combatEnded === false) { //starts the combat 12
+      console.log('combat mode engaged');
+      combatQuestion = false;
+      endingNode = 197;
+      startCombat();
+      combat(28, 1, 2); //ending id
+    } else if (textNode.startCombat === 14 && combatEnded === false) { //starts the combat 13
+      console.log('combat mode engaged');
+      combatQuestion = false;
+      endingNode = 233;
+      startCombat();
+      combat(17, 16, 2); //ending id
+    } else if (textNode.startCombat === 15 && combatEnded === false) { //starts the combat 14
+      console.log('combat mode engaged');
+      combatQuestion = false;
+      endingNode = 238;
+      startCombat();
+      combat(27, 23, 24); //ending id
+    } else if (textNode.startCombat === 16 && combatEnded === false) { //starts the combat 15
+      console.log('combat mode engaged');
+      combatQuestion = false;
+      endingNode = 252;
+      startCombat();
+      combat(35, 1, 2); //ending id
+    } else if (textNode.startCombat === 17 && combatEnded === false) { //starts the combat 10
+      console.log('combat mode engaged');
+      combatQuestion = false;
+      endingNode = 433;
+      startCombat();
+      combat(17, 16, 2); //ending id
+    } else if (textNode.startCombat === 18 && combatEnded === false) { //starts the combat 10
+      console.log('combat mode engaged');
+      combatQuestion = false;
+      endingNode = 650;
+      startCombat();
+      combat(6, 7, 2); //ending id
+    } else if (textNode.startCombat === 19 && combatEnded === false) { //starts the combat 10
+      console.log('combat mode engaged');
+      combatQuestion = false;
+      endingNode = 761;
+      startCombat();
+      combat(5, 10, 13); //ending id
+    }
+    else if (textNode.continueCombat === true) { //checks if you are continue combat
+      console.log('combat mode cont');
+      combatQuestion = true
+    }
+    else {
+      console.log('no violence = sad pandas');
+      combatQuestion = false
+    }
   }
   if (textNode.dogFollow === true && player.followDog === true) {
     showTextNode()
   }
+
   if (textNode.diceRoll === 1) {
     console.log(`The dice roller is on and did things`) // this is how you roll dice to see if someone does something
+
+
     d20 = Math.floor(Math.random() * (21 - 1) + 1)
     if (player.dex >= 9) {
       d20 += 4
@@ -449,9 +501,16 @@ showOption()
       return showTextNode(758)
     }
   }
+
+
+
   while (optionButtonsElement.firstChild) { //removes buttons for combat, deletes the buttons but then adds new buttons
     optionButtonsElement.removeChild(optionButtonsElement.firstChild)
   }
+
+
+
+
   textNode.options.forEach(option => { //makes the options by checking the option premature see how many options there are
     if (showOption(option)) {
       const button = document.createElement('button')
@@ -471,6 +530,10 @@ showOption()
       } else if (option === textNode.options[5]) {
         button.addEventListener('click', () => persuade())
       }
+
+
+
+
       if (textNode.heal === true && option === textNode.options[0]) {
         button.removeEventListener('click', () => slash(),)
         button.addEventListener('click', () => healPot(player.healPot))
@@ -1436,27 +1499,21 @@ function endCombat() {
 
   if (playerHp <= 0 && neededDeath !== true) {
     newText = `You have been killed and won't be missed`
-
     showTextNode(13)
     playerHp = 175
   } else if (combatQuestion === true && combatEnded === true && neededDeath === true) {
-    console.log(`this did go in the end winning combat`)
     attack = false
-    talk = false
+    console.log(`this did go in the end winning combat`)
     neededDeath = false
     combatQuestion = false
-    combatEnded = false
     playerHp = 175
     newText = `You have failed, and lost to Henry`
     showTextNode(endingNode)
   }
   else if (combatQuestion === true && combatEnded === true) {
-    console.log(`this did go in the end winning combat`)
     attack = false
-    talk = false
-    neededDeath = false
+    console.log(`this did go in the end winning combat`)
     combatQuestion = false
-    combatEnded = false
     playerHp = 175
     newText = `You have won the battle`
     showTextNode(endingNode)
@@ -1779,7 +1836,6 @@ let textNodes = [
         nextText: 21
       }
     ],
-    imageIndex: 2
   },
   {
     id: 21,
@@ -2035,18 +2091,18 @@ let textNodes = [
     options: [
       {
         text: `Help the dog.`,
-        setplayer: { haveDog: true },
+        setplayer: { hasDog: true },
         nextText: 37,
       },
       {
         text: `Do not interact with the dog.`,
-        setplayer: { followDog: true },
-        nextText: 338
+        nextText: 338,
+        setplayer: { followDog: true }
       },
       {
         text: `Tell the dog to go away.`,
-        setPlayer: { noDog: true },
-        nextText: 638
+        nextText: 639,
+        setplayer: { noDog: true }
       }
     ],
   },
@@ -2065,7 +2121,6 @@ let textNodes = [
         nextText: 40
       }
     ],
-    checkDog: 1
   },
   //keep dog
   {
@@ -2166,7 +2221,7 @@ let textNodes = [
     options: [
       {
         text: `Next`,
-        nextText: 41.6
+        nextText: 43
       },
     ],
   },
@@ -2176,16 +2231,22 @@ let textNodes = [
     options: [
       //keep/has dog
       {
-        requiredPlayer: (currentState) => { currentState.haveDog === true },
         text: `Leave Tutorial`,
         nextText: 43,
+        requiredPlayer: (currentState) => { currentState.hasDog === true || currentState.followDog === true }
+      },
+      {
+        text: `Try to bust down door
+    	[Check]`,
+        nextText: 43,
+        requiredPlayer: (currentState) => { currentState.hasDog === true || currentState.followDog === true }
       },
       //no dog
-      {
-        requiredPlayer: (currentState) => { currentState.noDog === 1 },
-        text: `Leave Tutorial no dog`,
-        nextText: 643,
-      },
+      // {
+
+      //   text: `Leave Tutorial no dog`,
+      //   nextText: 643,
+      // },
     ],
   },
   {
@@ -2255,14 +2316,13 @@ let textNodes = [
       {
         text: `Continue`,
         nextText: 51,
-        requiredPlayer: (currentState) => { currentState.haveDog === true || currentState.followDog === true },
       },
       {
         text: `Continue`,
         nextText: 651,
-        requiredPlayer: (currentState) => { currentState.noDog === true },
       }
     ],
+    checkDog: 1
   },
   { //sneak
     id: 42, //fails on dex roll
@@ -2270,7 +2330,7 @@ let textNodes = [
     options: [
       {
         text: `Continue`,
-        nextText: 49,
+        nextText: 49
       }
     ],
   },
@@ -2311,8 +2371,8 @@ let textNodes = [
     options: [
       {
         text: `Leave as the victor`,
-        nextText: 51,
-      },
+        nextText: 51
+      }
     ],
   },
   { //start after combat
@@ -2322,14 +2382,13 @@ let textNodes = [
       {
         text: `Leave as the victor dog`,
         nextText: 51,
-        requiredPlayer: (currentState) => { currentState.haveDog === true || currentState.followDog === true },
       },
       {
         text: `Leave as the victor no dog`,
         nextText: 651,
-        requiredPlayer: (currentState) => { currentState.noDog === true },
       }
     ],
+    checkDog: 1
   },
   {
     id: 52,
@@ -3304,7 +3363,7 @@ let textNodes = [
   },
   {// end conflict
     id: 124,
-    text: 'You are tried and a loser.',
+    text: 'blank',
     options: [
       {
         text: `Continue`,
@@ -4460,7 +4519,7 @@ let textNodes = [
     options: [
       {
         text: `Thank you, I will go immediately.`,
-        nextText: 190.22
+        nextText: 190.21
       }
     ],
   },
@@ -4511,7 +4570,7 @@ let textNodes = [
     options: [
       {
         text: `Continue`,
-        nextText: 190.25
+        nextText: 192.25
       }
     ],
   },
@@ -4923,14 +4982,14 @@ let textNodes = [
       {
         text: `Good.`,
         nextText: 203,
-        requiredPlayer: (currentState) => { currentState.haveDog === true || currentState.followDog === true },
       },
       {
         text: `Good.`,
         nextText: 703,
-        requiredPlayer: (currentState) => { currentState.noDog === true },
+
       }
     ],
+    checkDog: 2
   },
   //
   //this is where the story would switch if they did not do anything with the dog
@@ -4942,14 +5001,18 @@ let textNodes = [
       {
         text: `Rush to Marrys home. `,
         nextText: 204,
-        requiredPlayer: (currentState) => { currentState.haveDog === true }
       },
       {
         text: `Rush to Marrys home. `,
         nextText: 404,
-        requiredPlayer: (currentState) => { currentState.followDog === true }
       },
+      {
+        text: `Rush to Marrys home. `,
+        nextText: 704,
+        requiredPlayer: (currentState) => { currentState.noDog === true }
+      }
     ],
+    checkDog: 3
   },
   {//
     id: 204,
@@ -4963,7 +5026,7 @@ let textNodes = [
   },
   {//
     id: 205,
-    text: 'You run into the home looking for Marry. You find her dead in the center of the room surrounded by bandits. As you go to investigate her body you see her necklace with a weird glowing jade. Last time you saw her, she had nothing of the sort. You take it off her neck to try to further understand why this happened. The bandits weren/’t ever this aggressive and only stuck to the roads.',
+    text: 'You run into the home looking for Marry. You find her dead in the centre of the room surrounded by bandits. As you go to investigate her body you see her necklace with a weird glowing jade. Last time you saw her, she had nothing of the sort. You take it off her neck to try to further understand why this happened. The bandits weren/’t ever this aggressive and only stuck to the roads.',
     options: [
       {
         text: `Continue`,
@@ -5573,26 +5636,24 @@ let textNodes = [
     ],
     startCombat: 15,
   },
-  {// end combat, switches you back to the other branches to finish off the story
+  {// end combat
     id: 252,
     text: 'You are filled with even more rage.',
     options: [
       {
         text: `What will you do? `,
         nextText: 253, //0-2 with dog
-        requiredPlayer: (currentState) => { currentState.haveDog === true }
       },
       {
         text: `What will you do? `,
         nextText: 453, // following dogs 3 and 4
-        requiredPlayer: (currentState) => { currentState.followDog === true }
       },
       {
         text: `What will you do? `,
-        nextText: 753, //no dog 700s and 600s
-        requiredPlayer: (currentState) => { currentState.noDog === true }
+        nextText: 753,
       }
     ],
+    checkDog: 4
   },
   {//
     id: 253,
@@ -5692,7 +5753,6 @@ let textNodes = [
       {
         text: `Continue`,
         nextText: 40,
-
       }
     ],
   },
@@ -5997,7 +6057,7 @@ let textNodes = [
       }
     ],
   },
-  //skip scene to the keep dog where you will fight henry then the branches will sepurate once more
+  //skip scene
   {// end combat
     id: 452,
     text: 'You are filled with even more rage.',
@@ -6024,7 +6084,7 @@ let textNodes = [
     options: [
       {
         text: `Continue`,
-        nextText: -1
+        nextText: 1
       }
     ],
   },
@@ -6083,7 +6143,6 @@ let textNodes = [
         nextText: 647
       }
     ],
-    diceRoll: 1
   },
   {
     id: 644, //talking
@@ -6145,6 +6204,37 @@ let textNodes = [
         nextText: 649
       }
     ],
+  },
+  { //combat
+    id: 649,
+    text: `You get into combat with the two bandits.`,
+    options: [
+      {
+        text: `Slash`,
+        nextText: 5
+      },
+      {
+        text: `Heal Potions`,
+        nextText: 8
+      },
+      {
+        text: `Scare`,
+        nextText: 9
+      },
+      {
+        text: `Stab`,
+        nextText: 10
+      },
+      {
+        text: `Pendant of Pain`,
+        nextText: 11
+      },
+      {
+        text: `Persuade`,
+        nextText: 12
+      },
+    ],
+    startCombat: 1,
   },
   {
     id: 650, //end of combat
@@ -6236,7 +6326,7 @@ let textNodes = [
   },
   {//
     id: 705,
-    text: 'You run into the home looking for Marry. You find her dead in the center of the room surrounded by bandits. As you go to investigate her body you see her necklace with a weird glowing jade. Last time you saw her, she had nothing of the sort. You take it off her neck to try to further understand why this happened. The bandits weren/’t ever this aggressive and only stuck to the roads.',
+    text: 'You run into the home looking for Marry. You find her dead in the centre of the room surrounded by bandits. As you go to investigate her body you see her necklace with a weird glowing jade. Last time you saw her, she had nothing of the sort. You take it off her neck to try to further understand why this happened. The bandits weren/’t ever this aggressive and only stuck to the roads.',
     options: [
       {
         text: `Continue`,
@@ -6375,7 +6465,7 @@ let textNodes = [
     options: [
       {
         text: `Go to your old home`,
-        nextText: 417 //this takes you to the part of the story where you enter the village, which will take you to fight herny and then after the fight end back up at this branch
+        nextText: 417
       }
     ],
   },
@@ -6401,7 +6491,9 @@ let textNodes = [
       },
     ],
   },
-  {
+  //
+  //
+  {// this is where you have to return to this story
     id: 755,
     text: 'You pull back your weapon, but you yearn for more, this is not normal. You have only killed when you had to, but you have the urge to kill everything in the home. You lose control.',
     options: [
