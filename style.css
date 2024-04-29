@@ -48,19 +48,297 @@ main {
     background-size: cover;
 }
 
-.startVillage{
-    background-image: url(/Images/startVillage.png);
+.forestRoadMerchant{
+    background-image: url(/Images/forestRoadMerchant.png);
 }
 
-.marryForge{
+.startPage {
+    background-image: url(/Images/startPage.png);
+}
+
+.startVillage {
+    background-image: url(/Images/village.png);
+}
+
+.banditCombat {
+    background-image: url(/Images/banditCombat.png);
+}
+
+.forestRoad {
+    background-image: url(/Images/forestRoad.png);
+}
+
+.forestRoadDog {
+    background-image: url(/Images/forestRoadDog&Jack.png);
+}
+
+.fort {
+    background-image: url(/Images/fort.png);
+}
+
+.guardAndJackValley {
+    background-image: url(/Images/guardAndJackValley.png);
+}
+
+.guestBedroomMansion {
+    background-image: url(/Images/guestBedroomMansion.png);
+}
+
+.halllwayMansion {
+    background-image: url(/Images/hallwayMansion.png);
+}
+
+.henryJackVillageStart {
+    background-image: url(/Images/henryAndjackVillage1.png);
+}
+
+.henryManorOutside {
+    background-image: url(/Images/henryManorOutside.png);
+}
+
+.henryTakesJack {
+    background-image: url(/Images/henryTakesJack.png);
+}
+
+.hernyAndJackVillage {
+    background-image: url(/Images/hernyAndJackVillage.png);
+}
+
+.jackAndBrianArmory {
+    background-image: url(/Images/jack&BrianArmory.png);
+}
+
+.jackAndBrianCell {
+    background-image: url(/Images/jack&BrianCell.png);
+}
+
+.jackAndBrianFort {
+    background-image: url(/Images/jack&BrianFort.png);
+}
+
+.jackAndBrianMine {
+    background-image: url(/Images/jack&BrianMine.png);
+}
+
+.jackAndDragonMarryHouse {
+    background-image: url(/Images/jack&DragonMarryHouse.png);
+}
+
+.jackAndDragonMountain {
+    background-image: url(/Images/jack&DragonMountain.png);
+}
+
+.jackAndDragonShrine {
+    background-image: url(/Images/jack&DragonShrine.png);
+}
+
+.jackAndDragonShrineArmor {
+    background-image: url(/Images/jack&DragonShrineArmor.png);
+}
+
+.jackAndFrankArmory {
+    background-image: url(/Images/jack&FrankArmory.png);
+}
+
+.jackAndFrankFrank {
+    background-image: url(/Images/jack&FrankFrank.png);
+}
+
+.jackAndFrankPassage {
+    background-image: url(/Images/jack&FrankPassage.png);
+}
+
+.jackAndJinArmory {
+    background-image: url(/Images/jack&JinArmory.png);
+}
+
+.jackAndJinArmoryCombat {
+    background-image: url(/Images/jack&JinArmoryFight.png);
+}
+
+.jackAndJinCell {
+    background-image: url(/Images/jack&BrianCell.png);
+}
+
+.jackAndJinMine {
+    background-image: url(/Images/jack&JinMine.png);
+}
+
+.jackAndGaurdFightGate {
+    background-image: url(/Images/jackAndGaurdFightGate.png);
+}
+
+.jackAndMarryAtHerHome {
+    background-image: url(/Images/jackAndMarryAtHerHome.png);
+}
+
+.jackArmorOvergrownVillage {
+    background-image: url(/Images/jackArmorOvergrownVillage.png);
+}
+
+.jackBedroom {
+    background-image: url(/Images.jackBedroom.png);
+}
+
+.jackCell {
+    background-image: url(/Images/jackCell.png);
+}
+
+.jackFindsDog {
+    background-image: url(/Images/jackFindsDog.png);
+}
+
+.jackFightHernyManor {
+    background-image: url(/Images/jackFightHernyManor.png);
+}
+
+.jackFightOutsideFort {
+    background-image: url(/Images/jackFightOutsideFort.png);
+}
+
+.jackFightsGaurdGateMansion {
+    background-image: url(/Images/jackFightsGaurdGateMansion.png);
+}
+
+.jackFightsGaurdsMine {
+    background-image: url(/Images/jackFightsGaurdsMine.png);
+}
+
+.jackFightsLeaderCombat {
+    background-image: url(/Images/jackFightsLeader.png);
+}
+
+.jackInForest {
+    background-image: url(/Images/jackInForest.png);
+}
+
+.jackInForge {
+    background-image: url(/Images/jackInForge.png);
+}
+
+.jackInVillage {
+    background-image: url(/Images/jackInVillage.png);
+}
+
+.jackMarryHome {
+    background-image: url(/Images/jackMarryHome.png);
+}
+
+.jackSneaksBanditLeader {
+    background-image: url(/Images/jackSneaksBanditLeader.png);
+}
+
+.jackStairsMansion {
+    background-image: url(/Images/jackStairsMansion.png);
+}
+
+.jackStairsMansionFightsGaurd {
+    background-image: url(/Images/jackStairsMansionFightsGaurd.png);
+}
+
+.jackStairsMansionFightsHenry {
+    background-image: url(/Images/jackStairsMansionFightsHenry.png);
+}
+
+.kitchenJack {
+    background-image: url(/Images/kitchenJack.png);
+}
+
+.kitchenMansion {
+    background-image: url(/Images/kitchenMansion.png);
+}
+
+.kitchenPosion {
+    background-image: url(/Images/kitchenPosion.png);
+}
+
+.libraryMansion {
+    background-image: url(/Images/libraryMansion.png);
+}
+
+.mapJackBedroom {
+    background-image: url(/Images/mapJackBedroom.png);
+}
+
+.marryForge {
     background-image: url(/Images/MarryForge.png);
 }
 
+.newArmorForJack {
+    background-image: url(/Images/newArmorForJack.png);
+}
 
+.overgrownVillage {
+    background-image: url(/Images/overgrownVillage.png);
+}
 
+.startPage {
+    background-image: url(/Images/startPage.png);
+}
 
+.valleyRoadToMansion {
+    background-image: url(/Images/valleyRoadToMansion.png);
+}
 
+.village {
+    background-image: url(/Images/village.png);
+}
 
+.livingroomJack {
+    background-image: url(/Images/livingroomJack.png);
+}
+
+.jackFightOutsideFortCombat{
+    background-image: url(/Images/jackFightOutsideFortCombat.png);
+}
+
+.jackFightsGaurdsMineCombat {
+    background-image: url(/Images/jackFightsGaurdsMineCombat.png);
+}
+
+.jackStairsMansionFightsGaurdCombat {
+    background-image: url(/Images/jackStairsMansionFightsGaurdCombat.png);
+}
+
+.guardAndJackValleyCombat {
+    background-image: url(/Images/guardAndJackValleyCombat.png);
+}
+
+.jackAndGaurdFightGateCombat {
+    background-image: url(/Images/jackAndGaurdFightGateCombat.png);
+}
+
+.jackStairsMansionFightsHenryCombat {
+    background-image: url(/Images/jackStairsMansionFightsHenryCombat.png);
+}
+
+.jackStairsMansionFightsGaurdCombat {
+    background-image: url(/Images/jackStairsMansionFightsGaurdCombat.png);
+}
+
+.henryManorOutside {
+    background-image: url(/Images/jackStairsMansionFightsGaurdCombat.png);
+}
+
+.bear {
+    background-image: url(/Images/bear.png);
+}
+
+.bearCombat {
+    background-image: url(/Images/bearCombat.png);
+}
+
+.jackFightHernyManorCombat{
+    background-image: url(/Images/jackFightHernyManorCombat.png);
+}
+
+.jackInArmory{
+    background-image: url(/Images/jackInArmory.png);
+}
+
+.jackFightsGaurdGateMansionCombat{
+    background-image: url(/Images/jackFightsGaurdGateMansionCombat.png);
+}
 
 .inventory {
     display: flex;
@@ -248,13 +526,14 @@ main {
         flex-direction: row;
     }
 
-.textDisplay{
-    max-height: 35vh;
-}
+    .textDisplay {
+        max-height: 35vh;
+    }
 
-.bottomHalf{
-    height: 111vh;
-}
+    .bottomHalf {
+        height: 111vh;
+    }
+
     #screen {
         display: none;
     }
@@ -270,6 +549,7 @@ main {
         grid-template-columns: repeat(1, auto);
     }
 }
+
 /* @media (width <) */
 /* 
 

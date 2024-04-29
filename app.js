@@ -35,7 +35,6 @@ let GuardGen2 = new Enemy(`The Guard`, 75, 12, 120, 1, 2) //20
 let GuardGen3 = new Enemy(`The Guard`, 80, 0, 100, 4, 0) //21
 let GuardGen4 = new Enemy(`The Guard`, 90, 5, 90, 3, 0) //22
 
-
 let Archer1 = new Enemy(`Noah the Archer`, 35, 0, 90, 9, 4)  //23
 let Archer2 = new Enemy(`Ezekiel the Archer`, 40, 0, 65, 5, 5) // 24
 let ArcherGen1 = new Enemy(`The Archer`, 45, 0, 90, 4, 4) //25
@@ -58,6 +57,7 @@ let Jin = new Enemy('Jin', 100, 0, -1, 20, 10)//37
 
 const textElement = document.getElementById('text'); //gets the ids from the html to change the text for the story
 const optionButtonsElement = document.getElementById('btnOptions');
+const screen = document.getElementById(`screen`)
 let inventoryElement = document.getElementById(`invText`)
 let d4one = 0
 let d4two = 0
@@ -140,391 +140,567 @@ function showTextNode(textNodeIndex) { // goes through the text nodes checks wha
   const textNode = textNodes.find(textNode => textNode.id === textNodeIndex)
   textElement.innerText = textNode.text
 
-
-  if (textNode.checkDog === 1) {
-    console.log(`check dog work`)
-    if (player.hasDog === true) {
-      console.log(`check dog  has`)
-      showTextNode(51)
-    }
-    else if (player.followDog === true) {
-      console.log(`check dog follow`)
-      showTextNode(51)
-    }
-    else if (player.noDog === true) {
-      console.log(`check dog no`)
-      showTextNode(651)
-    }
-  } else if (textNode.imageIndex === 2) {
-    console.log(`image index 2`)
-    imageClassScreen.classList.remove(firstChild)
-    imageClassScreen.classList.add(`marryForge`)
-  } else if (textNode.checkDog === 2) {
-    console.log(`check dog work`)
-    if (player.hasDog === true) {
-      console.log(`check dog  has`)
-      showTextNode(203)
-    }
-    else if (player.followDog === true) {
-      console.log(`check dog follow`)
-      showTextNode(203)
-    }
-    else if (player.noDog === true) {
-      console.log(`check dog no`)
-      showTextNode(703)
-    }
-  } else if (textNode.imageIndex === 3) {
-    console.log(`image index 2`)
-    imageClassScreen.classList.remove(firstChild)
-    imageClassScreen.classList.add(`marryForge`)
-  } else if (textNode.checkDog === 3) {
-    console.log(`check dog work`)
-    if (player.hasDog === true) {
-      console.log(`check dog  has`)
-      showTextNode(204)
-    }
-    else if (player.followDog === true) {
-      console.log(`check dog follow`)
-      showTextNode(404)
-    }
-  } else if (textNode.checkDog === 4) {
-    console.log(`check dog work`)
-    if (player.hasDog === true) {
-      console.log(`check dog  has`)
-      showTextNode(253)
-    }
-    else if (player.followDog === true) {
-      console.log(`check dog follow`)
-      showTextNode(453)
-    }
-    else if (player.noDog === true) {
-      console.log(`check dog no`)
-      showTextNode(753)
-    }
-
-
-
-    // have dog
-    if (textNode.startCombat === 1 && combatEnded === false) { //starts the combat first
-      console.log('combat mode engaged');
-      combatQuestion = false;
-      endingNode = 50;
-      startCombat();
-      combat(6, 7, 1); //ending id
-    } else if (textNode.startCombat === 2 && combatEnded === false) { //starts the combat 2nd WRONG
-      console.log('combat mode engaged');
-      combatQuestion = false;
-      endingNode = 83; //WHAT
-      startCombat();
-      combat(5, 10, 13); //ending id
-    } else if (textNode.startCombat === 3 && combatEnded === false) { //starts the combat third
-      console.log('combat mode engaged');
-      combatQuestion = false;
-      endingNode = 99;
-      startCombat();
-      combat(18, 1, 2); //ending id
-    } else if (textNode.startCombat === 4 && combatEnded === false) { //starts the combat 4 WRONG
-      console.log('combat mode engaged');
-      combatQuestion = false;
-      endingNode = 110; //WHAT
-      startCombat();
-      combat(19, 23, 2); //ending id
-    } else if (textNode.startCombat === 5 && combatEnded === false) { //starts the combat 5
-      console.log('combat mode engaged');
-      combatQuestion = false;
-      endingNode = 124;
-      neededDeath = true
-      startCombat();
-      combat(34, 1, 2); //ending id
-    } else if (textNode.startCombat === 6 && combatEnded === false) { //starts the combat 6
-      console.log('combat mode engaged');
-      combatQuestion = false;
-      endingNode = 189.9;
-      startCombat();
-      combat(15, 22, 2); //ending id
-    } else if (textNode.startCombat === 7 && combatEnded === false) { //starts the combat 7
-      console.log('combat mode engaged');
-      combatQuestion = false;
-      endingNode = 189.91;
-      startCombat();
-      combat(15, 22, 2); //ending id
-    } else if (textNode.startCombat === 8 && combatEnded === false) { //starts the combat 8
-      console.log('combat mode engaged');
-      combatQuestion = false;
-      endingNode = 190.9;
-      startCombat();
-      combat(21, 22, 2); //ending id
-    } else if (textNode.startCombat === 9 && combatEnded === false) { //starts the combat 9
-      console.log('combat mode engaged');
-      combatQuestion = false;
-      endingNode = 190.15;
-      startCombat();
-      combat(37, 1, 2); //ending id
-    } else if (textNode.startCombat === 10 && combatEnded === false) { //starts the combat 10
-      console.log('combat mode engaged');
-      combatQuestion = false;
-      endingNode = 191.24;
-      startCombat();
-      combat(25, 26, 2); //ending id
-    } else if (textNode.startCombat === 11 && combatEnded === false) { //starts the combat 10
-      console.log('combat mode engaged');
-      combatQuestion = false;
-      endingNode = 191.12;
-      startCombat();
-      combat(21, 1, 2); //ending id
-    } else if (textNode.startCombat === 12 && combatEnded === false) { //starts the combat 11
-      console.log('combat mode engaged');
-      combatQuestion = false;
-      endingNode = 191.19;
-      startCombat();
-      combat(21, 23, 2); //ending id
-    } else if (textNode.startCombat === 13 && combatEnded === false) { //starts the combat 12
-      console.log('combat mode engaged');
-      combatQuestion = false;
-      endingNode = 197;
-      startCombat();
-      combat(28, 1, 2); //ending id
-    } else if (textNode.startCombat === 14 && combatEnded === false) { //starts the combat 13
-      console.log('combat mode engaged');
-      combatQuestion = false;
-      endingNode = 233;
-      startCombat();
-      combat(17, 16, 2); //ending id
-    } else if (textNode.startCombat === 15 && combatEnded === false) { //starts the combat 14
-      console.log('combat mode engaged');
-      combatQuestion = false;
-      endingNode = 238;
-      startCombat();
-      combat(27, 23, 24); //ending id
-    }
-    else if (textNode.startCombat === 16 && combatEnded === false) { //starts the combat 15
-      console.log('combat mode engaged');
-      combatQuestion = false;
-      endingNode = 252;
-      startCombat();
-      combat(35, 1, 2); //ending id
-    }
-    //follow dog
-    if (textNode.startCombat === 17 && combatEnded === false) { //starts the combat first
-      console.log('combat mode engaged');
-      combatQuestion = false;
-      endingNode = 350;
-      startCombat();
-      combat(6, 7, 1); //ending id
-    } else if (textNode.startCombat === 18 && combatEnded === false) { //starts the combat 2nd WRONG
-      console.log('combat mode engaged');
-      combatQuestion = false;
-      endingNode = 383; //WHAT
-      startCombat();
-      combat(5, 10, 13); //ending id
-    } else if (textNode.startCombat === 19 && combatEnded === false) { //starts the combat third
-      console.log('combat mode engaged');
-      combatQuestion = false;
-      endingNode = 399;
-      startCombat();
-      combat(18, 1, 2); //ending id
-    } else if (textNode.startCombat === 19 && combatEnded === false) { //starts the combat 4 WRONG
-      console.log('combat mode engaged');
-      combatQuestion = false;
-      endingNode = 410; //WHAT
-      startCombat();
-      combat(19, 23, 2); //ending id
-    } else if (textNode.startCombat === 20 && combatEnded === false) { //starts the combat 5
-      console.log('combat mode engaged');
-      combatQuestion = false;
-      endingNode = 424;
-      neededDeath = true
-      startCombat();
-      combat(34, 1, 2); //ending id
-    } else if (textNode.startCombat === 21 && combatEnded === false) { //starts the combat 6
-      console.log('combat mode engaged');
-      combatQuestion = false;
-      endingNode = 489.9; //leaves with Brain and only fights one gaurd
-      startCombat();
-      combat(15, 1, 2); //ending id
-    } else if (textNode.startCombat === 22 && combatEnded === false) { //starts the combat 7
-      console.log('combat mode engaged');
-      combatQuestion = false;
-      endingNode = 489.91;
-      startCombat();
-      combat(15, 22, 2); //ending id
-    } else if (textNode.startCombat === 23 && combatEnded === false) { //starts the combat 8
-      console.log('combat mode engaged');
-      combatQuestion = false;
-      endingNode = 490.9;
-      startCombat();
-      combat(21, 22, 2); //ending id
-    }  else if (textNode.startCombat === 24 && combatEnded === false) { //starts the combat 9
-      console.log('combat mode engaged');
-      combatQuestion = false;
-      endingNode = 490.15;
-      startCombat();
-      combat(37, 1, 2); //ending id
-    } else if (textNode.startCombat === 25 && combatEnded === false) { //starts the combat 10
-      console.log('combat mode engaged');
-      combatQuestion = false;
-      endingNode = 490.24;
-      startCombat();
-      combat(25, 26, 2); //ending id
-    } else if (textNode.startCombat === 26 && combatEnded === false) { //starts the combat 10
-      console.log('combat mode engaged');
-      combatQuestion = false;
-      endingNode = 491.12;
-      startCombat();
-      combat(21, 1, 2); //ending id
-    } else if (textNode.startCombat === 27 && combatEnded === false) { //starts the combat 11
-      console.log('combat mode engaged');
-      combatQuestion = false;
-      endingNode = 491.19;
-      startCombat();
-      combat(21, 23, 2); //ending id
-    } else if (textNode.startCombat === 28 && combatEnded === false) { //starts the combat 12
-      console.log('combat mode engaged');
-      combatQuestion = false;
-      endingNode = 497;
-      startCombat();
-      combat(28, 1, 2); //ending id
-    } else if (textNode.startCombat === 29 && combatEnded === false) { //starts the combat 13
-      console.log('combat mode engaged');
-      combatQuestion = false;
-      endingNode = 533;
-      startCombat();
-      combat(17, 16, 2); //ending id
-    } else if (textNode.startCombat === 30 && combatEnded === false) { //starts the combat 14
-      console.log('combat mode engaged');
-      combatQuestion = false;
-      endingNode = 538;
-      startCombat();
-      combat(27, 23, 24); //ending id
-    } else if (textNode.startCombat === 47 && combatEnded === false) { //starts the combat 10
-      console.log('combat mode engaged'); //final fight with henry
-      combatQuestion = false;
-      endingNode = 5522;
-      startCombat();
-      combat(35, 1, 2); //ending id
-    }
-    //no dog
-    if (textNode.startCombat === 31 && combatEnded === false) { //starts the combat first
-      console.log('combat mode engaged');
-      combatQuestion = false;
-      endingNode = 650;
-      startCombat();
-      combat(6, 7, 1); //ending id
-    } else if (textNode.startCombat === 32 && combatEnded === false) { //starts the combat 2nd WRONG
-      console.log('combat mode engaged');
-      combatQuestion = false;
-      endingNode = 683; //WHAT
-      startCombat();
-      combat(5, 10, 13); //ending id
-    } else if (textNode.startCombat === 33 && combatEnded === false) { //starts the combat third
-      console.log('combat mode engaged');
-      combatQuestion = false;
-      endingNode = 699;
-      startCombat();
-      combat(18, 1, 2); //ending id
-    } else if (textNode.startCombat === 34 && combatEnded === false) { //starts the combat 4 WRONG
-      console.log('combat mode engaged');
-      combatQuestion = false;
-      endingNode = 710; //WHAT
-      startCombat();
-      combat(19, 23, 2); //ending id
-    } else if (textNode.startCombat === 35 && combatEnded === false) { //starts the combat 5
-      console.log('combat mode engaged');
-      combatQuestion = false;
-      endingNode = 724;
-      neededDeath = true
-      startCombat();
-      combat(34, 1, 2); //ending id
-    } else if (textNode.startCombat === 36 && combatEnded === false) { //starts the combat 6
-      console.log('combat mode engaged');
-      combatQuestion = false;
-      endingNode = 789.9;
-      startCombat();
-      combat(15, 22, 2); //ending id
-    } else if (textNode.startCombat === 37 && combatEnded === false) { //starts the combat 7
-      console.log('combat mode engaged');
-      combatQuestion = false;
-      endingNode = 789.91;
-      startCombat();
-      combat(15, 22, 2); //ending id
-    } else if (textNode.startCombat === 38 && combatEnded === false) { //starts the combat 8
-      console.log('combat mode engaged');
-      combatQuestion = false;
-      endingNode = 790.9;
-      startCombat();
-      combat(21, 22, 2); //ending id
-    } else if (textNode.startCombat === 39 && combatEnded === false) { //starts the combat 9
-      console.log('combat mode engaged');
-      combatQuestion = false;
-      endingNode = 790.15;
-      startCombat();
-      combat(37, 1, 2); //ending id
-    } else if (textNode.startCombat === 40 && combatEnded === false) { //starts the combat 10
-      console.log('combat mode engaged');
-      combatQuestion = false;
-      endingNode = 791.24;
-      startCombat();
-      combat(25, 26, 2); //ending id
-    } else if (textNode.startCombat === 41 && combatEnded === false) { //starts the combat 10
-      console.log('combat mode engaged');
-      combatQuestion = false;
-      endingNode = 791.12;
-      startCombat();
-      combat(21, 1, 2); //ending id
-    } else if (textNode.startCombat === 42 && combatEnded === false) { //starts the combat 11
-      console.log('combat mode engaged');
-      combatQuestion = false;
-      endingNode = 791.19;
-      startCombat();
-      combat(21, 23, 2); //ending id
-    } else if (textNode.startCombat === 43 && combatEnded === false) { //starts the combat 12
-      console.log('combat mode engaged');
-      combatQuestion = false;
-      endingNode = 797;
-      startCombat();
-      combat(28, 1, 2); //ending id
-    } else if (textNode.startCombat === 44 && combatEnded === false) { //starts the combat 13
-      console.log('combat mode engaged');
-      combatQuestion = false;
-      endingNode = 833;
-      startCombat();
-      combat(17, 16, 2); //ending id
-    } else if (textNode.startCombat === 45 && combatEnded === false) { //starts the combat 14
-      console.log('combat mode engaged');
-      combatQuestion = false;
-      endingNode = 838;
-      startCombat();
-      combat(27, 23, 24); //ending id
-    } else if (textNode.startCombat === 46 && combatEnded === false) { //starts the combat 10
-      console.log('combat mode engaged');
-      combatQuestion = false;
-      endingNode = 852;
-      startCombat();
-      combat(35, 2, 2); //ending id
-    } else if (textNode.startCombat === 47 && combatEnded === false) { //starts the combat 10
-      console.log('combat mode engaged');
-      combatQuestion = false;
-      endingNode = 861;
-      startCombat();
-      combat(22, 27, 21); //ending id
-    }
-    else if (textNode.continueCombat === true) { //checks if you are continue combat
-      console.log('combat mode cont');
-      combatQuestion = true
-    }
-    else {
-      console.log('no violence = sad pandas');
-      combatQuestion = false
-    }
+  // have dog
+  if (textNode.startCombat === 1 && combatEnded === false) { //starts the combat first
+    console.log('combat mode engaged');
+    combatQuestion = false;
+    endingNode = 50;
+    startCombat();
+    combat(6, 7, 1); //ending id
+  } else if (textNode.startCombat === 2 && combatEnded === false) { //starts the combat 2nd WRONG
+    console.log('combat mode engaged');
+    combatQuestion = false;
+    endingNode = 83; //WHAT
+    startCombat();
+    combat(5, 10, 13); //ending id
+  } else if (textNode.startCombat === 3 && combatEnded === false) { //starts the combat third
+    console.log('combat mode engaged');
+    combatQuestion = false;
+    endingNode = 99;
+    startCombat();
+    combat(18, 1, 2); //ending id
+  } else if (textNode.startCombat === 4 && combatEnded === false) { //starts the combat 4 WRONG
+    console.log('combat mode engaged');
+    combatQuestion = false;
+    endingNode = 110; //WHAT
+    startCombat();
+    combat(19, 23, 2); //ending id
+  } else if (textNode.startCombat === 5 && combatEnded === false) { //starts the combat 5
+    console.log('combat mode engaged');
+    combatQuestion = false;
+    endingNode = 124;
+    neededDeath = true
+    startCombat();
+    combat(34, 1, 2); //ending id
+  } else if (textNode.startCombat === 6 && combatEnded === false) { //starts the combat 6
+    console.log('combat mode engaged');
+    combatQuestion = false;
+    endingNode = 189.9;
+    startCombat();
+    combat(15, 22, 2); //ending id
+  } else if (textNode.startCombat === 7 && combatEnded === false) { //starts the combat 7
+    console.log('combat mode engaged');
+    combatQuestion = false;
+    endingNode = 189.91;
+    startCombat();
+    combat(15, 22, 2); //ending id
+  } else if (textNode.startCombat === 8 && combatEnded === false) { //starts the combat 8
+    console.log('combat mode engaged');
+    combatQuestion = false;
+    endingNode = 190.9;
+    startCombat();
+    combat(21, 22, 2); //ending id
+  } else if (textNode.startCombat === 9 && combatEnded === false) { //starts the combat 9
+    console.log('combat mode engaged');
+    combatQuestion = false;
+    endingNode = 190.15;
+    startCombat();
+    combat(37, 1, 2); //ending id
+  } else if (textNode.startCombat === 10 && combatEnded === false) { //starts the combat 10
+    console.log('combat mode engaged');
+    combatQuestion = false;
+    endingNode = 191.24;
+    startCombat();
+    combat(25, 26, 2); //ending id
+  } else if (textNode.startCombat === 11 && combatEnded === false) { //starts the combat 10
+    console.log('combat mode engaged');
+    combatQuestion = false;
+    endingNode = 191.12;
+    startCombat();
+    combat(21, 1, 2); //ending id
+  } else if (textNode.startCombat === 12 && combatEnded === false) { //starts the combat 11
+    console.log('combat mode engaged');
+    combatQuestion = false;
+    endingNode = 191.19;
+    startCombat();
+    combat(21, 23, 2); //ending id
+  } else if (textNode.startCombat === 13 && combatEnded === false) { //starts the combat 12
+    console.log('combat mode engaged');
+    combatQuestion = false;
+    endingNode = 197;
+    startCombat();
+    combat(28, 1, 2); //ending id
+  } else if (textNode.startCombat === 14 && combatEnded === false) { //starts the combat 13
+    console.log('combat mode engaged');
+    combatQuestion = false;
+    endingNode = 233;
+    startCombat();
+    combat(17, 16, 2); //ending id
+  } else if (textNode.startCombat === 15 && combatEnded === false) { //starts the combat 14
+    console.log('combat mode engaged');
+    combatQuestion = false;
+    endingNode = 238;
+    startCombat();
+    combat(27, 23, 24); //ending id
   }
-  if (textNode.dogFollow === true && player.followDog === true) {
-    showTextNode()
+  else if (textNode.startCombat === 16 && combatEnded === false) { //starts the combat 15
+    console.log('combat mode engaged');
+    combatQuestion = false;
+    endingNode = 252;
+    startCombat();
+    combat(35, 1, 2); //ending id
+  }
+  //follow dog
+  if (textNode.startCombat === 17 && combatEnded === false) { //starts the combat first
+    console.log('combat mode engaged');
+    combatQuestion = false;
+    endingNode = 350;
+    startCombat();
+    combat(6, 7, 1); //ending id
+  } else if (textNode.startCombat === 18 && combatEnded === false) { //starts the combat 2nd WRONG
+    console.log('combat mode engaged');
+    combatQuestion = false;
+    endingNode = 383; //WHAT
+    startCombat();
+    combat(5, 10, 13); //ending id
+  } else if (textNode.startCombat === 19 && combatEnded === false) { //starts the combat third
+    console.log('combat mode engaged');
+    combatQuestion = false;
+    endingNode = 399;
+    startCombat();
+    combat(18, 1, 2); //ending id
+  } else if (textNode.startCombat === 19 && combatEnded === false) { //starts the combat 4 WRONG
+    console.log('combat mode engaged');
+    combatQuestion = false;
+    endingNode = 410; //WHAT
+    startCombat();
+    combat(19, 23, 2); //ending id
+  } else if (textNode.startCombat === 20 && combatEnded === false) { //starts the combat 5
+    console.log('combat mode engaged');
+    combatQuestion = false;
+    endingNode = 424;
+    neededDeath = true
+    startCombat();
+    combat(34, 1, 2); //ending id
+  } else if (textNode.startCombat === 21 && combatEnded === false) { //starts the combat 6
+    console.log('combat mode engaged');
+    combatQuestion = false;
+    endingNode = 489.9; //leaves with Brain and only fights one gaurd
+    startCombat();
+    combat(15, 1, 2); //ending id
+  } else if (textNode.startCombat === 22 && combatEnded === false) { //starts the combat 7
+    console.log('combat mode engaged');
+    combatQuestion = false;
+    endingNode = 489.91;
+    startCombat();
+    combat(15, 22, 2); //ending id
+  } else if (textNode.startCombat === 23 && combatEnded === false) { //starts the combat 8
+    console.log('combat mode engaged');
+    combatQuestion = false;
+    endingNode = 490.9;
+    startCombat();
+    combat(21, 22, 2); //ending id
+  } else if (textNode.startCombat === 24 && combatEnded === false) { //starts the combat 9
+    console.log('combat mode engaged');
+    combatQuestion = false;
+    endingNode = 490.15;
+    startCombat();
+    combat(37, 1, 2); //ending id
+  } else if (textNode.startCombat === 25 && combatEnded === false) { //starts the combat 10
+    console.log('combat mode engaged');
+    combatQuestion = false;
+    endingNode = 490.24;
+    startCombat();
+    combat(25, 26, 2); //ending id
+  } else if (textNode.startCombat === 26 && combatEnded === false) { //starts the combat 10
+    console.log('combat mode engaged');
+    combatQuestion = false;
+    endingNode = 491.12;
+    startCombat();
+    combat(21, 1, 2); //ending id
+  } else if (textNode.startCombat === 27 && combatEnded === false) { //starts the combat 11
+    console.log('combat mode engaged');
+    combatQuestion = false;
+    endingNode = 491.19;
+    startCombat();
+    combat(21, 23, 2); //ending id
+  } else if (textNode.startCombat === 28 && combatEnded === false) { //starts the combat 12
+    console.log('combat mode engaged');
+    combatQuestion = false;
+    endingNode = 497;
+    startCombat();
+    combat(28, 1, 2); //ending id
+  } else if (textNode.startCombat === 29 && combatEnded === false) { //starts the combat 13
+    console.log('combat mode engaged');
+    combatQuestion = false;
+    endingNode = 533;
+    startCombat();
+    combat(17, 16, 2); //ending id
+  } else if (textNode.startCombat === 30 && combatEnded === false) { //starts the combat 14
+    console.log('combat mode engaged');
+    combatQuestion = false;
+    endingNode = 538;
+    startCombat();
+    combat(27, 23, 24); //ending id
+  } else if (textNode.startCombat === 47 && combatEnded === false) { //starts the combat 10
+    console.log('combat mode engaged'); //final fight with henry
+    combatQuestion = false;
+    endingNode = 5522;
+    startCombat();
+    combat(35, 1, 2); //ending id
+  }
+  //no dog
+  if (textNode.startCombat === 31 && combatEnded === false) { //starts the combat first
+    console.log('combat mode engaged');
+    combatQuestion = false;
+    endingNode = 650;
+    startCombat();
+    combat(6, 7, 1); //ending id
+  } else if (textNode.startCombat === 32 && combatEnded === false) { //starts the combat 2nd WRONG
+    console.log('combat mode engaged');
+    combatQuestion = false;
+    endingNode = 683; //WHAT
+    startCombat();
+    combat(5, 10, 13); //ending id
+  } else if (textNode.startCombat === 33 && combatEnded === false) { //starts the combat third
+    console.log('combat mode engaged');
+    combatQuestion = false;
+    endingNode = 699;
+    startCombat();
+    combat(18, 1, 2); //ending id
+  } else if (textNode.startCombat === 34 && combatEnded === false) { //starts the combat 4 WRONG
+    console.log('combat mode engaged');
+    combatQuestion = false;
+    endingNode = 710; //WHAT
+    startCombat();
+    combat(19, 23, 2); //ending id
+  } else if (textNode.startCombat === 35 && combatEnded === false) { //starts the combat 5
+    console.log('combat mode engaged');
+    combatQuestion = false;
+    endingNode = 724;
+    neededDeath = true
+    startCombat();
+    combat(34, 1, 2); //ending id
+  } else if (textNode.startCombat === 36 && combatEnded === false) { //starts the combat 6
+    console.log('combat mode engaged');
+    combatQuestion = false;
+    endingNode = 789.9;
+    startCombat();
+    combat(15, 22, 2); //ending id
+  } else if (textNode.startCombat === 37 && combatEnded === false) { //starts the combat 7
+    console.log('combat mode engaged');
+    combatQuestion = false;
+    endingNode = 789.91;
+    startCombat();
+    combat(15, 22, 2); //ending id
+  } else if (textNode.startCombat === 38 && combatEnded === false) { //starts the combat 8
+    console.log('combat mode engaged');
+    combatQuestion = false;
+    endingNode = 790.9;
+    startCombat();
+    combat(21, 22, 2); //ending id
+  } else if (textNode.startCombat === 39 && combatEnded === false) { //starts the combat 9
+    console.log('combat mode engaged');
+    combatQuestion = false;
+    endingNode = 790.15;
+    startCombat();
+    combat(37, 1, 2); //ending id
+  } else if (textNode.startCombat === 40 && combatEnded === false) { //starts the combat 10
+    console.log('combat mode engaged');
+    combatQuestion = false;
+    endingNode = 791.24;
+    startCombat();
+    combat(25, 26, 2); //ending id
+  } else if (textNode.startCombat === 41 && combatEnded === false) { //starts the combat 10
+    console.log('combat mode engaged');
+    combatQuestion = false;
+    endingNode = 791.12;
+    startCombat();
+    combat(21, 1, 2); //ending id
+  } else if (textNode.startCombat === 42 && combatEnded === false) { //starts the combat 11
+    console.log('combat mode engaged');
+    combatQuestion = false;
+    endingNode = 791.19;
+    startCombat();
+    combat(21, 23, 2); //ending id
+  } else if (textNode.startCombat === 43 && combatEnded === false) { //starts the combat 12
+    console.log('combat mode engaged');
+    combatQuestion = false;
+    endingNode = 797;
+    startCombat();
+    combat(28, 1, 2); //ending id
+  } else if (textNode.startCombat === 44 && combatEnded === false) { //starts the combat 13
+    console.log('combat mode engaged');
+    combatQuestion = false;
+    endingNode = 833;
+    startCombat();
+    combat(17, 16, 2); //ending id
+  } else if (textNode.startCombat === 45 && combatEnded === false) { //starts the combat 14
+    console.log('combat mode engaged');
+    combatQuestion = false;
+    endingNode = 838;
+    startCombat();
+    combat(27, 23, 24); //ending id
+  } else if (textNode.startCombat === 46 && combatEnded === false) { //starts the combat 10
+    console.log('combat mode engaged');
+    combatQuestion = false;
+    endingNode = 852;
+    startCombat();
+    combat(35, 2, 2); //ending id
+  } else if (textNode.startCombat === 47 && combatEnded === false) { //starts the combat 10
+    console.log('combat mode engaged');
+    combatQuestion = false;
+    endingNode = 861;
+    startCombat();
+    combat(22, 27, 21); //ending id
+  }
+  else if (textNode.continueCombat === true) { //checks if you are continue combat
+    console.log('combat mode cont');
+    combatQuestion = true
+  }
+  else {
+    console.log('no violence = sad pandas');
+    combatQuestion = false
+  }
+
+
+  if (textNode.imageCheck === 0) {
+    screen.className = ``
+    screen.classList.add(`startPage`);
+  }
+  else if (textNode.imageCheck === 1) {
+    screen.className = ``
+    screen.classList.add(`startVillage`);
+  }
+  else if (textNode.imageCheck === 2) {
+    screen.className = ``
+    screen.classList.add(`livingroomJack`);
+  }
+  else if (textNode.imageCheck === 3) {
+    screen.className = ``
+    screen.classList.add(`kitchenPosion`);
+  }
+  else if (textNode.imageCheck === 4) {
+    screen.className = ``
+    screen.classList.add(`mapJackBedroom`);
+  }
+  else if (textNode.imageCheck === 5) {
+    screen.className = ``
+    screen.classList.add(`jackFindsDog`);
+  }
+  else if (textNode.imageCheck === 6) {
+    screen.className = ``
+    screen.classList.add(`forestRoadDog`);
+  }
+  else if (textNode.imageCheck === 7) {
+    screen.className = ``
+    screen.classList.add(`forestRoadMerchant`);
+  }
+  else if (textNode.imageCheck === 8) {
+    screen.className = ``
+    screen.classList.add(`banditCombat`);
+  }
+  else if (textNode.imageCheck === 9) {
+    screen.className = ``
+    screen.classList.add(`jackSneaksBanditLeader`);
+  }
+  else if (textNode.imageCheck === 10) {
+    screen.className = ``
+    screen.classList.add(`jackAndMarryAtHerHome`);
+  }
+  else if (textNode.imageCheck === 11) {
+    screen.className = ``
+    screen.classList.add(`marryForge`);
+  }
+  else if (textNode.imageCheck === 12) {
+    screen.className = ``
+    screen.classList.add(`forestRoad`);
+  }
+  else if (textNode.imageCheck === 13) {
+    screen.className = ``
+    screen.classList.add(`jackSneaksBanditLeader`);
+  }
+  else if (textNode.imageCheck === 14) {
+    screen.className = ``
+    screen.classList.add(`jackFightsLeaderCombat`);
+  }
+  else if (textNode.imageCheck === 15) {
+    screen.className = ``
+    screen.classList.add(`valleyRoadToMansion`);
+  }
+  else if (textNode.imageCheck === 16) {
+    screen.className = ``
+    screen.classList.add(`guardAndJackValley`);
+  }
+  else if (textNode.imageCheck === 17) {
+    screen.className = ``
+    screen.classList.add(`guardAndJackValleyCombat`);
+  }
+  else if (textNode.imageCheck === 18) {
+    screen.className = ``
+    screen.classList.add(`henryManorOutside`);
+  }
+  else if (textNode.imageCheck === 19) {
+    screen.className = ``
+    screen.classList.add(`jackAndGaurdFightGate`);
+  }
+  else if (textNode.imageCheck === 20) {
+    screen.className = ``
+    screen.classList.add(`jackAndGaurdFightGateCombat`);
+  }
+  else if (textNode.imageCheck === 21) {
+    screen.className = ``
+    screen.classList.add(`jackFightHernyManor`);
+  }
+  else if (textNode.imageCheck === 22) {
+    screen.className = ``
+    screen.classList.add(`jackFightHernyManorCombat`);
+  }
+  else if (textNode.imageCheck === 23) {
+    screen.className = ``
+    screen.classList.add(`henryTakesJack`);
+  }
+  else if (textNode.imageCheck === 24) {
+    screen.className = ``
+    screen.classList.add(`jackCell`);
+  }
+  else if (textNode.imageCheck === 25) {
+    screen.className = ``
+    screen.classList.add(`jackAndJinCell`);
+  }
+  else if (textNode.imageCheck === 26) {
+    screen.className = ``
+    screen.classList.add(`jackFightsGaurdsMine`);
+  }
+  else if (textNode.imageCheck === 27) {
+    screen.className = ``
+    screen.classList.add(`jackAndBrianMine`);
+  }
+  else if (textNode.imageCheck === 28) {
+    screen.className = ``
+    screen.classList.add(`jackAndJinMine`);
+  }
+  else if (textNode.imageCheck === 29) {
+    screen.className = ``
+    screen.classList.add(`jackAndFrankFrank`);
+  }
+  else if (textNode.imageCheck === 30) {
+    screen.className = ``
+    screen.classList.add(`fort`);
+  }
+  else if (textNode.imageCheck === 31) {
+    screen.className = ``
+    screen.classList.add(`jackFightsGaurdsMineCombat`);
+  }
+  else if (textNode.imageCheck === 32) {
+    screen.className = ``
+    screen.classList.add(`jackAndBrianFort`);
+  }
+  else if (textNode.imageCheck === 33) {
+    screen.className = ``
+    screen.classList.add(`jackAndJinArmory`);
+  }
+  else if (textNode.imageCheck === 34) {
+    screen.className = ``
+    screen.classList.add(`jackAndJinArmoryCombat`);
+  }
+  else if (textNode.imageCheck === 35) {
+    screen.className = ``
+    screen.classList.add(`jackInArmory`);
+  }
+  else if (textNode.imageCheck === 36) {
+    screen.className = ``
+    screen.classList.add(`jackAndFrankArmory`);
+  }
+  else if (textNode.imageCheck === 37) {
+    screen.className = ``
+    screen.classList.add(`jackAndFrankPassage`);
+  }
+  else if (textNode.imageCheck === 38) {
+    screen.className = ``
+    screen.classList.add(`bear`);
+  }
+  else if (textNode.imageCheck === 39) {
+    screen.className = ``
+    screen.classList.add(`bearCombat`);
+  }
+  else if (textNode.imageCheck === 40) {
+    screen.className = ``
+    screen.classList.add(`jackAndDragonMarryHouse`);
+  }
+  else if (textNode.imageCheck === 41) {
+    screen.className = ``
+    screen.classList.add(`jackAndDragonMountain`);
+  }
+  else if (textNode.imageCheck === 42) {
+    screen.className = ``
+    screen.classList.add(`jackAndDragonShrine`);
+  }
+  else if (textNode.imageCheck === 43) {
+    screen.className = ``
+    screen.classList.add(`jackAndDragonShrineArmor`);
+  }
+  else if (textNode.imageCheck === 44) {
+    screen.className = ``
+    screen.classList.add(`overgrownVillage`);
+  }
+  else if (textNode.imageCheck === 45) {
+    screen.className = ``
+    screen.classList.add(`jackFightsGaurdGateMansion`);
+  }
+  else if (textNode.imageCheck === 46) {
+    screen.className = ``
+    screen.classList.add(`jackFightsGaurdGateMansionCombat`);
+  }
+  else if (textNode.imageCheck === 47) {
+    screen.className = ``
+    screen.classList.add(`jackStairsMansionFightsGaurd`);
+  }
+  else if (textNode.imageCheck === 48) {
+    screen.className = ``
+    screen.classList.add(`jackStairsMansionFightsGaurdCombat`);
+  }
+  else if (textNode.imageCheck === 49) {
+    screen.className = ``
+    screen.classList.add(`jackStairsMansion`);
+  }
+  else if (textNode.imageCheck === 50) {
+    screen.className = ``
+    screen.classList.add(`halllwayMansion`);
+  }
+  else if (textNode.imageCheck === 51) {
+    screen.className = ``
+    screen.classList.add(`libraryMansion`);
+  }
+  else if (textNode.imageCheck === 52) {
+    screen.className = ``
+    screen.classList.add(`kitchenJack`);
+  }
+  else if (textNode.imageCheck === 53) {
+    screen.className = ``
+    screen.classList.add(`jackBedroom`);
+  }
+  else if (textNode.imageCheck === 54) {
+    screen.className = ``
+    screen.classList.add(`jackStairsMansionFightsHenry`);
+  }
+  else if (textNode.imageCheck === 55) {
+    screen.className = ``
+    screen.classList.add(`jackStairsMansionFightsHenryCombat`);
+  }
+  else if (textNode.imageCheck === 56) {
+    screen.className = ``
+    screen.classList.add(`jackInForge`);
+  }
+  else if (textNode.imageCheck === 8) {
+    screen.className = ``
+    screen.classList.add(``);
+  }
+  else if (textNode.imageCheck === 8) {
+    screen.className = ``
+    screen.classList.add(``);
+  }
+  else if (textNode.imageCheck === 7) {
+    screen.className = ``
+    screen.classList.add(``);
+  }
+  else if (textNode.imageCheck === 8) {
+    screen.className = ``
+    screen.classList.add(``);
   }
 
   if (textNode.diceRoll === 1) {
     console.log(`The dice roller is on and did things`) // this is how you roll dice to see if someone does something
-
-
     d20 = Math.floor(Math.random() * (21 - 1) + 1)
     if (player.dex >= 9) {
       d20 += 4
@@ -542,8 +718,6 @@ function showTextNode(textNodeIndex) { // goes through the text nodes checks wha
     }
   } else if (textNode.diceRoll === 2) {
     console.log(`The dice roller is on and did things`) // this is how you roll dice to see if someone does something
-
-
     d20 = Math.floor(Math.random() * (21 - 1) + 1)
     if (player.wis >= 9) {
       d20 += 4
@@ -574,7 +748,7 @@ function showTextNode(textNodeIndex) { // goes through the text nodes checks wha
     } else if (d20 <= 14) {
       return showTextNode(112)
     }
-  } else if (textNode.diceRoll === 4) {
+  } else if (textNode.diceRoll === 5) {
     console.log(`The dice roller is on and did things`) // this is how you roll dice to see if someone does something
     d20 = Math.floor(Math.random() * (21 - 1) + 1)
     if (player.wis >= 9) {
@@ -590,7 +764,7 @@ function showTextNode(textNodeIndex) { // goes through the text nodes checks wha
     } else if (d20 <= 14) {
       return showTextNode(143)
     }
-  } else if (textNode.diceRoll === 5) {
+  } else if (textNode.diceRoll === 6) {
     console.log(`The dice roller is on and did things`) // this is how you roll dice to see if someone does something
     d20 = Math.floor(Math.random() * (21 - 1) + 1)
     if (player.con >= 9) {
@@ -602,25 +776,25 @@ function showTextNode(textNodeIndex) { // goes through the text nodes checks wha
     }
     console.log(d20)
     if (d20 >= 16) {
-      return showTextNode(136)
+      return showTextNode(146)
     } else if (d20 <= 15) {
-      return showTextNode(137)
+      return showTextNode(147)
     }
-  } else if (textNode.diceRoll === 6) {
+  } else if (textNode.diceRoll === 4) {
     console.log(`The dice roller is on and did things`) // this is how you roll dice to see if someone does something
     d20 = Math.floor(Math.random() * (21 - 1) + 1)
-    if (player.cha >= 10) {
+    if (player.wis >= 9) {
       d20 += 5
-    } else if (player.cha >= 7) {
+    } else if (player.wis >= 6) {
       d20 += 3
-    } else if (player.cha >= 4) {
+    } else if (player.wis >= 3) {
       d20 += 2
     }
     console.log(d20)
     if (d20 >= 10) {
-      return showTextNode(190.19)
+      return showTextNode(130)
     } else if (d20 <= 9) {
-      return showTextNode(190.22)
+      return showTextNode(130.5)
     }
   } else if (textNode.diceRoll === 7) {
     console.log(`The dice roller is on and did things`) // this is how you roll dice to see if someone does something
@@ -670,7 +844,74 @@ function showTextNode(textNodeIndex) { // goes through the text nodes checks wha
     } else if (d20 <= 11) {
       return showTextNode(192.18)
     }
-  } else if (textNode.diceRoll === 10) {
+  }
+
+  if (textNode.diceRoll === 11) {
+    console.log(`The dice roller is on and did things`) // this is how you roll dice to see if someone does something
+    d20 = Math.floor(Math.random() * (21 - 1) + 1)
+    if (player.dex >= 9) {
+      d20 += 4
+    } else if (player.dex >= 6) {
+      d20 += 2
+    } else if (player.dex >= 3) {
+      d20 += 1
+    }
+    console.log(d20)
+    if (d20 >= 14) {
+      console.log(`the if in dice roll is running`)
+      return showTextNode(348)
+    } else if (d20 <= 13) {
+      return showTextNode(342)
+    }
+  } else if (textNode.diceRoll === 12) {
+    console.log(`The dice roller is on and did things`) // this is how you roll dice to see if someone does something
+    d20 = Math.floor(Math.random() * (21 - 1) + 1)
+    if (player.wis >= 9) {
+      d20 += 4
+    } else if (player.wis >= 6) {
+      d20 += 2
+    } else if (player.wis >= 3) {
+      d20 += 1
+    }
+    console.log(d20)
+    if (d20 >= 15) {
+      return showTextNode(403)
+    } else if (d20 <= 14) {
+      return showTextNode(405)
+    }
+  } else if (textNode.diceRoll === 13) {
+    console.log(`The dice roller is on and did things`) // this is how you roll dice to see if someone does something
+    d20 = Math.floor(Math.random() * (21 - 1) + 1)
+    if (player.cha >= 10) {
+      d20 += 5
+    } else if (player.cha >= 7) {
+      d20 += 3
+    } else if (player.cha >= 4) {
+      d20 += 2
+    }
+    console.log(d20)
+    if (d20 >= 15) {
+      return showTextNode(411)
+    } else if (d20 <= 14) {
+      return showTextNode(412)
+    }
+  } else if (textNode.diceRoll === 15) {
+    console.log(`The dice roller is on and did things`) // this is how you roll dice to see if someone does something
+    d20 = Math.floor(Math.random() * (21 - 1) + 1)
+    if (player.wis >= 9) {
+      d20 += 4
+    } else if (player.wis >= 6) {
+      d20 += 2
+    } else if (player.wis >= 3) {
+      d20 += 1
+    }
+    console.log(d20)
+    if (d20 >= 15) {
+      return showTextNode(439.1)
+    } else if (d20 <= 14) {
+      return showTextNode(443)
+    }
+  } else if (textNode.diceRoll === 16) {
     console.log(`The dice roller is on and did things`) // this is how you roll dice to see if someone does something
     d20 = Math.floor(Math.random() * (21 - 1) + 1)
     if (player.con >= 9) {
@@ -681,13 +922,244 @@ function showTextNode(textNodeIndex) { // goes through the text nodes checks wha
       d20 += 1
     }
     console.log(d20)
+    if (d20 >= 16) {
+      return showTextNode(446)
+    } else if (d20 <= 15) {
+      return showTextNode(447)
+    }
+  } else if (textNode.diceRoll === 14) {
+    console.log(`The dice roller is on and did things`) // this is how you roll dice to see if someone does something
+    d20 = Math.floor(Math.random() * (21 - 1) + 1)
+    if (player.wis >= 9) {
+      d20 += 5
+    } else if (player.wis >= 6) {
+      d20 += 3
+    } else if (player.wis >= 3) {
+      d20 += 2
+    }
+    console.log(d20)
     if (d20 >= 10) {
-      return showTextNode(759)
+      return showTextNode(430)
     } else if (d20 <= 9) {
-      return showTextNode(758)
+      return showTextNode(430.5)
+    }
+  } else if (textNode.diceRoll === 17) {
+    console.log(`The dice roller is on and did things`) // this is how you roll dice to see if someone does something
+    d20 = Math.floor(Math.random() * (21 - 1) + 1)
+    if (player.cha >= 10) {
+      d20 += 5
+    } else if (player.cha >= 7) {
+      d20 += 3
+    } else if (player.cha >= 4) {
+      d20 += 2
+    }
+    console.log(d20)
+    if (d20 >= 10) {
+      return showTextNode(490.19)
+    } else if (d20 <= 9) {
+      return showTextNode(490.22)
+    }
+  } else if (textNode.diceRoll === 18) {
+    console.log(`The dice roller is on and did things`) // this is how you roll dice to see if someone does something
+    d20 = Math.floor(Math.random() * (21 - 1) + 1)
+    if (player.dex >= 9) {
+      d20 += 4
+    } else if (player.dex >= 6) {
+      d20 += 2
+    } else if (player.dex >= 3) {
+      d20 += 1
+    }
+    console.log(d20)
+    if (d20 >= 10) {
+      return showTextNode(491.7)
+    } else if (d20 <= 9) {
+      return showTextNode(491.8)
+    }
+  } else if (textNode.diceRoll === 19) {
+    console.log(`The dice roller is on and did things`) // this is how you roll dice to see if someone does something
+    d20 = Math.floor(Math.random() * (21 - 1) + 1)
+    if (player.dex >= 9) {
+      d20 += 4
+    } else if (player.dex >= 6) {
+      d20 += 2
+    } else if (player.dex >= 3) {
+      d20 += 1
+    }
+    console.log(d20)
+    if (d20 >= 12) {
+      return showTextNode(491.22)
+    } else if (d20 <= 11) {
+      return showTextNode(492.18)
     }
   }
 
+  if (textNode.diceRoll === 21) {
+    console.log(`The dice roller is on and did things`) // this is how you roll dice to see if someone does something
+    d20 = Math.floor(Math.random() * (21 - 1) + 1)
+    if (player.dex >= 9) {
+      d20 += 4
+    } else if (player.dex >= 6) {
+      d20 += 2
+    } else if (player.dex >= 3) {
+      d20 += 1
+    }
+    console.log(d20)
+    if (d20 >= 14) {
+      console.log(`the if in dice roll is running`)
+      return showTextNode(648)
+    } else if (d20 <= 13) {
+      return showTextNode(642)
+    }
+  } else if (textNode.diceRoll === 22) {
+    console.log(`The dice roller is on and did things`) // this is how you roll dice to see if someone does something
+    d20 = Math.floor(Math.random() * (21 - 1) + 1)
+    if (player.wis >= 9) {
+      d20 += 4
+    } else if (player.wis >= 6) {
+      d20 += 2
+    } else if (player.wis >= 3) {
+      d20 += 1
+    }
+    console.log(d20)
+    if (d20 >= 15) {
+      return showTextNode(703)
+    } else if (d20 <= 14) {
+      return showTextNode(705)
+    }
+  } else if (textNode.diceRoll === 23) {
+    console.log(`The dice roller is on and did things`) // this is how you roll dice to see if someone does something
+    d20 = Math.floor(Math.random() * (21 - 1) + 1)
+    if (player.cha >= 10) {
+      d20 += 5
+    } else if (player.cha >= 7) {
+      d20 += 3
+    } else if (player.cha >= 4) {
+      d20 += 2
+    }
+    console.log(d20)
+    if (d20 >= 15) {
+      return showTextNode(711)
+    } else if (d20 <= 14) {
+      return showTextNode(712)
+    }
+  } else if (textNode.diceRoll === 25) {
+    console.log(`The dice roller is on and did things`) // this is how you roll dice to see if someone does something
+    d20 = Math.floor(Math.random() * (21 - 1) + 1)
+    if (player.wis >= 9) {
+      d20 += 4
+    } else if (player.wis >= 6) {
+      d20 += 2
+    } else if (player.wis >= 3) {
+      d20 += 1
+    }
+    console.log(d20)
+    if (d20 >= 15) {
+      return showTextNode(739.1)
+    } else if (d20 <= 14) {
+      return showTextNode(743)
+    }
+  } else if (textNode.diceRoll === 26) {
+    console.log(`The dice roller is on and did things`) // this is how you roll dice to see if someone does something
+    d20 = Math.floor(Math.random() * (21 - 1) + 1)
+    if (player.con >= 9) {
+      d20 += 4
+    } else if (player.con >= 6) {
+      d20 += 2
+    } else if (player.con >= 3) {
+      d20 += 1
+    }
+    console.log(d20)
+    if (d20 >= 16) {
+      return showTextNode(746)
+    } else if (d20 <= 15) {
+      return showTextNode(747)
+    }
+  } else if (textNode.diceRoll === 24) {
+    console.log(`The dice roller is on and did things`) // this is how you roll dice to see if someone does something
+    d20 = Math.floor(Math.random() * (21 - 1) + 1)
+    if (player.wis >= 9) {
+      d20 += 5
+    } else if (player.wis >= 6) {
+      d20 += 3
+    } else if (player.wis >= 3) {
+      d20 += 2
+    }
+    console.log(d20)
+    if (d20 >= 10) {
+      return showTextNode(730)
+    } else if (d20 <= 9) {
+      return showTextNode(730.5)
+    }
+  } else if (textNode.diceRoll === 27) {
+    console.log(`The dice roller is on and did things`) // this is how you roll dice to see if someone does something
+    d20 = Math.floor(Math.random() * (21 - 1) + 1)
+    if (player.cha >= 10) {
+      d20 += 5
+    } else if (player.cha >= 7) {
+      d20 += 3
+    } else if (player.cha >= 4) {
+      d20 += 2
+    }
+    console.log(d20)
+    if (d20 >= 10) {
+      return showTextNode(790.19)
+    } else if (d20 <= 9) {
+      return showTextNode(790.22)
+    }
+  } else if (textNode.diceRoll === 28) {
+    console.log(`The dice roller is on and did things`) // this is how you roll dice to see if someone does something
+    d20 = Math.floor(Math.random() * (21 - 1) + 1)
+    if (player.dex >= 9) {
+      d20 += 4
+    } else if (player.dex >= 6) {
+      d20 += 2
+    } else if (player.dex >= 3) {
+      d20 += 1
+    }
+    console.log(d20)
+    if (d20 >= 10) {
+      return showTextNode(791.7)
+    } else if (d20 <= 9) {
+      return showTextNode(791.8)
+    }
+  } else if (textNode.diceRoll === 29) {
+    console.log(`The dice roller is on and did things`) // this is how you roll dice to see if someone does something
+    d20 = Math.floor(Math.random() * (21 - 1) + 1)
+    if (player.dex >= 9) {
+      d20 += 4
+    } else if (player.dex >= 6) {
+      d20 += 2
+    } else if (player.dex >= 3) {
+      d20 += 1
+    }
+    console.log(d20)
+    if (d20 >= 12) {
+      return showTextNode(791.22)
+    } else if (d20 <= 11) {
+      return showTextNode(792.18)
+    }
+  }
+  else if (textNode.diceRoll === 30) {
+    console.log(`The dice roller is on and did things`) // this is how you roll dice to see if someone does something
+    d20 = Math.floor(Math.random() * (21 - 1) + 1)
+    if (player.con >= 9) {
+      d20 += 4
+    } else if (player.con >= 6) {
+      d20 += 2
+    } else if (player.con >= 3) {
+      d20 += 1
+    }
+    console.log(d20)
+    if (d20 >= 12) {
+      return showTextNode(859)
+    } else if (d20 <= 11) {
+      return showTextNode(858)
+    }
+  }
+
+  if (textNode.reload === 1) {
+    location.replace(location.href);
+  }
 
 
   while (optionButtonsElement.firstChild) { //removes buttons for combat, deletes the buttons but then adds new buttons
@@ -740,6 +1212,7 @@ function showTextNode(textNodeIndex) { // goes through the text nodes checks wha
     }
   })
 }
+
 function showOption(option) { //shows the options if they have a certain item and such
   return option.requiredPlayer == null || option.requiredPlayer(player)
 }
@@ -790,6 +1263,7 @@ function selectOption(option) { //detect if button is clicked with a set player 
   update()
   showTextNode(nextTextNodeId)
 }
+
 function healPot(amount) {
   if (combatQuestion === true || continueCombat === true) {
     if (player.healPot >= 1) {
@@ -1363,10 +1837,7 @@ function combat(one, two, three) {
       if (onlyEnemy === 1) {
         playerHp += heal
         afterPotPlayerHp = playerHp
-        enemyD20 = Math.floor((Math.random() * (21 - 1) + 1) + enemy1.extraRoll)
-        enemyD20 = Math.floor((enemyD20 * 1.1) + enemy1.extraDamage)
-        playerHp -= Math.floor(enemyD20)
-        newText = `You were at ${beforePotPlayerHp} HP but after drinking your potion you healed ${heal} HP you are at <${afterPotPlayerHp} Hp>. ${enemy1.enemyName} took the chance to deal ${enemyD20} damage leaving you with <<${playerHp} Hp>> left`
+        newText = `You were at ${beforePotPlayerHp} HP but after drinking your potion you healed ${heal} HP you are at <${afterPotPlayerHp} Hp>.`
         multi = 1
       } else if (onlyEnemy === 2) {
         enemyD20 = Math.floor((Math.random() * (21 - 1) + 1) + enemy1.extraRoll)
@@ -1398,9 +1869,6 @@ function combat(one, two, three) {
       if (onlyEnemy === 1) {
         playerHp += heal
         afterPotPlayerHp = playerHp
-        enemyD20 = Math.floor((Math.random() * (21 - 1) + 1) + enemy2.extraRoll)
-        enemyD20 = Math.floor((enemyD20 * 1.1) + enemy2.extraDamage)
-        playerHp -= Math.floor(enemyD20)
         newText = `You were at ${beforePotPlayerHp} HP but after drinking your potion you healed ${heal} HP you are at <${afterPotPlayerHp} Hp>. ${enemy2.enemyName} took the chance to deal ${enemyD20} damage leaving you with <<${playerHp} Hp>> left`
         multi = 1
       } else if (onlyEnemy === 2) {
@@ -1433,10 +1901,7 @@ function combat(one, two, three) {
       if (onlyEnemy === 1) {
         playerHp += heal
         afterPotPlayerHp = playerHp
-        enemyD20 = Math.floor((Math.random() * (21 - 1) + 1) + enemy3.extraRoll)
-        enemyD20 = Math.floor((enemyD20 * 1.1) + enemy3.extraDamage)
-        playerHp -= Math.floor(enemyD20)
-        newText = `You were at ${beforePotPlayerHp} HP but after drinking your potion you healed ${heal} HP you are at <${afterPotPlayerHp} Hp>. ${enemy3.enemyName} took the chance to deal ${enemyD20} damage leaving you with <<${playerHp} Hp>> left`
+        newText = `You were at ${beforePotPlayerHp} HP but after drinking your potion you healed ${heal} HP you are at <${afterPotPlayerHp} Hp>.`
         multi = 1
       } else if (onlyEnemy === 2) {
         enemyD20 = Math.floor((Math.random() * (21 - 1) + 1) + enemy3.extraRoll)
@@ -1685,26 +2150,37 @@ function endCombat() {
 
   if (playerHp <= 0 && neededDeath !== true) {
     newText = `You have been killed and won't be missed`
+    attack = false
+    talk = false
+    neededDeath = false
+    combatQuestion = false
+    combatEnded = false
     showTextNode(13)
     playerHp = 175
   } else if (combatQuestion === true && combatEnded === true && neededDeath === true) {
     attack = false
+    talk = false
     console.log(`this did go in the end winning combat`)
     neededDeath = false
     combatQuestion = false
+    combatEnded = false
     playerHp = 175
     newText = `You have failed, and lost to Henry`
     showTextNode(endingNode)
   }
   else if (combatQuestion === true && combatEnded === true) {
     attack = false
+    talk = false
     console.log(`this did go in the end winning combat`)
+    neededDeath = false
     combatQuestion = false
+    combatEnded = false
     playerHp = 175
     newText = `You have won the battle`
     showTextNode(endingNode)
   } else { console.log(`The end function did not work`) }
 }
+
 function updateText() {
   textElement.innerText = newText
 }
@@ -1716,8 +2192,6 @@ function updateText() {
 let textNodes = [
 
   {
-
-
 
     id: 1, //story element or story part or section
     text: `Welcome to our Knight text adventure, click Play to start`, //text was is visible first
@@ -1944,7 +2418,7 @@ let textNodes = [
     options: [
       {
         text: `Restart`,
-        nextText: -1
+        nextText: 1000
       }
     ],
   },
@@ -1965,7 +2439,7 @@ let textNodes = [
       {
         text: `Next`,
         nextText: 16,
-      }      
+      }
     ],
   },
   {
@@ -1981,6 +2455,7 @@ let textNodes = [
         nextText: 26
       }
     ],
+    imageCheck: 1
   },
   {
     id: 17,
@@ -2081,6 +2556,7 @@ let textNodes = [
         nextText: 26.1
       }
     ],
+    imageCheck: 2
   },
   {
     id: 26.1,
@@ -2148,6 +2624,7 @@ let textNodes = [
         nextText: 31
       }
     ],
+    imageCheck: 2
   },
   { // gives the player 2 healing potions
     id: 28,
@@ -2167,6 +2644,7 @@ let textNodes = [
         nextText: 30
       }
     ],
+    imageCheck: 3
   },
   {
     id: 29,
@@ -2186,6 +2664,7 @@ let textNodes = [
         nextText: 30
       }
     ],
+    imageCheck: 4
   },
   {
     id: 30,
@@ -2210,6 +2689,7 @@ let textNodes = [
         nextText: 31
       }
     ],
+    imageCheck: 2
   },
   {
     id: 31,
@@ -2229,6 +2709,7 @@ let textNodes = [
         nextText: 34
       }
     ],
+    imageCheck: 1
   },
   {
     id: 32,
@@ -2269,6 +2750,7 @@ let textNodes = [
         nextText: 36
       }
     ],
+    imageCheck: 5
   },
   {
     id: 36,
@@ -2276,18 +2758,15 @@ let textNodes = [
     options: [
       {
         text: `Help the dog.`,
-        setplayer: { hasDog: true },
         nextText: 37,
       },
       {
         text: `Do not interact with the dog.`,
         nextText: 337,
-        setplayer: { followDog: true }
       },
       {
         text: `Tell the dog to go away.`,
         nextText: 637,
-        setplayer: { noDog: true }
       }
     ],
   },
@@ -2306,6 +2785,7 @@ let textNodes = [
         nextText: 40
       }
     ],
+    imageCheck: 5
   },
   //keep dog
   {
@@ -2317,6 +2797,7 @@ let textNodes = [
         nextText: 41
       }
     ],
+    imageCheck: 6
   },
   {
     id: 41,
@@ -2327,6 +2808,7 @@ let textNodes = [
         nextText: 41.1
       }
     ],
+    imageCheck: 7
   },
   {
     id: 41.1,
@@ -2357,6 +2839,7 @@ let textNodes = [
         nextText: 41.2
       },
     ],
+    imageCheck: 8
   },
   {
     id: 41.2,
@@ -2414,24 +2897,15 @@ let textNodes = [
     id: 41.6,
     text: `Tutorial: Some options will roll a d20 and if you get high enough, good things will happen. This is shown if the option has a "[Check]" tag on it. (Click any Option to Continue to Story)`,
     options: [
-      //keep/has dog
       {
         text: `Leave Tutorial`,
         nextText: 43,
-        requiredPlayer: (currentState) => { currentState.hasDog === true || currentState.followDog === true }
       },
       {
         text: `Try to bust down door
     	[Check]`,
         nextText: 43,
-        requiredPlayer: (currentState) => { currentState.hasDog === true || currentState.followDog === true }
       },
-      //no dog
-      // {
-
-      //   text: `Leave Tutorial no dog`,
-      //   nextText: 643,
-      // },
     ],
   },
   {
@@ -2452,6 +2926,7 @@ let textNodes = [
         nextText: 47
       }
     ],
+    imageCheck: 7
   },
   {
     id: 44, //talking
@@ -2502,12 +2977,7 @@ let textNodes = [
         text: `Continue`,
         nextText: 51,
       },
-      {
-        text: `Continue`,
-        nextText: 651,
-      }
     ],
-    checkDog: 1
   },
   { //sneak
     id: 42, //fails on dex roll
@@ -2548,6 +3018,7 @@ let textNodes = [
         nextText: 12
       },
     ],
+    imageCheck: 8,
     startCombat: 1,
   },
   {
@@ -2559,21 +3030,17 @@ let textNodes = [
         nextText: 51
       }
     ],
+    imageCheck: 6
   },
   { //start after combat
     id: 51,
     text: 'You walk off with a sense of relief, you are happy to be alive but you do not know what you should feel. The dog comes out from the forest and starts licking your face. ',
     options: [
       {
-        text: `Leave as the victor dog`,
-        nextText: 51,
+        text: `Leave as the victor`,
+        nextText: 52,
       },
-      {
-        text: `Leave as the victor no dog`,
-        nextText: 651,
-      }
     ],
-    checkDog: 1
   },
   {
     id: 52,
@@ -2602,6 +3069,7 @@ let textNodes = [
         nextText: 57
       }
     ],
+    imageCheck: 12
   },
   {//
     id: 55,
@@ -2668,6 +3136,7 @@ let textNodes = [
         nextText: 65
       }
     ],
+    imageCheck: 10
   },
   {// diplomatic approach
     id: 60,
@@ -2762,6 +3231,7 @@ let textNodes = [
         nextText: 69
       }
     ],
+    imageCheck: 11
   },
   {//
     id: 69,
@@ -2826,6 +3296,7 @@ let textNodes = [
         nextText: 75.1
       }
     ],
+    imageCheck: 10
   },
   {//
     id: 75.1,
@@ -2900,7 +3371,6 @@ let textNodes = [
   {
     id: 75.8,
     text: 'Every skill gives you a benefit every 3 of a skill you have (EX: 3 strength = +1 on your roll while using slash, then 6 for +2, and 9 for +4). [Checks] will also display which skill benefits it (EX: "[Check (Dex)]"',
-
     options: [
       {
         text: `Very good to know`,
@@ -3000,6 +3470,7 @@ let textNodes = [
         nextText: 81
       }
     ],
+    imageCheck: 12
   },
   {//
     id: 81,
@@ -3010,6 +3481,7 @@ let textNodes = [
         nextText: 82
       }
     ],
+    imageCheck: 13
   },
   {// conflict
     id: 82,
@@ -3041,6 +3513,7 @@ let textNodes = [
       },
     ],
     startCombat: 2,
+    imageCheck: 14
   },
   {// end conflict
     id: 83,
@@ -3061,6 +3534,7 @@ let textNodes = [
         nextText: 85
       }
     ],
+    imageCheck: 12
   },
   {//
     id: 85,
@@ -3071,6 +3545,7 @@ let textNodes = [
         nextText: 86
       }
     ],
+    imageCheck: 10
   },
   {//
     id: 86,
@@ -3140,6 +3615,7 @@ let textNodes = [
         nextText: 92
       }
     ],
+    imageCheck: 12
   },
   {//
     id: 92,
@@ -3150,6 +3626,7 @@ let textNodes = [
         nextText: 93
       }
     ],
+    imageCheck: 15
   },
   {//
     id: 93,
@@ -3168,6 +3645,7 @@ let textNodes = [
         nextText: 96
       }
     ],
+    imageCheck: 16
   },
   {//
     id: 94,
@@ -3243,16 +3721,18 @@ let textNodes = [
       },
     ],
     startCombat: 3,
+    imageCheck: 17
   },
   {// end conflict
     id: 99,
-    text: 'blank',
+    text: 'Killed Guard',
     options: [
       {
         text: `Continue`,
         nextText: 100
       }
     ],
+    imageCheck: 15
   },
   {//
     id: 100,
@@ -3284,7 +3764,7 @@ let textNodes = [
         nextText: 103.1
       }
     ],
-
+    imageCheck: 19
   },
   {// wisdom succeeds (ws)
     id: 103.1,
@@ -3326,6 +3806,7 @@ let textNodes = [
         nextText: 108
       }
     ],
+    imageCheck: 19
   },
   {// wf
     id: 108,
@@ -3384,16 +3865,18 @@ let textNodes = [
       },
     ],
     startCombat: 4,
+    imageCheck: 20
   },
   {// end conflict
     id: 110,
-    text: 'blank',
+    text: 'killed gaurds',
     options: [
       {
         text: `Continue`,
         nextText: 116.1
       }
     ],
+    imageCheck: 21
   },
   {// charisma succeeds
     id: 111,
@@ -3404,9 +3887,10 @@ let textNodes = [
         nextText: 111.1
       }
     ],
+    imageCheck: 21
   },
   {//
-    id: 111,
+    id: 111.1,
     text: 'Matthew: "Where are my manners, go right ahead."',
     options: [
       {
@@ -3444,6 +3928,7 @@ let textNodes = [
         nextText: 116
       }
     ],
+    imageCheck: 21
   },
   {//
     id: 116,
@@ -3545,16 +4030,18 @@ let textNodes = [
       },
     ],
     startCombat: 5,
+    imageCheck: 22
   },
   {// end conflict
     id: 124,
-    text: 'blank',
+    text: 'You lost',
     options: [
       {
         text: `Continue`,
         nextText: 125
       }
     ],
+    imageCheck: 23
   },
   {//
     id: 125,
@@ -3586,6 +4073,7 @@ let textNodes = [
         nextText: 128
       }
     ],
+    imageCheck: 24
   },
   {//
     id: 128,
@@ -3602,11 +4090,22 @@ let textNodes = [
     text: 'You try to get yourself to your feet, but it feels like you are tied down. You look at the surroundings in the room to see where you are at.',
     options: [
       {
+        text: `Look around
+        [Check (Wis)]`,
+        nextText: 129.1
+      }
+    ],
+  },
+  {// wisdom check
+    id: 129.1,
+    text: 'You try to get yourself to your feet, but it feels like you are tied down. You look at the surroundings in the room to see where you are at.',
+    options: [
+      {
         text: `Continue`,
         nextText: 130
       }
     ],
-    diceRoll: 6
+    diceRoll: 4
   },
   {// wisdom succeed
     id: 130,
@@ -3781,6 +4280,7 @@ let textNodes = [
         nextText: 137
       }
     ],
+    imageCheck: 25
   },
   {//
     id: 135,
@@ -3829,6 +4329,7 @@ let textNodes = [
         nextText: 139
       }
     ],
+    imageCheck: 24
   },
   {// wisdom or dex check
     id: 139,
@@ -3850,7 +4351,7 @@ let textNodes = [
         nextText: 140
       }
     ],
-    diceRoll: 4
+    diceRoll: 5
   },
   {// succeeds
     id: 139.1,
@@ -3891,6 +4392,7 @@ let textNodes = [
         nextText: 145
       }
     ],
+    imageCheck: 26
   },
   {// con check
     id: 145,
@@ -3912,10 +4414,10 @@ let textNodes = [
         nextText: 146
       }
     ],
-    diceRoll: 5
+    diceRoll: 6
   },
   {// succeeds
-    id: 136,
+    id: 146,
     text: 'You continue even though your arms feel like noodles, you see Frank and Jin looking impressed. You also see the other man, a huge man with bright red hair. He is laughing at your attempt to be "strong". He takes your pick and starts to show you how to work the rock.',
     options: [
       {
@@ -3925,17 +4427,17 @@ let textNodes = [
     ],
   },
   {// fails
-    id: 137,
+    id: 147,
     text: 'You drop the pickaxe and see Frank and Jin walk away from you. You can finally see the last guy, a huge name with bright red hair. He looks like is about to help when you see a guard approach.',
     options: [
       {
         text: `Continue`,
-        nextText: 137.1
+        nextText: 147.1
       }
     ],
   },
   {// fails
-    id: 137.1,
+    id: 147.1,
     text: 'You try to pick off the pickaxe before they notice, but it\'s too late. They pick you up and then beat you for what feels like hours. Afterwards they throw you back into the mines. This time the big man is there holding your pickaxe, he shows you how to work the rock.',
     options: [
       {
@@ -3961,6 +4463,7 @@ let textNodes = [
         nextText: 178.3
       },
     ],
+    imageCheck: 27
   },
   {//
     id: 178.1,
@@ -4019,6 +4522,7 @@ let textNodes = [
         nextText: 180
       }
     ],
+    imageCheck: 28
   },
   {//
     id: 180,
@@ -4085,6 +4589,7 @@ let textNodes = [
         nextText: 182
       }
     ],
+    imageCheck: 29
   },
   {//
     id: 182,
@@ -4151,7 +4656,8 @@ let textNodes = [
         nextText: 183
       }
     ],
-  }, {//
+  },
+  {//
     id: 183,
     text: 'You have more energy left and so you start to mine again. You spend another hour or two before hearing the church bell. They take you to the church to pay for your sins, a costume from Bina culture. You spend an hour in the church before being thrown back into your cell.',
     options: [
@@ -4160,6 +4666,7 @@ let textNodes = [
         nextText: 184
       }
     ],
+    imageCheck: 24
   },
   {//
     id: 184,
@@ -4200,6 +4707,7 @@ let textNodes = [
         nextText: 188
       }
     ],
+    imageCheck: 30
   },
   {// how to break out of prison
     id: 188,
@@ -4217,7 +4725,7 @@ let textNodes = [
       },
       {//breaks out with Frank (bf) //increases dex or charisma by 1
         text: `Give some to Frank`,
-        nextText: 191.1,
+        nextText: 191.2,
         setPlayer: { dex: 4 }
       }
     ],
@@ -4231,6 +4739,7 @@ let textNodes = [
         nextText: 189.2
       }
     ],
+    imageCheck: 27
   },
   {// bb
     id: 189.2,
@@ -4346,6 +4855,7 @@ let textNodes = [
       },
     ],
     startCombat: 6,
+    imageCheck: 31
   },
   {// Conflict lb
     id: 189.81,
@@ -4377,6 +4887,7 @@ let textNodes = [
       },
     ],
     startCombat: 7,
+    imageCheck: 31
   },
   {// end conflict wb
     id: 189.9,
@@ -4387,6 +4898,7 @@ let textNodes = [
         nextText: 189.11
       }
     ],
+    imageCheck: 30
   },
   {// end conflict lb
     id: 189.91,
@@ -4397,6 +4909,7 @@ let textNodes = [
         nextText: 189.111
       }
     ],
+    imageCheck: 32
   },
   {// wb
     id: 189.11,
@@ -4425,6 +4938,7 @@ let textNodes = [
         nextText: 193
       }
     ],
+    imageCheck: 30
   },
   {// wb
     id: 189.13,
@@ -4469,16 +4983,19 @@ let textNodes = [
         nextText: 192
       }
     ],
+    imageCheck: 30
   },
+  //jin
   {// bj
     id: 190.1,
     text: 'You hand the rest to Jin, the other guys look annoyed but do not say anything. Later that day you decide that you are going to try to get Jin to be able to enter the armoury. Maybe he can make us seem like guards. You can get both Jin and yourself out.',
     options: [
       {
         text: `Talk to Jin`,
-        nextText: 18
+          nextText: 190.3
       }
     ],
+    imageCheck: 28
   },
   {// bj
     id: 190.2,
@@ -4486,7 +5003,7 @@ let textNodes = [
     options: [
       {
         text: `Continue`,
-        nextText: 18
+        nextText: 190.3
       }
     ],
   },
@@ -4570,6 +5087,7 @@ let textNodes = [
       },
     ],
     startCombat: 8,
+    imageCheck: 31
   },
   {//bj
     id: 190.9,
@@ -4580,6 +5098,7 @@ let textNodes = [
         nextText: 190.11
       }
     ],
+    imageCheck: 33
   },
   {// bj
     id: 190.11,
@@ -4641,6 +5160,7 @@ let textNodes = [
       },
     ],
     startCombat: 9,
+    imageCheck: 34
   },
   {//bj combat finish
     id: 190.15,
@@ -4651,6 +5171,7 @@ let textNodes = [
         nextText: 190.16
       }
     ],
+    imageCheck: 35
   },
   {// bj
     id: 190.16,
@@ -4675,6 +5196,7 @@ let textNodes = [
         nextText: 190.18
       }
     ],
+    imageCheck: 26
   },
   {//charisma check 10 bj
     id: 190.18,
@@ -4686,7 +5208,6 @@ let textNodes = [
         nextText: 190.181
       }
     ],
-    diceRoll: 7
   },
   {//charisma check 10 bj
     id: 190.181,
@@ -4697,7 +5218,7 @@ let textNodes = [
         nextText: 190.19
       }
     ],
-    diceRoll: 6
+    diceRoll: 7
   },
   {// succeeds bj
     id: 190.19,
@@ -4708,6 +5229,7 @@ let textNodes = [
         nextText: 190.21
       }
     ],
+    imageCheck: 30
   },
   {// fails bj
     id: 190.22,
@@ -4749,6 +5271,7 @@ let textNodes = [
       },
     ],
     startCombat: 10,
+    imageCheck: 31
   },
   {//bj
     id: 190.24,
@@ -4759,6 +5282,7 @@ let textNodes = [
         nextText: 192.25
       }
     ],
+    imageCheck: 30
   },
   {// bj
     id: 190.25,
@@ -4769,6 +5293,7 @@ let textNodes = [
         nextText: 192
       }
     ],
+    imageCheck: 30
   },
   {// bf
     id: 191.2,
@@ -4779,6 +5304,7 @@ let textNodes = [
         nextText: 191.3
       }
     ],
+    imageCheck: 29
   },
   {// bf
     id: 191.3,
@@ -4815,10 +5341,12 @@ let textNodes = [
     text: 'While you are walking back from mining you try to sneak away from the group.',
     options: [
       {
-        text: `Make it for the Armoury`,
+        text: `Make it for the Armoury
+        [Check [Dex]]`,
         nextText: 191.61
       }
     ],
+    imageCheck: 26
   },
   {// dex check 10 bf
     id: 191.61,
@@ -4840,6 +5368,7 @@ let textNodes = [
         nextText: 192.14
       }
     ],
+    imageCheck: 35
   },
   {// fails bf
     id: 191.8,
@@ -4881,16 +5410,18 @@ let textNodes = [
       },
     ],
     startCombat: 11,
+    imageCheck: 31
   },
   {//end combat, fails bf
     id: 191.12,
-    text: 'blank',
+    text: 'Defeat the Gaurds',
     options: [
       {
         text: `Continue`,
         nextText: 191.13
       }
     ],
+    imageCheck: 35
   },
   {// fails bf
     id: 191.13,
@@ -4911,6 +5442,7 @@ let textNodes = [
         nextText: 192.15
       }
     ],
+    imageCheck: 36
   },
   {// bf
     id: 192.15,
@@ -4929,6 +5461,7 @@ let textNodes = [
         nextText: 192.17
       }
     ],
+    imageCheck: 37
   },
   {// bf
     id: 192.16,
@@ -4945,7 +5478,8 @@ let textNodes = [
     text: 'You make it to the end of the passage, but there are three guards right in front of the door. You try to sneak past with Frank.',
     options: [
       {
-        text: `Sneak off`,
+        text: `Sneak off
+        [Check (Dex)]`,
         nextText: 192.171
       }
     ],
@@ -4959,7 +5493,8 @@ let textNodes = [
         nextText: 192.22
       }
     ],
-    diceRoll: 9
+    diceRoll: 9,
+    imageCheck: 26
   },
   {// fail bf
     id: 192.18,
@@ -5001,16 +5536,18 @@ let textNodes = [
       },
     ],
     startCombat: 12,
+    imageCheck: 31
   },
   {//end combat, fails bf
     id: 191.19,
-    text: 'blank',
+    text: 'Defeats Gaurds',
     options: [
       {
         text: `Continue`,
         nextText: 191.21
       }
     ],
+    imageCheck: 30
   },
   {// fail bf
     id: 191.21,
@@ -5031,6 +5568,7 @@ let textNodes = [
         nextText: 192
       }
     ],
+    imageCheck: 30
   },
   {// dragon mentor
     id: 192,
@@ -5045,6 +5583,7 @@ let textNodes = [
         nextText: 192
       }
     ],
+    imageCheck: 12
   },
   {// sleep
     id: 193,
@@ -5065,6 +5604,7 @@ let textNodes = [
         nextText: 199
       }
     ],
+    imageCheck: 12
   },
   {// running
     id: 195,
@@ -5075,6 +5615,7 @@ let textNodes = [
         nextText: 196
       }
     ],
+    imageCheck: 38
   },
   {// combat, runs
     id: 196,
@@ -5106,6 +5647,7 @@ let textNodes = [
       },
     ],
     startCombat: 13,
+    imageCheck: 39
   },
   {//end combat, runs
     id: 197,
@@ -5116,6 +5658,7 @@ let textNodes = [
         nextText: 198
       }
     ],
+    imageCheck: 12
   },
   {//
     id: 198,
@@ -5150,6 +5693,7 @@ let textNodes = [
         nextText: 202
       },
     ],
+    imageCheck: 7
   },
   {// talk
     id: 201,
@@ -5169,13 +5713,7 @@ let textNodes = [
         text: `Good.`,
         nextText: 203,
       },
-      {
-        text: `Good.`,
-        nextText: 703,
-
-      }
     ],
-    checkDog: 2
   },
   //
   //this is where the story would switch if they did not do anything with the dog
@@ -5188,17 +5726,8 @@ let textNodes = [
         text: `Rush to Marrys home. `,
         nextText: 204,
       },
-      {
-        text: `Rush to Marrys home. `,
-        nextText: 404,
-      },
-      {
-        text: `Rush to Marrys home. `,
-        nextText: 704,
-        requiredPlayer: (currentState) => { currentState.noDog === true }
-      }
     ],
-    checkDog: 3
+    imageCheck: 10
   },
   {//
     id: 204,
@@ -5219,8 +5748,10 @@ let textNodes = [
         nextText: 206
       }
     ],
+    imageCheck: 2
   },
   {//
+    id: 206,
     text: 'You Look for more clues. You see a note next to her bed, a picture on the wall to the left of the door, and she has something on her desk. You see that she has something in her hands, it looks like a jade.',
     options: [
       {
@@ -5311,9 +5842,10 @@ let textNodes = [
     options: [
       {
         text: `Buddy ? `,
-        nextText: 212
+        nextText: 213
       }
     ],
+    imageCheck: 6
   },
   {//
     id: 213,
@@ -5324,6 +5856,7 @@ let textNodes = [
         nextText: 214
       }
     ],
+    imageCheck: 40
   },
   {//
     id: 214,
@@ -5374,6 +5907,7 @@ let textNodes = [
         nextText: 219
       }
     ],
+    imageCheck: 41
   },
   {//
     id: 219,
@@ -5394,6 +5928,7 @@ let textNodes = [
         nextText: 221
       }
     ],
+    imageCheck: 42
   },
   {//
     id: 221,
@@ -5407,17 +5942,18 @@ let textNodes = [
   },
   {//
     id: 222,
-    text: 'Dragon: "I will help you on your feat. I can distract the archers and gun men while you find Henry and take your revenge."',
+    text: 'Dragon: "I will help you on your feat. I can distract the archers and gun men while you find Henry and take your revenge." He blows on your armor as it turns into dragon iron armor.',
     options: [
       {
         text: `Hmmm, this could work.`,
-        nextText: 223
+        nextText: 224
       },
       {
         text: `Thank you for your help.`,
-        nextText: 223
+        nextText: 224
       }
     ],
+    imageCheck: 43
   },
   {//
     id: 224,
@@ -5428,6 +5964,7 @@ let textNodes = [
         nextText: 225
       }
     ],
+    imageCheck: 41
   },
   {//
     id: 225,
@@ -5438,6 +5975,7 @@ let textNodes = [
         nextText: 226
       }
     ],
+    imageCheck: 44
   },
   {//
     id: 226,
@@ -5492,6 +6030,7 @@ let textNodes = [
         nextText: 231
       }
     ],
+    imageCheck: 45
   },
   {//
     id: 231,
@@ -5533,6 +6072,7 @@ let textNodes = [
       },
     ],
     startCombat: 14,
+    imageCheck: 46
   },
   {//end combat
     id: 233,
@@ -5543,6 +6083,7 @@ let textNodes = [
         nextText: 234
       }
     ],
+    imageCheck: 45
   },
   {//
     id: 234,
@@ -5577,6 +6118,7 @@ let textNodes = [
         nextText: 237
       }
     ],
+    imageCheck: 47
   },
   {// combat
     id: 237,
@@ -5608,6 +6150,7 @@ let textNodes = [
       },
     ],
     startCombat: 15,
+    imageCheck: 48
   },
   {// end combat
     id: 238,
@@ -5618,6 +6161,7 @@ let textNodes = [
         nextText: 239
       }
     ],
+    imageCheck: 49
   },
   {//
     id: 239,
@@ -5636,6 +6180,7 @@ let textNodes = [
         nextText: 245
       }
     ],
+    imageCheck: 50
   },
   {// library
     id: 240,
@@ -5654,6 +6199,7 @@ let textNodes = [
         nextText: 243
       }
     ],
+    imageCheck: 51
   },
   {// library
     id: 241,
@@ -5714,6 +6260,7 @@ let textNodes = [
         nextText: 246
       },
     ],
+    imageCheck: 52
   },
   {//
     id: 245,
@@ -5732,6 +6279,7 @@ let textNodes = [
         nextText: 246
       },
     ],
+    imageCheck: 53
   },
   {//
     id: 246,
@@ -5742,6 +6290,7 @@ let textNodes = [
         nextText: 247
       }
     ],
+    imageCheck: 54
   },
   {//
     id: 247,
@@ -5821,6 +6370,7 @@ let textNodes = [
       },
     ],
     startCombat: 16,
+    imageCheck: 55
   },
   {// end combat
     id: 252,
@@ -5830,16 +6380,8 @@ let textNodes = [
         text: `What will you do? `,
         nextText: 253, //0-2 with dog
       },
-      {
-        text: `What will you do? `,
-        nextText: 453, // following dogs 3 and 4
-      },
-      {
-        text: `What will you do? `,
-        nextText: 753,
-      }
     ],
-    checkDog: 4
+    imageCheck: 54
   },
   {//
     id: 253,
@@ -5864,6 +6406,7 @@ let textNodes = [
         nextText: 255
       }
     ],
+    imageCheck: 51
   },
   {// killing, bad end
     id: 255,
@@ -5871,9 +6414,10 @@ let textNodes = [
     options: [
       {
         text: `Continue`,
-        nextText: -1
+        nextText: 1000
       }
     ],
+    imageCheck: 0
   },
   {// spare
     id: 256,
@@ -5884,44 +6428,45 @@ let textNodes = [
         nextText: 257
       }
     ],
+    imageCheck: 1
   },
   {// spare
-    id: 247,
+    id: 257,
     text: 'You run outside to see fire everywhere, the dragon is still distracting the guards. You run into the forest, some arrows heading towards you, but you are too far for them to have good aim. The dragon still fought on.',
     options: [
       {
         text: `Catch your breath`,
-        nextText: 192
+        nextText: 258
       }
     ],
   },
   {// spare
-    id: 248,
+    id: 258,
     text: 'You pick up some flowers from the weeds near your home and put them on top of your family\'s grave. Ties come across your face, you fall to the floor and moan.',
     options: [
       {
         text: `...`,
-        nextText: 192
+        nextText: 259
       }
     ],
   },
   {// spare
-    id: 248,
+    id: 259,
     text: 'You get enough strength to get up and move on, tell them goodbye and start to take over Mary\'s business and become a blacksmith. You know one day someone will come after you, but at least you can live these days in peace.',
     options: [
       {
         text: `Continue`,
-        nextText: 192
+        nextText: 260
       }
     ],
   },
   {// good ending
-    id: 248,
+    id: 260,
     text: 'THE END',
     options: [
       {
         text: `GOOOD ENDING`,
-        nextText: -1
+        nextText: 1000
       }
     ],
   },
@@ -5941,6 +6486,7 @@ let textNodes = [
         nextText: 340,
       }
     ],
+    imageCheck: 12
   },
   //road to adventure
   {
@@ -5952,6 +6498,7 @@ let textNodes = [
         nextText: 341
       }
     ],
+    imageCheck: 6
   },
   {
     id: 341,
@@ -5962,6 +6509,7 @@ let textNodes = [
         nextText: 341.1
       }
     ],
+    imageCheck: 7
   },
   {
     id: 341.1,
@@ -5992,6 +6540,7 @@ let textNodes = [
         nextText: 341.2
       },
     ],
+    imageCheck: 8
   },
   {
     id: 341.2,
@@ -6049,7 +6598,6 @@ let textNodes = [
     id: 341.6,
     text: `Tutorial: Some options will roll a d20 and if you get high enough, good things will happen. This is shown if the option has a "[Check]" tag on it. (Click any Option to Continue to Story)`,
     options: [
-      //keep/has dog
       {
         text: `Leave Tutorial`,
         nextText: 343,
@@ -6074,6 +6622,7 @@ let textNodes = [
         nextText: 347
       }
     ],
+    imageCheck: 7
   },
   {
     id: 344, //talking
@@ -6114,7 +6663,7 @@ let textNodes = [
         nextText: 347
       }
     ],
-    diceRoll: 1
+    diceRoll: 11
   },
   { //sneak
     id: 348, //succeed on dex roll
@@ -6125,7 +6674,6 @@ let textNodes = [
         nextText: 351,
       },
     ],
-    checkDog: 1
   },
   { //sneak
     id: 342, //fails on dex roll
@@ -6167,6 +6715,7 @@ let textNodes = [
       },
     ],
     startCombat: 17,
+    imageCheck: 8
   },
   {
     id: 350, //end of combat
@@ -6177,17 +6726,17 @@ let textNodes = [
         nextText: 51
       }
     ],
+    imageCheck: 6
   },
   { //start after combat
     id: 351,
     text: 'You walk off with a sense of relief, you are happy to be alive but you do not know what you should feel. The dog comes out from the forest and starts licking your face. ',
     options: [
       {
-        text: `Leave as the victor dog`,
+        text: `Leave as the victor`,
         nextText: 351,
       },
     ],
-    checkDog: 1
   },
   {
     id: 352,
@@ -6216,6 +6765,7 @@ let textNodes = [
         nextText: 357
       }
     ],
+    imageCheck: 12
   },
   {//
     id: 355,
@@ -6283,6 +6833,7 @@ let textNodes = [
         nextText: 365
       }
     ],
+    imageCheck: 10
   },
   {// diplomatic approach
     id: 360,
@@ -6367,6 +6918,7 @@ let textNodes = [
         nextText: 368
       }
     ],
+    imageCheck: 11
   },
   {//
     id: 368,
@@ -6441,6 +6993,7 @@ let textNodes = [
         nextText: 375.1
       }
     ],
+    imageCheck: 10
   },
   {//
     id: 375.1,
@@ -6615,6 +7168,7 @@ let textNodes = [
         nextText: 381
       }
     ],
+    imageCheck: 12
   },
   {//
     id: 381,
@@ -6625,6 +7179,7 @@ let textNodes = [
         nextText: 382
       }
     ],
+    imageCheck: 13
   },
   {// conflict
     id: 382,
@@ -6656,6 +7211,7 @@ let textNodes = [
       },
     ],
     startCombat: 18,
+    imageCheck: 14
   },
   {// end conflict
     id: 383,
@@ -6676,6 +7232,7 @@ let textNodes = [
         nextText: 385
       }
     ],
+    imageCheck: 12
   },
   {//
     id: 385,
@@ -6686,6 +7243,7 @@ let textNodes = [
         nextText: 386
       }
     ],
+    imageCheck: 10
   },
   {//
     id: 386,
@@ -6755,6 +7313,7 @@ let textNodes = [
         nextText: 392
       }
     ],
+    imageCheck: 12
   },
   //henry
   {// end of mentor 1
@@ -6776,6 +7335,7 @@ let textNodes = [
         nextText: 393
       }
     ],
+    imageCheck: 15
   },
   {//
     id: 393,
@@ -6794,6 +7354,7 @@ let textNodes = [
         nextText: 396
       }
     ],
+    imageCheck: 16
   },
   {//
     id: 394,
@@ -6869,16 +7430,18 @@ let textNodes = [
       },
     ],
     startCombat: 19,
+    imageCheck: 17
   },
   {// end conflict
     id: 399,
-    text: 'blank',
+    text: 'Killed Gaurd',
     options: [
       {
         text: `Continue`,
         nextText: 400
       }
     ],
+    imageCheck: 15,
   },
   {//
     id: 400,
@@ -6910,7 +7473,7 @@ let textNodes = [
         nextText: 403.1
       }
     ],
-
+    imageCheck: 19
   },
   {// wisdom succeeds (ws)
     id: 403.1,
@@ -6921,7 +7484,7 @@ let textNodes = [
         nextText: 413
       }
     ],
-    diceRoll: 2
+    diceRoll: 12
   },
   {// wisdom succeeds (ws)
     id: 403,
@@ -6952,6 +7515,7 @@ let textNodes = [
         nextText: 408
       }
     ],
+    imageCheck: 19
   },
   {// wf
     id: 408,
@@ -6978,7 +7542,7 @@ let textNodes = [
         nextText: 411
       },
     ],
-    diceRoll: 3
+    diceRoll: 13
   },
   {// Conflict
     id: 409,
@@ -7010,16 +7574,18 @@ let textNodes = [
       },
     ],
     startCombat: 19,
+    imageCheck: 20
   },
   {// end conflict
     id: 410,
-    text: 'blank',
+    text: 'killed gaurds',
     options: [
       {
         text: `Continue`,
         nextText: 416.1
       }
     ],
+    imageCheck: 19
   },
   {// charisma succeeds
     id: 411,
@@ -7030,6 +7596,7 @@ let textNodes = [
         nextText: 411.1
       }
     ],
+    imageCheck: 19
   },
   {//
     id: 411,
@@ -7070,6 +7637,7 @@ let textNodes = [
         nextText: 416
       }
     ],
+    imageCheck: 21
   },
   {//
     id: 416,
@@ -7171,6 +7739,7 @@ let textNodes = [
       },
     ],
     startCombat: 20,
+    imageCheck: 22
   },
   {// end conflict
     id: 424,
@@ -7181,6 +7750,7 @@ let textNodes = [
         nextText: 425
       }
     ],
+    imageCheck: 23
   },
   {//
     id: 425,
@@ -7212,13 +7782,15 @@ let textNodes = [
         nextText: 428
       }
     ],
+    imageCheck: 24
   },
   {//
     id: 428,
     text: 'Guard: "Feeding Time!"',
     options: [
       {
-        text: `Get up`,
+        text: `Get up and look around
+        [Check (Wis)]`,
         nextText: 429
       }
     ],
@@ -7232,7 +7804,7 @@ let textNodes = [
         nextText: 430
       }
     ],
-    diceRoll: 6
+    diceRoll: 14
   },
   {// wisdom succeed
     id: 430,
@@ -7278,7 +7850,7 @@ let textNodes = [
       },
       {
         text: `"Hello?"`,
-        nextText: 432.4
+        nextText: 432
       }
     ],
   },
@@ -7407,6 +7979,7 @@ let textNodes = [
         nextText: 437
       }
     ],
+    imageCheck: 25
   },
   {//
     id: 435,
@@ -7455,6 +8028,7 @@ let textNodes = [
         nextText: 439
       }
     ],
+    imageCheck: 24
   },
   {// wisdom or dex check
     id: 439,
@@ -7476,7 +8050,7 @@ let textNodes = [
         nextText: 440
       }
     ],
-    diceRoll: 4
+    diceRoll: 15
   },
   {// succeeds
     id: 439.1,
@@ -7517,6 +8091,7 @@ let textNodes = [
         nextText: 445
       }
     ],
+    imageCheck: 26
   },
   {// con check
     id: 445,
@@ -7538,10 +8113,10 @@ let textNodes = [
         nextText: 446
       }
     ],
-    diceRoll: 5
+    diceRoll: 16
   },
   {// succeeds
-    id: 436,
+    id: 446,
     text: 'You continue even though your arms feel like noodles, you see Frank and Jin looking impressed. You also see the other man, a huge man with bright red hair. He is laughing at your attempt to be "strong". He takes your pick and starts to show you how to work the rock.',
     options: [
       {
@@ -7551,17 +8126,17 @@ let textNodes = [
     ],
   },
   {// fails
-    id: 437,
+    id: 447,
     text: 'You drop the pickaxe and see Frank and Jin walk away from you. You can finally see the last guy, a huge name with bright red hair. He looks like is about to help when you see a guard approach.',
     options: [
       {
         text: `Continue`,
-        nextText: 437.1
+        nextText: 447.1
       }
     ],
   },
   {// fails
-    id: 437.1,
+    id: 447.1,
     text: 'You try to pick off the pickaxe before they notice, but it\'s too late. They pick you up and then beat you for what feels like hours. Afterwards they throw you back into the mines. This time the big man is there holding your pickaxe, he shows you how to work the rock.',
     options: [
       {
@@ -7587,6 +8162,7 @@ let textNodes = [
         nextText: 478.3
       },
     ],
+    imageCheck: 27
   },
   {//
     id: 478.1,
@@ -7645,6 +8221,7 @@ let textNodes = [
         nextText: 480
       }
     ],
+    imageCheck: 28
   },
   {//
     id: 480,
@@ -7711,6 +8288,7 @@ let textNodes = [
         nextText: 482
       }
     ],
+    imageCheck: 29
   },
   {//
     id: 482,
@@ -7786,6 +8364,7 @@ let textNodes = [
         nextText: 484
       }
     ],
+    imageCheck: 24
   },
   {//
     id: 484,
@@ -7826,6 +8405,7 @@ let textNodes = [
         nextText: 488
       }
     ],
+    imageCheck: 30
   },
   {// how to break out of prison
     id: 488,
@@ -7843,7 +8423,7 @@ let textNodes = [
       },
       {//breaks out with Frank (bf) //increases dex or charisma by 1
         text: `Give some to Frank`,
-        nextText: 491.1,
+        nextText: 491.2,
         setPlayer: { dex: 4 }
       }
     ],
@@ -7857,6 +8437,7 @@ let textNodes = [
         nextText: 489.2
       }
     ],
+    imageCheck: 27
   },
   {// bb
     id: 489.2,
@@ -7972,6 +8553,7 @@ let textNodes = [
       },
     ],
     startCombat: 21,
+    imageCheck: 31
   },
   {// Conflict lb
     id: 489.81,
@@ -8003,6 +8585,7 @@ let textNodes = [
       },
     ],
     startCombat: 22,
+    imageCheck: 31
   },
   {// end conflict wb
     id: 489.9,
@@ -8013,6 +8596,7 @@ let textNodes = [
         nextText: 489.11
       }
     ],
+    imageCheck: 30
   },
   {// end conflict lb
     id: 489.91,
@@ -8023,6 +8607,7 @@ let textNodes = [
         nextText: 489.111
       }
     ],
+    imageCheck: 32
   },
   {// wb
     id: 489.11,
@@ -8051,6 +8636,7 @@ let textNodes = [
         nextText: 493
       }
     ],
+    imageCheck: 30
   },
   {// wb
     id: 489.13,
@@ -8095,6 +8681,7 @@ let textNodes = [
         nextText: 492
       }
     ],
+    imageCheck: 30
   },
   {// bj
     id: 490.1,
@@ -8102,9 +8689,10 @@ let textNodes = [
     options: [
       {
         text: `Talk to Jin`,
-        nextText: 48
+        nextText: 490.2
       }
     ],
+    imageCheck: 28
   },
   {// bj
     id: 490.2,
@@ -8112,7 +8700,7 @@ let textNodes = [
     options: [
       {
         text: `Continue`,
-        nextText: 48
+        nextText: 490.3
       }
     ],
   },
@@ -8196,6 +8784,7 @@ let textNodes = [
       },
     ],
     startCombat: 23,
+    imageCheck: 31
   },
   {//bj end combat
     id: 490.9,
@@ -8206,6 +8795,7 @@ let textNodes = [
         nextText: 490.11
       }
     ],
+    imageCheck: 33
   },
   {// bj
     id: 490.11,
@@ -8267,6 +8857,7 @@ let textNodes = [
       },
     ],
     startCombat: 24,
+    imageCheck: 34
   },
   {//bj combat finish
     id: 490.15,
@@ -8277,6 +8868,7 @@ let textNodes = [
         nextText: 490.16
       }
     ],
+    imageCheck: 35
   },
   {// bj
     id: 490.16,
@@ -8301,6 +8893,7 @@ let textNodes = [
         nextText: 490.18
       }
     ],
+    imageCheck: 26
   },
   {//charisma check 10 bj
     id: 490.18,
@@ -8312,7 +8905,6 @@ let textNodes = [
         nextText: 490.181
       }
     ],
-    diceRoll: 7
   },
   {//charisma check 10 bj
     id: 490.181,
@@ -8323,7 +8915,7 @@ let textNodes = [
         nextText: 490.19
       }
     ],
-    diceRoll: 6
+    diceRoll: 17
   },
   {// succeeds bj
     id: 490.19,
@@ -8334,6 +8926,7 @@ let textNodes = [
         nextText: 490.21
       }
     ],
+    imageCheck: 30
   },
   {// fails bj
     id: 490.22,
@@ -8375,6 +8968,7 @@ let textNodes = [
       },
     ],
     startCombat: 25,
+    imageCheck: 31
   },
   {//bj conflict end
     id: 490.24,
@@ -8385,6 +8979,7 @@ let textNodes = [
         nextText: 492.25
       }
     ],
+    imageCheck: 30
   },
   {// bj
     id: 490.25,
@@ -8395,6 +8990,7 @@ let textNodes = [
         nextText: 492
       }
     ],
+    imageCheck: 30
   },
   {// bf
     id: 491.2,
@@ -8405,6 +9001,7 @@ let textNodes = [
         nextText: 491.3
       }
     ],
+    imageCheck: 29
   },
   {// bf
     id: 491.3,
@@ -8441,10 +9038,12 @@ let textNodes = [
     text: 'While you are walking back from mining you try to sneak away from the group.',
     options: [
       {
-        text: `Make it for the Armoury`,
+        text: `Make it for the Armoury
+        [Check (Dex)]`,
         nextText: 491.61
       }
     ],
+    imageCheck: 26
   },
   {// dex check 10 bf
     id: 491.61,
@@ -8455,7 +9054,7 @@ let textNodes = [
         nextText: 491.7
       }
     ],
-    diceRoll: 8
+    diceRoll: 18
   },
   {// succeeds bf
     id: 491.7,
@@ -8466,6 +9065,7 @@ let textNodes = [
         nextText: 492.14
       }
     ],
+    imageCheck: 35
   },
   {// fails bf
     id: 491.8,
@@ -8507,6 +9107,7 @@ let textNodes = [
       },
     ],
     startCombat: 26,
+    imageCheck: 31
   },
   {//end combat, fails bf
     id: 491.12,
@@ -8517,6 +9118,7 @@ let textNodes = [
         nextText: 491.13
       }
     ],
+    imageCheck: 35
   },
   {// fails bf
     id: 491.13,
@@ -8537,6 +9139,7 @@ let textNodes = [
         nextText: 492.15
       }
     ],
+    imageCheck: 36
   },
   {// bf
     id: 492.15,
@@ -8555,6 +9158,7 @@ let textNodes = [
         nextText: 492.17
       }
     ],
+    imageCheck: 37
   },
   {// bf
     id: 492.16,
@@ -8571,10 +9175,12 @@ let textNodes = [
     text: 'You make it to the end of the passage, but there are three guards right in front of the door. You try to sneak past with Frank.',
     options: [
       {
-        text: `Sneak off`,
+        text: `Sneak off
+        [Check (Dex)]`,
         nextText: 492.171
       }
     ],
+    imageCheck: 26
   },
   {// dex check 12 bf
     id: 492.171,
@@ -8585,7 +9191,7 @@ let textNodes = [
         nextText: 492.22
       }
     ],
-    diceRoll: 9
+    diceRoll: 19
   },
   {// fail bf
     id: 492.18,
@@ -8627,6 +9233,7 @@ let textNodes = [
       },
     ],
     startCombat: 27,
+    imageCheck: 31
   },
   {//end combat, fails bf
     id: 491.19,
@@ -8637,6 +9244,7 @@ let textNodes = [
         nextText: 491.21
       }
     ],
+    imageCheck: 30
   },
   {// fail bf
     id: 491.21,
@@ -8657,8 +9265,9 @@ let textNodes = [
         nextText: 492
       }
     ],
+    imageCheck: 30
   },
-  {// dragon mentor
+  {
     id: 492,
     text: 'You run out of the fort, you keep on running for as long as you can until you reach a spot where you can rest. You turn around to see if anyone is following you, but you see none.',
     options: [
@@ -8671,6 +9280,7 @@ let textNodes = [
         nextText: 492
       }
     ],
+    imageCheck: 12
   },
   {// sleep
     id: 493,
@@ -8681,6 +9291,7 @@ let textNodes = [
         nextText: 494
       }
     ],
+    imageCheck: 12
   },
   {// sleep
     id: 494,
@@ -8701,6 +9312,7 @@ let textNodes = [
         nextText: 496
       }
     ],
+    imageCheck: 38
   },
   {// combat, runs
     id: 496,
@@ -8732,6 +9344,7 @@ let textNodes = [
       },
     ],
     startCombat: 28,
+    imageCheck: 39
   },
   {//end combat, runs
     id: 497,
@@ -8742,6 +9355,7 @@ let textNodes = [
         nextText: 498
       }
     ],
+    imageCheck: 12
   },
   {//
     id: 498,
@@ -8776,6 +9390,7 @@ let textNodes = [
         nextText: 502
       },
     ],
+    imageCheck: 7
   },
   {// talk
     id: 501,
@@ -8796,6 +9411,7 @@ let textNodes = [
         nextText: 503,
       },
     ],
+    imageCheck: 10
   },
   //back to the past
   {//
@@ -8827,6 +9443,7 @@ let textNodes = [
         nextText: 506
       }
     ],
+    imageCheck: 2
   },
   {//
     text: 'You look for more clues. You see a note next to her bed, a picture on the wall to the left of the door, and she has something on her desk. You ',
@@ -8942,6 +9559,7 @@ let textNodes = [
         nextText: 515
       }
     ],
+    imageCheck: 56
   },
   {//increase con to max
     id: 515,
@@ -8962,23 +9580,25 @@ let textNodes = [
         nextText: 517
       }
     ],
+    imageCheck: 12
   },
   {//
     id: 517,
     text: 'You enter the village, you are used to it been burnt, but now it\'s just overgrown. You start walking around to try to spot the manor.',
     options: [
       {
-        text: `Walk towards the manor`,
+        text: `Walk towards the mansion`,
         nextText: 526
       }
     ],
+    imageCheck: 1
   },
   {//
     id: 526,
     text: 'You walk past the training area. You remember how you were first taught how to use a sword by your dad here, he made me fight for hours until I could everyone there. You were going to train your son the same way, but you never got that chance... that right.',
     options: [
       {
-        text: `Walk towards the manor`,
+        text: `Walk towards the mansion`,
         nextText: 527
       }
     ],
@@ -9022,6 +9642,7 @@ let textNodes = [
         nextText: 532
       }
     ],
+    imageCheck: 45
   },
   {// combat
     id: 532,
@@ -9053,6 +9674,7 @@ let textNodes = [
       },
     ],
     startCombat: 29,
+    imageCheck: 46
   },
   {//end combat
     id: 533,
@@ -9063,6 +9685,7 @@ let textNodes = [
         nextText: 534
       }
     ],
+    imageCheck: 45
   },
   {//
     id: 534,
@@ -9097,6 +9720,7 @@ let textNodes = [
         nextText: 537
       }
     ],
+    imageCheck: 47
   },
   {// combat
     id: 537,
@@ -9127,7 +9751,8 @@ let textNodes = [
         nextText: 12
       },
     ],
-    startCombat: 30,
+    imageCheck: 48,
+    startCombat: 30
   },
   {// end combat
     id: 538,
@@ -9138,6 +9763,7 @@ let textNodes = [
         nextText: 539
       }
     ],
+    imageCheck: 49
   },
   {//
     id: 539,
@@ -9156,6 +9782,7 @@ let textNodes = [
         nextText: 545
       }
     ],
+    imageCheck: 50
   },
   {// library
     id: 540,
@@ -9174,6 +9801,7 @@ let textNodes = [
         nextText: 543
       }
     ],
+    imageCheck: 51
   },
   {// library
     id: 541,
@@ -9234,6 +9862,7 @@ let textNodes = [
         nextText: 546
       },
     ],
+    imageCheck: 52
   },
   {//
     id: 545,
@@ -9252,6 +9881,7 @@ let textNodes = [
         nextText: 546
       },
     ],
+    imageCheck: 53
   },
   {//
     id: 546,
@@ -9262,6 +9892,7 @@ let textNodes = [
         nextText: 547
       }
     ],
+    imageCheck: 54
   },
   {//
     id: 547,
@@ -9341,6 +9972,7 @@ let textNodes = [
       },
     ],
     startCombat: 47,
+    imageCheck: 55
   },
   {// end combat
     id: 552,
@@ -9351,6 +9983,7 @@ let textNodes = [
         nextText: 553
       }
     ],
+    imageCheck: 54
   },
   {//
     id: 553,
@@ -9361,6 +9994,7 @@ let textNodes = [
         nextText: 555
       },
     ],
+    imageCheck: 51
   },
   {// killing, bad end
     id: 555,
@@ -9368,9 +10002,10 @@ let textNodes = [
     options: [
       {
         text: `Continue`,
-        nextText: -1
+        nextText: 1000
       }
     ],
+    imageCheck: 0
   },
   //  
   // 
@@ -9388,6 +10023,7 @@ let textNodes = [
         nextText: 640,
       }
     ],
+    imageCheck: 5
   },// this is what happens if you do not have dog following
   {
     id: 640,
@@ -9398,6 +10034,105 @@ let textNodes = [
         nextText: 641
       }
     ],
+    imageCheck: 6
+  },
+  {
+    id: 641.1,
+    text: `Tutorial: This is what combat looks like. Left side is damaging attacks, while the right side is talking options. Middle is a special option. (Click any Option to Continue)`,
+    options: [
+      {
+        text: `Slash`,
+        nextText: 641.2
+      },
+      {
+        text: `Heal Potions`,
+        nextText: 641.2
+      },
+      {
+        text: `Scare`,
+        nextText: 641.2
+      },
+      {
+        text: `Stab`,
+        nextText: 641.2
+      },
+      {
+        text: `Pendant of Pain`,
+        nextText: 641.2
+      },
+      {
+        text: `Persuade`,
+        nextText: 641.2
+      },
+    ],
+    imageCheck: 8
+  },
+  {
+    id: 641.2,
+    text: `Tutorial: These are attacking options. These roll a dice (EX: d12 or d4) and are multiplied by 1.5 to do some damage to the enemy. (Click any Option to Continue)`,
+    options: [
+      {
+        text: `Slash`,
+        nextText: 641.3
+      },
+      {
+        text: `Stab`,
+        nextText: 641.3
+      },
+    ],
+  },
+  {
+    id: 641.3,
+    text: `Tutorial: These are talking options. These roll a dice (EX: d20) and if it is above a 14 multiply that roll by 2, you will convince the enemy to leave the battle (Same as killing an enemy). (Click any Option to Continue)`,
+    options: [
+      {
+        text: `Persuade`,
+        nextText: 641.4
+      },
+      {
+        text: `Scare`,
+        nextText: 641.4
+      },
+    ],
+  },
+  {
+    id: 641.4,
+    text: `Tutorial: These are the special options. Heal Potions roll a dice to heal an amount of health with enemies doing less damage but only if you have enough in your inventory (top right). The Pendant of Pain rolls a 4 sided dice (d4) and that is used to multiply your next roll by that amount. (Click any Option to Continue)`,
+    options: [
+      {
+        text: `Heal Potions`,
+        nextText: 641.5
+      },
+      {
+        text: `Pendant of Pain`,
+        nextText: 641.5
+      },
+    ],
+  },
+  {
+    id: 641.5,
+    text: `Tutorial: Enemies will replace the "Air, Breeze, Wind" after you start using an action. Enemies are in a queue system and one has to be killed or convinced to move onto the next enemy. (Click any Option to Continue)`,
+    options: [
+      {
+        text: `Next`,
+        nextText: 643
+      },
+    ],
+  },
+  {
+    id: 641.6,
+    text: `Tutorial: Some options will roll a d20 and if you get high enough, good things will happen. This is shown if the option has a "[Check]" tag on it. (Click any Option to Continue to Story)`,
+    options: [
+      {
+        text: `Leave Tutorial`,
+        nextText: 643,
+      },
+      {
+        text: `Try to bust down door
+    	[Check]`,
+        nextText: 643,
+      },
+    ],
   },
   {
     id: 641,
@@ -9405,9 +10140,10 @@ let textNodes = [
     options: [
       {
         text: `Investigate`,
-        nextText: 61.1
+        nextText: 643
       }
     ],
+    imageCheck: 7
   },
   {
     id: 643,
@@ -9467,7 +10203,7 @@ let textNodes = [
         nextText: 647
       }
     ],
-    diceRoll: 10
+    diceRoll: 21
   },
   { //sneak
     id: 648, //succeed on dex roll
@@ -9519,6 +10255,7 @@ let textNodes = [
       },
     ],
     startCombat: 31,
+    imageCheck: 8
   },
   {
     id: 650, //end of combat
@@ -9529,6 +10266,7 @@ let textNodes = [
         nextText: 651
       }
     ],
+    imageCheck: 6
   },
   { //start after combat
     id: 651,
@@ -9563,6 +10301,7 @@ let textNodes = [
         nextText: 657
       }
     ],
+    imageCheck: 12
   },
   {//
     id: 656,
@@ -9620,6 +10359,7 @@ let textNodes = [
         nextText: 665
       }
     ],
+    imageCheck: 10
   },
   {// diplomatic approach
     id: 660,
@@ -9724,6 +10464,7 @@ let textNodes = [
         nextText: 670
       }
     ],
+    imageCheck: 11
   },
   {//
     id: 670,
@@ -9778,6 +10519,7 @@ let textNodes = [
         nextText: 675.1
       }
     ],
+    imageCheck: 10
   },
   {//
     id: 675.1,
@@ -9952,6 +10694,7 @@ let textNodes = [
         nextText: 681
       }
     ],
+    imageCheck: 12
   },
   {//
     id: 681,
@@ -9962,6 +10705,7 @@ let textNodes = [
         nextText: 682
       }
     ],
+    imageCheck: 13
   },
   {// conflict
     id: 682,
@@ -9993,6 +10737,7 @@ let textNodes = [
       },
     ],
     startCombat: 32,
+    imageCheck: 14
   },
   {// end conflict
     id: 683,
@@ -10013,6 +10758,7 @@ let textNodes = [
         nextText: 685
       }
     ],
+    imageCheck: 12
   },
   {//
     id: 685,
@@ -10023,6 +10769,7 @@ let textNodes = [
         nextText: 686
       }
     ],
+    imageCheck: 10
   },
   {//
     id: 686,
@@ -10092,6 +10839,7 @@ let textNodes = [
         nextText: 692
       }
     ],
+    imageCheck: 12
   },
   //henry
   {// end of mentor 1
@@ -10113,6 +10861,7 @@ let textNodes = [
         nextText: 693
       }
     ],
+    imageCheck: 15
   },
   {//
     id: 693,
@@ -10131,6 +10880,7 @@ let textNodes = [
         nextText: 696
       }
     ],
+    imageCheck: 16
   },
   {//
     id: 694,
@@ -10206,6 +10956,7 @@ let textNodes = [
       },
     ],
     startCombat: 33,
+    imageCheck: 17
   },
   {// end conflict
     id: 699,
@@ -10216,6 +10967,7 @@ let textNodes = [
         nextText: 700
       }
     ],
+    imageCheck: 15
   },
   {//
     id: 700,
@@ -10247,6 +10999,7 @@ let textNodes = [
         nextText: 703.1
       }
     ],
+    imageCheck: 19
   },
   {// wisdom succeeds (ws)
     id: 703.1,
@@ -10257,7 +11010,7 @@ let textNodes = [
         nextText: 713
       }
     ],
-    diceRoll: 2
+    diceRoll: 22
   },
   {// wisdom succeeds (ws)
     id: 703,
@@ -10288,6 +11041,7 @@ let textNodes = [
         nextText: 708
       }
     ],
+    imageCheck: 19
   },
   {// wf
     id: 708,
@@ -10314,7 +11068,7 @@ let textNodes = [
         nextText: 711
       },
     ],
-    diceRoll: 6
+    diceRoll: 23
   },
   {// Conflict
     id: 709,
@@ -10346,6 +11100,7 @@ let textNodes = [
       },
     ],
     startCombat: 34,
+    imageCheck: 20
   },
   {// end conflict
     id: 710,
@@ -10356,6 +11111,7 @@ let textNodes = [
         nextText: 716.1
       }
     ],
+    imageCheck: 19
   },
   {// charisma succeeds
     id: 711,
@@ -10366,6 +11122,7 @@ let textNodes = [
         nextText: 711.1
       }
     ],
+    imageCheck: 19
   },
   {//
     id: 711,
@@ -10406,6 +11163,7 @@ let textNodes = [
         nextText: 716
       }
     ],
+    imageCheck: 21
   },
   {//
     id: 716,
@@ -10507,6 +11265,7 @@ let textNodes = [
       },
     ],
     startCombat: 35,
+    imageCheck: 22
   },
   {// end conflict
     id: 724,
@@ -10517,6 +11276,7 @@ let textNodes = [
         nextText: 725
       }
     ],
+    imageCheck: 23
   },
   {//
     id: 725,
@@ -10548,6 +11308,7 @@ let textNodes = [
         nextText: 728
       }
     ],
+    imageCheck: 24
   },
   {//
     id: 728,
@@ -10568,7 +11329,7 @@ let textNodes = [
         nextText: 730
       }
     ],
-    diceRoll: 6
+    diceRoll: 24
   },
   {// wisdom succeed
     id: 730,
@@ -10743,6 +11504,7 @@ let textNodes = [
         nextText: 737
       }
     ],
+    imageCheck: 25
   },
   {//
     id: 735,
@@ -10791,6 +11553,7 @@ let textNodes = [
         nextText: 739
       }
     ],
+    imageCheck: 24
   },
   {// wisdom or dex check
     id: 739,
@@ -10812,7 +11575,7 @@ let textNodes = [
         nextText: 740
       }
     ],
-    diceRoll: 7
+    diceRoll: 25
   },
   {// succeeds
     id: 739.1,
@@ -10853,6 +11616,7 @@ let textNodes = [
         nextText: 745
       }
     ],
+    imageCheck: 26
   },
   {// con check
     id: 745,
@@ -10874,10 +11638,10 @@ let textNodes = [
         nextText: 746
       }
     ],
-    diceRoll: 5
+    diceRoll: 26
   },
   {// succeeds
-    id: 736,
+    id: 746,
     text: 'You continue even though your arms feel like noodles, you see Frank and Jin looking impressed. You also see the other man, a huge man with bright red hair. He is laughing at your attempt to be "strong". He takes your pick and starts to show you how to work the rock.',
     options: [
       {
@@ -10887,17 +11651,17 @@ let textNodes = [
     ],
   },
   {// fails
-    id: 737,
+    id: 747,
     text: 'You drop the pickaxe and see Frank and Jin walk away from you. You can finally see the last guy, a huge name with bright red hair. He looks like is about to help when you see a guard approach.',
     options: [
       {
         text: `Continue`,
-        nextText: 737.1
+        nextText: 747.1
       }
     ],
   },
   {// fails
-    id: 737.1,
+    id: 747.1,
     text: 'You try to pick off the pickaxe before they notice, but it\'s too late. They pick you up and then beat you for what feels like hours. Afterwards they throw you back into the mines. This time the big man is there holding your pickaxe, he shows you how to work the rock.',
     options: [
       {
@@ -10923,6 +11687,7 @@ let textNodes = [
         nextText: 778.3
       },
     ],
+    imageCheck: 27
   },
   {//
     id: 778.1,
@@ -10981,6 +11746,7 @@ let textNodes = [
         nextText: 780
       }
     ],
+    imageCheck: 28
   },
   {//
     id: 780,
@@ -11047,6 +11813,7 @@ let textNodes = [
         nextText: 782
       }
     ],
+    imageCheck: 29
   },
   {//
     id: 782,
@@ -11113,6 +11880,7 @@ let textNodes = [
         nextText: 783
       }
     ],
+    imageCheck: 24
   }, {//
     id: 783,
     text: 'You have more energy left and so you start to mine again. You spend another hour or two before hearing the church bell. They take you to the church to pay for your sins, a costume from Bina culture. You spend an hour in the church before being thrown back into your cell.',
@@ -11162,6 +11930,7 @@ let textNodes = [
         nextText: 788
       }
     ],
+    imageCheck: 30
   },
   {// how to break out of prison
     id: 788,
@@ -11179,7 +11948,7 @@ let textNodes = [
       },
       {//breaks out with Frank (bf) //increases dex or charisma by 1
         text: `Give some to Frank`,
-        nextText: 791.1,
+        nextText: 791.2,
         setPlayer: { dex: 7 }
       }
     ],
@@ -11193,6 +11962,7 @@ let textNodes = [
         nextText: 789.2
       }
     ],
+    imageCheck: 27
   },
   {// bb
     id: 789.2,
@@ -11308,6 +12078,7 @@ let textNodes = [
       },
     ],
     startCombat: 36,
+    imageCheck: 31
   },
   {// Conflict lb
     id: 789.81,
@@ -11339,6 +12110,7 @@ let textNodes = [
       },
     ],
     startCombat: 37,
+    imageCheck: 31
   },
   {// end conflict wb
     id: 789.9,
@@ -11349,6 +12121,7 @@ let textNodes = [
         nextText: 789.11
       }
     ],
+    imageCheck: 30
   },
   {// end conflict lb
     id: 789.91,
@@ -11359,6 +12132,7 @@ let textNodes = [
         nextText: 789.111
       }
     ],
+    imageCheck: 32
   },
   {// wb
     id: 789.11,
@@ -11387,6 +12161,7 @@ let textNodes = [
         nextText: 793
       }
     ],
+    imageCheck: 30
   },
   {// wb
     id: 789.13,
@@ -11431,6 +12206,7 @@ let textNodes = [
         nextText: 792
       }
     ],
+    imageCheck: 30
   },
   {// bj
     id: 790.1,
@@ -11438,9 +12214,10 @@ let textNodes = [
     options: [
       {
         text: `Talk to Jin`,
-        nextText: 78
+        nextText: 790.2
       }
     ],
+    imageCheck: 28
   },
   {// bj
     id: 790.2,
@@ -11448,7 +12225,7 @@ let textNodes = [
     options: [
       {
         text: `Continue`,
-        nextText: 78
+        nextText: 790.3
       }
     ],
   },
@@ -11532,6 +12309,7 @@ let textNodes = [
       },
     ],
     startCombat: 38,
+    imageCheck: 31
   },
   {//bj
     id: 790.9,
@@ -11542,6 +12320,7 @@ let textNodes = [
         nextText: 790.11
       }
     ],
+    imageCheck: 33
   },
   {// bj
     id: 790.11,
@@ -11603,6 +12382,7 @@ let textNodes = [
       },
     ],
     startCombat: 39,
+    imageCheck: 34
   },
   {//bj combat finish
     id: 790.15,
@@ -11613,6 +12393,7 @@ let textNodes = [
         nextText: 790.16
       }
     ],
+    imageCheck: 35
   },
   {// bj
     id: 790.16,
@@ -11637,6 +12418,7 @@ let textNodes = [
         nextText: 790.18
       }
     ],
+    imageCheck: 26
   },
   {//charisma check 10 bj
     id: 790.18,
@@ -11648,7 +12430,6 @@ let textNodes = [
         nextText: 790.181
       }
     ],
-    diceRoll: 7
   },
   {//charisma check 10 bj
     id: 790.181,
@@ -11659,7 +12440,7 @@ let textNodes = [
         nextText: 790.19
       }
     ],
-    diceRoll: 6
+    diceRoll: 27
   },
   {// succeeds bj
     id: 790.19,
@@ -11670,6 +12451,7 @@ let textNodes = [
         nextText: 790.21
       }
     ],
+    imageCheck: 30
   },
   {// fails bj
     id: 790.22,
@@ -11711,6 +12493,7 @@ let textNodes = [
       },
     ],
     startCombat: 40,
+    imageCheck: 31
   },
   {//bj
     id: 790.24,
@@ -11721,6 +12504,7 @@ let textNodes = [
         nextText: 792.25
       }
     ],
+    imageCheck: 30
   },
   {// bj
     id: 790.25,
@@ -11741,6 +12525,7 @@ let textNodes = [
         nextText: 791.3
       }
     ],
+    imageCheck: 29
   },
   {// bf
     id: 791.3,
@@ -11777,10 +12562,12 @@ let textNodes = [
     text: 'While you are walking back from mining you try to sneak away from the group.',
     options: [
       {
-        text: `Make it for the Armoury`,
+        text: `Make it for the Armoury
+        [Check (Dex)]`,
         nextText: 791.61
       }
     ],
+    imageCheck: 26
   },
   {// dex check 10 bf
     id: 791.61,
@@ -11791,7 +12578,7 @@ let textNodes = [
         nextText: 791.7
       }
     ],
-    diceRoll: 8
+    diceRoll: 28
   },
   {// succeeds bf
     id: 791.7,
@@ -11802,6 +12589,7 @@ let textNodes = [
         nextText: 792.14
       }
     ],
+    imageCheck: 35
   },
   {// fails bf
     id: 791.8,
@@ -11843,6 +12631,7 @@ let textNodes = [
       },
     ],
     startCombat: 41,
+    imageCheck: 31
   },
   {//end combat, fails bf
     id: 791.12,
@@ -11853,6 +12642,7 @@ let textNodes = [
         nextText: 791.13
       }
     ],
+    imageCheck: 35
   },
   {// fails bf
     id: 791.13,
@@ -11873,6 +12663,7 @@ let textNodes = [
         nextText: 792.15
       }
     ],
+    imageCheck: 36
   },
   {// bf
     id: 792.15,
@@ -11891,6 +12682,7 @@ let textNodes = [
         nextText: 792.17
       }
     ],
+    imageCheck: 37
   },
   {// bf
     id: 792.16,
@@ -11907,7 +12699,8 @@ let textNodes = [
     text: 'You make it to the end of the passage, but there are three guards right in front of the door. You try to sneak past with Frank.',
     options: [
       {
-        text: `Sneak off`,
+        text: `Sneak off
+        [Check (Dex)]`,
         nextText: 792.171
       }
     ],
@@ -11921,7 +12714,8 @@ let textNodes = [
         nextText: 792.22
       }
     ],
-    diceRoll: 9
+    diceRoll: 29,
+    imageCheck: 26
   },
   {// fail bf
     id: 792.18,
@@ -11963,6 +12757,7 @@ let textNodes = [
       },
     ],
     startCombat: 42,
+    imageCheck: 31
   },
   {//end combat, fails bf
     id: 791.19,
@@ -11973,6 +12768,7 @@ let textNodes = [
         nextText: 791.21
       }
     ],
+    imageCheck: 30
   },
   {// fail bf
     id: 791.21,
@@ -11993,8 +12789,9 @@ let textNodes = [
         nextText: 792
       }
     ],
+    imageCheck: 30
   },
-  {// dragon mentor
+  {// 
     id: 792,
     text: 'You run out of the fort, you keep on running for as long as you can until you reach a spot where you can rest. You turn around to see if anyone is following you, but you see none.',
     options: [
@@ -12007,6 +12804,7 @@ let textNodes = [
         nextText: 792
       }
     ],
+    imageCheck: 12
   },
   {// sleep
     id: 793,
@@ -12027,6 +12825,7 @@ let textNodes = [
         nextText: 799
       }
     ],
+    imageCheck: 12
   },
   {// running
     id: 795,
@@ -12037,6 +12836,7 @@ let textNodes = [
         nextText: 796
       }
     ],
+    text: `Pull out weapon`,
   },
   {// combat, runs
     id: 796,
@@ -12068,6 +12868,7 @@ let textNodes = [
       },
     ],
     startCombat: 43,
+    imageCheck: 39
   },
   {//end combat, runs
     id: 797,
@@ -12078,6 +12879,7 @@ let textNodes = [
         nextText: 798
       }
     ],
+    imageCheck: 12
   },
   {//
     id: 798,
@@ -12112,6 +12914,7 @@ let textNodes = [
         nextText: 802
       },
     ],
+    imageCheck: 7
   },
   {// talk
     id: 801,
@@ -12143,6 +12946,7 @@ let textNodes = [
         nextText: 804,
       }
     ],
+    imageCheck: 10
   },
   {//
     id: 804,
@@ -12163,8 +12967,10 @@ let textNodes = [
         nextText: 806
       }
     ],
+    imageCheck: 2
   },
   {//
+    id: 806,
     text: 'You look for more clues. You see a note next to her bed, a picture on the wall to the left of the door, and she has something on her desk. You ',
     options: [
       {
@@ -12288,6 +13094,7 @@ let textNodes = [
         nextText: 816
       }
     ],
+    imageCheck: 56
   },
   {//
     id: 816,
@@ -12309,6 +13116,7 @@ let textNodes = [
         nextText: 826
       }
     ],
+    imageCheck: 44
   },
   {//
     id: 826,
@@ -12359,6 +13167,7 @@ let textNodes = [
         nextText: 832
       }
     ],
+    imageCheck: 45
   },
   {// combat
     id: 832,
@@ -12390,6 +13199,7 @@ let textNodes = [
       },
     ],
     startCombat: 44,
+    imageCheck: 46
   },
   {//end combat
     id: 833,
@@ -12400,6 +13210,7 @@ let textNodes = [
         nextText: 834
       }
     ],
+    imageCheck: 45
   },
   {//
     id: 834,
@@ -12434,6 +13245,7 @@ let textNodes = [
         nextText: 837
       }
     ],
+    imageCheck: 47
   },
   {// combat
     id: 837,
@@ -12465,6 +13277,7 @@ let textNodes = [
       },
     ],
     startCombat: 45,
+    imageCheck: 48
   },
   {// end combat
     id: 838,
@@ -12475,6 +13288,7 @@ let textNodes = [
         nextText: 839
       }
     ],
+    imageCheck: 49
   },
   {//
     id: 839,
@@ -12493,6 +13307,7 @@ let textNodes = [
         nextText: 845
       }
     ],
+    imageCheck: 50
   },
   {// library
     id: 840,
@@ -12511,6 +13326,7 @@ let textNodes = [
         nextText: 843
       }
     ],
+    imageCheck: 51
   },
   {// library
     id: 841,
@@ -12571,6 +13387,7 @@ let textNodes = [
         nextText: 846
       },
     ],
+    imageCheck: 52
   },
   {//
     id: 845,
@@ -12589,6 +13406,7 @@ let textNodes = [
         nextText: 846
       },
     ],
+    imageCheck: 53
   },
   {//
     id: 846,
@@ -12599,6 +13417,7 @@ let textNodes = [
         nextText: 847
       }
     ],
+    imageCheck: 54
   },
   {//
     id: 847,
@@ -12678,6 +13497,7 @@ let textNodes = [
       },
     ],
     startCombat: 46,
+    imageCheck: 55
   },
   {// end combat
     id: 852,
@@ -12688,6 +13508,7 @@ let textNodes = [
         nextText: 853
       }
     ],
+    imageCheck: 54
   },
   {//
     id: 853,
@@ -12708,6 +13529,7 @@ let textNodes = [
         nextText: 856
       }
     ],
+    imageCheck: 51
   },
   {// 
     id: 856,
@@ -12718,6 +13540,7 @@ let textNodes = [
         nextText: 857
       }
     ],
+    imageCheck: 0
   },
   {// Roll con save of 10
     id: 857,
@@ -12739,7 +13562,7 @@ let textNodes = [
         nextText: 859
       }
     ],
-    diceRoll: 10
+    diceRoll: 30
   },
   {// fails, END 
     id: 858,
@@ -12747,9 +13570,10 @@ let textNodes = [
     options: [
       {
         text: `Bad Ending`,
-        nextText: -1
+        nextText: 1000
       }
     ],
+    imageCheck: 0
   },
   {// Succeeds
     id: 859,
@@ -12791,6 +13615,7 @@ let textNodes = [
       },
     ],
     startCombat: 45,
+    imageCheck: 46
   },
   {// end combat, END GAME
     id: 861,
@@ -12801,6 +13626,7 @@ let textNodes = [
         nextText: 862
       }
     ],
+    imageCheck: 1
   },
   {// killing, should have died ending
     id: 862,
@@ -12808,9 +13634,20 @@ let textNodes = [
     options: [
       {
         text: `Congrats, you live.`,
-        nextText: -1
+        nextText: 1000
       }
     ],
+  },
+  {// killing, should have died ending
+    id: 1000,
+    text: 'Well congrats on winning the most rigged part of the game. Did you enjoy it? Well I\'ll just give the button to leave back the beginning. You should have kept the dog; this is one of the worse endings. There will be more to come though so stay tuned.',
+    options: [
+      {
+        text: `Congrats, you live.`,
+        nextText: 1000
+      }
+    ],
+    reload: 1
   },
 ]
 startGame()
