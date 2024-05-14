@@ -2191,19 +2191,19 @@ function updateText() {
 // this is way to hide options if item/requiredPlayer: (currentState) => {currentState.str >= 1}
 let textNodes = [
 
-  {
 
+  {
     id: 1, //story element or story part or section
     text: `Welcome to our Knight text adventure, click Play to start`, //text was is visible first
     options: [ //creates the options
       { //to set something: setPlayer: {},
         //to require player: requiredPlayer: {element boolien element},
-        text: `More Info`, //text was is visible first
+        text: `More Info`, //text was visible first
         nextText: 2, //brings it to the next id
       }, // make sure to add commas
       {
         text: `PLAY`,
-        //text was is visible first
+        //text was visible first
         nextText: 14 //brings it to the next id
       }, // make sure to add commas
       {
@@ -2233,7 +2233,7 @@ let textNodes = [
   {
     id: 3,
     text: `Made by: Angel Delgado Jimenez (Lead Programmer)
-	Loghan Hornor (Lead Writer & Art Direction)`,
+    Loghan Hornor (Lead Writer & Art Direction)`,
     options: [
       {
         text: `More Info`,
@@ -2296,7 +2296,7 @@ let textNodes = [
   },
   {
     id: 6,
-    text: `Text will change based off action`,
+    text: `Text will change based on actions`,
     options: [
       {
         text: `Ok`,
@@ -2384,7 +2384,7 @@ let textNodes = [
   },
   {
     id: 11,
-    text: `Roll a d4 and that roll is used to multiply next dice roll that's not the pendant.`,
+    text: `Roll a d4 and that roll is used to multiply the next dice roll that's not the pendant.`,
     options: [
       {
         text: `Use Pendant of Pain`,
@@ -2444,7 +2444,7 @@ let textNodes = [
   },
   {
     id: 16,
-    text: `Our story begins in a small village, Lüdingfeld, near the capital of Etair. The village is an important part of the Etair due to its access to fresh water and a salt mine that is incredibly valuable for trade. A war broke out between the two Empires near Lüdingfeld, Etair and Bani. `,
+    text: `Our story begins in a small village, Lüdingfeld, near the capital of Etair. The village is an important part of the Etair due to its access to fresh water and a salt mine that is incredibly valuable for trade. A war broke out between the two Empires near Lüdingfeld, Etair, and Bani. `,
     options: [
       {
         text: `Continue`,
@@ -2459,7 +2459,7 @@ let textNodes = [
   },
   {
     id: 17,
-    text: 'Even though the conflict has been around for about a year, Lüdingfeld has not changed its style of living and has not been very affected by the war, but the Bani lord, Henry Williams,  has set his sights on the little village, but their environment has taken a hit due to the war. ',
+    text: 'Even though the conflict has been around for about a year, Lüdingfeld has not changed its style of living and has not been very affected by the war, but the Bani lord, Henry Williams,  has set his sights on the little village, but their environment has taken a hit due to the war. ',
     options: [
       {
         text: `Continue`,
@@ -2469,7 +2469,7 @@ let textNodes = [
   },
   {
     id: 18,
-    text: 'There were great beasts that used to roam the lands, but ever since the first war many of the beasts have been hunted and killed. Now they are merely legends. None have seen any for over a century. There are rumours that they may be disguised as other animals to avoid being hunted. Nobody really knows yet, until now.',
+    text: 'There were great beasts that used to roam the lands, but ever since the first war many of the beasts have been hunted and killed. Now they are merely legends. None have seen any for over a century. There are rumors that they may be disguised as other animals to avoid being hunted. Nobody knows yet, until now.',
     options: [
       {
         text: `Continue`,
@@ -2479,7 +2479,7 @@ let textNodes = [
   },
   {
     id: 19,
-    text: 'Dragon: "There was a time where this land was isolated and seemed to be at peace, but after some time many other countries became more anxious to conquer the world. After the failed revolution in the west, the sea demons turned their attention to the east. The land’s government wanted to stay in solitude and tried to obtain their ancient ways, but it was only a matter of time until the evil would come."',
+    text: 'Dragon: "There was a time when this land was isolated and seemed to be at peace, but after some time many other countries became more anxious to conquer the world. After the failed revolution in the west, the sea demons turned their attention to the east. The land’s government wanted to stay in solitude and tried to obtain their ancient ways, but it was only a matter of time until the evil would come."',
     options: [
       {
         text: `Continue`,
@@ -2489,7 +2489,7 @@ let textNodes = [
   },
   {
     id: 20,
-    text: 'Dragon: "During the War, this land would be reborn for the greedy. The usage of their guns and other unholy technology won them the land. Instead of just taking the land over they decided to create new forms of free labour to gather the land’s natural treasures. As time went on more and more of the ancient Gods left these lands in search of more prosperous peoples. Even I was about to leave until I met a man who goes by the name of Jack."',
+    text: 'Dragon: "During the War, this land would be reborn for the greedy. The usage of their guns and other unholy technology won them the land. Instead of just taking the land over they decided to create new forms of free labor to gather the land’s natural treasures. As time went on more and more of the ancient Gods left these lands in search of more prosperous peoples. Even I was about to leave until I met a man who goes by the name of Jack."',
     options: [
       {
         text: `Continue`,
@@ -2519,7 +2519,7 @@ let textNodes = [
   },
   {
     id: 23,
-    text: 'Jack: "I remember it like yesterday, the day when my greatest pride became my greatest failure. My daughters got mixed up with the wrong crowd, mostly Victoria. She met a man from the sea that promised her treasures if she stayed with him for a night. She accepted the gold, but never went to meet him. The man turned out to be a rich demon of a person. Nights went by but nothing happened, until one night when the moon was fullest he came with his troops."',
+    text: 'Jack: "I remember it like yesterday, the day when my greatest pride became my greatest failure. My daughters got mixed up with the wrong crowd, mostly Victoria. She met a man from the sea who promised her treasures if she stayed with him for a night. She accepted the gold, but never went to meet him. The man turned out to be a rich demon of a person. Nights went by but nothing happened, until one night when the moon was fullest he came with his troops."',
     options: [
       {
         text: `Continue`,
@@ -2547,7 +2547,7 @@ let textNodes = [
       }
     ],
   },
-  // base stats start here
+  //Base stats start here
   {
     id: 26,
     text: 'You first wake up in a burnt house surrounded by ash and taste of misery. You remember what happened to your family and one name rings constantly: Henry. As you get up you feel nothing even though you were beaten, bloodied, and battered. You look around and pick up your weapon and armor.', options: [
@@ -2560,7 +2560,7 @@ let textNodes = [
   },
   {
     id: 26.1,
-    text: `Tutorial: Sometimes combat will be engaged so you need to be ready for anything. Some weapons with the right number of a stat can give big bonus.`,
+    text: `Tutorial: Sometimes combat will be engaged so you need to be ready for anything. Some weapons with the right number of a stat can give a big bonus.`,
     options: [
       {
         text: `OK, back to story`,
@@ -2571,35 +2571,35 @@ let textNodes = [
   // pick weapon
   {
     id: 26.2,
-    text: `While going through your house, you find some left over weapons around .`,
+    text: `While going through your house, you find some leftover weapons around .`,
     options: [
       {
         text: `Bow left by your Uncle
-    	(Best while using Shoot)`,
+        (Best while using Shoot)`,
         nextText: 27,
         setPlayer: { bow: 1 }
       },
       {
         text: `Great Axe left by your Father
-    	(Best while using Slash)`,
+        (Best while using Slash)`,
         nextText: 27,
         setPlayer: { greatAxe: 1 }
       },
       {
         text: `Rapier left in a supply chest
-    	(Best while using Stab)`,
+        (Best while using Stab)`,
         nextText: 27,
         setPlayer: { rapier: 1 }
       },
       {
         text: `Short Sword left by the Guards
-    	(Best while using Stab)`,
+        (Best while using Stab)`,
         nextText: 27,
         setPlayer: { shortSword: 1 }
       },
       {
         text: `Spear left by the Guards
-    	(Best whilst having more HP)`,
+        (Best whilst having more HP)`,
         nextText: 27,
         setPlayer: { spear: 1 }
       },
@@ -2620,7 +2620,7 @@ let textNodes = [
         setPlayer: { map: 1 }
       },
       {
-        text: `Leave house`,
+        text: `Leave House`,
         nextText: 31
       }
     ],
@@ -2640,7 +2640,7 @@ let textNodes = [
         setPlayer: { map: 1 }
       },
       {
-        text: `Leave house`,
+        text: `Leave House`,
         nextText: 30
       }
     ],
@@ -2648,7 +2648,7 @@ let textNodes = [
   },
   {
     id: 29,
-    text: 'Your room is still intact but it\'s been cut through. You look through your chests and drawers, but you couldn’t find anything that can be helpful. You then look towards the wall to see the map that your Grandpa made when he travelled. You take it off the wall and put in your bag you find next to the bed.',
+    text: 'Your room is still intact but it\'s been cut through. You look through your chests and drawers, but you can’t find anything that can be helpful. You then look towards the wall to see the map that your Grandpa made when he traveled. You take it off the wall and put it in your bag you find next to the bed.',
     options: [
       {
         text: `Kitchen`,
@@ -2660,7 +2660,7 @@ let textNodes = [
         nextText: 27
       },
       {
-        text: `Leave house`,
+        text: `Leave House`,
         nextText: 30
       }
     ],
@@ -2685,7 +2685,7 @@ let textNodes = [
         nextText: 27
       },
       {
-        text: `Leave house`,
+        text: `Leave House`,
         nextText: 31
       }
     ],
@@ -2693,7 +2693,7 @@ let textNodes = [
   },
   {
     id: 31,
-    text: 'You look around the room for anything else you can grab or keep as a memory. You take your partner’s ring. You then decide too:',
+    text: 'You look around the room for anything else you can grab or keep as a memory. You take your partner’s ring. You then decide to:',
     options: [
       {
         text: `Bury your family`,
@@ -2701,7 +2701,7 @@ let textNodes = [
         setplayer: { con: 1 }
       },
       {
-        text: `Mourn  then get on the road`,
+        text: `Mourn  then get on the road`,
         nextText: 33
       },
       {
@@ -2713,7 +2713,7 @@ let textNodes = [
   },
   {
     id: 32,
-    text: 'You take the time to little graves and try to hold back the tears. It takes a three days, but you feel a little bit better and like they can now cross more comfortably.',
+    text: 'You take the time to little graves and try to hold back the tears. It takes three days, but you feel a little bit better and like they can now cross more comfortably.',
     options: [
       {
         text: `Continue`,
@@ -2743,7 +2743,7 @@ let textNodes = [
   },
   {
     id: 35,
-    text: 'You look around the town to see if there is anyone still alive. You can’t find anyone, you just pray that one of your friends gets out. You yell out "Is there anyone!?" None answers, you make your way to the road that leads to forest, seeing the burnt town full of ash and debris. You then hear a dog.',
+    text: 'You look around the town to see if there is anyone still alive. You can’t find anyone, you just pray that one of your friends gets out. You yell out "Is there anyone!?" None answers, you make your way to the road that leads to the forest, seeing the burnt town full of ash and debris. You then hear a dog.',
     options: [
       {
         text: `Continue`,
@@ -2778,7 +2778,7 @@ let textNodes = [
   //
   {
     id: 37,
-    text: 'You take out some of your bread and tear a little piece and give it to the dog. You tell it let to follow and it seems to sort of understand and starts to follow you down the road.',
+    text: 'You take out some of your bread tear a little piece and give it to the dog. You tell it to follow and it seems to sort of understand and starts to follow you down the road.',
     options: [
       {
         text: `Continue`,
@@ -2812,7 +2812,7 @@ let textNodes = [
   },
   {
     id: 41.1,
-    text: `Tutorial: This is what combat looks like. Left side is damaging attacks, while the right side is talking options. Middle is a special option. (Click any Option to Continue)`,
+    text: `Tutorial: This is what combat looks like. The left side is damaging attacks, while the right side is talking about options. Middle is a special option. (Click any Option to Continue)`,
     options: [
       {
         text: `Slash`,
@@ -2843,7 +2843,7 @@ let textNodes = [
   },
   {
     id: 41.2,
-    text: `Tutorial: These are attacking options. These roll a dice (EX: d12 or d4) and are multiplied by 1.5 to do some damage to the enemy. (Click any Option to Continue)`,
+    text: `Tutorial: These are attacking options. These roll a die (EX: d12 or d4) and are multiplied by 1.5 to do some damage to the enemy. (Click any Option to Continue)`,
     options: [
       {
         text: `Slash`,
@@ -2857,7 +2857,7 @@ let textNodes = [
   },
   {
     id: 41.3,
-    text: `Tutorial: These are talking options. These roll a dice (EX: d20) and if it is above a 14 multiply that roll by 2, you will convince the enemy to leave the battle (Same as killing an enemy). (Click any Option to Continue)`,
+    text: `Tutorial: These are talking options. These roll a die (EX: d20) and if it is above 14 multiply that roll by 2, and you will convince the enemy to leave the battle (Same as killing an enemy). (Click any Option to Continue)`,
     options: [
       {
         text: `Persuade`,
@@ -2871,7 +2871,7 @@ let textNodes = [
   },
   {
     id: 41.4,
-    text: `Tutorial: These are the special options. Heal Potions roll a dice to heal an amount of health with enemies doing less damage but only if you have enough in your inventory (top right). The Pendant of Pain rolls a 4 sided dice (d4) and that is used to multiply your next roll by that amount. (Click any Option to Continue)`,
+    text: `Tutorial: These are the special options. Heal Potions roll a dice to heal an amount of health with enemies doing less damage but only if you have enough in your inventory (top right). The Pendant of Pain rolls a 4-sided dice (d4) and that is used to multiply your next roll by that amount. (Click any Option to Continue)`,
     options: [
       {
         text: `Heal Potions`,
@@ -2885,7 +2885,7 @@ let textNodes = [
   },
   {
     id: 41.5,
-    text: `Tutorial: Enemies will replace the "Air, Breeze, Wind" after you start using an action. Enemies are in a queue system and one has to be killed or convinced to move onto the next enemy. (Click any Option to Continue)`,
+    text: `Tutorial: Enemies will replace the "Air, Breeze, Wind" after you start using an action. Enemies are in a queue system and one has to be killed or convinced to move on to the next enemy. (Click any Option to Continue)`,
     options: [
       {
         text: `Next`,
@@ -2902,15 +2902,15 @@ let textNodes = [
         nextText: 43,
       },
       {
-        text: `Try to bust down door
-    	[Check]`,
+        text: `Try to bust down the door
+        [Check]`,
         nextText: 43,
       },
     ],
   },
   {
     id: 43,
-    text: 'As you get closer to the cart, you see a couple arrows stuck in the cart. You take it out to examine the arrows. You hear something in front of you, but you can only make out some shadowy figures.',
+    text: 'As you get closer to the cart, you see a couple of arrows stuck in the cart. You take it out to examine the arrows. You hear something in front of you, but you can only make out some shadowy figures.',
     options: [
       {
         text: `Yell out.`,
@@ -2922,7 +2922,7 @@ let textNodes = [
       },
       {
         text: `Hide.
-    	[Check]`,
+        [Check]`,
         nextText: 47
       }
     ],
@@ -2940,17 +2940,17 @@ let textNodes = [
   },
   {
     id: 45, //talking
-    text: 'You see them run at you, you prepare to take out your weapon you first think of warning them, but they are too quick. It only looks like two of them so you might have a chance',
+    text: 'You see them run at you, and you prepare to take out your weapon you first think of warning them, but they are too quick. It only looks like two of them so you might have a chance',
     options: [
       {
-        text: `Take out weapon.`,
+        text: `Take out your weapon.`,
         nextText: 46
       }
     ],
   },
   {
     id: 46, //stand off
-    text: 'You stand there and wait, you continue to examine the cart and you finally get a good look at the people. You realize that they are bandits, luckily there is only two of them so you can probably take them.',
+    text: 'You stand there and wait, you continue to examine the cart and you finally get a good look at the people. You realize that they are bandits, luckily there are only two of them so you can probably take them.',
     options: [
       {
         text: `Continue`,
@@ -3044,7 +3044,7 @@ let textNodes = [
   },
   {
     id: 52,
-    text: 'You clean yourself and settle for the night. You get some firewood and try to remember what your uncle told you, but as you try to remember the only thoughts that come to mind are the memories of the horror you went through. You go to bed without a fire, but you are confident thing will happen.',
+    text: 'You clean yourself and settle for the night. You get some firewood and try to remember what your uncle told you, but as you try to remember the only thoughts that come to mind are the memories of the horror you went through. You go to bed without a fire, but you are confident things will happen.',
     options: [
       {
         text: `Continue`,
@@ -3054,7 +3054,7 @@ let textNodes = [
   },
   {
     id: 53,
-    text: 'You wake up, but not where you remembered you being, the forest is more dense and there is a smell of smoke. You get up thinking that you were about to burn down the forest, but you quickly remembered that you did not make a fire, so who did? You get up and look for around the dog that is nowhere to be seen, but you do see his footprints.',
+    text: 'You wake up, but not where you remembered you being, the forest is more dense and there is a smell of smoke. You get up thinking that you are about to burn down the forest, but you quickly remember that you did not make a fire, so who did? You get up and look for around the dog that is nowhere to be seen, but you do see his footprints.',
     options: [
       {
         text: `Where is that dog`,
@@ -3103,7 +3103,7 @@ let textNodes = [
   }, // dog do not stay with you
   {//
     id: 58,
-    text: 'You look around to see if there is anyone, but there does not seem to be anyone making an loud noises.',
+    text: 'You look around to see if there is anyone, but there does not seem to be anyone making a loud noises.',
     options: [
       {
         text: `Is anyone here?`,
@@ -3150,7 +3150,7 @@ let textNodes = [
   },
   {// diplomatic approach
     id: 61,
-    text: 'Jack: "Hey sorry, I didn\'t mean to intrude on your lands, I came to a little village nearby that was attacked by a man. Have you heard the name Henry?"',
+    text: 'Jack: "Hey sorry, I did not mean to intrude on your lands, I came to a little village nearby that was attacked by a man.Have you heard the name Henry?"',
     options: [
       {
         text: `Continue`,
@@ -3170,7 +3170,7 @@ let textNodes = [
   },
   {// diplomatic approach
     id: 63,
-    text: 'Jack: "I am not a bandit, I actually saw a couple back there, I dealt with them. I am Jack, may I ask who you are? My uncle used to talk about someone who looks just like you, a weapon smith with a very "large" personality."',
+    text: 'Jack: "I am not a bandit, I saw a couple back there, and I dealt with them. I am Jack, may I ask who you are? My uncle used to talk about someone who looks just like you, a weapon smith with a very "large" personality."',
     options: [
       {
         text: `Continue`,
@@ -3181,7 +3181,7 @@ let textNodes = [
   {// diplomatic approach
     id: 64,
     text: 'Marry: "I am a weapon smith; I have been here for quite a while. I have not been visited by someone for a long while, why do not you come in?"',
-    options: [
+  options: [
       {
         text: `Walk in`,
         nextText: 67
@@ -3202,9 +3202,9 @@ let textNodes = [
       }
     ],
   },
-  {// goes with pulling out blade
+  {// goes with pulling out the blade
     id: 66,
-    text: 'Marry: "I am Marry, the black smith, if you may not go straight to violence we can both walk out of here alive and better for it."',
+    text: 'Marry: "I am Marry, the blacksmith, if you may not go straight to violence we can both walk out of here alive and better for it."',
     options: [
       {
         text: `What?`,
@@ -3212,7 +3212,7 @@ let textNodes = [
       }
     ],
   },
-  {// goes with pulling out blade
+  {// goes with pulling out the blade
     id: 67,
     text: 'You remember your uncle talking about a blacksmith, this person can be of help.',
     options: [
@@ -3224,8 +3224,8 @@ let textNodes = [
   },
   {//
     id: 68,
-    text: 'You walk into her home, it is very cosy, it\'s been a few days since you have been in a functional house. Weapons covered the walls, some of them spears others are Great Axes, she looks like she has been doing this for quite some time. You wonder why she is here alone, but you thought best not to mention that question.',
-    options: [
+    text: 'You walk into her home, it is very cozy, it is been a few days since you have been in a functional house.Weapons covered the walls, some of them spears others are Great Axes, she looks like she has been doing this for quite some time.You wonder why she is here alone, but you thought it best not to mention that question.',
+options: [
       {
         text: `Continue`,
         nextText: 69
@@ -3282,7 +3282,7 @@ let textNodes = [
         nextText: 74
       },
       {
-        text: `If I have too.`,
+        text: `If I have to.`,
         nextText: 74
       }
     ],
@@ -3300,7 +3300,7 @@ let textNodes = [
   },
   {//
     id: 75.1,
-    text: 'After a year of working for Marry she finally started to teach you how to use a weapon instead of just using you as free labour.',
+    text: 'After a year of working for Marry she finally started to teach you how to use a weapon instead of just using you as free labor.',
     options: [
       {
         text: `Continue`,
@@ -3320,7 +3320,7 @@ let textNodes = [
   },
   {//
     id: 75.3,
-    text: 'Dexterity: is used for light attacks like stab and can be used to sneak out of your way out of things. Also best while using a Rapier.',
+    text: 'Dexterity: is used for light attacks like a stab and can be used to sneak out of your way out of things. Also best while using a Rapier.',
     options: [
       {
         text: `mhm`,
@@ -3330,7 +3330,7 @@ let textNodes = [
   },
   {//
     id: 75.4,
-    text: 'Constitution: is used for bonus to health and can be used to scare enemies and you heal more with potions. Also best while using a Short Sword.',
+    text: 'Constitution: is used as a bonus to health and can be used to scare enemies and you healing more with potions. Also best while using a Short Sword.',
     options: [
       {
         text: `Okay`,
@@ -3433,7 +3433,7 @@ let textNodes = [
   },
   {//
     id: 77,
-    text: 'Jack: "Thank you, Mrs. Marry, I will get the head of the bandit leader, then we can discuss other things afterwards."',
+    text: 'Jack: "Thank you, Mrs. Marry, I will get the head of the bandit leader, then we can discuss other things afterward."',
     options: [
       {
         text: `Continue`,
@@ -3443,8 +3443,8 @@ let textNodes = [
   },
   {//
     id: 78,
-    text: 'Jack: "I will gladly take out that mutt. Its long overdue for him to learn his lesson, I will get his head and prove my worth."',
-    options: [
+    text: 'Jack: "I will gladly take out that mutt. It is long overdue for him to learn his lesson, I will get his head and prove my worth."',
+   options: [
       {
         text: `Continue`,
         nextText: 80
@@ -3463,7 +3463,7 @@ let textNodes = [
   },
   {//
     id: 80,
-    text: 'You walk into the forest, you take out your map to see where they could be and you see the perfect place for a camp. You make your way there being a sneaky as possible knowing that one mistake could cost you everything.',
+    text: 'You walk into the forest, you take out your map to see where they could be and you see the perfect place for a camp. You make your way there being as sneaky as possible knowing that one mistake could cost you everything.',
     options: [
       {
         text: `Continue`,
@@ -3474,7 +3474,7 @@ let textNodes = [
   },
   {//
     id: 81,
-    text: 'You wait till nightfall to attack, beat them at their own game. You get to the camp at dawn but you only see 3 different bandits, two goonies and the leader. You have to change your plan and decide to attack now before anyone else can help.',
+    text: 'You wait till nightfall to attack, beat them at their own game. You get to the camp at dawn but you only see 3 different bandits, two goonies, and the leader. You have to change your plan and decide to attack now before anyone else can help.',
     options: [
       {
         text: `Continue`,
@@ -3527,7 +3527,7 @@ let textNodes = [
   },
   {//
     id: 84,
-    text: 'You cut through the bandits, it was a hard fight, but worth it. You have now shown not only to your mentor, but to yourself that you are ready to avenge your family and find Henry.',
+    text: 'You cut through the bandits, it was a hard fight, but worth it. You have now shown not only to your mentor but to yourself that you are ready to avenge your family and find Henry.',
     options: [
       {
         text: `Walk back home`,
@@ -3557,9 +3557,9 @@ let textNodes = [
       }
     ],
   },
-  {// add a bonus to skill set
+  {// add a bonus to the skill set
     id: 87,
-    text: 'The next morning, Marry: "Jack, I present for you, your new fixed, and clean weapon along with some potions. I spent all night fixing it and buying some potions for you to have, I hope you use it well. Remember that even though it may feel as justice to you and your whatever, hate by revenge will just create more death for you and everyone around you."',
+    text: 'The next morning, Marry: "Jack, I present for you, your new fixed, and clean weapon along with some potions. I spent all night fixing it and buying some potions for you to have, I hope you use it well. Remember that even though it may feel like justice to you and your whatever, hate by revenge will just create more death for you and everyone around you."',
     options: [
       {
         text: `Yes, thank you.`,
@@ -3581,7 +3581,7 @@ let textNodes = [
         nextText: 89
       },
       {
-        text: `See you grandma.`,
+        text: `See you, grandma.`,
         nextText: 88.1
       }
     ],
@@ -3598,7 +3598,7 @@ let textNodes = [
   },
   {//
     id: 89,
-    text: 'Yes, until we meet again Jack, good luck on your mission, but do not forget yourself in your own rage.',
+    text: 'Yes, until we meet again Jack, good luck on your mission, but do not forget yourself in your rage.',
     options: [
       {
         text: `Goodbye`,
@@ -3669,8 +3669,8 @@ let textNodes = [
   },
   {//
     id: 95.5,
-    text: 'Guard: "Yes, he lives right here" He pulls out his map and points at a spot to show you were Henry\'s home is.',
-    options: [
+    text: 'Guard: "Yes, he lives right here" He pulls out his map and points at a spot to show you where Henry\'s home is.',
+ options: [
       {
         text: `Thank you.`,
         nextText: 102
@@ -4992,7 +4992,7 @@ let textNodes = [
     options: [
       {
         text: `Talk to Jin`,
-          nextText: 190.3
+        nextText: 190.3
       }
     ],
     imageCheck: 28
