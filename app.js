@@ -2713,7 +2713,7 @@ let textNodes = [
   },
   {
     id: 32,
-    text: 'You take the time to little graves and try to hold back the tears. It takes three days, but you feel a little bit better and like they can now cross more comfortably.',
+    text: 'You take the time to dig little graves and try to hold back the tears. It takes three days, but you feel a little bit better and like they can now cross more comfortably.',
     options: [
       {
         text: `Continue`,
@@ -3745,2731 +3745,2195 @@ options: [
     ],
   },
   {//
-    id: 101,
-    text: 'You went to the spot of the map that looked the most important. As you walk down the road you see a large house on top of a little hill.',
-    options: [
-      {
-        text: `Continue`,
-        nextText: 102
-      }
-    ],
-  },
-  {// roll a wisdom 15
-    id: 102,
-    text: 'You look at the home and see if there is a possible entrance through the home.',
-    options: [
-      {
-        text: `Continue
-    	[Check (Wis)]`,
-        nextText: 103.1
-      }
-    ],
-    imageCheck: 19
-  },
-  {// wisdom succeeds (ws)
-    id: 103.1,
-    text: 'Blank due to dice roll',
-    options: [
-      {
-        text: `Continue`,
-        nextText: 113
-      }
-    ],
-    diceRoll: 2
-  },
-  {// wisdom succeeds (ws)
-    id: 103,
-    text: 'You can see there is an entrance below in the sewers, if you enter there are no guards that will be able to find you.',
-    options: [
-      {
-        text: `Continue`,
-        nextText: 113
-      }
-    ],
-  },
-  {// wisdom fails (wf)
-    id: 105,
-    text: 'You can only see one way in, the front door. It may cause some chaos in the manor though. You can try to convince the guards to let you in to talk but it may fail.',
-    options: [
-      {
-        text: `Continue`,
-        nextText: 106
-      }
-    ],
-  },
-  {// wf
-    id: 106,
-    text: 'You walk up to the front gates and look towards the guards.',
-    options: [
-      {
-        text: `Continue`,
-        nextText: 108
-      }
-    ],
-    imageCheck: 19
-  },
-  {// wf
-    id: 108,
-    text: 'Matthew: "What are you doing here?"',
-    options: [
-      { //charisma check
-        text: `I here to see Henry
-    	[Check (Cha)]`,
-        nextText: 108.1
-      },
-      {
-        text: `Start Conflict`,
-        nextText: 109
-      },
-    ],
-  },
-  {// wf
-    id: 108.1,
-    text: 'Blank due to dice roll"',
-    options: [
-      { //charisma check
-        text: `I here to see Henry
-    	[Check (Cha)]`,
-        nextText: 111
-      },
-    ],
-    diceRoll: 3
-  },
-  {// Conflict
-    id: 109,
-    text: 'The guard takes out his blade and swings.',
-    options: [
-      {
-        text: `Slash`,
-        nextText: 5
-      },
-      {
-        text: `Heal Potions`,
-        nextText: 8
-      },
-      {
-        text: `Scare`,
-        nextText: 9
-      },
-      {
-        text: `Stab`,
-        nextText: 10
-      },
-      {
-        text: `Pendant of Pain`,
-        nextText: 11
-      },
-      {
-        text: `Persuade`,
-        nextText: 12
-      },
-    ],
-    startCombat: 4,
-    imageCheck: 20
-  },
-  {// end conflict
-    id: 110,
-    text: 'killed gaurds',
-    options: [
-      {
-        text: `Continue`,
-        nextText: 116.1
-      }
-    ],
-    imageCheck: 21
-  },
-  {// charisma succeeds
-    id: 111,
-    text: 'Matthew: "Oh, I remember you, you are the new maid right?"',
-    options: [
-      {
-        text: `Uh Yes Sir`,
-        nextText: 111.1
-      }
-    ],
-    imageCheck: 21
-  },
-  {//
-    id: 111.1,
-    text: 'Matthew: "Where are my manners, go right ahead."',
-    options: [
-      {
-        text: `Thank You`,
-        nextText: 116
-      }
-    ],
-  },
-  {// charisma fails
-    id: 112,
-    text: 'Matthew: "GET HIM!"',
-    options: [
-      {
-        text: `Continue`,
-        nextText: 109
-      }
-    ],
-  },
-  {// ws
-    id: 113,
-    text: 'You sneak into the sewer and walk in. You are pretty sure this will work and you continue down. ',
-    options: [
-      {
-        text: `Continue`,
-        nextText: 114
-      }
-    ],
-  },
-  {// ws
-    id: 114,
-    text: 'You make it to the end and you can see the kitchen above you. You climb up the ladder and try to make the least amount of noise as possible. You do not see anyone so, if you did make noise none will be the wiser.',
-    options: [
-      {
-        text: `Continue`,
-        nextText: 116
-      }
-    ],
-    imageCheck: 21
-  },
-  {//
-    id: 116,
-    text: 'You open up the kitchen door to see the dining room, you unexpectedly walk into Henry having lunch with his family. You see 2 little boys enjoying a large bowl of rice and you lock eyes with the man who ruined everything.',
-    options: [
-      {
-        text: `Continue`,
-        nextText: 117
-      }
-    ],
-  },
-  {//
-    id: 116.1,
-    text: 'You make your way inside the gates and see his family having lunch in the dining room.',
-    options: [
-      {
-        text: `WALK IN`,
-        nextText: 117
-      }
-    ],
-  },
-  {//
-    id: 117,
-    text: 'Henry: "Oh, I wasn’t expecting a visitor today. Henry! What did I say about eating with your mouth open? Sigh. What are you doing here and who are you? Oh wait, sorry where my manners are, please sit over there."',
-    options: [
-      {
-        text: `HOW DARE YOU!`,
-        nextText: 118
-      }
-    ],
-  },
-  {//
-    id: 118,
-    text: 'Henry: "No need to be so loud you don’t want the kids to be scared?"',
-    options: [
-      {
-        text: `Examine the room`,
-        nextText: 119
-      }
-    ],
-  },
-  {//
-    id: 119,
-    text: 'The first kid runs to his mom, but the one named James just sat there eating, staring into your soul. Distracted by memories you didn’t realise that Henry had pulled out his sword.',
-    options: [
-      {
-        text: `Look back at Henry`,
-        nextText: 120
-      }
-    ],
-  },
-  {//
-    id: 120,
-    text: 'Jack: "Why did you do it? You could have done it any other way, why? Why did you leave me alive with these memories!"',
-    options: [
-      {
-        text: `Grip your weapon`,
-        nextText: 122
-      }
-    ],
-  },
-  {//
-    id: 122,
-    text: 'Henry: "Okay this is enough, get the kids out. This should not be to long, we can finish our meal later tonight."',
-    options: [
-      {
-        text: `Contain your anger`,
-        nextText: 123
-      }
-    ],
-  },
-  {// Conflict
-    id: 123,
-    text: 'This is your chance, get your revenge!',
-    options: [
-      {
-        text: `Slash`,
-        nextText: 5
-      },
-      {
-        text: `Heal Potions`,
-        nextText: 8
-      },
-      {
-        text: `Scare`,
-        nextText: 9
-      },
-      {
-        text: `Stab`,
-        nextText: 10
-      },
-      {
-        text: `Pendant of Pain`,
-        nextText: 11
-      },
-      {
-        text: `Persuade`,
-        nextText: 12
-      },
-    ],
-    startCombat: 5,
-    imageCheck: 22
-  },
-  {// end conflict
-    id: 124,
-    text: 'You lost',
-    options: [
-      {
-        text: `Continue`,
-        nextText: 125
-      }
-    ],
-    imageCheck: 23
-  },
-  {//
-    id: 125,
-    text: 'You get a couple of good shots in, but Henry is just too strong. You take a moment to catch your breath and by the time you get your mind back in the battle, he jumps onto you with the dull end of his blade. Your vision got dark and the last thing you remember were the kids eyes.',
-    options: [
-      {
-        text: `...........`,
-        nextText: 126
-      }
-    ],
-  },
-  {//
-    id: 126,
-    text: 'What do you expect? Did you expect that you would come out on top? You’re in my home, since this blade has enough of your kinds’ filth on it, I will spare you. Guards escort our friend to the prison in the south, but I am curious who you are?',
-    options: [
-      {
-        text: `...........`,
-        nextText: 127
-      }
-    ],
-  },
-  //end of henry
-  {//
-    id: 127,
-    text: 'You wake up in a chain, the only thing you can sense is iron. As you try to get up you realise you are locked up in chains in a room. You thought your eyes were closed but then you see a little bit of light.',
-    options: [
-      {
-        text: `Continue`,
-        nextText: 128
-      }
-    ],
-    imageCheck: 24
-  },
-  {//
-    id: 128,
-    text: 'Guard: "Feeding Time!"',
-    options: [
-      {
-        text: `Get up`,
-        nextText: 129
-      }
-    ],
-  },
-  {// wisdom check
-    id: 129,
-    text: 'You try to get yourself to your feet, but it feels like you are tied down. You look at the surroundings in the room to see where you are at.',
-    options: [
-      {
-        text: `Look around
-        [Check (Wis)]`,
-        nextText: 129.1
-      }
-    ],
-  },
-  {// wisdom check
-    id: 129.1,
-    text: 'You try to get yourself to your feet, but it feels like you are tied down. You look at the surroundings in the room to see where you are at.',
-    options: [
-      {
-        text: `Continue`,
-        nextText: 130
-      }
-    ],
-    diceRoll: 4
-  },
-  {// wisdom succeed
-    id: 130,
-    text: 'You focus on',
-    options: [
-      {
-        text: `Door`,
-        nextText: 130.1
-      },
-      {
-        text: `Figure 1`,
-        nextText: 130.2
-      },
-      {
-        text: `Figure 2`,
-        nextText: 130.3
-      },
-      {
-        text: `The plate`,
-        nextText: 130.4
-      },
-    ],
-  },
-  {// door
-    id: 130.1,
-    text: 'You see a faint light; it appears that there are some guards watching over. It looks like it\'s made out of wood, you might be able to break it. You then see marks on the door, like someone has had the same idea, but it appears none has made it out like that.',
-    options: [
-      {
-        text: `Door`,
-        nextText: 130.1
-      },
-      {
-        text: `Figure 1`,
-        nextText: 130.2
-      },
-      {
-        text: `Figure 2`,
-        nextText: 130.3
-      },
-      {
-        text: `The plate`,
-        nextText: 130.4
-      },
-      {
-        text: `"Hello?"`,
-        nextText: 132.4
-      }
-    ],
-  },
-  {// figure 1
-    id: 130.2,
-    text: 'You see a man in the room staring at the door, he appears to be tall and skinny with long black hair.',
-    options: [
-      {
-        text: `Door`,
-        nextText: 130.1
-      },
-      {
-        text: `Figure 1`,
-        nextText: 130.2
-      },
-      {
-        text: `Figure 2`,
-        nextText: 130.3
-      },
-      {
-        text: `The plate`,
-        nextText: 130.4
-      },
-      {
-        text: `"Hello?"`,
-        nextText: 132
-      }
-    ],
-  },
-  {// figure 2
-    id: 130.3,
-    text: 'There is a man in the right corner that seems to be the average height, you cannot make out any other features. He maybe wearing some type of cloak.',
-    options: [
-      {
-        text: `Door`,
-        nextText: 130.1
-      },
-      {
-        text: `Figure 1`,
-        nextText: 130.2
-      },
-      {
-        text: `Figure 2`,
-        nextText: 130.3
-      },
-      {
-        text: `The plate`,
-        nextText: 130.4
-      },
-      {
-        text: `"Hello?"`,
-        nextText: 132
-      }
-    ],
-  },
-  {// plate
-    id: 130.4,
-    text: 'You focus on the plate that was just thrown into the room. You mostly hear things, the room is almost pitch black, but you do see a large man run towards the plate. You hear a gulp then some more shuffling. You can make out that he is much more fit compared to the other two and pretty tall, does not look like someone to mess with.',
-    options: [
-      {
-        text: `Door`,
-        nextText: 130.1
-      },
-      {
-        text: `Figure 1`,
-        nextText: 130.2
-      },
-      {
-        text: `Figure 2`,
-        nextText: 130.3
-      },
-      {
-        text: `The plate`,
-        nextText: 130.4
-      },
-      {
-        text: `"Hello?"`,
-        nextText: 132
-      },
-    ],
-  },
-  { // fails wisdom
-    id: 130.5,
-    text: 'You try to see if you can make out anything, but you can only see black. The room is pitch black and your senses are still shout after that fight.',
-    options: [
-      {
-        text: `Continue`,
-        nextText: 132
-      }
-    ],
-  },
-  {//
-    id: 132,
-    text: 'You try to at least sit up, you now hear chains jangle. Jack: "Where am I?"',
-    options: [
-      {
-        text: `Continue`,
-        nextText: 133
-      }
-    ],
-  },
-  {//
-    id: 133,
-    text: '?: "heLLo? whAt do you think, hmm." Just hearing this guy makes you feel uneasy. ?: "Shut it… Sorry, who are you?" It\'s the same voice but a different tone and is much more clear.',
-    options: [
-      {
-        text: `I am Jack, where are we?`,
-        nextText: 134
-      },
-      {
-        text: `"Who are you, are there two of you?"`,
-        nextText: 135
-      },
-      {
-        text: `"Do not respond?"`,
-        nextText: 136
-      }
-    ],
-  },
-  {//
-    id: 134,
-    text: 'Jin: "We are nowhere, but you will soon learn. I am Jin by the way."',
-    options: [
-      {
-        text: `What?`,
-        nextText: 137
-      }
-    ],
-    imageCheck: 25
-  },
-  {//
-    id: 135,
-    text: 'Jin: "I am Jin, it\'s rude to ask people about their personal life, hmm?"',
-    options: [
-      {
-        text: `What?`,
-        nextText: 137
-      }
-    ],
-  },
-  {//
-    id: 136,
-    text: 'Jin: "I am Jin, it rude to just stare, hahahaha!"',
-    options: [
-      {
-        text: `...`,
-        nextText: 137
-      }
-    ],
-  },
-  {//
-    id: 137,
-    text: '?: "Jin, be quiet." A different voice from the right side of the room, it\'s more deep and shallow. Jin: "Oh Frank, please I am just trying to make a new friend, are you jealous?" It seems like the man\'s name is Frank, what a weird name.',
-    options: [
-      {
-        text: `Hey, what is this place?`,
-        nextText: 138
-      },
-      {
-        text: `A friend?`,
-        nextText: 138
-      },
-      {
-        text: `...`,
-        nextText: 138
-      }
-    ],
-  },
-  {//
-    id: 138,
-    text: 'Guard: "Shut it in there!"',
-    options: [
-      {
-        text: `Listen`,
-        nextText: 139
-      }
-    ],
-    imageCheck: 24
-  },
-  {// wisdom or dex check
-    id: 139,
-    text: 'Everything becomes silent again, expect for the faint noise of the guards talking.',
-    options: [
-      {
-        text: `Focus on the voices
-        [Check (Wis)]`,
-        nextText: 139.1
-      }
-    ],
-  },
-  {// wisdom or dex check
-    id: 139.1,
-    text: 'Blank due to dice roll',
-    options: [
-      {
-        text: `Focus on the voices`,
-        nextText: 140
-      }
-    ],
-    diceRoll: 5
-  },
-  {// succeeds
-    id: 139.1,
-    text: 'Guard 1: "Hey Guston, you hear the news?" The first guard seems to be on the older side. Guston: "You mean how Henry is promoting guards to his new home?" Guston seems to be a lot younger. You hear a loud slap Guard1: "Call him Lord Williams, but yes. He moved to that old burnt down farming village next to the river. Hopefully he promotes me, hahaha." Guston: "Fat chance of that."',
-    options: [
-      {
-        text: `Continue`,
-        nextText: 141
-      }
-    ],
-  },
-  {// succeeds
-    id: 141,
-    text: 'The voices get quieter. You remember your old home; would he really live on the graves of his victims? At least you now know where he will be when you get out of here.',
-    options: [
-      {
-        text: `Go to sleep`,
-        nextText: 144
-      }
-    ],
-  },
-  {// fails
-    id: 143,
-    text: 'You cannot make out anything, so you decide to sleep.',
-    options: [
-      {
-        text: `Go to sleep`,
-        nextText: 144
-      }
-    ],
-  },
-  {//
-    id: 144,
-    text: 'You get woken to a bright light from the door being open. Guston: "Get out, it\'s time for work." From what you know of prisons, they will probably make you mine for salt.',
-    options: [
-      {
-        text: `Get up and follow.`,
-        nextText: 145
-      }
-    ],
-    imageCheck: 26
-  },
-  {// con check
-    id: 145,
-    text: 'You spend the day getting your grip on reality. You pick the pickaxe near you and start to get mining, but you feel weak like your arms are about to break.',
-    options: [
-      {
-        text: `Mine the Rock
-        [Check (con)]`,
-        nextText: 145.1
-      }
-    ],
-  },
-  {// con check
-    id: 145.1,
-    text: 'Blank due to dice roll.',
-    options: [
-      {
-        text: `Continue`,
-        nextText: 146
-      }
-    ],
-    diceRoll: 6
-  },
-  {// succeeds
-    id: 146,
-    text: 'You continue even though your arms feel like noodles, you see Frank and Jin looking impressed. You also see the other man, a huge man with bright red hair. He is laughing at your attempt to be "strong". He takes your pick and starts to show you how to work the rock.',
-    options: [
-      {
-        text: `Continue`,
-        nextText: 178
-      }
-    ],
-  },
-  {// fails
-    id: 147,
-    text: 'You drop the pickaxe and see Frank and Jin walk away from you. You can finally see the last guy, a huge name with bright red hair. He looks like is about to help when you see a guard approach.',
-    options: [
-      {
-        text: `Continue`,
-        nextText: 147.1
-      }
-    ],
-  },
-  {// fails
-    id: 147.1,
-    text: 'You try to pick off the pickaxe before they notice, but it\'s too late. They pick you up and then beat you for what feels like hours. Afterwards they throw you back into the mines. This time the big man is there holding your pickaxe, he shows you how to work the rock.',
-    options: [
-      {
-        text: `Continue`,
-        nextText: 178
-      }
-    ],
-  },
-  {//
-    id: 178,
-    text: 'Brian: "Weak boy, let Brian help, he\'s big and strong." He is almost twice your size, he hits one rock and it breaks in half.',
-    options: [
-      {
-        text: `How have you been here?`,
-        nextText: 178.1
-      },
-      {
-        text: `What are you in here for?`,
-        nextText: 178.2
-      },
-      {
-        text: `I’m going to cut to the chase, you know a way out?`,
-        nextText: 178.3
-      },
-    ],
-    imageCheck: 27
-  },
-  {//
-    id: 178.1,
-    text: 'Brian: "Been here very long, lost count. You will understand one day little man."',
-    options: [
-      {
-        text: `What are you in here for?`,
-        nextText: 178.2
-      },
-      {
-        text: `I’m going to cut to the chase, you know a way out?`,
-        nextText: 178.3
-      },
-    ],
-  },
-  {//
-    id: 178.2,
-    text: 'Brian: "Drunk fighting, he did not say sorry, killed the ant. They put me here."',
-    options: [
-      {
-        text: `How have you been here?`,
-        nextText: 178.1
-      },
-      {
-        text: `I’m going to cut to the chase, you know a way out?`,
-        nextText: 178.3
-      },
-    ],
-  },
-  {//
-    id: 178.3,
-    text: 'Brian: "Does not know what you mean?"',
-    options: [
-      {
-        text: `Oh come on you know what I mean.`,
-        nextText: 178.31
-      },
-    ],
-  },
-  {//
-    id: 178.31,
-    text: 'Brian: "If Jack keeps talking I will be angry; Jack does not want Brian angry." You might be able to get him angry and start a mass fight, it could be good distraction.',
-    options: [
-      {
-        text: `Sorry, thank you for your help.`,
-        nextText: 179
-      }
-    ],
-  },
-  {//
-    id: 179,
-    text: 'You walk up to Jin to see what he is up to, you try to make it seem like you are still working, but you know if you swing one more time your arms will just fall off.',
-    options: [
-      {
-        text: `Hey`,
-        nextText: 180
-      }
-    ],
-    imageCheck: 28
-  },
-  {//
-    id: 180,
-    text: 'Jin: "yEs? SHHH" ... Jin: "Yes, what do you want?"',
-    options: [
-      {
-        text: `How have you been here?`,
-        nextText: 180.1
-      },
-      {
-        text: `Are you alright?`,
-        nextText: 180.2
-      },
-      {
-        text: `Have you got anything that may allow you or us to get out?`,
-        nextText: 180.3
-      },
-    ],
-  },
-  {//
-    id: 180.1,
-    text: 'Jin: "They think of me crazy, so they put me in prison. I also often lied about who I was to get what I want."',
-    options: [
-      {
-        text: `Are you alright?`,
-        nextText: 180.2
-      },
-      {
-        text: `Have you got anything that may allow you or us to get out?`,
-        nextText: 180.3
-      },
-    ],
-  },
-  {//
-    id: 180.2,
-    text: 'Jin "I am doing as fine as someone can be in prison."',
-    options: [
-      {
-        text: `How have you been here?`,
-        nextText: 180.1
-      },
-      {
-        text: `Have you got anything that may allow you or us to get out?`,
-        nextText: 180.3
-      },
-    ],
-  },
-  {//
-    id: 180.3,
-    text: 'Jin: "yES, wE wait FOR moments of TImE." The other voice came back. Jin: "SHUT IT, well yes I do know a way, but it takes time and it\'s not time yet. I may let you in depending on if I like you later, HAHAHAHA." Guard2:"GET BACK TO WORK!"',
-    options: [
-      {
-        text: `Thank you, talk to you later.`,
-        nextText: 181
-      }
-    ],
-  },
-  {//
-    id: 181,
-    text: 'You walk towards Frank, but he meets you in the middle, much smaller than the other two, but around the same size as you if not a little shorter. He is wearing a cloak to cover his face, you wonder how he is allowed to have that, but he also does not seem to be from this area.',
-    options: [
-      {
-        text: `Hey`,
-        nextText: 182
-      }
-    ],
-    imageCheck: 29
-  },
-  {//
-    id: 182,
-    text: 'Frank: "Jack?"',
-    options: [
-      {
-        text: `How did you get in here?`,
-        nextText: 182.1
-      },
-      {
-        text: `I was wondering where you are from, you look like a foreigner?`,
-        nextText: 182.2
-      },
-      {
-        text: `Have you got anything that may allow you or us to get out?`,
-        nextText: 182.3
-      },
-    ],
-  },
-  {//
-    id: 182.1,
-    text: 'Frank: "Sorry, but you do not get to know why, just know that I am someone that can get anywhere they want."',
-    options: [
-      {
-        text: `I was wondering where you are from, you look like a foreigner?`,
-        nextText: 182.2
-      },
-      {
-        text: `Have you got anything that may allow you or us to get out?`,
-        nextText: 182.3
-      },
-    ],
-  },
-  {//
-    id: 182.2,
-    text: 'Frank: "Yes I come from Bani."',
-    options: [
-      {
-        text: `How did you get in here?`,
-        nextText: 182.1
-      },
-      {
-        text: `Have you got anything that may allow you or us to get out?`,
-        nextText: 182.3
-      },
-    ],
-  },
-  {//
-    id: 182.3,
-    text: 'Frank: "Maybe what is in it for me?"',
-    options: [
-      {
-        text: `Well it seems like you can't do it yourself, so you will be able to get out.`,
-        nextText: 182.31
-      },
-    ],
-  },
-  {//
-    id: 182.31,
-    text: 'HAHAHA, okay then. We will talk more about this in further detail later.',
-    options: [
-      {
-        text: `Alright see you later`,
-        nextText: 183
-      }
-    ],
-  },
-  {//
-    id: 183,
-    text: 'You have more energy left and so you start to mine again. You spend another hour or two before hearing the church bell. They take you to the church to pay for your sins, a costume from Bina culture. You spend an hour in the church before being thrown back into your cell.',
-    options: [
-      {
-        text: `Continue`,
-        nextText: 184
-      }
-    ],
-    imageCheck: 24
-  },
-  {//
-    id: 184,
-    text: 'Like the other night a plate gets thrown in, but this time none goes for it except Jin. It appears like they are taking turns with the food. You remember them talking about it while you were mining. You wonder when it will be your turn to eat and drink. You do not know how long it has been since your break in, but you do know that you are starving.',
-    options: [
-      {
-        text: `Go to sleep`,
-        nextText: 185
-      }
-    ],
-  },
-  {//
-    id: 185,
-    text: 'You drift into sleep with nightmares of what happened. Jack: "I am sorry; I am so sorry! Please I will..." You wake up and Frank is pointing to the food in front of you.',
-    options: [
-      {
-        text: `Thank you`,
-        nextText: 186
-      }
-    ],
-  },
-  {//
-    id: 186,
-    text: 'You pick it up and take a bite out of what looks like bread, but turns out to be rice. It surprises you, but you really are not in a position to complain about the food. You eat all of it before being called back out to work where you mine again.',
-    options: [
-      {
-        text: `5 Years Later`,
-        nextText: 187
-      }
-    ],
-  },
-  {//
-    id: 187,
-    text: 'You have been doing the same thing for about 5 years now counting each week on your wall. Nothing new with Henry, but you have become good friends with the people in your cell. The nightmares are still there, but you have a good feeling.',
-    options: [
-      {
-        text: `Eat the rice bread`,
-        nextText: 188
-      }
-    ],
-    imageCheck: 30
-  },
-  {// how to break out of prison
-    id: 188,
-    text: 'You take a bite of the rice bread, everyone else is looking at it. Maybe if you help one of them more than the others they can help you escape.',
-    options: [
-      {//breaks out with Brian (bb)
-        text: `Give some to Brian `, //increases strength or con by 1
-        nextText: 189.1,
-        setPlayer: { str: 4 }
-      },
-      {//breaks out with Jin (bj) //increases charisma or wisdom by 1
-        text: `Give some to Jin`,
-        nextText: 190.1,
-        setPlayer: { wis: 4 }
-      },
-      {//breaks out with Frank (bf) //increases dex or charisma by 1
-        text: `Give some to Frank`,
-        nextText: 191.2,
-        setPlayer: { dex: 4 }
-      }
-    ],
-  },
-  {// bb
-    id: 189.1,
-    text: 'You hand the rest to Brian, the other guys look annoyed but do not say anything. Later that day you decide that you are going to try to get Brian to start a fight. You can get both Brian and yourself out.',
-    options: [
-      {
-        text: `Hey`,
-        nextText: 189.2
-      }
-    ],
-    imageCheck: 27
-  },
-  {// bb
-    id: 189.2,
-    text: 'Jack: "Brian, I have a plan to get us out of the dump. You want to hear about it? You want to be able to see your kids again?" It may be a bit much bringing up his kids, but you need to get out so the ends justify the means.',
-    options: [
-      {
-        text: `Continue`,
-        nextText: 189.3
-      }
-    ],
-  },
-  {// bb
-    id: 189.3,
-    text: 'Brian: "Yes Brian wants to leave. How do Brian and friends leave?"',
-    options: [
-      {
-        text: `Respond with the plan`,
-        nextText: 189.4
-      }
-    ],
-  },
-  {// bb
-    id: 189.4,
-    text: 'Brian: "Sounds Good" He walks away, you realise that you forgot to tell him when you will be doing this, but before you can tell him he pushes one of the other inmates down. The inmate gets up then throws a punch. You see as a crowd starts to gather. The guards are nowhere to be seen, it looks like they are under maned today, lucky.',
-    options: [
-      {
-        text: `Watch`,
-        nextText: 189.5
-      }
-    ],
-  },
-  {// bb
-    id: 189.5,
-    text: 'You see as another fight breaks out, until there is not a single person that is not in a fight. You escape and see Brian look for you.',
-    options: [
-      {
-        text: `Call for Brian`, // leave with Brian (lb)
-        nextText: 189.6
-      },
-      {
-        text: 'Run without Brian', // leave without Brian (wb)
-        nextText: 189.61
-      }
-    ],
-  },
-  {// wb
-    id: 189.6,
-    text: 'You call out to Brian and he runs towards you. You start to burst out laughing, Jack: "We might just be able to get out, good job Brian." Brian smiles and picks you up. You guys make your way to the armoury where you find your old blade, it appears to have been used, but it\'s not in bad shape. Brian picks up a large great axe.',
-    options: [
-      {
-        text: `Let's get out of here!`,
-        nextText: 189.7
-      }
-    ],
-  },
-  {// lb
-    id: 189.61,
-    text: 'You look at Brian and think about if you really need him. You decide to run off to the armoury and get your old sword, it appears to have been used, but it\'s still in good shape. You run out and make your way out.',
-    options: [
-      {
-        text: `Continue`,
-        nextText: 189.71
-      }
-    ],
-  },
-  {// wb
-    id: 189.7,
-    text: 'You run into some guards, only two of them look tough, but you are ready for them. Brian takes one of them, so it only leaves you with one.',
-    options: [
-      {
-        text: `Continue`,
-        nextText: 189.8
-      }
-    ],
-  },
-  {// lb
-    id: 189.71,
-    text: 'You run into some guards, only two of them they look tough, but you are ready for them.',
-    options: [
-      {
-        text: `Continue`,
-        nextText: 189.81
-      }
-    ],
-  },
-  {// Conflict wb
-    id: 189.8,
-    text: 'You have been waiting to get some angry out',
-    options: [
-      {
-        text: `Slash`,
-        nextText: 5
-      },
-      {
-        text: `Heal Potions`,
-        nextText: 8
-      },
-      {
-        text: `Scare`,
-        nextText: 9
-      },
-      {
-        text: `Stab`,
-        nextText: 10
-      },
-      {
-        text: `Pendant of Pain`,
-        nextText: 11
-      },
-      {
-        text: `Persuade`,
-        nextText: 12
-      },
-    ],
-    startCombat: 6,
-    imageCheck: 31
-  },
-  {// Conflict lb
-    id: 189.81,
-    text: 'You have been waiting to get some angry out',
-    options: [
-      {
-        text: `Slash`,
-        nextText: 5
-      },
-      {
-        text: `Heal Potions`,
-        nextText: 8
-      },
-      {
-        text: `Scare`,
-        nextText: 9
-      },
-      {
-        text: `Stab`,
-        nextText: 10
-      },
-      {
-        text: `Pendant of Pain`,
-        nextText: 11
-      },
-      {
-        text: `Persuade`,
-        nextText: 12
-      },
-    ],
-    startCombat: 7,
-    imageCheck: 31
-  },
-  {// end conflict wb
-    id: 189.9,
-    text: 'Defeat guards',
-    options: [
-      {
-        text: `Continue`,
-        nextText: 189.11
-      }
-    ],
-    imageCheck: 30
-  },
-  {// end conflict lb
-    id: 189.91,
-    text: 'Defeat guards',
-    options: [
-      {
-        text: `Continue`,
-        nextText: 189.111
-      }
-    ],
-    imageCheck: 32
-  },
-  {// wb
-    id: 189.11,
-    text: 'You finish your guard just in time to see Brian get stabbed in the chest. He swings down his axe and kills the guard, but the wound is deep, a healing potion will not heal this one.',
-    options: [
-      {
-        text: `Brian!`,
-        nextText: 189.13
-      },
-      {
-        text: `Will you be okay?`,
-        nextText: 189.13
-      },
-      {
-        text: `Come on we are too close.`,
-        nextText: 189.16
-      },
-    ],
-  },
-  {// lb end
-    id: 189.111,
-    text: 'You take out the guards and make a dash for the exit. You think about taking out your anger and all the guards, but you are not dumb.',
-    options: [
-      {
-        text: `Freedom!`,
-        nextText: 193
-      }
-    ],
-    imageCheck: 30
-  },
-  {// wb
-    id: 189.13,
-    text: 'Brian: "Jack, thank you for helping Brian. I am okay with this, go do not waste your freedom on me..." Brian\'s eyes close and he takes a breath out, he\'s not died but he is pretending to be to try to get you to leave.',
-    options: [
-      {
-        text: `Help`,
-        nextText: 189.14
-      },
-      {
-        text: `Leave`,
-        nextText: 189.1
-      },
-    ],
-  },
-  {// help wb
-    id: 189.14,
-    text: 'Jack: "Come on Brian I know you are still alive, let\'s go. You will be able to make."',
-    options: [
-      {
-        text: `Try to help him up`,
-        nextText: 189.15
-      }
-    ],
-  },
-  {// help wb
-    id: 189.15,
-    text: 'Brian: "No I am dead. Go without Brian, it’s okay, I want this."',
-    options: [
-      {
-        text: `leave`,
-        nextText: 189.16
-      }
-    ],
-  },
-  {// wb end
-    id: 189.6,
-    text: 'You decide to listen to Brian and leave him, it hurts you but you know that he will face a worse death outside of this prison. At least he gets to die on his own terms. You hand him one of the swords that the guards have, and walk out the door holding back your rage to kill everyone in that prison.',
-    options: [
-      {
-        text: `Freedom`,
-        nextText: 192
-      }
-    ],
-    imageCheck: 30
-  },
-  //jin
-  {// bj
-    id: 190.1,
-    text: 'You hand the rest to Jin, the other guys look annoyed but do not say anything. Later that day you decide that you are going to try to get Jin to be able to enter the armoury. Maybe he can make us seem like guards. You can get both Jin and yourself out.',
-    options: [
-      {
-        text: `Talk to Jin`,
-        nextText: 190.3
-      }
-    ],
-    imageCheck: 28
-  },
-  {// bj
-    id: 190.2,
-    text: 'Jack: "Jin, I have a plan to get us out of the dump. You want to hear about it?',
-    options: [
-      {
-        text: `Continue`,
-        nextText: 190.3
-      }
-    ],
-  },
-  {// bj
-    id: 190.3,
-    text: 'Jin: "I am listening."',
-    options: [
-      {
-        text: `Explain him the plan`,
-        nextText: 190.4
-      }
-    ],
-  },
-  {// bj
-    id: 190.4,
-    text: 'Jin: "Hmm, that is my type of crazy. I will not lie, hahaha. Sure, let\'s try it. There is a day where most of the guards will be gone because Lord Williams is holding a party and needs sore guards. So we will strike then."',
-    options: [
-      {
-        text: `Okay`,
-        nextText: 190.5
-      }
-    ],
-  },
-  {// bj
-    id: 190.5,
-    text: 'You wait for Jin to talk to you again, a few weeks go by and you start to notice that most of the guards are out. Right now there is only like 10 of them.',
-    options: [
-      {
-        text: `Wait for Jin`,
-        nextText: 190.6
-      }
-    ],
-  },
-  {// bj
-    id: 190.6,
-    text: 'Jin: "Jack, today is the day, say your goodbyes we are leaving!" Jin: "LEAvinG, yes... yEs." You get a weird feeling about it, but you are too far into it now to just back out.',
-    options: [
-      {
-        text: `Continue`,
-        nextText: 190.7
-      }
-    ],
-  },
-  {// bj
-    id: 190.7,
-    text: 'You say your goodbyes and you and Jin wait for the moment to attack. You see an opportunity to steal some weapons and take it. 2 guards see you, you will have to take them out, Jin is useless in combat.',
-    options: [
-      {
-        text: `Pull out your weapon`,
-        nextText: 190.8
-      }
-    ],
-  },
-  {// bj
-    id: 190.8,
-    text: 'You have been waiting to get some angry out',
-    options: [
-      {
-        text: `Slash`,
-        nextText: 5
-      },
-      {
-        text: `Heal Potions`,
-        nextText: 8
-      },
-      {
-        text: `Scare`,
-        nextText: 9
-      },
-      {
-        text: `Stab`,
-        nextText: 10
-      },
-      {
-        text: `Pendant of Pain`,
-        nextText: 11
-      },
-      {
-        text: `Persuade`,
-        nextText: 12
-      },
-    ],
-    startCombat: 8,
-    imageCheck: 31
-  },
-  {//bj
-    id: 190.9,
-    text: 'Defeat guards',
-    options: [
-      {
-        text: `Continue`,
-        nextText: 190.11
-      }
-    ],
-    imageCheck: 33
-  },
-  {// bj
-    id: 190.11,
-    text: 'You hide their bodies in some bushes and make your way with Jin.',
-    options: [
-      {
-        text: `Continue`,
-        nextText: 190.12
-      }
-    ],
-  },
-  {// bj
-    id: 190.12,
-    text: 'You reach the armoury and take some armour, for some reason Jin has not said a word to you since you took out the guards. You are getting a weird feeling so you keep your weapon near you.',
-    options: [
-      {
-        text: `Are we ready?`,
-        nextText: 190.13
-      }
-    ],
-  },
-  {// bj
-    id: 190.13,
-    text: 'Jin looks at you and then swings his blade in your direction, you manage to dodge at the last second',
-    options: [
-      {
-        text: `Continue`,
-        nextText: 190.14
-      }
-    ],
-  },
-  {// bj combat
-    id: 190.14,
-    text: 'You have been waiting to get some angry out',
-    options: [
-      {
-        text: `Slash`,
-        nextText: 5
-      },
-      {
-        text: `Heal Potions`,
-        nextText: 8
-      },
-      {
-        text: `Scare`,
-        nextText: 9
-      },
-      {
-        text: `Stab`,
-        nextText: 10
-      },
-      {
-        text: `Pendant of Pain`,
-        nextText: 11
-      },
-      {
-        text: `Persuade`,
-        nextText: 12
-      },
-    ],
-    startCombat: 9,
-    imageCheck: 34
-  },
-  {//bj combat finish
-    id: 190.15,
-    text: 'You defeat Jin.',
-    options: [
-      {
-        text: `Continue`,
-        nextText: 190.16
-      }
-    ],
-    imageCheck: 35
-  },
-  {// bj
-    id: 190.16,
-    text: 'You stab Jin right in the chest and push him off you. Hey stumbles back before he falls into some crates. You do not really know why Jin would do that but you also knew that he was probably the most unstable out of the three inmates. You get up clean your weapon and walk straight through the gates but then.',
-    options: [
-      {
-        text: `Guard: "Hey"!`,
-        nextText: 190.17
-      }
-    ],
-  },
-  {// bj
-    id: 190.17,
-    text: 'Guard: "Where do you think you are going?"',
-    options: [
-      {
-        text: `Attack`,
-        nextText: 190.22
-      },
-      {
-        text: `Talk`,
-        nextText: 190.18
-      }
-    ],
-    imageCheck: 26
-  },
-  {//charisma check 10 bj
-    id: 190.18,
-    text: 'Jack: "Sorry, I need to go to the general. An inmate has killed a fellow inmate in the armoury and I do not know where that inmate is."',
-    options: [
-      {
-        text: `Continue
-        [Check (cha)]`,
-        nextText: 190.181
-      }
-    ],
-  },
-  {//charisma check 10 bj
-    id: 190.181,
-    text: 'Blank due too dice roll."',
-    options: [
-      {
-        text: `Continue`,
-        nextText: 190.19
-      }
-    ],
-    diceRoll: 7
-  },
-  {// succeeds bj
-    id: 190.19,
-    text: 'Guard: "Yes, I see go find him he is in Lord Williams manor just west of here in the town of Lüdingfeld."',
-    options: [
-      {
-        text: `Thank you, I will go immediately.`,
-        nextText: 190.21
-      }
-    ],
-    imageCheck: 30
-  },
-  {// fails bj
-    id: 190.22,
-    text: 'Get him!',
-    options: [
-      {
-        text: `Continue`,
-        nextText: 190.23
-      }
-    ],
-  },
-  {// bj combat
-    id: 190.23,
-    text: 'You have been waiting to get some angry out',
-    options: [
-      {
-        text: `Slash`,
-        nextText: 5
-      },
-      {
-        text: `Heal Potions`,
-        nextText: 8
-      },
-      {
-        text: `Scare`,
-        nextText: 9
-      },
-      {
-        text: `Stab`,
-        nextText: 10
-      },
-      {
-        text: `Pendant of Pain`,
-        nextText: 11
-      },
-      {
-        text: `Persuade`,
-        nextText: 12
-      },
-    ],
-    startCombat: 10,
-    imageCheck: 31
-  },
-  {//bj
-    id: 190.24,
-    text: 'You defeat Guards.',
-    options: [
-      {
-        text: `Continue`,
-        nextText: 192.25
-      }
-    ],
-    imageCheck: 30
-  },
-  {// bj
-    id: 190.25,
-    text: 'You run out looking around what to do next',
-    options: [
-      {
-        text: `Continue`,
-        nextText: 192
-      }
-    ],
-    imageCheck: 30
-  },
-  {// bf
-    id: 191.2,
-    text: 'You hand the rest to Frank, the other guys look annoyed but do not say anything. Later that day you decide that you are going to try to get Frank to escape with you. He knows the fort much better than you and he can help you sneak through the fort.',
-    options: [
-      {
-        text: `Find Frank`,
-        nextText: 191.3
-      }
-    ],
-    imageCheck: 29
-  },
-  {// bf
-    id: 191.3,
-    text: 'Jack: "Hey Frank, how would you like it if we got out of here?"',
-    options: [
-      {
-        text: `Continue`,
-        nextText: 191.4
-      }
-    ],
-  },
-  {// bf
-    id: 191.4,
-    text: 'Frank: "You mean escape the fort. It\'s possible but you need to be sneaky to travel with me or at least know how fight."',
-    options: [
-      {
-        text: `Explain the plan.`,
-        nextText: 191.5
-      }
-    ],
-  },
-  {// bf
-    id: 191.5,
-    text: 'Frank: "Interesting... This could work, let\'s wait for tonight. There will be less guards tonight, Lord Williams is holding a party and they need more guards. Meet me at the armoury."',
-    options: [
-      {
-        text: `Alright I will meet you there`,
-        nextText: 191.6
-      }
-    ],
-  },
-  {// dex check 10 bf
-    id: 191.6,
-    text: 'While you are walking back from mining you try to sneak away from the group.',
-    options: [
-      {
-        text: `Make it for the Armoury
-        [Check [Dex]]`,
-        nextText: 191.61
-      }
-    ],
-    imageCheck: 26
-  },
-  {// dex check 10 bf
-    id: 191.61,
-    text: 'Blank due to dice roll.',
-    options: [
-      {
-        text: `Make it for the Armoury`,
-        nextText: 191.7
-      }
-    ],
-    diceRoll: 8
-  },
-  {// succeeds bf
-    id: 191.7,
-    text: 'You make it in the armoury without being seen.',
-    options: [
-      {
-        text: `Look for Frank`,
-        nextText: 192.14
-      }
-    ],
-    imageCheck: 35
-  },
-  {// fails bf
-    id: 191.8,
-    text: 'You try to sneak off, but you get caught by a guard. Guard: "Hey!" You pick up a shovel',
-    options: [
-      {
-        text: `Start combat`,
-        nextText: 191.9
-      }
-    ],
-  },
-  {// combat, fails bf
-    id: 191.9,
-    text: 'You have been waiting to get some angry out',
-    options: [
-      {
-        text: `Slash`,
-        nextText: 5
-      },
-      {
-        text: `Heal Potions`,
-        nextText: 8
-      },
-      {
-        text: `Scare`,
-        nextText: 9
-      },
-      {
-        text: `Stab`,
-        nextText: 10
-      },
-      {
-        text: `Pendant of Pain`,
-        nextText: 11
-      },
-      {
-        text: `Persuade`,
-        nextText: 12
-      },
-    ],
-    startCombat: 11,
-    imageCheck: 31
-  },
-  {//end combat, fails bf
-    id: 191.12,
-    text: 'Defeat the Gaurds',
-    options: [
-      {
-        text: `Continue`,
-        nextText: 191.13
-      }
-    ],
-    imageCheck: 35
-  },
-  {// fails bf
-    id: 191.13,
-    text: 'You rush to the armoury trying not to get caught by any more guards.',
-    options: [
-      {
-        text: `Continue`,
-        nextText: 191.14
-      }
-    ],
-  },
-  {// bf
-    id: 192.14,
-    text: 'You see Frank in the back, he seems like he has been here for a bit. Frank: "Took you long enough, let\'s get going." He starts walking towards a secret passage and waves for you to follow.',
-    options: [
-      {
-        text: `Follow Frank`,
-        nextText: 192.15
-      }
-    ],
-    imageCheck: 36
-  },
-  {// bf
-    id: 192.15,
-    text: 'You go into the passage; you realise that you are actually walking the walls. You can see everyone, some things you wished you didn\'t see. ',
-    options: [
-      {
-        text: `Where are we going?`,
-        nextText: 192.16
-      },
-      {
-        text: `Are you sure we are going the right way?`,
-        nextText: 192.16
-      },
-      {
-        text: `Do not say anything, continue walking.`,
-        nextText: 192.17
-      }
-    ],
-    imageCheck: 37
-  },
-  {// bf
-    id: 192.16,
-    text: 'Frank: "Stay quiet, they can still hear us."',
-    options: [
-      {
-        text: `Continue following Frank.`,
-        nextText: 192.17
-      }
-    ],
-  },
-  {// dex check 12 bf
-    id: 192.17,
-    text: 'You make it to the end of the passage, but there are three guards right in front of the door. You try to sneak past with Frank.',
-    options: [
-      {
-        text: `Sneak off
-        [Check (Dex)]`,
-        nextText: 192.171
-      }
-    ],
-  },
-  {// dex check 12 bf
-    id: 192.171,
-    text: 'Blank due to dice roll.',
-    options: [
-      {
-        text: `Sneak off`,
-        nextText: 192.22
-      }
-    ],
-    diceRoll: 9,
-    imageCheck: 26
-  },
-  {// fail bf
-    id: 192.18,
-    text: 'Guard: "Stop right there!"',
-    options: [
-      {
-        text: `Pull out your weapon`,
-        nextText: 192.185
-      }
-    ],
-  },
-  {// combat, fails bf
-    id: 191.185,
-    text: 'You have been waiting to get some angry out',
-    options: [
-      {
-        text: `Slash`,
-        nextText: 5
-      },
-      {
-        text: `Heal Potions`,
-        nextText: 8
-      },
-      {
-        text: `Scare`,
-        nextText: 9
-      },
-      {
-        text: `Stab`,
-        nextText: 10
-      },
-      {
-        text: `Pendant of Pain`,
-        nextText: 11
-      },
-      {
-        text: `Persuade`,
-        nextText: 12
-      },
-    ],
-    startCombat: 12,
-    imageCheck: 31
-  },
-  {//end combat, fails bf
-    id: 191.19,
-    text: 'Defeats Gaurds',
-    options: [
-      {
-        text: `Continue`,
-        nextText: 191.21
-      }
-    ],
-    imageCheck: 30
-  },
-  {// fail bf
-    id: 191.21,
-    text: 'You look around you to see where Frank is, but you can\'t find him. You do not have the time to stay around so you leave.',
-    options: [
-      {
-        text: `Continue`,
-        nextText: 192
-      }
-    ],
-  },
-  {// succeed bf
-    id: 191.22,
-    text: 'You stay close to the shadows and when you reach the shrubs, you start to crawl away. You try searching for Frank, but he is nowhere to be seen. You do not have the time to look so you leave.',
-    options: [
-      {
-        text: `Continue`,
-        nextText: 192
-      }
-    ],
-    imageCheck: 30
-  },
-  {// dragon mentor
-    id: 192,
-    text: 'You run out of the fort, you keep on running for as long as you can until you reach a spot where you can rest. You turn around to see if anyone is following you, but you see none.',
-    options: [
-      {
-        text: `Sleep`,
-        nextText: 193
-      },
-      {
-        text: `Continue Running`,
-        nextText: 192
-      }
-    ],
-    imageCheck: 12
-  },
-  {// sleep
-    id: 193,
-    text: 'You stop running and start looking for a place to sleep for the night. You find an area that has a small amount of rocks and as soon as you lay down you just go to sleep.',
-    options: [
-      {
-        text: `Continue`,
-        nextText: 194
-      }
-    ],
-  },
-  {// sleep
-    id: 194,
-    text: 'You wake up to the sunlight, the first time in over 5 years, but even though you want to just bask in the sun you know that you need to keep going so none finds you.',
-    options: [
-      {
-        text: `Continue`,
-        nextText: 199
-      }
-    ],
-    imageCheck: 12
-  },
-  {// running
-    id: 195,
-    text: 'You start to walk around the forest, you have no clue where anything is or where you are so you continue just going straight. You walk until the sun goes down and some farther. You hear something in the bushes, but before you can react they jump you.',
-    options: [
-      {
-        text: `Pull out weapon`,
-        nextText: 196
-      }
-    ],
-    imageCheck: 38
-  },
-  {// combat, runs
-    id: 196,
-    text: 'You have been waiting to get some angry out',
-    options: [
-      {
-        text: `Slash`,
-        nextText: 5
-      },
-      {
-        text: `Heal Potions`,
-        nextText: 8
-      },
-      {
-        text: `Scare`,
-        nextText: 9
-      },
-      {
-        text: `Stab`,
-        nextText: 10
-      },
-      {
-        text: `Pendant of Pain`,
-        nextText: 11
-      },
-      {
-        text: `Persuade`,
-        nextText: 12
-      },
-    ],
-    startCombat: 13,
-    imageCheck: 39
-  },
-  {//end combat, runs
-    id: 197,
-    text: 'Defeated Bear.',
-    options: [
-      {
-        text: `Continue`,
-        nextText: 198
-      }
-    ],
-    imageCheck: 12
-  },
-  {//
-    id: 198,
-    text: 'You stab the bear in its neck and it falls over. You are completely exhausted and you fall over.',
-    options: [
-      {
-        text: `Continue`,
-        nextText: 194
-      }
-    ],
-  },
-  {//
-    id: 199,
-    text: 'You start to look for the main road, everything right now looks the same. Each tree is so tall and so similar that it is almost impossible to know where you are going, but after several hours of searching you run into a road. You decide to follow the road to see where it leads.',
-    options: [
-      {
-        text: `Follow the road`,
-        nextText: 200
-      }
-    ],
-  },
-  {//
-    id: 200,
-    text: 'You run into a merchant, at this point you are starving and tired. You have not gotten to eat or have an okay sleep since you left the fort. You walk up to the merchant:',
-    options: [
-      { //talk
-        text: `Excuse me, can I catch a ride to the town of Lüdingfeld?`,
-        nextText: 201
-      },
-      { //scare
-        text: `Take out your weapon`,
-        nextText: 202
-      },
-    ],
-    imageCheck: 7
-  },
+        id: 101,
+        text: 'You went to the spot on the map that looked the most important. As you walk down the road you see a large house on top of a little hill.',
+        options: [
+          {
+            text: `Continue`,
+            nextText: 102
+          }
+        ],
+      },
+      {// roll a wisdom 15
+        id: 102,
+        text: 'You look at the home and see if there is a possible entrance through the home.',
+        options: [
+          {
+            text: `Continue
+          [Check (Wis)]`,
+            nextText: 103.1
+          }
+        ],
+        imageCheck: 19
+      },
+      {// wisdom succeeds (ws)
+        id: 103.1,
+        text: 'Blank due to dice roll',
+        options: [
+          {
+            text: `Continue`,
+            nextText: 113
+          }
+        ],
+        diceRoll: 2
+      },
+      {// wisdom succeeds (ws)
+        id: 103,
+        text: 'You can see there is an entrance below in the sewers, if you enter there are no guards that will be able to find you.',
+        options: [
+          {
+            text: `Continue`,
+            nextText: 113
+          }
+        ],
+      },
+      {// wisdom fails (wf)
+        id: 105,
+        text: 'You can only see one way in, the front door. It may cause some chaos in the manor though. You can try to convince the guards to let you in to talk but it may fail.',
+        options: [
+          {
+            text: `Continue`,
+            nextText: 106
+          }
+        ],
+      },
+      {// wf
+        id: 106,
+        text: 'You walk up to the front gates and look towards the guards.',
+        options: [
+          {
+            text: `Continue`,
+            nextText: 108
+          }
+        ],
+        imageCheck: 19
+      },
+      {// wf
+        id: 108,
+        text: 'Matthew: "What are you doing here?"',
+        options: [
+          { //charisma check
+            text: `I here to see Henry
+          [Check (Cha)]`,
+            nextText: 108.1
+          },
+          {
+            text: `Start Conflict`,
+            nextText: 109
+          },
+        ],
+      },
+      {// wf
+        id: 108.1,
+        text: 'Blank due to dice roll"',
+        options: [
+          { //charisma check
+            text: `I here to see Henry
+          [Check (Cha)]`,
+            nextText: 111
+          },
+        ],
+        diceRoll: 3
+      },
+      {// Conflict
+        id: 109,
+        text: 'The guard takes out his blade and swings.',
+        options: [
+          {
+            text: `Slash`,
+            nextText: 5
+          },
+          {
+            text: `Heal Potions`,
+            nextText: 8
+          },
+          {
+            text: `Scare`,
+            nextText: 9
+          },
+          {
+            text: `Stab`,
+            nextText: 10
+          },
+          {
+            text: `Pendant of Pain`,
+            nextText: 11
+          },
+          {
+            text: `Persuade`,
+            nextText: 12
+          },
+        ],
+        startCombat: 4,
+        imageCheck: 20
+      },
+      {// end conflict
+        id: 110,
+        text: 'killed guards',
+        options: [
+          {
+            text: `Continue`,
+            nextText: 116.1
+          }
+        ],
+        imageCheck: 21
+      },
+      {// charisma succeeds
+        id: 111,
+        text: 'Matthew: "Oh, I remember you, you are the new maid right?"',
+        options: [
+          {
+            text: `Uh Yes Sir`,
+            nextText: 111.1
+          }
+        ],
+        imageCheck: 21
+      },
+      {//
+        id: 111.1,
+        text: 'Matthew: "Where are my manners, go right ahead."',
+        options: [
+          {
+            text: `Thank You`,
+            nextText: 116
+          }
+        ],
+      },
+      {// charisma fails
+        id: 112,
+        text: 'Matthew: "GET HIM!"',
+        options: [
+          {
+            text: `Continue`,
+            nextText: 109
+          }
+        ],
+      },
+      {// ws
+        id: 113,
+        text: 'You sneak into the sewer and walk in. You are pretty sure this will work and you continue down. ',
+        options: [
+          {
+            text: `Continue`,
+            nextText: 114
+          }
+        ],
+      },
+      {// ws
+        id: 114,
+        text: 'You make it to the end and you can see the kitchen above you. You climb up the ladder and try to make the least amount of noise as possible. You do not see anyone so, so if you did make noise none will be the wiser.',
+        options: [
+          {
+            text: `Continue`,
+            nextText: 116
+          }
+        ],
+        imageCheck: 21
+      },
+      {//
+        id: 116,
+        text: 'You open up the kitchen door to see the dining room, you unexpectedly walk into Henry having lunch with his family. You see 2 little boys enjoying a large bowl of rice and you lock eyes with the man who ruined everything.',
+        options: [
+          {
+            text: `Continue`,
+            nextText: 117
+          }
+        ],
+      },
+      {//
+        id: 116.1,
+        text: 'You make your way inside the gates and see his family having lunch in the dining room.',
+        options: [
+          {
+            text: `WALK IN`,
+            nextText: 117
+          }
+        ],
+      },
+      {//
+        id: 117,
+        text: 'Henry: "Oh, I wasn’t expecting a visitor today. Henry! What did I say about eating with your mouth open? Sigh. What are you doing here and who are you? Oh wait, sorry where my manners are, please sit over there."',
+        options: [
+          {
+            text: `HOW DARE YOU!`,
+            nextText: 118
+          }
+        ],
+      },
+      {//
+        id: 118,
+        text: 'Henry: "No need to be so loud you don’t want the kids to be scared?"',
+        options: [
+          {
+            text: `Examine the room`,
+            nextText: 119
+          }
+        ],
+      },
+      {//
+        id: 119,
+        text: 'The first kid runs to his mom, but the one named James just sat there eating, staring into your soul. Distracted by memories you didn’t realize that Henry had pulled out his sword.',
+        options: [
+          {
+            text: `Look back at Henry`,
+            nextText: 120
+          }
+        ],
+      },
+      {//
+        id: 120,
+        text: 'Jack: "Why did you do it? You could have done it any other way, why? Why did you leave me alive with these memories!"',
+        options: [
+          {
+            text: `Grip your weapon`,
+            nextText: 122
+          }
+        ],
+      },
+      {//
+        id: 122,
+        text: 'Henry: "Okay this is enough, get the kids out. This should not be too long, we can finish our meal later tonight."',
+        options: [
+          {
+            text: `Contain your anger`,
+            nextText: 123
+          }
+        ],
+      },
+      {// Conflict
+        id: 123,
+        text: 'This is your chance, get your revenge!',
+        options: [
+          {
+            text: `Slash`,
+            nextText: 5
+          },
+          {
+            text: `Heal Potions`,
+            nextText: 8
+          },
+          {
+            text: `Scare`,
+            nextText: 9
+          },
+          {
+            text: `Stab`,
+            nextText: 10
+          },
+          {
+            text: `Pendant of Pain`,
+            nextText: 11
+          },
+          {
+            text: `Persuade`,
+            nextText: 12
+          },
+        ],
+        startCombat: 5,
+        imageCheck: 22
+      },
+      {// end conflict
+        id: 124,
+        text: 'You lost',
+        options: [
+          {
+            text: `Continue`,
+            nextText: 125
+          }
+        ],
+        imageCheck: 23
+      },
+      {//
+        id: 125,
+        text: 'You get a couple of good shots in, but Henry is just too strong. You take a moment to catch your breath and by the time you get your mind back in the battle, he jumps onto you with the dull end of his blade. Your vision got dark and the last thing you remember were the kids\' eyes.',
+        options: [
+          {
+            text: `...........`,
+            nextText: 126
+          }
+        ],
+      },
+      {//
+        id: 126,
+        text: 'What do you expect? Did you expect that you would come out on top? You’re in my home, since this blade has enough of your kinds’ filth on it, I will spare you. Guards escort our friend to the prison in the south, but I am curious who you are?',
+        options: [
+          {
+            text: `...........`,
+            nextText: 127
+          }
+        ],
+      },
+      //end of henry
+      {//
+        id: 127,
+        text: 'You wake up in a chain, the only thing you can sense is iron. As you try to get up you realise you are locked up in chains in a room. You thought your eyes were closed but then you see a little bit of light.',
+        options: [
+          {
+            text: `Continue`,
+            nextText: 128
+          }
+        ],
+        imageCheck: 24
+      },
+      {//
+        id: 128,
+        text: 'Guard: "Feeding Time!"',
+        options: [
+          {
+            text: `Get up`,
+            nextText: 129
+          }
+        ],
+      },
+      {// wisdom check
+        id: 129,
+        text: 'You try to get yourself to your feet, but it feels like you are tied down. You look at the surroundings in the room to see where you are at.',
+        options: [
+          {
+            text: `Look around
+            [Check (Wis)]`,
+            nextText: 129.1
+          }
+        ],
+      },
+      {// wisdom check
+        id: 129.1,
+        text: 'You try to get yourself to your feet, but it feels like you are tied down. You look at the surroundings in the room to see where you are at.',
+        options: [
+          {
+            text: `Continue`,
+            nextText: 130
+          }
+        ],
+        diceRoll: 4
+      },
+      {// wisdom succeed
+        id: 130,
+        text: 'You focus on',
+        options: [
+          {
+            text: `Door`,
+            nextText: 130.1
+          },
+          {
+            text: `Figure 1`,
+            nextText: 130.2
+          },
+          {
+            text: `Figure 2`,
+            nextText: 130.3
+          },
+          {
+            text: `The plate`,
+            nextText: 130.4
+          },
+        ],
+      },
+      {// door
+        id: 130.1,
+        text: 'You see a faint light; it appears that some guards are watching over. It looks like it\'s made out of wood, you might be able to break it. You then see marks on the door, like someone has had the same idea, but it appears none has made it out like that.',
+        options: [
+          {
+            text: `Door`,
+            nextText: 130.1
+          },
+          {
+            text: `Figure 1`,
+            nextText: 130.2
+          },
+          {
+            text: `Figure 2`,
+            nextText: 130.3
+          },
+          {
+            text: `The plate`,
+            nextText: 130.4
+          },
+          {
+            text: `"Hello?"`,
+            nextText: 132.4
+          }
+        ],
+      },
+      {// figure 1
+        id: 130.2,
+        text: 'You see a man in the room staring at the door, he appears to be tall and skinny with long black hair.',
+        options: [
+          {
+            text: `Door`,
+            nextText: 130.1
+          },
+          {
+            text: `Figure 1`,
+            nextText: 130.2
+          },
+          {
+            text: `Figure 2`,
+            nextText: 130.3
+          },
+          {
+            text: `The plate`,
+            nextText: 130.4
+          },
+          {
+            text: `"Hello?"`,
+            nextText: 132
+          }
+        ],
+      },
+      {// figure 2
+        id: 130.3,
+        text: 'There is a man in the right corner who seems to be the average height, you cannot make out any other features. He may be wearing some type of cloak.',
+        options: [
+          {
+            text: `Door`,
+            nextText: 130.1
+          },
+          {
+            text: `Figure 1`,
+            nextText: 130.2
+          },
+          {
+            text: `Figure 2`,
+            nextText: 130.3
+          },
+          {
+            text: `The plate`,
+            nextText: 130.4
+          },
+          {
+            text: `"Hello?"`,
+            nextText: 132
+          }
+        ],
+      },
+      {// plate
+        id: 130.4,
+        text: 'You focus on the plate that was just thrown into the room. You mostly hear things, the room is almost pitch black, but you do see a large man run towards the plate. You hear a gulp then some more shuffling. You can make out that he is much more fit compared to the other two and pretty tall, does not look like someone to mess with.',
+        options: [
+          {
+            text: `Door`,
+            nextText: 130.1
+          },
+          {
+            text: `Figure 1`,
+            nextText: 130.2
+          },
+          {
+            text: `Figure 2`,
+            nextText: 130.3
+          },
+          {
+            text: `The plate`,
+            nextText: 130.4
+          },
+          {
+            text: `"Hello?"`,
+            nextText: 132
+          },
+        ],
+      },
+      { // fails wisdom
+        id: 130.5,
+        text: 'You try to see if you can make out anything, but you can only see black. The room is pitch black and your senses are still shouted after that fight.',
+        options: [
+          {
+            text: `Continue`,
+            nextText: 132
+          }
+        ],
+      },
+      {//
+        id: 132,
+        text: 'You try to at least sit up, you now hear chains jangle. Jack: "Where am I?"',
+        options: [
+          {
+            text: `Continue`,
+            nextText: 133
+          }
+        ],
+      },
+      {//
+        id: 133,
+        text: '?: "heLLo? whAt do you think, hmm." Just hearing this guy makes you feel uneasy. ?: "Shut it… Sorry, who are you?" It\'s the same voice but a different tone and is much more clear.',
+        options: [
+          {
+            text: `I am Jack, where are we?`,
+            nextText: 134
+          },
+          {
+            text: `"Who are you, are there two of you?"`,
+            nextText: 135
+          },
+          {
+            text: `"Do not respond?"`,
+            nextText: 136
+          }
+        ],
+      },
+      {//
+        id: 134,
+        text: 'Jin: "We are nowhere, but you will soon learn. I am Jin by the way."',
+        options: [
+          {
+            text: `What?`,
+            nextText: 137
+          }
+        ],
+        imageCheck: 25
+      },
+      {//
+        id: 135,
+        text: 'Jin: "I am Jin, it\'s rude to ask people about their personal life, hmm?"',
+        options: [
+          {
+            text: `What?`,
+            nextText: 137
+          }
+        ],
+      },
+      {//
+        id: 136,
+        text: 'Jin: "I am Jin, it rude to just stare, hahahaha!"',
+        options: [
+          {
+            text: `...`,
+            nextText: 137
+          }
+        ],
+      },
+      {//
+        id: 137,
+        text: '?: "Jin, be quiet." A different voice from the right side of the room, it\'s deeper and shallow. Jin: "Oh Frank, please I am just trying to make a new friend, are you jealous?" It seems like the man\'s name is Frank, what a weird name.',
+        options: [
+          {
+            text: `Hey, what is this place?`,
+            nextText: 138
+          },
+          {
+            text: `A friend?`,
+            nextText: 138
+          },
+          {
+            text: `...`,
+            nextText: 138
+          }
+        ],
+      },
+      {//
+        id: 138,
+        text: 'Guard: "Shut it in there!"',
+        options: [
+          {
+            text: `Listen`,
+            nextText: 139
+          }
+        ],
+        imageCheck: 24
+      },
+      {// wisdom or dex check
+        id: 139,
+        text: 'Everything becomes silent again, except for the faint noise of the guards talking.',
+        options: [
+          {
+            text: `Focus on the voices
+            [Check (Wis)]`,
+            nextText: 139.1
+          }
+        ],
+      },
+      {// wisdom or dex check
+        id: 139.1,
+        text: 'Blank due to dice roll',
+        options: [
+          {
+            text: `Focus on the voices`,
+            nextText: 140
+          }
+        ],
+        diceRoll: 5
+      },
+      {// succeeds
+        id: 139.1,
+        text: 'Guard 1: "Hey Guston, you hear the news?" The first guard seems to be on the older side. Guston: "You mean how Henry is promoting guards to his new home?" Guston seems to be a lot younger. You hear a loud slap Guard 1: "Call him Lord Williams, but yes. He moved to that old burnt-down farming village next to the river. Hopefully, he promotes me, hahaha." Guston: "Fat chance of that."',
+        options: [
+          {
+            text: `Continue`,
+            nextText: 141
+          }
+        ],
+      },
+      {// succeeds
+        id: 141,
+        text: 'The voices get quieter. You remember your old home; would he live on the graves of his victims? At least you now know where he will be when you get out of here.',
+        options: [
+          {
+            text: `Go to sleep`,
+            nextText: 144
+          }
+        ],
+      },
+      {// fails
+        id: 143,
+        text: 'You cannot make out anything, so you decide to sleep.',
+        options: [
+          {
+            text: `Go to sleep`,
+            nextText: 144
+          }
+        ],
+      },
+      {//
+        id: 144,
+        text: 'You get woken to a bright light from the door being open. Guston: "Get out, it\'s time for work." From what you know of prisons, they will probably make you mine for salt.',
+        options: [
+          {
+            text: `Get up and follow.`,
+            nextText: 145
+          }
+        ],
+        imageCheck: 26
+      },
+      {// con check
+        id: 145,
+        text: 'You spend the day getting your grip on reality. You pick the pickaxe near you and start to get mining, but you feel weak like your arms are about to break.',
+        options: [
+          {
+            text: `Mine the Rock
+            [Check (con)]`,
+            nextText: 145.1
+          }
+        ],
+      },
+      {// con check
+        id: 145.1,
+        text: 'Blank due to dice roll.',
+        options: [
+          {
+            text: `Continue`,
+            nextText: 146
+          }
+        ],
+        diceRoll: 6
+      },
+      {// succeeds
+        id: 146,
+        text: 'You continue even though your arms feel like noodles, you see Frank and Jin looking impressed. You also see the other man, a huge man with bright red hair. He is laughing at your attempt to be "strong". He takes your pick and starts to show you how to work the rock.',
+        options: [
+          {
+            text: `Continue`,
+            nextText: 178
+          }
+        ],
+      },
+      {// fails
+        id: 147,
+        text: 'You drop the pickaxe and see Frank and Jin walk away from you. You can finally see the last guy, a huge name with bright red hair. He looks like is about to help when you see a guard approach.',
+        options: [
+          {
+            text: `Continue`,
+            nextText: 147.1
+          }
+        ],
+      },
+      {// fails
+        id: 147.1,
+        text: 'You try to pick off the pickaxe before they notice, but it\'s too late. They pick you up and then beat you for what feels like hours. Afterward, they throw you back into the mines. This time the big man is there holding your pickaxe, he shows you how to work the rock.',
+        options: [
+          {
+            text: `Continue`,
+            nextText: 178
+          }
+        ],
+      },
+      {//
+        id: 178,
+        text: 'Brian: "Weak boy, let Brian help, he\'s big and strong." He is almost twice your size, he hits one rock and it breaks in half.',
+        options: [
+          {
+            text: `How have you been here?`,
+            nextText: 178.1
+          },
+          {
+            text: `What are you in here for?`,
+            nextText: 178.2
+          },
+          {
+            text: `I’m going to cut to the chase, you know a way out?`,
+            nextText: 178.3
+          },
+        ],
+        imageCheck: 27
+      },
+      {//
+        id: 178.1,
+        text: 'Brian: "Been here very long, lost count. You will understand one day little man."',
+        options: [
+          {
+            text: `What are you in here for?`,
+            nextText: 178.2
+          },
+          {
+            text: `I’m going to cut to the chase, you know a way out?`,
+            nextText: 178.3
+          },
+        ],
+      },
+      {//
+        id: 178.2,
+        text: 'Brian: "Drunk fighting, he did not say sorry, killed the ant. They put me here."',
+        options: [
+          {
+            text: `How have you been here?`,
+            nextText: 178.1
+          },
+          {
+            text: `I’m going to cut to the chase, you know a way out?`,
+            nextText: 178.3
+          },
+        ],
+      },
+      {//
+        id: 178.3,
+        text: 'Brian: "Does not know what you mean?"',
+        options: [
+          {
+            text: `Oh come on you know what I mean.`,
+            nextText: 178.31
+          },
+        ],
+      },
+      {//
+        id: 178.31,
+        text: 'Brian: "If Jack keeps talking I will be angry; Jack does not want Brian angry." You might be able to get him angry and start a mass fight, it could be a good distraction.',
+        options: [
+          {
+            text: `Sorry, thank you for your help.`,
+            nextText: 179
+          }
+        ],
+      },
+      {//
+        id: 179,
+        text: 'You walk up to Jin to see what he is up to, you try to make it seem like you are still working, but you know if you swing one more time your arms will just fall off.',
+        options: [
+          {
+            text: `Hey`,
+            nextText: 180
+          }
+        ],
+        imageCheck: 28
+      },
+      {//
+        id: 180,
+        text: 'Jin: "yEs? SHHH" ... Jin: "Yes, what do you want?"',
+        options: [
+          {
+            text: `How have you been here?`,
+            nextText: 180.1
+          },
+          {
+            text: `Are you alright?`,
+            nextText: 180.2
+          },
+          {
+            text: `Have you got anything that may allow you or us to get out?`,
+            nextText: 180.3
+          },
+        ],
+      },
+      {//
+        id: 180.1,
+        text: 'Jin: "They think of me crazy, so they put me in prison. I also often lied about who I was to get what I wanted."',
+        options: [
+          {
+            text: `Are you alright?`,
+            nextText: 180.2
+          },
+          {
+            text: `Have you got anything that may allow you or us to get out?`,
+            nextText: 180.3
+          },
+        ],
+      },
+      {//
+        id: 180.2,
+        text: 'Jin "I am doing as fine as someone can be in prison."',
+        options: [
+          {
+            text: `How have you been here?`,
+            nextText: 180.1
+          },
+          {
+            text: `Have you got anything that may allow you or us to get out?`,
+            nextText: 180.3
+          },
+        ],
+      },
+      {//
+        id: 180.3,
+        text: 'Jin: "yES, wE wait FOR the riGht moment." The other voice came back. Jin: "SHUT IT, well yes I do know a way, but it takes time and it\'s not time yet. I may let you in depending on if I like you later, HAHAHAHA." Guard2: "GET BACK TO WORK!"',
+        options: [
+          {
+            text: `Thank you, talk to you later.`,
+            nextText: 181
+          }
+        ],
+      },
+      {//
+        id: 181,
+        text: 'You walk towards Frank, but he meets you in the middle, much smaller than the other two, but around the same size as you if not a little shorter. He is wearing a cloak to cover his face, you wonder how he is allowed to have that, but he also does not seem to be from this area.',
+        options: [
+          {
+            text: `Hey`,
+            nextText: 182
+          }
+        ],
+        imageCheck: 29
+      },
+      {//
+        id: 182,
+        text: 'Frank: "Jack?"',
+        options: [
+          {
+            text: `How did you get in here?`,
+            nextText: 182.1
+          },
+          {
+            text: `I was wondering where you are from, you look like a foreigner?`,
+            nextText: 182.2
+          },
+          {
+            text: `Have you got anything that may allow you or us to get out?`,
+            nextText: 182.3
+          },
+        ],
+      },
+      {//
+        id: 182.1,
+        text: 'Frank: "Sorry, but you do not get to know why, just know that I am someone that can get anywhere they want."',
+        options: [
+          {
+            text: `I was wondering where you are from, you look like a foreigner?`,
+            nextText: 182.2
+          },
+          {
+            text: `Have you got anything that may allow you or us to get out?`,
+            nextText: 182.3
+          },
+        ],
+      },
+      {//
+        id: 182.2,
+        text: 'Frank: "Yes I come from Bani."',
+        options: [
+          {
+            text: `How did you get in here?`,
+            nextText: 182.1
+          },
+          {
+            text: `Have you got anything that may allow you or us to get out?`,
+            nextText: 182.3
+          },
+        ],
+      },
+      {//
+        id: 182.3,
+        text: 'Frank: "Maybe what is in it for me?"',
+        options: [
+          {
+            text: `Well it seems like you can't do it yourself, so you will be able to get out.`,
+            nextText: 182.31
+          },
+        ],
+      },
+      {//
+        id: 182.31,
+        text: 'HAHAHA, okay then. We will talk more about this in further detail later.',
+        options: [
+          {
+            text: `Alright see you later`,
+            nextText: 183
+          }
+        ],
+      },
+      {//
+        id: 183,
+        text: 'You have more energy left and so you start to mine again. You spend another hour or two before hearing the church bell. They take you to the church to pay for your sins, a costume from Bina culture. You spend an hour in the church before being thrown back into your cell.',
+        options: [
+          {
+            text: `Continue`,
+            nextText: 184
+          }
+        ],
+        imageCheck: 24
+      },
+      {//
+        id: 184,
+        text: 'Like the other night a plate gets thrown in, but this time none goes for it except Jin. It appears like they are taking turns with the food. You remember them talking about it while you were mining. You wonder when it will be your turn to eat and drink. You do not know how long it has been since your break-in, but you do know that you are starving.',
+        options: [
+          {
+            text: `Go to sleep`,
+            nextText: 185
+          }
+        ],
+      },
+      {//
+        id: 185,
+        text: 'You drift into sleep with nightmares of what happened. Jack: "I am sorry; I am so sorry! Please I will..." You wake up and Frank is pointing to the food in front of you.',
+        options: [
+          {
+            text: `Thank you`,
+            nextText: 186
+          }
+        ],
+      },
+      {//
+        id: 186,
+        text: 'You pick it up and take a bite out of what looks like bread, but turns out to be rice. It surprises you, but you are not in a position to complain about the food. You eat all of it before being called back out to work where you mine again.',
+        options: [
+          {
+            text: `5 Years Later`,
+            nextText: 187
+          }
+        ],
+      },
+      {//
+        id: 187,
+        text: 'You have been doing the same thing for about 5 years now counting each week on your wall. Nothing new with Henry, but you have become good friends with the people in your cell. The nightmares are still there, but you have a good feeling.',
+        options: [
+          {
+            text: `Eat the rice bread`,
+            nextText: 188
+          }
+        ],
+        imageCheck: 30
+      },
+      {// how to break out of prison
+        id: 188,
+        text: 'You take a bite of the rice bread, everyone else is looking at it. Maybe if you help one of them more than the others they can help you escape.',
+        options: [
+          {//breaks out with Brian (bb)
+            text: `Give some to Brian `, //increases strength or con by 1
+            nextText: 189.1,
+            setPlayer: { str: 4 }
+          },
+          {//breaks out with Jin (bj) //increases charisma or wisdom by 1
+            text: `Give some to Jin`,
+            nextText: 190.1,
+            setPlayer: { wis: 4 }
+          },
+          {//breaks out with Frank (bf) //increases dex or charisma by 1
+            text: `Give some to Frank`,
+            nextText: 191.2,
+            setPlayer: { dex: 4 }
+          }
+        ],
+      },
+      {// bb
+        id: 189.1,
+        text: 'You hand the rest to Brian, the other guys look annoyed but do not say anything. Later that day you decide that you are going to try to get Brian to start a fight. You can get both Brian and yourself out.',
+        options: [
+          {
+            text: `Hey`,
+            nextText: 189.2
+          }
+        ],
+        imageCheck: 27
+      },
+      {// bb
+        id: 189.2,
+        text: 'Jack: "Brian, I have a plan to get us out of the dump. Do you want to hear about it? You want to be able to see your kids again?" It may be a bit much bringing up his kids, but you need to get out so the ends justify the means.',
+        options: [
+          {
+            text: `Continue`,
+            nextText: 189.3
+          }
+        ],
+      },
+      {// bb
+        id: 189.3,
+        text: 'Brian: "Yes Brian wants to leave. How do Brian and friends leave?"',
+        options: [
+          {
+            text: `Respond with the plan`,
+            nextText: 189.4
+          }
+        ],
+      },
+      {// bb
+        id: 189.4,
+        text: 'Brian: "Sounds Good" He walks away, and you realize that you forgot to tell him when you will be doing this, but before you can tell him he pushes one of the other inmates down. The inmate gets up and then throws a punch. You see as a crowd starts to gather. The guards are nowhere to be seen, it looks like they are a lot less today, lucky.',
+        options: [
+          {
+            text: `Watch`,
+            nextText: 189.5
+          }
+        ],
+      },
+      {// bb
+        id: 189.5,
+        text: 'You see as another fight breaks out until there is not a single person that is not in a fight. You escape and see Brian look for you.',
+        options: [
+          {
+            text: `Call for Brian`, // leave with Brian (lb)
+            nextText: 189.6
+          },
+          {
+            text: 'Run without Brian', // leave without Brian (wb)
+            nextText: 189.61
+          }
+        ],
+      },
+      {// wb
+        id: 189.6,
+        text: 'You call out to Brian and he runs towards you. You start to burst out laughing, Jack: "We might just be able to get out, good job Brian." Brian smiles and picks you up. You guys make your way to the armory where you find your old blade, it appears to have been used, but it\'s not in bad shape. Brian picks up a large great axe.',
+        options: [
+          {
+            text: `Let's get out of here!`,
+            nextText: 189.7
+          }
+        ],
+      },
+      {// lb
+        id: 189.61,
+        text: 'You look at Brian and think about if you need him. You decide to run off to the armory and get your old sword, it appears to have been used, but it\'s still in good shape. You run out and make your way out.',
+        options: [
+          {
+            text: `Continue`,
+            nextText: 189.71
+          }
+        ],
+      },
+      {// wb
+        id: 189.7,
+        text: 'You run into some guards, only two of them look tough, but you are ready for them. Brian takes one of them, so it only leaves you with one.',
+        options: [
+          {
+            text: `Continue`,
+            nextText: 189.8
+          }
+        ],
+      },
+      {// lb
+        id: 189.71,
+        text: 'You run into some guards, only two of them they look tough, but you are ready for them.',
+        options: [
+          {
+            text: `Continue`,
+            nextText: 189.81
+          }
+        ],
+      },
+      {// Conflict wb
+        id: 189.8,
+        text: 'You have been waiting to get some angry out',
+        options: [
+          {
+            text: `Slash`,
+            nextText: 5
+          },
+          {
+            text: `Heal Potions`,
+            nextText: 8
+          },
+          {
+            text: `Scare`,
+            nextText: 9
+          },
+          {
+            text: `Stab`,
+            nextText: 10
+          },
+          {
+            text: `Pendant of Pain`,
+            nextText: 11
+          },
+          {
+            text: `Persuade`,
+            nextText: 12
+          },
+        ],
+        startCombat: 6,
+        imageCheck: 31
+      },
+      {// Conflict lb
+        id: 189.81,
+        text: 'You have been waiting to get some angry out',
+        options: [
+          {
+            text: `Slash`,
+            nextText: 5
+          },
+          {
+            text: `Heal Potions`,
+            nextText: 8
+          },
+          {
+            text: `Scare`,
+            nextText: 9
+          },
+          {
+            text: `Stab`,
+            nextText: 10
+          },
+          {
+            text: `Pendant of Pain`,
+            nextText: 11
+          },
+          {
+            text: `Persuade`,
+            nextText: 12
+          },
+        ],
+        startCombat: 7,
+        imageCheck: 31
+      },
+      {// end conflict wb
+        id: 189.9,
+        text: 'Defeat guards',
+        options: [
+          {
+            text: `Continue`,
+            nextText: 189.11
+          }
+        ],
+        imageCheck: 30
+      },
+      {// end conflict lb
+        id: 189.91,
+        text: 'Defeat guards',
+        options: [
+          {
+            text: `Continue`,
+            nextText: 189.111
+          }
+        ],
+        imageCheck: 32
+      },
+      {// wb
+        id: 189.11,
+        text: 'You finish your guard just in time to see Brian get stabbed in the chest. He swings down his axe and kills the guard, but the wound is deep, a healing potion will not heal this one.',
+        options: [
+          {
+            text: `Brian!`,
+            nextText: 189.13
+          },
+          {
+            text: `Will you be okay?`,
+            nextText: 189.13
+          },
+          {
+            text: `Come on we are too close.`,
+            nextText: 189.16
+          },
+        ],
+      },
+      {// lb end
+        id: 189.111,
+        text: 'You take out the guards and dash for the exit. You think about taking out your anger and all the guards, but you are not dumb.',
+        options: [
+          {
+            text: `Freedom!`,
+            nextText: 193
+          }
+        ],
+        imageCheck: 30
+      },
+      {// wb
+        id: 189.13,
+        text: 'Brian: "Jack, thank you for helping Brian. I am okay with this, go do not waste your freedom on me..." Brian\'s eyes close and he takes a breath out, he\'s not died but he is pretending to be to try to get you to leave.',
+        options: [
+          {
+            text: `Help`,
+            nextText: 189.14
+          },
+          {
+            text: `Leave`,
+            nextText: 189.1
+          },
+        ],
+      },
+      {// help wb
+        id: 189.14,
+        text: 'Jack: "Come on Brian I know you are still alive, let\'s go. You will be able to make it."',
+        options: [
+          {
+            text: `Try to help him up`,
+            nextText: 189.15
+          }
+        ],
+      },
+      {// help wb
+        id: 189.15,
+        text: 'Brian: "No I am dead. Go without Brian, it’s okay, I want this."',
+        options: [
+          {
+            text: `leave`,
+            nextText: 189.16
+          }
+        ],
+      },
+      {// wb end
+        id: 189.6,
+        text: 'You decide to listen to Brian and leave him, it hurts you but you know that he will face a worse death outside of this prison. At least he gets to die on his terms. You hand him one of the swords that the guards have, and walk out the door holding back your rage to kill everyone in that prison.',
+        options: [
+          {
+            text: `Freedom`,
+            nextText: 192
+          }
+        ],
+        imageCheck: 30
+      },
+      //jin
+      {// bj
+        id: 190.1,
+        text: 'You hand the rest to Jin, the other guys look annoyed but do not say anything. Later that day you decide that you are going to try to get Jin to be able to enter the armoury. Maybe he can make us seem like guards. You can get both Jin and yourself out.',
+        options: [
+          {
+            text: `Talk to Jin`,
+            nextText: 190.3
+          }
+        ],
+        imageCheck: 28
+      },
+      {// bj
+        id: 190.2,
+        text: 'Jack: "Jin, I have a plan to get us out of the dump. You want to hear about it?',
+        options: [
+          {
+            text: `Continue`,
+            nextText: 190.3
+          }
+        ],
+      },
+      {// bj
+        id: 190.3,
+        text: 'Jin: "I am listening."',
+        options: [
+          {
+            text: `Explain to him the plan`,
+            nextText: 190.4
+          }
+        ],
+      },
+      {// bj
+        id: 190.4,
+        text: 'Jin: "Hmm, that is my type of crazy. I will not lie, hahaha. Sure, let\'s try it. There is a day when most of the guards will be gone because Lord Williams is holding a party and needs sore guards. So we will strike then."',
+        options: [
+          {
+            text: `Okay`,
+            nextText: 190.5
+          }
+        ],
+      },
+      {// bj
+        id: 190.5,
+        text: 'You wait for Jin to talk to you again, a few weeks go by and you start to notice that most of the guards are out. Right now there are only like 10 of them.',
+        options: [
+          {
+            text: `Wait for Jin`,
+            nextText: 190.6
+          }
+        ],
+      },
+      {// bj
+        id: 190.6,
+        text: 'Jin: "Jack, today is the day, to say your goodbyes we are leaving!" Jin: "LEAvinG, yes... yEs." You get a weird feeling about it, but you are too far into it now to just back out.',
+        options: [
+          {
+            text: `Continue`,
+            nextText: 190.7
+          }
+        ],
+      },
+      {// bj
+        id: 190.7,
+        text: 'You say your goodbyes and you and Jin wait for the moment to attack. You see an opportunity to steal some weapons and take them. 2 guards see you, you will have to take them out, Jin is useless in combat.',
+        options: [
+          {
+            text: `Pull out your weapon`,
+            nextText: 190.8
+          }
+        ],
+      },
+      {// bj
+        id: 190.8,
+        text: 'You have been waiting to get some angry out',
+        options: [
+          {
+            text: `Slash`,
+            nextText: 5
+          },
+          {
+            text: `Heal Potions`,
+            nextText: 8
+          },
+          {
+            text: `Scare`,
+            nextText: 9
+          },
+          {
+            text: `Stab`,
+            nextText: 10
+          },
+          {
+            text: `Pendant of Pain`,
+            nextText: 11
+          },
+          {
+            text: `Persuade`,
+            nextText: 12
+          },
+        ],
+        startCombat: 8,
+        imageCheck: 31
+      },
+      {//bj
+        id: 190.9,
+        text: 'Defeat guards',
+        options: [
+          {
+            text: `Continue`,
+            nextText: 190.11
+          }
+        ],
+        imageCheck: 33
+      },
+      {// bj
+        id: 190.11,
+        text: 'You hide their bodies in some bushes and make your way with Jin.',
+        options: [
+          {
+            text: `Continue`,
+            nextText: 190.12
+          }
+        ],
+      },
+      {// bj
+        id: 190.12,
+        text: 'You reach the armory and take some armor, for some reason, Jin has not said a word to you since you took out the guards. You are getting a weird feeling so you keep your weapon near you.',
+        options: [
+          {
+            text: `Are we ready?`,
+            nextText: 190.13
+          }
+        ],
+      },
+      {// bj
+        id: 190.13,
+        text: 'Jin looks at you and then swings his blade in your direction, you manage to dodge at the last second',
+        options: [
+          {
+            text: `Continue`,
+            nextText: 190.14
+          }
+        ],
+      },
+      {// bj combat
+        id: 190.14,
+        text: 'You have been waiting to get some angry out',
+        options: [
+          {
+            text: `Slash`,
+            nextText: 5
+          },
+          {
+            text: `Heal Potions`,
+            nextText: 8
+          },
+          {
+            text: `Scare`,
+            nextText: 9
+          },
+          {
+            text: `Stab`,
+            nextText: 10
+          },
+          {
+            text: `Pendant of Pain`,
+            nextText: 11
+          },
+          {
+            text: `Persuade`,
+            nextText: 12
+          },
+        ],
+        startCombat: 9,
+        imageCheck: 34
+      },
+      {//bj combat finish
+        id: 190.15,
+        text: 'You defeat Jin.',
+        options: [
+          {
+            text: `Continue`,
+            nextText: 190.16
+          }
+        ],
+        imageCheck: 35
+      },
+      {// bj
+        id: 190.16,
+        text: 'You stab Jin right in the chest and push him off you. Hey stumbles back before he falls into some crates. You do not know why Jin would do that but you also knew that he was probably the most unstable out of the three inmates. You get up clean your weapon and walk straight through the gates but then.',
+        options: [
+          {
+            text: `Guard: "Hey"!`,
+            nextText: 190.17
+          }
+        ],
+      },
+      {// bj
+        id: 190.17,
+        text: 'Guard: "Where do you think you are going?"',
+        options: [
+          {
+            text: `Attack`,
+            nextText: 190.22
+          },
+          {
+            text: `Talk`,
+            nextText: 190.18
+          }
+        ],
+        imageCheck: 26
+      },
+      {//charisma check 10 bj
+        id: 190.18,
+        text: 'Jack: "Sorry, I need to go to the general. An inmate has killed a fellow inmate in the armory and I do not know where that inmate is."',
+        options: [
+          {
+            text: `Continue
+            [Check (cha)]`,
+            nextText: 190.181
+          }
+        ],
+      },
+      {//charisma check 10 bj
+        id: 190.181,
+        text: 'Blank due to dice roll."',
+        options: [
+          {
+            text: `Continue`,
+            nextText: 190.19
+          }
+        ],
+        diceRoll: 7
+      },
+      {// succeeds bj
+        id: 190.19,
+        text: 'Guard: "Yes, I see go find him he is in Lord Williams manor just west of here in the town of Lüdingfeld."',
+        options: [
+          {
+            text: `Thank you, I will go immediately.`,
+            nextText: 190.21
+          }
+        ],
+        imageCheck: 30
+      },
+      {// fails bj
+        id: 190.22,
+        text: 'Get him!',
+        options: [
+          {
+            text: `Continue`,
+            nextText: 190.23
+          }
+        ],
+      },
+      {// bj combat
+        id: 190.23,
+        text: 'You have been waiting to get some angry out',
+        options: [
+          {
+            text: `Slash`,
+            nextText: 5
+          },
+          {
+            text: `Heal Potions`,
+            nextText: 8
+          },
+          {
+            text: `Scare`,
+            nextText: 9
+          },
+          {
+            text: `Stab`,
+            nextText: 10
+          },
+          {
+            text: `Pendant of Pain`,
+            nextText: 11
+          },
+          {
+            text: `Persuade`,
+            nextText: 12
+          },
+        ],
+        startCombat: 10,
+        imageCheck: 31
+      },
+      {//bj
+        id: 190.24,
+        text: 'You defeat Guards.',
+        options: [
+          {
+            text: `Continue`,
+            nextText: 192.25
+          }
+        ],
+        imageCheck: 30
+      },
+      {// bj
+        id: 190.25,
+        text: 'You run out looking around what to do next',
+        options: [
+          {
+            text: `Continue`,
+            nextText: 192
+          }
+        ],
+        imageCheck: 30
+      },
+      {// bf
+        id: 191.2,
+        text: 'You hand the rest to Frank, the other guys look annoyed but do not say anything. Later that day you decide that you are going to try to get Frank to escape with you. He knows the fort much better than you and he can help you sneak through the fort.',
+        options: [
+          {
+            text: `Find Frank`,
+            nextText: 191.3
+          }
+        ],
+        imageCheck: 29
+      },
+      {// bf
+        id: 191.3,
+        text: 'Jack: "Hey Frank, how would you like it if we got out of here?"',
+        options: [
+          {
+            text: `Continue`,
+            nextText: 191.4
+          }
+        ],
+      },
+      {// bf
+        id: 191.4,
+        text: 'Frank: "You mean to escape the fort. It\'s possible but you need to be sneaky to travel with me or at least know how to fight."',
+        options: [
+          {
+            text: `Explain the plan.`,
+            nextText: 191.5
+          }
+        ],
+      },
+      {// bf
+        id: 191.5,
+        text: 'Frank: "Interesting... This could work, let\'s wait for tonight. There will be fewer guards tonight, Lord Williams is holding a party and they need more guards. Meet me at the armory."',
+        options: [
+          {
+            text: `Alright I will meet you there`,
+            nextText: 191.6
+          }
+        ],
+      },
+      {// dex check 10 bf
+        id: 191.6,
+        text: 'While you are walking back from mining you try to sneak away from the group.',
+        options: [
+          {
+            text: `Make it for the Armoury
+            [Check [Dex]]`,
+            nextText: 191.61
+          }
+        ],
+        imageCheck: 26
+      },
+      {// dex check 10 bf
+        id: 191.61,
+        text: 'Blank due to dice roll.',
+        options: [
+          {
+            text: `Make it for the Armoury`,
+            nextText: 191.7
+          }
+        ],
+        diceRoll: 8
+      },
+      {// succeeds bf
+        id: 191.7,
+        text: 'You make it in the armory without being seen.',
+        options: [
+          {
+            text: `Look for Frank`,
+            nextText: 192.14
+          }
+        ],
+        imageCheck: 35
+      },
+      {// fails bf
+        id: 191.8,
+        text: 'You try to sneak off, but you get caught by a guard. Guard: "Hey!" You pick up a shovel',
+        options: [
+          {
+            text: `Start combat`,
+            nextText: 191.9
+          }
+        ],
+      },
+      {// combat, fails bf
+        id: 191.9,
+        text: 'You have been waiting to get some angry out',
+        options: [
+          {
+            text: `Slash`,
+            nextText: 5
+          },
+          {
+            text: `Heal Potions`,
+            nextText: 8
+          },
+          {
+            text: `Scare`,
+            nextText: 9
+          },
+          {
+            text: `Stab`,
+            nextText: 10
+          },
+          {
+            text: `Pendant of Pain`,
+            nextText: 11
+          },
+          {
+            text: `Persuade`,
+            nextText: 12
+          },
+        ],
+        startCombat: 11,
+        imageCheck: 31
+      },
+      {//end combat, fails bf
+        id: 191.12,
+        text: 'Defeat the Guards',
+        options: [
+          {
+            text: `Continue`,
+            nextText: 191.13
+          }
+        ],
+        imageCheck: 35
+      },
+      {// fails bf
+        id: 191.13,
+        text: 'You rush to the armory trying not to get caught by any more guards.',
+        options: [
+          {
+            text: `Continue`,
+            nextText: 191.14
+          }
+        ],
+      },
+      {// bf
+        id: 192.14,
+        text: 'You see Frank in the back, he seems like he has been here for a bit. Frank: "Took you long enough, let\'s get going." He starts walking towards a secret passage and waves for you to follow.',
+        options: [
+          {
+            text: `Follow Frank`,
+            nextText: 192.15
+          }
+        ],
+        imageCheck: 36
+      },
+      {// bf
+        id: 192.15,
+        text: 'You go into the passage; you realize that you are walking the walls. You can see everyone, some things you wished you didn\'t see. ',
+        options: [
+          {
+            text: `Where are we going?`,
+            nextText: 192.16
+          },
+          {
+            text: `Are you sure we are going the right way?`,
+            nextText: 192.16
+          },
+          {
+            text: `Do not say anything, continue walking.`,
+            nextText: 192.17
+          }
+        ],
+        imageCheck: 37
+      },
+      {// bf
+        id: 192.16,
+        text: 'Frank: "Stay quiet, they can still hear us."',
+        options: [
+          {
+            text: `Continue following Frank.`,
+            nextText: 192.17
+          }
+        ],
+      },
+      {// dex check 12 bf
+        id: 192.17,
+        text: 'You make it to the end of the passage, but there are three guards right in front of the door. You try to sneak past with Frank.',
+        options: [
+          {
+            text: `Sneak off
+            [Check (Dex)]`,
+            nextText: 192.171
+          }
+        ],
+      },
+      {// dex check 12 bf
+        id: 192.171,
+        text: 'Blank due to dice roll.',
+        options: [
+          {
+            text: `Sneak off`,
+            nextText: 192.22
+          }
+        ],
+        diceRoll: 9,
+        imageCheck: 26
+      },
+      {// fail bf
+        id: 192.18,
+        text: 'Guard: "Stop right there!"',
+        options: [
+          {
+            text: `Pull out your weapon`,
+            nextText: 192.185
+          }
+        ],
+      },
+      {// combat, fails bf
+        id: 191.185,
+        text: 'You have been waiting to get some angry out',
+        options: [
+          {
+            text: `Slash`,
+            nextText: 5
+          },
+          {
+            text: `Heal Potions`,
+            nextText: 8
+          },
+          {
+            text: `Scare`,
+            nextText: 9
+          },
+          {
+            text: `Stab`,
+            nextText: 10
+          },
+          {
+            text: `Pendant of Pain`,
+            nextText: 11
+          },
+          {
+            text: `Persuade`,
+            nextText: 12
+          },
+        ],
+        startCombat: 12,
+        imageCheck: 31
+      },
+      {//end combat, fails bf
+        id: 191.19,
+        text: 'Defeats Guards',
+        options: [
+          {
+            text: `Continue`,
+            nextText: 191.21
+          }
+        ],
+        imageCheck: 30
+      },
+      {// fail bf
+        id: 191.21,
+        text: 'You look around you to see where Frank is, but you can\'t find him. You do not have the time to stay around so you leave.',
+        options: [
+          {
+            text: `Continue`,
+            nextText: 192
+          }
+        ],
+      },
+      {// succeed bf
+        id: 191.22,
+        text: 'You stay close to the shadows and when you reach the shrubs, you start to crawl away. You try searching for Frank, but he is nowhere to be seen. You do not have the time to look so you leave.',
+        options: [
+          {
+            text: `Continue`,
+            nextText: 192
+          }
+        ],
+        imageCheck: 30
+      },
+      {// dragon mentor
+        id: 192,
+        text: 'You run out of the fort, you keep on running for as long as you can until you reach a spot where you can rest. You turn around to see if anyone is following you, but you see none.',
+        options: [
+          {
+            text: `Sleep`,
+            nextText: 193
+          },
+          {
+            text: `Continue Running`,
+            nextText: 192
+          }
+        ],
+        imageCheck: 12
+      },
+      {// sleep
+        id: 193,
+        text: 'You stop running and start looking for a place to sleep for the night. You find an area that has a small amount of rocks and as soon as you lay down you just go to sleep.',
+        options: [
+          {
+            text: `Continue`,
+            nextText: 194
+          }
+        ],
+      },
+      {// sleep
+        id: 194,
+        text: 'You wake up to the sunlight, the first time in over 5 years, but even though you want to just bask in the sun you know that you need to keep going so none finds you.',
+        options: [
+          {
+            text: `Continue`,
+            nextText: 199
+          }
+        ],
+        imageCheck: 12
+      },
+      {// running
+        id: 195,
+        text: 'You start to walk around the forest, you have no clue where anything is or where you are so you continue just going straight. You walk until the sun goes down and some farther. You hear something in the bushes, but before you can react they jump you.',
+        options: [
+          {
+            text: `Pull out weapon`,
+            nextText: 196
+          }
+        ],
+        imageCheck: 38
+      },
+      {// combat, runs
+        id: 196,
+        text: 'You have been waiting to get some angry out',
+        options: [
+          {
+            text: `Slash`,
+            nextText: 5
+          },
+          {
+            text: `Heal Potions`,
+            nextText: 8
+          },
+          {
+            text: `Scare`,
+            nextText: 9
+          },
+          {
+            text: `Stab`,
+            nextText: 10
+          },
+          {
+            text: `Pendant of Pain`,
+            nextText: 11
+          },
+          {
+            text: `Persuade`,
+            nextText: 12
+          },
+        ],
+        startCombat: 13,
+        imageCheck: 39
+      },
+      {//end combat, runs
+        id: 197,
+        text: 'Defeated Bear.',
+        options: [
+          {
+            text: `Continue`,
+            nextText: 198
+          }
+        ],
+        imageCheck: 12
+      },
+      {//
+        id: 198,
+        text: 'You stab the bear in its neck and it falls over. You are completely exhausted and you fall over.',
+        options: [
+          {
+            text: `Continue`,
+            nextText: 194
+          }
+        ],
+      },
+      {//
+        id: 199,
+        text: 'You start to look for the main road, everything right now looks the same. Each tree is so tall and so similar that it is almost impossible to know where you are going, but after several hours of searching you run into a road. You decide to follow the road to see where it leads.',
+        options: [
+          {
+            text: `Follow the road`,
+            nextText: 200
+          }
+        ],
+      },
+      {//
+        id: 200,
+        text: 'You run into a merchant, and at this point, you are starving and tired. You have not gotten to eat or have an okay sleep since you left the fort. You walk up to the merchant:',
+        options: [
+          { //talk
+            text: `Excuse me, can I catch a ride to the town of Lüdingfeld?`,
+            nextText: 201
+          },
+          { //scare
+            text: `Take out your weapon`,
+            nextText: 202
+          },
+        ],
+        imageCheck: 7
+      },
   {// talk
-    id: 201,
-    text: 'Merchant: "Sure, I am actually going that way."',
-    options: [
-      {
-        text: `Thank you, I am...Peirce.`,
-        nextText: 203
-      }
-    ],
-  },
-  {// scare
-    id: 202,
-    text: 'Jack: "Take me to Lüdingfeld!" Merchant: "Please! Do not hurt, I will please."',
-    options: [
-      {
-        text: `Good.`,
-        nextText: 203,
-      },
-    ],
-  },
-  //
-  //this is where the story would switch if they did not do anything with the dog
-  //
-  {//
-    id: 203,
-    text: 'You make it to Lüdingfeld, lucky you do not encounter any guards. You jump out of the cart before the merchant could notice. You do not want him to know where you are going or who you are.',
-    options: [
-      {
-        text: `Rush to Marrys home. `,
-        nextText: 204,
-      },
-    ],
-    imageCheck: 10
-  },
-  {//
-    id: 204,
-    text: 'You find the dog, he looks at you, and wines. It looks more skinny, even more skinny than the first time you meet it. The home is completely dead. Something is off.',
-    options: [
-      {
-        text: `Walk in `,
-        nextText: 205
-      }
-    ],
-  },
-  {//
-    id: 205,
-    text: 'You run into the home looking for Marry. You find her dead in the centre of the room surrounded by bandits. As you go to investigate her body you see her necklace with a weird glowing jade. Last time you saw her, she had nothing of the sort. You take it off her neck to try to further understand why this happened. The bandits weren/’t ever this aggressive and only stuck to the roads.',
-    options: [
-      {
-        text: `Continue`,
-        nextText: 206
-      }
-    ],
-    imageCheck: 2
-  },
-  {//
-    id: 206,
-    text: 'You Look for more clues. You see a note next to her bed, a picture on the wall to the left of the door, and she has something on her desk. You see that she has something in her hands, it looks like a jade.',
-    options: [
-      {
-        text: `Note`,
-        nextText: 207
-      },
-      {
-        text: `Painting`,
-        nextText: 208
-      },
-      {
-        text: `Desk`,
-        nextText: 209
-      },
-      {
-        text: `Jade`,
-        nextText: 211
-      }
-    ],
-  },
-  {//
-    id: 207,
-    text: 'Marrys Note: "The ‘Lung Jade’ is a very rare item only found in the caves of a dragon’s den. I once thought it was just something told to children to stay out of trouble, but now… The powers of the jade can only be fully used by a dragon. From what I understand you can still use it by using it like any other metal, but something this rare and beautiful shouldn’t be used on a weapon of man."',
-    options: [
-      {
-        text: `Examine`,
-        nextText: 208
-      }
-    ],
-  },
-  {//
-    id: 208,
-    text: 'Jack: "I have heard of these beasts. They were thought to be the protectors of the lands, Gods that used ‘mortal’ bodies. They were said to ask for tributes and give great rewards to people that they deemed worthy. Unfortunately, after the first invasion many of them left the island. This was the first sign of the end of the war. I always assumed it was legends and just stories to tell, never did I think that it could be reality. The power that someone can possess with just one of these is unimaginable."',
-    options: [
-      {
-        text: `Painting`,
-        nextText: 209
-      },
-      {
-        text: `Desk`,
-        nextText: 210
-      },
-      {
-        text: `Jade`,
-        nextText: 211
-      }
-    ],
-  },
-  {//
-    id: 209,
-    text: 'You go towards the painting on the wall. It shows a man handing the jade to a dragon. Beautiful, but doesn’t tell you very much about what it does or how to use it.',
-    options: [
-      {
-        text: `Note`,
-        nextText: 207
-      },
-      {
-        text: `Desk`,
-        nextText: 210
-      },
-      {
-        text: `Jade`,
-        nextText: 211
-      }
-    ],
-  },
-  {//
-    id: 210,
-    text: 'Marry: "I should have never taken this jade. To whoever reads this, please take the stone to the mountain in the west. This power is too powerful for one person. If you do use this jade, nothing but bad luck will follow you. Goodluck. PS: if you run into a man named Jack tell him what happened here."',
-    options: [
-      {
-        text: `Note`,
-        nextText: 207
-      },
-      {
-        text: `Painting`,
-        nextText: 208
-      },
-      {
-        text: `Jade`,
-        nextText: 211
-      }
-    ],
-  },
-  {//
-    id: 211,
-    text: 'You look down and grab the jade. You walk to the entrance of the house to get some fresh air. When you squat down the dog snatches the jade, before you have a chance to get the jade back the dog starts to shake. It transforms...',
-    options: [
-      {
-        text: `Buddy ? `,
-        nextText: 213
-      }
-    ],
-    imageCheck: 6
-  },
-  {//
-    id: 213,
-    text: 'Dragon: "Hello Jack. Thank you for your kindness. I know what you seek, I can help you in your journey. I know this must be a lot to process. I’ll explain."',
-    options: [
-      {
-        text: `Continue`,
-        nextText: 214
-      }
-    ],
-    imageCheck: 40
-  },
-  {//
-    id: 214,
-    text: 'Dragon: "I am one of the only remaining Gods in this land and have been trapped in a dog\'s body for trying to support your kin. I have been searching for a way to be released from that prison. I was on my way to the capital to see if I could find a way in another land, but then I met you. I then followed you around, waited for you to make your way across the jade. You see, I couldn’t get myself. I needed a human with the feeling of revenge to bring it to me. Your mentor was too light hearted and couldn’t hold its hatred. She sadly fell to the jade’s curse."',
-    options: [
-      {
-        text: `What? So that means you were the dog ? `,
-        nextText: 215
-      }
-    ],
-  },
-  {//
-    id: 215,
-    text: 'Dragon: "Come with me and I will be able to train you to be able to enact your revenge."',
-    options: [
-      {
-        text: `Okay, it does not seem like I have anyone else`,
-        nextText: 216
-      }
-    ],
-  },
-  {//
-    id: 216,
-    text: 'Dragon: "Come along." You see as the dragon raises its wings and starts to fly up.',
-    options: [
-      {
-        text: `Follow`,
-        nextText: 217
-      }
-    ],
-  },
-  {//
-    id: 217,
-    text: 'You follow the dragon the best you can, you travel through a part of the forest you have never seen before. You think about asking where you were going but you thought better. As you continue through the path seems to be never ending, it feels like you have been walking in circles. Every tree looks the same, the only changing aspect of the path was you and the dragon.',
-    options: [
-      {
-        text: `Keep up`,
-        nextText: 218
-      }
-    ],
-  },
-  {//
-    id: 218,
-    text: 'You finally make it out of the forest to the foot of a mountain. It’s known for being almost impossible to climb and none has been here since before the war, or at least that’s what you’ve been told.',
-    options: [
-      {
-        text: `Okay now what ? `,
-        nextText: 219
-      }
-    ],
-    imageCheck: 41
-  },
-  {//
-    id: 219,
-    text: 'Dragon: "Get on my back and I will fly you up the mountain." The dragon bends its wing to allow you to climb on top of it. Then it spreads its wings then takes you up the mountain. When you get on top the dragon tells of what training you will go through, surprisingly you cannot seem to remember much of what it said, but understood the task.',
-    options: [
-      {
-        text: `Train`,
-        nextText: 220
-      }
-    ],
-  },
-  {// ability score improvement
-    id: 220,
-    text: 'Dragon: "Let it begin" He makes you practise fighting sprites and he teaches you meditation. You train with it, for what feels like months, but the daylight cycle did not change, it confuses you but at least you now have the training to defeat Henry.',
-    options: [
-      {
-        text: `Train`,
-        nextText: 221
-      }
-    ],
-    imageCheck: 42
-  },
-  {//
-    id: 221,
-    text: 'Dragon: "It\'s time for you to go for round two against Henry. You are ready, just remember this. If you do decide to go through with your revenge you will not survive to live in your glory."',
-    options: [
-      {
-        text: `Thank you will I take that to mind`,
-        nextText: 222
-      }
-    ],
-  },
-  {//
-    id: 222,
-    text: 'Dragon: "I will help you on your feat. I can distract the archers and gun men while you find Henry and take your revenge." He blows on your armor as it turns into dragon iron armor.',
-    options: [
-      {
-        text: `Hmmm, this could work.`,
-        nextText: 224
-      },
-      {
-        text: `Thank you for your help.`,
-        nextText: 224
-      }
-    ],
-    imageCheck: 43
-  },
-  {//
-    id: 224,
-    text: 'The dragon lets you ride on his back again, but this time you fly over lands that you recognized. You turn around but the mountain you were at is completely gone, you have time to worry about something like that. This will be your last attempt at getting your revenge. You have learnt so much and done so much to get here, it is time to use everything you have learnt.',
-    options: [
-      {
-        text: `Prepare`,
-        nextText: 225
-      }
-    ],
-    imageCheck: 41
-  },
-  {//
-    id: 225,
-    text: 'The dragon lands in the entrance of your once great town of Lüdingfeld. The last time you were here it was freshly burnt with smoke and ash everywhere, but now it\'s overgrown with weeds and looks like old ruins. You remember all the good times.',
-    options: [
-      {
-        text: `Continue`,
-        nextText: 226
-      }
-    ],
-    imageCheck: 44
-  },
-  {//
-    id: 226,
-    text: 'You walk past the training area. You remember how you were first taught how to use a sword by your dad here, he made me fight for hours until I could everyone there. You were going to train your son the same way, but you never got that chance... that right.',
-    options: [
-      {
-        text: `Walk towards the manor`,
-        nextText: 227
-      }
-    ],
-  },
-  {//
-    id: 227,
-    text: 'You look at the market area, the place that you spent most of your time in town being in your adulthood. You remember the day that you met your wife, Jessy, it was a rainy day and she was by herself. I offered my coat and walked her home. It was a beautiful, or at least to you it was.',
-    options: [
-      {
-        text: `Walk towards the manor`,
-        nextText: 228
-      }
-    ],
-  },
-  {//
-    id: 228,
-    text: 'You walk past your home. The place that you felt the safest at, it\'s ironic that it is also the place that killed everything you loved. You continue forward, you have no time to mourn. If you get out of this alive you will bring flowers to their graves.',
-    options: [
-      {
-        text: `Walk towards the manor`,
-        nextText: 229
-      }
-    ],
-  },
-  {//
-    id: 229,
-    text: 'You get into vision of the manor. Jack: "Okay here is the plan you start flying to get their attention and try to keep it."',
-    options: [
-      {
-        text: `Thank you for everything.`,
-        nextText: 230
-      },
-      {
-        text: `Until we meet again.`,
-        nextText: 230
-      },
-    ],
-  },
-  {//
-    id: 230,
-    text: 'The dragon starts to rise, and starts to fly towards the manor. You can hear the screams from all the way across the valley. You make your way to the manor by foot, it is not too different from his other home, but it is bigger and does not have the garden.',
-    options: [
-      {
-        text: `Confront guards`,
-        nextText: 231
-      }
-    ],
-    imageCheck: 45
-  },
-  {//
-    id: 231,
-    text: 'Guard1: "Wait who are you, is that with you?" Guard2: "He\'s a demon, GET HIM!" You see as the first guard is terrified and there was a third but he ran back inside the manor to support the other men.',
-    options: [
-      {
-        text: `Pull out weapon`,
-        nextText: 232
-      }
-    ],
-  },
-  {// combat
-    id: 232,
-    text: 'You have been waiting to get some angry out',
-    options: [
-      {
-        text: `Slash`,
-        nextText: 5
-      },
-      {
-        text: `Heal Potions`,
-        nextText: 8
-      },
-      {
-        text: `Scare`,
-        nextText: 9
-      },
-      {
-        text: `Stab`,
-        nextText: 10
-      },
-      {
-        text: `Pendant of Pain`,
-        nextText: 11
-      },
-      {
-        text: `Persuade`,
-        nextText: 12
-      },
-    ],
-    startCombat: 14,
-    imageCheck: 46
-  },
-  {//end combat
-    id: 233,
-    text: 'Defeated guards.',
-    options: [
-      {
-        text: `Continue`,
-        nextText: 234
-      }
-    ],
-    imageCheck: 45
-  },
-  {//
-    id: 234,
-    text: 'You strike down the guards, you see a picture fall out of one of their pockets.',
-    options: [
-      {
-        text: `Push forward`,
-        nextText: 236
-      },
-      {
-        text: `Investigate the picture`,
-        nextText: 235
-      }
-    ],
-  },
-  {//
-    id: 235,
-    text: 'You look closer at the picture, it\'s a drawing of the guards\' kids. You are taken back a little, maybe this isn\'t worth taking revenge on everyone. You then snap out of it remembering what happened to you.',
-    options: [
-      {
-        text: `Continue pushing forward`,
-        nextText: 236
-      }
-    ],
-  },
-  {//
-    id: 236,
-    text: 'You walk over the dead guards, with everyone so focused on the dragon none pays attention to you, you kick open the doors to the manor, you walk into another fight, but these seems like the hardest one yet.',
-    options: [
-      {
-        text: `pull out your weapon`,
-        nextText: 237
-      }
-    ],
-    imageCheck: 47
-  },
-  {// combat
-    id: 237,
-    text: 'You have been waiting to get some angry out',
-    options: [
-      {
-        text: `Slash`,
-        nextText: 5
-      },
-      {
-        text: `Heal Potions`,
-        nextText: 8
-      },
-      {
-        text: `Scare`,
-        nextText: 9
-      },
-      {
-        text: `Stab`,
-        nextText: 10
-      },
-      {
-        text: `Pendant of Pain`,
-        nextText: 11
-      },
-      {
-        text: `Persuade`,
-        nextText: 12
-      },
-    ],
-    startCombat: 15,
-    imageCheck: 48
-  },
-  {// end combat
-    id: 238,
-    text: 'You cut through the guards.',
-    options: [
-      {
-        text: `Continue`,
-        nextText: 239
-      }
-    ],
-    imageCheck: 49
-  },
-  {//
-    id: 239,
-    text: 'You are feeling hurt, but you still have a job to finish. You run up the stairs to look for where Henry is.',
-    options: [
-      {
-        text: `Library`,
-        nextText: 240
-      },
-      {
-        text: `Kitchen`,
-        nextText: 244
-      },
-      {
-        text: `Guest Room`,
-        nextText: 245
-      }
-    ],
-    imageCheck: 50
-  },
-  {// library
-    id: 240,
-    text: 'You walk into the library, it\'s a large room with enough books to suffocate someone with. You see someone sitting next to the fireplace. You remember this boy from Henry\'s dinner, it\'s his son Johnny.',
-    options: [
-      {
-        text: `Hey, Johnny is it ? `,
-        nextText: 241
-      },
-      {
-        text: `WHERE IS YOUR FATHER`,
-        nextText: 242
-      },
-      {
-        text: `Leave quietly`,
-        nextText: 243
-      }
-    ],
-    imageCheck: 51
-  },
-  {// library
-    id: 241,
-    text: 'Jack: "Johnny, I have business with your dad, do you know where he is?" The boy looks at you with the same terror from last time, he does not seem like he can form a sentence.',
-    options: [
-      {
-        text: `WHERE IS YOUR FATHER`,
-        nextText: 242
-      },
-      {
-        text: `Leave quietly`,
-        nextText: 243
-      }
-    ],
-  },
-  {//
-    id: 242,
-    text: 'Johnny: "PLEASE! Please, please, please, please... it\'s just a nightmare, please" The boy can not say anything no matter what you do.',
-    options: [
-      {
-        text: `Leave quietly`,
-        nextText: 243
-      }
-    ],
-  },
-  {// library
-    id: 243,
-    text: 'You decide to walk out, but that boy’s eyes will haunt you for a bit.',
-    options: [
-      {
-        text: `Kitchen`,
-        nextText: 244
-      },
-      {
-        text: `Guest Room`,
-        nextText: 245
-      },
-      {
-        text: `Stairs`,
-        nextText: 246
-      },
-    ],
-  },
-  {//
-    id: 244,
-    text: 'You walk into the kitchen, there is nothing but cooks that are huddled in a corner, you pair your head around the door to see if someone is eating, but there is no sign of Henry.',
-    options: [
-      {
-        text: `Library`,
-        nextText: 240
-      },
-      {
-        text: `Guest Room`,
-        nextText: 245
-      },
-      {
-        text: `Stairs`,
-        nextText: 246
-      },
-    ],
-    imageCheck: 52
-  },
-  {//
-    id: 245,
-    text: 'You walk into a room with only one bed. It appears to be pretty empty and there is no sign of anything in here.',
-    options: [
-      {
-        text: `Library`,
-        nextText: 240
-      },
-      {
-        text: `Kitchen`,
-        nextText: 244
-      },
-      {
-        text: `Stairs`,
-        nextText: 246
-      },
-    ],
-    imageCheck: 53
-  },
-  {//
-    id: 246,
-    text: 'You walk back to the stair from before, you see Henry at the bottom. You cannot contain yourself, but you keep enough to control to not run at him.',
-    options: [
-      {
-        text: `Continue`,
-        nextText: 247
-      }
-    ],
-    imageCheck: 54
-  },
-  {//
-    id: 247,
-    text: 'Henry: "JACK! WHAT HAVE YOU DONE!? WHAT DID I DO!?"',
-    options: [
-      {
-        text: `You destroyed everything, I will give you the same fate!`,
-        nextText: 248
-      },
-      {
-        text: `You burned down my town… my home… my life.`,
-        nextText: 249
-      },
-      {
-        text: `Stay silent.`,
-        nextText: 250
-      }
-    ],
-  },
-  {//
-    id: 248,
-    text: 'Henry: "What?"',
-    options: [
-      {
-        text: `You want to lie then? So be it.`,
-        nextText: 251
-      }
-    ],
-  },
-  {//
-    id: 249,
-    text: 'I’m sorry I don’t remember that, are you sure it was me?',
-    options: [
-      {
-        text: `HOW DARE YOU!`,
-        nextText: 251
-      }
-    ],
-  },
-  {//
-    id: 250,
-    text: 'Swings at you.',
-    options: [
-      {
-        text: `Swing at him`,
-        nextText: 251
-      }
-    ],
-  },
-  {// combat
-    id: 251,
-    text: 'This is the final showdown, make it count.',
-    options: [
-      {
-        text: `Slash`,
-        nextText: 5
-      },
-      {
-        text: `Heal Potions`,
-        nextText: 8
-      },
-      {
-        text: `Scare`,
-        nextText: 9
-      },
-      {
-        text: `Stab`,
-        nextText: 10
-      },
-      {
-        text: `Pendant of Pain`,
-        nextText: 11
-      },
-      {
-        text: `Persuade`,
-        nextText: 12
-      },
-    ],
-    startCombat: 16,
-    imageCheck: 55
-  },
-  {// end combat
-    id: 252,
-    text: 'You are filled with even more rage.',
-    options: [
-      {
-        text: `What will you do? `,
-        nextText: 253, //0-2 with dog
-      },
-    ],
-    imageCheck: 54
-  },
-  {//
-    id: 253,
-    text: 'You look at Henry, this is your chance take your revenge or do what you know is right.',
-    options: [
-      {
-        text: `Kill`,
-        nextText: 254
-      },
-      {
-        text: `Spare`,
-        nextText: 256
-      }
-    ],
-  },
-  {// kill
-    id: 254,
-    text: 'You look at Henry, you try to find a reason to keep him alive, but nothing comes to mind. You lift your weapon above your head and get hitting him with it until he is died.',
-    options: [
-      {
-        text: `What now ? `,
-        nextText: 255
-      }
-    ],
-    imageCheck: 51
-  },
-  {// killing, bad end
-    id: 255,
-    text: 'You do not feel like anything changed, was this really the right path? Before you can think about what just happened you feel a sharp pain in your upper chest. You turn around to see Johnny, your vision becomes blurred until it reaches pitch black.',
-    options: [
-      {
-        text: `Continue`,
-        nextText: 1000
-      }
-    ],
-    imageCheck: 0
-  },
-  {// spare
-    id: 256,
-    text: 'You remember his son; do you really want to be the same monster as him? You throw your blade in front of Henry and run out to get out.',
-    options: [
-      {
-        text: `Exit`,
-        nextText: 257
-      }
-    ],
-    imageCheck: 1
-  },
-  {// spare
-    id: 257,
-    text: 'You run outside to see fire everywhere, the dragon is still distracting the guards. You run into the forest, some arrows heading towards you, but you are too far for them to have good aim. The dragon still fought on.',
-    options: [
-      {
-        text: `Catch your breath`,
-        nextText: 258
-      }
-    ],
-  },
-  {// spare
-    id: 258,
-    text: 'You pick up some flowers from the weeds near your home and put them on top of your family\'s grave. Ties come across your face, you fall to the floor and moan.',
-    options: [
-      {
-        text: `...`,
-        nextText: 259
-      }
-    ],
-  },
-  {// spare
-    id: 259,
-    text: 'You get enough strength to get up and move on, tell them goodbye and start to take over Mary\'s business and become a blacksmith. You know one day someone will come after you, but at least you can live these days in peace.',
-    options: [
-      {
-        text: `Continue`,
-        nextText: 260
-      }
-    ],
-  },
-  {// good ending
-    id: 260,
-    text: 'THE END',
-    options: [
-      {
-        text: `GOOOD ENDING`,
-        nextText: 1000
-      }
-    ],
-  },
+        id: 201,
+        text: 'Merchant: "Sure, I am going that way."',
+        options: [
+          {
+            text: `Thank you, I am...Peirce.`,
+            nextText: 203
+          }
+        ],
+      },
+      {// scare
+        id: 202,
+        text: 'Jack: "Take me to Lüdingfeld!" Merchant: "Please! Do not hurt, I will please."',
+        options: [
+          {
+            text: `Good.`,
+            nextText: 203,
+          },
+        ],
+      },
+      //
+      //this is where the story would switch if they did not do anything with the dog
+      //
+      {//
+        id: 203,
+        text: 'You make it to Lüdingfeld, lucky you do not encounter any guards. You jump out of the cart before the merchant can notice. You do not want him to know where you are going or who you are.',
+        options: [
+          {
+            text: `Rush to Marry\'s home. `,
+            nextText: 204,
+          },
+        ],
+        imageCheck: 10
+      },
+      {//
+        id: 204,
+        text: 'You find the dog, he looks at you, and wines. It looks skinnier, even more skinny than the first time you meet it. The home is completely dead. Something is off.',
+        options: [
+          {
+            text: `Walk in `,
+            nextText: 205
+          }
+        ],
+      },
+      {//
+        id: 205,
+        text: 'You run into the home looking for Marry. You find her dead in the center of the room surrounded by bandits. As you go to investigate her body you see her necklace with a weird glowing jade. The last time you saw her, she had nothing of the sort. You take it off her neck to try to further understand why this happened. The bandits weren\’t ever this aggressive and only stuck to the roads.',
+        options: [
+          {
+            text: `Continue`,
+            nextText: 206
+          }
+        ],
+        imageCheck: 2
+      },
+      {//
+        id: 206,
+        text: 'You Look for more clues. You see a note next to her bed, a picture on the wall to the left of the door, and she has something on her desk. You see that she has something in her hands, it looks like a jade.',
+        options: [
+          {
+            text: `Note`,
+            nextText: 207
+          },
+          {
+            text: `Painting`,
+            nextText: 208
+          },
+          {
+            text: `Desk`,
+            nextText: 209
+          },
+          {
+            text: `Jade`,
+            nextText: 211
+          }
+        ],
+      },
+      {//
+        id: 207,
+        text: 'Marrys Note: "The ‘Lung Jade’ is a very rare item only found in the caves of a dragon’s den. I once thought it was just something told to children to stay out of trouble, but now… The powers of the jade can only be fully used by a dragon. From what I understand you can still use it by using it like any other metal, but something this rare and beautiful shouldn’t be used on a weapon of man."',
+        options: [
+          {
+            text: `Examine`,
+            nextText: 208
+          }
+        ],
+      },
+      {//
+        id: 208,
+        text: 'Jack: "I have heard of these beasts. They were thought to be the protectors of the lands, Gods that used ‘mortal’ bodies. They were said to ask for tributes and give great rewards to people that they deemed worthy. Unfortunately, after the first invasion, many of them left the island. This was the first sign of the end of the war. I always assumed it was legends and just stories to tell, never did I think that it could be reality. The power that someone can possess with just one of these is unimaginable."',
+        options: [
+          {
+            text: `Painting`,
+            nextText: 209
+          },
+          {
+            text: `Desk`,
+            nextText: 210
+          },
+          {
+            text: `Jade`,
+            nextText: 211
+          }
+        ],
+      },
+      {//
+        id: 209,
+        text: 'You go towards the painting on the wall. It shows a man handing the jade to a dragon. Beautiful, but doesn’t tell you very much about what it does or how to use it.',
+        options: [
+          {
+            text: `Note`,
+            nextText: 207
+          },
+          {
+            text: `Desk`,
+            nextText: 210
+          },
+          {
+            text: `Jade`,
+            nextText: 211
+          }
+        ],
+      },
+      {//
+        id: 210,
+        text: 'Marry: "I should have never taken this jade. To whoever reads this, please take the stone to the mountain in the west. This power is too powerful for one person. If you do use this jade, nothing but bad luck will follow you. Good luck. PS: if you run into a man named Jack tell him what happened here."',
+        options: [
+          {
+            text: `Note`,
+            nextText: 207
+          },
+          {
+            text: `Painting`,
+            nextText: 208
+          },
+          {
+            text: `Jade`,
+            nextText: 211
+          }
+        ],
+      },
+      {//
+        id: 211,
+        text: 'You look down and grab the jade. You walk to the entrance of the house to get some fresh air. When you squat down the dog snatches the jade, before you have a chance to get the jade back the dog starts to shake. It transforms...',
+        options: [
+          {
+            text: `Buddy? `,
+            nextText: 213
+          }
+        ],
+        imageCheck: 6
+      },
+      {//
+        id: 213,
+        text: 'Dragon: "Hello Jack. Thank you for your kindness. I know what you seek, and I can help you in your journey. I know this must be a lot to process. I’ll explain."',
+        options: [
+          {
+            text: `Continue`,
+            nextText: 214
+          }
+        ],
+        imageCheck: 40
+      },
+      {//
+        id: 214,
+        text: 'Dragon: "I am one of the only remaining Gods in this land and have been trapped in a dog\'s body for trying to support your kin. I have been searching for a way to be released from that prison. I was on my way to the capital to see if I could find a way to another land, but then I met you. I then followed you around and waited for you to make your way across the jade. You see, I couldn’t get myself. I needed a human with the feeling of revenge to bring it to me. Your mentor was too light-hearted and couldn’t hold its hatred. She sadly fell to the jade’s curse."',
+        options: [
+          {
+            text: `What? So that means you were the dog? `,
+            nextText: 215
+          }
+        ],
+      },
+      {//
+        id: 215,
+        text: 'Dragon: "Come with me and I will be able to train you to be able to enact your revenge."',
+        options: [
+          {
+            text: `Okay, it does not seem like I have anyone else`,
+            nextText: 216
+          }
+        ],
+      },
+      {//
+        id: 216,
+        text: 'Dragon: "Come along." You see as the dragon raises its wings and starts to fly up.',
+        options: [
+          {
+            text: `Follow`,
+            nextText: 217
+          }
+        ],
+      },
+      {//
+        id: 217,
+        text: 'You follow the dragon the best you can, you travel through a part of the forest you have never seen before. You think about asking where you are going but you thought better. As you continue through the path that seems to be never-ending, it feels like you have been walking in circles. Every tree looks the same, the only changing aspect of the path was you and the dragon.',
+        options: [
+          {
+            text: `Keep up`,
+            nextText: 218
+          }
+        ],
+      },
+      {//
+        id: 218,
+        text: 'You finally make it out of the forest to the foot of a mountain. It’s known for being almost impossible to climb and none has been here since before the war, or at least that’s what you’ve been told.',
+        options: [
+          {
+            text: `Okay now what? `,
+            nextText: 219
+          }
+        ],
+        imageCheck: 41
+      },
+      {//
+        id: 219,
+        text: 'Dragon: "Get on my back and I will fly you up the mountain." The dragon bends its wing to allow you to climb on top of it. Then it spreads its wings then takes you up the mountain. When you get on top the dragon tells of what training you will go through, surprisingly you cannot seem to remember much of what it said, but understand the task.',
+        options: [
+          {
+            text: `Train`,
+            nextText: 220
+          }
+        ],
+      },
+      {// ability score improvement
+        id: 220,
+        text: 'Dragon: "Let it begin" He makes you practice fighting sprites and he teaches you meditation. You train with it, for what feels like months, but the daylight cycle does not change, it confuses you but at least you now have the training to defeat Henry.',
+        options: [
+          {
+            text: `Train`,
+            nextText: 221
+          }
+        ],
+        imageCheck: 42
+      },
+      {//
+        id: 221,
+        text: 'Dragon: "It\'s time for you to go for round two against Henry. You are ready, just remember this. If you do decide to go through with your revenge you will not survive to live in your glory."',
+    },
   // 
   // 
   // ADD region later 
